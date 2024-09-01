@@ -1,0 +1,400 @@
+{
+  "lists": {
+    "core": [
+      {
+        "key": "to-read",
+        "name": "To Read",
+        "source": "shelvd",
+        "books": [
+          {
+            "key": "1638434662",
+            "source": "shelvd",
+            "title": "The Great Gatsby",
+            "author": {
+              "key": "f-scott-fitzgerald",
+              "name": "F. Scott Fitzgerald",
+              "slug": "f-scott-fitzgerald",
+              "image": ""
+            },
+            "slug": "the-great-gatsby",
+            "image": "",
+            "description": "The Great Gatsby is a 1925 novel by American writer F. Scott Fitzgerald. Set in the Jazz Age on Long Island, the novel depicts narrator Nick Carraway's interactions with mysterious millionaire Jay Gatsby and Gatsby's obsession to reunite with his former lover, Daisy Buchanan.",
+            "series": {}
+          }
+        ]
+      },
+      {
+        "key": "reading",
+        "name": "Reading",
+        "source": "shelvd",
+        "books": [
+          {
+            "key": "1638434662",
+            "source": "shelvd",
+            "title": "The Great Gatsby",
+            "author": {
+              "key": "f-scott-fitzgerald",
+              "name": "F. Scott Fitzgerald",
+              "slug": "f-scott-fitzgerald",
+              "image": ""
+            },
+            "slug": "the-great-gatsby",
+            "image": "",
+            "description": "The Great Gatsby is a 1925 novel by American writer F. Scott Fitzgerald. Set in the Jazz Age on Long Island, the novel depicts narrator Nick Carraway's interactions with mysterious millionaire Jay Gatsby and Gatsby's obsession to reunite with his former lover, Daisy Buchanan.",
+            "series": {}
+          }
+        ]
+      },
+      {
+        "key": "completed",
+        "name": "Completed",
+        "source": "shelvd",
+        "books": [
+          {
+            "key": "1638434662",
+            "source": "shelvd",
+            "title": "The Great Gatsby",
+            "author": {
+              "key": "f-scott-fitzgerald",
+              "name": "F. Scott Fitzgerald",
+              "slug": "f-scott-fitzgerald",
+              "image": ""
+            },
+            "slug": "the-great-gatsby",
+            "image": "",
+            "description": "The Great Gatsby is a 1925 novel by American writer F. Scott Fitzgerald. Set in the Jazz Age on Long Island, the novel depicts narrator Nick Carraway's interactions with mysterious millionaire Jay Gatsby and Gatsby's obsession to reunite with his former lover, Daisy Buchanan.",
+            "series": {}
+          }
+        ]
+      },
+      {
+        "key": "dnf",
+        "name": "DNF",
+        "source": "shelvd",
+        "books": []
+      }
+    ],
+    "created": [
+      {
+        "key": "created-1",
+        "name": "Created 1",
+        "source": "shelvd",
+        "books": []
+      },
+      {
+        "key": "created-2",
+        "name": "Created 2",
+        "source": "shelvd",
+        "books": []
+      }
+    ]
+  },
+  "collections": [
+    {
+      "id": "1",
+      "title": "To Read",
+      "booklist": [
+        {
+          "key": "496108",
+          "slug": "scientific-freedom-the-elixir-of-civilization",
+          "title": "Scientific Freedom: The Elixir of Civilization",
+          "author": {
+            "cachedImage": {},
+            "name": "Donald W. Braben",
+            "slug": "donald-w-braben",
+            "key": "donald-w-braben",
+            "image": ""
+          },
+          "image": "https://storage.googleapis.com/hardcover/edition/12452071/55520463._SX318_.jpg",
+          "description": "Scientific Freedom outlines what needs to be done to restore the freedom that can transform scientific understanding. The author defines Transformative Research (Venture Research) and explains how an initiative might be designed and implemented; discusses the revolutionary concept of low-risk, high-reward research; explains the wider significance of instability, and introduces the formidable Damocles Zone; explores threats to the university as an institution; and describes how a Transformative Research initiative might work in practice.",
+          "source": "hc",
+          "series": {
+            "key": "",
+            "slug": "",
+            "name": ""
+          }
+        },
+        {
+          "key": "491796",
+          "slug": "get-together",
+          "title": "Get Together",
+          "author": {
+            "cachedImage": {},
+            "name": "Bailey Richardson, +2 others",
+            "slug": "bailey-richardson",
+            "key": "bailey-richardson",
+            "image": ""
+          },
+          "image": "https://storage.googleapis.com/hardcover/edition/30439414/content.jpeg",
+          "description": "Although communities feel magical, they don't come together by magic. Get Together is a guide to cultivating a community-people who come together over what they care about. Whether starting a run crew, helping online streamers connect with fans, or sparking a movement of K-12 teachers, the secret to community-building is the same: don't fixate on what you can do for people (or what they can do for you). Instead, focus on what you can do with them. In Get Together, the People & Company team provides stories, prompts, and principles for each stage of cultivating a passionate group of people. Every organization holds the potential to build and sustain a thriving community. Get Together shows readers how companies and customers, artist and fans, or organizers and advocates, can join forces to accomplish more together than they could have alone.",
+          "source": "hc",
+          "series": {
+            "key": "",
+            "slug": "",
+            "name": ""
+          }
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "title": "Reading",
+      "booklist": [
+        {
+          "key": "1782265279",
+          "source": "google",
+          "title": "A Cheese-Coloured Camper Van",
+          "author": {
+            "key": "geronimo-stilton",
+            "name": "Geronimo Stilton",
+            "slug": "geronimo-stilton",
+            "image": "http://books.google.com/books/content?id=OkmiwwEACAAJ&printsec=frontcover&img=1&zoom=5&source=gbs_api"
+          },
+          "slug": "a-cheese-coloured-camper-van",
+          "image": "",
+          "description": "",
+          "series": {}
+        },
+        {
+          "key": "1338587552",
+          "source": "google",
+          "title": "Happy Birthday, Geronimo! (Geronimo Stilton #74)",
+          "author": {
+            "key": "geronimo-stilton",
+            "name": "Geronimo Stilton",
+            "slug": "geronimo-stilton",
+            "image": "http://books.google.com/books/content?id=Wz-ODwAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api"
+          },
+          "slug": "happy-birthday-geronimo-geronimo-stilton-74",
+          "image": "",
+          "description": "",
+          "series": {}
+        },
+        {
+          "key": "590689",
+          "slug": "yellowface",
+          "title": "Yellowface",
+          "author": {
+            "cachedImage": {
+              "color": "#afaac1",
+              "height": 450,
+              "id": 34737,
+              "url": "https://hardcover.imgix.net/authors/195360/8539488-L.jpg",
+              "width": 300
+            },
+            "name": "R.F. Kuang",
+            "slug": "r-f-kuang",
+            "key": "r-f-kuang",
+            "image": "https://hardcover.imgix.net/authors/195360/8539488-L.jpg"
+          },
+          "image": "https://storage.googleapis.com/hardcover/external_data/60178061/40c5bf4573c61d483aab0e2854810f88ee788609.jpeg",
+          "description": "Zaczyna się od niespodziewanej śmierci. A później napięcie rośnie dosłownie odbierając oddech, aż do finału, który zaciska się na gardle niczym pętla. Finału, w którym katharsis przeplata się ze stadium szaleństwa a my, nawet poznawszy całą historię, nadal nie jesteśmy pewni, kto jest ofiarą a kto czarnym charakterem. A może, jak w życiu, w tej historii nie ma czarnych charakterów i niewinnych ofiar. Może są tylko mniej lub bardziej zdeterminowane postaci. Ludzie w różnym stopniu zanurzeni w szambie wyścigu po sukces i z nierówną furią obrzuceni błotem przez \"opinię publiczną\". \"Yellowface\" pokazuje rynek wydawniczy, działanie social mediów i drogę do spełniania marzeń od strony, której nigdy nie chcielibyście oglądać. A jednak nie odłożycie tej książki, dopóki nie przeczytacie ostatniej strony. *** Przebojowy bestseller New York Timesa! Niewinne kłamstewka. Czarny humor. Fatalne konsekwencje. Juniper Song, wschodząca gwiazda literatury nie jest tym, za kogo się podaje, nie jest autorką książki, pod którą się podpisała, a przede wszystkim nie jest amerykańską Azjatką. To najkrótsze możliwe streszczenie przejmującej a jednocześnie przezabawnie kąśliwej powieści R.F. Kuang, autorki bestsellerowej powieści Babel. Dwie młode pisarki, June Hayward i Athena Liu miały zostać bliźniaczymi gwiazdami na literackim firmamencie: w tym samym momencie skończyły studia na Yale, w tym samym roku wydały debiutanckie powieści. Lecz to Athena została ulubienicą czytelników i całej branży wydawniczej, a książka June nie doczekała się nawet wydania w miękkiej oprawie. Cóż, myśli June, nikogo nie interesują opowieści o przeciętnych, białych dziewczynach. Tak więc, kiedy Athena ginie w koszmarnym wypadku, June, która była jego świadkiem, działa odruchowo: kradnie rękopis najnowszej książki przyjaciółki, eksperymentalnej powieści opisującej zapomniane losy chińskich robotników wspomagających w czasie pierwszej wojny światowej brytyjsko-francuski wysiłek wojenny na europejskim froncie zachodnim. Co złego się stanie, jeśli June zredaguje rękopis Atheny i wyśle agentowi jako własny utwór? Co złego w tym, że pozwoli wydawnictwu nadać sobie pseudonim Juniper Song – a także uzupełnić go dwuznaczną pod względem rasowym fotografią na okładce? Czyż ten zapoznany fragment historii nie zasługuje na opowiedzenie, bez względu na to, kto go opowie? Tak twierdzi June, a lista bestsellerów New York Timesa zdaje się ją popierać. June nie jest jednak w stanie wyjść z cienia Atheny, a wychodzące na jaw poszlaki zagrażają (nieuczciwie osiągniętemu) sukcesowi młodej autorki. Starając się ochronić swą tajemnicę, dziewczyna odkrywa, do czego jest w stanie się posunąć by zachować to, na co w swoim mniemaniu zasługuje. Yellowface, posługując się pochłaniającą pierwszoosobową narracją, podejmuje kwestie różnorodności, rasizmu i kulturowego zawłaszczenia, istotne nie tylko w branży wydawniczej, lecz jako problem tłumienia w białym społeczeństwie Zachodu głosu amerykańskich Azjatów. Powieść R.F. Kuang jest aktualna i ostra jak brzytwa, a przy tym wspaniale się ją czyta. Zjadliwa satyra na tożsamość i uprzywilejowaną pozycję białych – Guardian Thriller, który znajdzie się na ustach wszystkich – Grazia Ostra jak brzytwa – Time Wolna jazda bez trzymanki – Stylist Intrygująca – Elle Skrząca się dowcipem satyra – Cosmopolitan Cięty dowcip. Książka, której nie sposób odłożyć – Gal-Dem Początek fantastycznej kariery – Observer PIEKIELNIE DOBRA HISTORIA. TROCHĘ SZKODA, ŻE CUDZA. Athena Liu jest literacką gwiazdą, a June Hayward jest po prostu nikim. NIEWINNE KŁAMSTEWKA Kiedy Athena ginie w wypadku June kradnie rękopis jej nieopublikowanej powieści i wydaje ją pod niejednoznacznym pseudonimem Juniper Song. CZARNY HUMOR Chroniąc swą tajemnicę, June odkrywa, do czego jest w stanie się posunąć by zachować to, na co w swoim mniemaniu zasługuje. FATALNE KONSEKWENCJE… Za to, co stanie się potem, winni będą wszyscy, tylko nie ona. Stephen King: YELLOWFACE, R.F. Kuang; Świetna lektura. Zbrodnia, satyra, horror, paranoja, kwestie tożsamości kulturowej i przywłaszczenia. A wszystko w sosie trwającej w mediach społecznościowej inby. Ponad wszystko, to jednak znakomita opowieść. Książka, którą trudno odłożyć, a jeszcze trudniej zapomnieć.",
+          "source": "hc",
+          "series": {
+            "key": "",
+            "slug": "",
+            "name": ""
+          }
+        },
+        {
+          "key": "89506",
+          "slug": "kings-of-the-wyld",
+          "title": "Kings of the Wyld",
+          "author": {
+            "cachedImage": {},
+            "name": "Nicholas Eames",
+            "slug": "nicholas-eames",
+            "key": "nicholas-eames",
+            "image": ""
+          },
+          "image": "https://storage.googleapis.com/hardcover/external_data/59732889/a702f35727602ba03455d7ff5bd9bcd749a65ca8.jpeg",
+          "description": "\"Clay Cooper and his band were once the best of the best -- the meanest, dirtiest, most feared crew of mercenaries this side of the Heartwyld. Their glory days long past, the mercs have grown apart and grown old, fat, drunk - or a combination of the three. Then an ex-bandmate turns up at Clay's door with a plea for help. His daughter Rose is trapped in a city besieged by an enemy one hundred thousand strong and hungry for blood. Rescuing Rose is the kind of mission that only the very brave or the very stupid would sign up for. It's time to get the band back together for one last tour across the Wyld\"--",
+          "source": "hc",
+          "series": {
+            "key": "the-band",
+            "slug": "the-band",
+            "name": "The Band"
+          }
+        },
+        {
+          "key": "222697",
+          "slug": "the-shining-girls",
+          "title": "The Shining Girls",
+          "author": {
+            "cachedImage": {},
+            "name": "Lauren Beukes",
+            "slug": "lauren-beukes",
+            "key": "lauren-beukes",
+            "image": ""
+          },
+          "image": "https://storage.googleapis.com/hardcover/editions/30399651/9485519905660492-lg_url.jpg",
+          "description": "The girl who wouldn’t die. Hunting a killer who shouldn’t exist. Chicago 1931. Violent drifter Harper Curtis stumbles upon a house that hides a secret as shocking as his own twisted nature: it opens onto other times. Harper uses it to stalk his ‘shining girls’ across decades – and cut the fire out of them. He’s the perfect killer. Unstoppable. Untraceable. Until one of his victims survives and turns the hunt around. Chicago, 1992. Kirby Mazrachi’s determination to find the man who tried to kill her has taken over her life. The cops no longer return her calls. Her mother copes by writing morbid children’s books. Her only ally is Dan, the burnt-out ex-homicide reporter who covered her case. As Kirby closes in on her would-be killer, what she finds is ... impossible. Murders scattered across the decades along with evidence that makes no sense. Meanwhile, Harper is closing in on her too",
+          "source": "hc",
+          "series": {
+            "key": "",
+            "slug": "",
+            "name": ""
+          }
+        },
+        {
+          "key": "465201",
+          "slug": "house-of-earth-and-blood",
+          "title": "House of Earth and Blood",
+          "author": {
+            "cachedImage": {
+              "color": "#4f1c05",
+              "height": 400,
+              "id": 34566,
+              "url": "https://hardcover.imgix.net/authors/187135/8064866-L.jpg",
+              "width": 400
+            },
+            "name": "Sarah J. Maas",
+            "slug": "sarah-j-maas",
+            "key": "sarah-j-maas",
+            "image": "https://hardcover.imgix.net/authors/187135/8064866-L.jpg"
+          },
+          "image": "https://storage.googleapis.com/hardcover/external_data/59586561/6f8dce8f1c987d618d307c1e638d2a14fae92d12.jpeg",
+          "description": "Think Game of Thrones meets Buffy the Vampire Slayer with a drizzle of E.L. James - TelegraphPerfect for fans of Jessica Jones and True Blood, this is a blockbuster modern fantasy set in a divided world where one woman must uncover the truth to seek her revenge. Half-Fae, half-human Bryce Quinlan loves her life. Every night is a party and Bryce is going to savour all the pleasures Lunathion - also known as Crescent City - has to offer. But then a brutal murder shakes the very foundations of the city, and brings Bryce's world crashing down.Two years later, Bryce still haunts the city's most notorious nightclubs - but seeking only oblivion now. Then the murderer attacks again. And when an infamous Fallen angel, Hunt Athalar, is assigned to watch her every footstep, Bryce knows she can't forget any longer.As Bryce and Hunt fight to unravel the mystery, and their own dark pasts, the threads they tug ripple through the underbelly of the city, across warring continents, and down to the deepest levels of Hel, where things that have been sleeping for millennia are beginning to stir ...With unforgettable characters and page-turning suspense, this richly inventive new fantasy series by #1 New York Times bestselling author Sarah J. Maas delves into the heartache of loss, the price of freedom - and the power of love.",
+          "source": "hc",
+          "series": {
+            "key": "crescent-city",
+            "slug": "crescent-city",
+            "name": "Crescent City"
+          }
+        }
+      ]
+    },
+    {
+      "id": "3",
+      "title": "Completed",
+      "booklist": [
+        {
+          "key": "0141351322",
+          "source": "google",
+          "title": "Geronimo Stilton: The Temple of the Ruby of Fire (#12)",
+          "author": {
+            "key": "geronimo-stilton",
+            "name": "Geronimo Stilton",
+            "slug": "geronimo-stilton",
+            "image": "http://books.google.com/books/content?id=XfyiAgAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api"
+          },
+          "slug": "geronimo-stilton-the-temple-of-the-ruby-of-fire-12",
+          "image": "",
+          "description": "",
+          "series": {}
+        },
+        {
+          "key": "233",
+          "source": "google",
+          "title": "Geronimo Stilton: A Fabumouse Vacation for Geronimo (#9)",
+          "author": {
+            "key": "geronimo-stilton",
+            "name": "Geronimo Stilton",
+            "slug": "geronimo-stilton",
+            "image": "http://books.google.com/books/content?id=sLKhAgAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api"
+          },
+          "slug": "geronimo-stilton-a-fabumouse-vacation-for-geronimo-9",
+          "image": "",
+          "description": "",
+          "series": {}
+        },
+        {
+          "key": "714600",
+          "slug": "fourth-wing",
+          "title": "Fourth Wing",
+          "author": {
+            "cachedImage": {},
+            "name": "Rebecca Yarros",
+            "slug": "rebecca-yarros",
+            "key": "rebecca-yarros",
+            "image": ""
+          },
+          "image": "https://storage.googleapis.com/hardcover/editions/30706608/7798138539052064-fourth-wing.jpeg",
+          "description": "Twenty-year-old Violet Sorrengail was supposed to enter the Scribe Quadrant, living a quiet life among books and history. Now, the commanding general—also known as her tough-as-talons mother—has ordered Violet to join the hundreds of candidates striving to become the elite of Navarre: dragon riders. But when you’re smaller than everyone else and your body is brittle, death is only a heartbeat away...because dragons don’t bond to “fragile” humans. They incinerate them. With fewer dragons willing to bond than cadets, most would kill Violet to better their own chances of success. The rest would kill her just for being her mother’s daughter—like Xaden Riorson, the most powerful and ruthless wingleader in the Riders Quadrant. She’ll need every edge her wits can give her just to see the next sunrise. Yet, with every day that passes, the war outside grows more deadly, the kingdom's protective wards are failing, and the death toll continues to rise. Even worse, Violet begins to suspect leadership is hiding a terrible secret. Friends, enemies, lovers. Everyone at Basgiath War College has an agenda—because once you enter, there are only two ways out: graduate or die.",
+          "source": "hc",
+          "series": {
+            "key": "the-empyrean",
+            "slug": "the-empyrean",
+            "name": "The Empyrean"
+          }
+        },
+        {
+          "key": "747398",
+          "slug": "iron-flame",
+          "title": "Iron Flame",
+          "author": {
+            "cachedImage": {},
+            "name": "Rebecca Yarros",
+            "slug": "rebecca-yarros",
+            "key": "rebecca-yarros",
+            "image": ""
+          },
+          "image": "https://storage.googleapis.com/hardcover/editions/30850398/9074547018903890-91vTsJScPSL._SL1500_.jpg",
+          "description": "Everyone expected Violet Sorrengail to die during her first year at Basgiath War College, Violet included. But Threshing was only the first impossible test meant to weed out the weak-willed, the unworthy, and the unlucky.\n\nNow the real training begins, and Violet's already wondering how she'll get through. It's not just that it's grueling and maliciously brutal, or even that it's designed to stretch the riders' capacity for pain beyond endurance. It's the new vice commandant, who's made it his personal mission to teach Violet exactly how powerless she is - unless she betrays the man she loves.\n\nAlthough Violet's body might be weaker and frailer than everyone else's, she still has her wits, and a will of iron. And leadership is forgetting the most important lesson Basgiath has taught her: Dragon riders make their own rules.\n\nBut a determination to survive won't be enough this year.\n\nBecause Violet knows the real secret hidden for centuries at Basgiath War College - and nothing, not even dragon fire, may be enough to save them in the end.",
+          "source": "hc",
+          "series": {
+            "key": "the-empyrean",
+            "slug": "the-empyrean",
+            "name": "The Empyrean"
+          }
+        }
+      ]
+    },
+    {
+      "id": "4",
+      "title": "My Favourites",
+      "booklist": [
+        {
+          "key": "89506",
+          "slug": "kings-of-the-wyld",
+          "title": "Kings of the Wyld",
+          "author": {
+            "cachedImage": {},
+            "name": "Nicholas Eames",
+            "slug": "nicholas-eames",
+            "key": "nicholas-eames",
+            "image": ""
+          },
+          "image": "https://storage.googleapis.com/hardcover/external_data/59732889/a702f35727602ba03455d7ff5bd9bcd749a65ca8.jpeg",
+          "description": "\"Clay Cooper and his band were once the best of the best -- the meanest, dirtiest, most feared crew of mercenaries this side of the Heartwyld. Their glory days long past, the mercs have grown apart and grown old, fat, drunk - or a combination of the three. Then an ex-bandmate turns up at Clay's door with a plea for help. His daughter Rose is trapped in a city besieged by an enemy one hundred thousand strong and hungry for blood. Rescuing Rose is the kind of mission that only the very brave or the very stupid would sign up for. It's time to get the band back together for one last tour across the Wyld\"--",
+          "source": "hc",
+          "series": {
+            "key": "the-band",
+            "slug": "the-band",
+            "name": "The Band"
+          }
+        },
+        {
+          "key": "222697",
+          "slug": "the-shining-girls",
+          "title": "The Shining Girls",
+          "author": {
+            "cachedImage": {},
+            "name": "Lauren Beukes",
+            "slug": "lauren-beukes",
+            "key": "lauren-beukes",
+            "image": ""
+          },
+          "image": "https://storage.googleapis.com/hardcover/editions/30399651/9485519905660492-lg_url.jpg",
+          "description": "The girl who wouldn’t die. Hunting a killer who shouldn’t exist. Chicago 1931. Violent drifter Harper Curtis stumbles upon a house that hides a secret as shocking as his own twisted nature: it opens onto other times. Harper uses it to stalk his ‘shining girls’ across decades – and cut the fire out of them. He’s the perfect killer. Unstoppable. Untraceable. Until one of his victims survives and turns the hunt around. Chicago, 1992. Kirby Mazrachi’s determination to find the man who tried to kill her has taken over her life. The cops no longer return her calls. Her mother copes by writing morbid children’s books. Her only ally is Dan, the burnt-out ex-homicide reporter who covered her case. As Kirby closes in on her would-be killer, what she finds is ... impossible. Murders scattered across the decades along with evidence that makes no sense. Meanwhile, Harper is closing in on her too",
+          "source": "hc",
+          "series": {
+            "key": "",
+            "slug": "",
+            "name": ""
+          }
+        }
+      ]
+    },
+    {
+      "id": "5",
+      "title": "My cats",
+      "booklist": []
+    },
+    {
+      "id": "6",
+      "title": "My dogs",
+      "booklist": []
+    }
+  ]
+}

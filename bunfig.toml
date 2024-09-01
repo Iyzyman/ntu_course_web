@@ -1,0 +1,3 @@
+[install]
+# whether to install peerDependencies
+peer = false

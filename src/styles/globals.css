@@ -1,0 +1,211 @@
+@import url('./reset.css');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+  }
+
+  /* #region  /**=========== TYPOGRAPHY =========== */
+  h1,
+  .h1 {
+    @apply text-4xl font-extrabold tracking-tight lg:text-5xl;
+  }
+  h2,
+  .h2 {
+    @apply text-3xl font-semibold tracking-tight transition-colors first:mt-0;
+  }
+  h3,
+  .h3 {
+    @apply text-2xl font-semibold tracking-tight;
+  }
+  h4,
+  .h4 {
+    @apply text-xl font-semibold tracking-tight;
+  }
+  p,
+  .p {
+    @apply leading-7 [&:not(:first-child)]:mt-2;
+  }
+  blockquote,
+  .blockquote {
+    @apply mt-6 border-l-2 pl-6 italic;
+  }
+  ul {
+    @apply my-6 ml-6 list-disc [&>li]:mt-2;
+  }
+  code {
+    @apply relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold;
+  }
+  small,
+  .small {
+    @apply text-sm font-medium leading-none;
+  }
+  /* #endregion  /**======== TYPOGRAPHY =========== */
+}
+
+@layer base {
+  * {
+    @apply border-border;
+    @apply scroll-smooth;
+    /* border: 0.1px solid rgb(191, 251, 49) !important; */
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+
+  #root {
+    @apply flex min-h-dvh w-full flex-col;
+  }
+
+  .page-container {
+    @apply container relative min-h-[90dvh];
+    @apply mx-auto my-4 px-0 max-2xl:w-11/12 max-sm:mb-16;
+    /* @apply container relative mx-auto my-4 px-4;
+    @apply rounded-lg max-2xl:w-11/12;
+    @apply min-h-dvh; */
+  }
+
+  ::-webkit-scrollbar {
+    width: 0px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+    -webkit-box-shadow: none;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: transparent;
+    -webkit-box-shadow: none;
+  }
+  ::-webkit-scrollbar-thumb:window-inactive {
+    background: none;
+  }
+}
+
+@layer utilities {
+  .masked-overflow {
+    --scrollbar-width: 0px;
+    --mask-height: 18%;
+    --mask-top-buffer: 0%;
+    --mask-bottom-buffer: 100%;
+
+    overflow-y: auto;
+    --mask-image-content: linear-gradient(
+      to bottom,
+      transparent,
+      #010103 calc(var(--mask-height) - var(--mask-top-buffer)),
+      #010103 calc(var(--mask-bottom-buffer) - var(--mask-height)),
+      transparent
+    );
+    --mask-size-content: calc(100% - var(--scrollbar-width)) 100%;
+    --mask-image-scrollbar: linear-gradient(#010103, #010103);
+    --mask-size-scrollbar: var(--scrollbar-width) 100%;
+    mask-image: var(--mask-image-content), var(--mask-image-scrollbar);
+    mask-size: var(--mask-size-content), var(--mask-size-scrollbar);
+    mask-position:
+      0 0,
+      100% 0;
+    mask-repeat: no-repeat, no-repeat;
+  }
+
+  .masked-overflow-top {
+    --mask-top-buffer: 20%;
+  }
+  .masked-overflow-bottom {
+    --mask-bottom-buffer: 120%;
+  }
+
+  .masked-overflow-horizontal {
+    --scrollbar-width: 0px;
+    --mask-height: 18%;
+    --mask-left-buffer: 10%;
+    --mask-right-buffer: 100%;
+
+    overflow-y: auto;
+    --mask-image-content: linear-gradient(
+      to right,
+      transparent,
+      #010103 calc(var(--mask-height) - var(--mask-left-buffer)),
+      #010103 calc(var(--mask-right-buffer) - var(--mask-height)),
+      transparent
+    );
+    --mask-size-content: calc(100% - var(--scrollbar-width)) 100%;
+    --mask-image-scrollbar: linear-gradient(#010103, #010103);
+    --mask-size-scrollbar: var(--scrollbar-width) 100%;
+    mask-image: var(--mask-image-content), var(--mask-image-scrollbar);
+    mask-size: var(--mask-size-content), var(--mask-size-scrollbar);
+    mask-position:
+      0 0,
+      100% 0;
+    mask-repeat: no-repeat, no-repeat;
+  }
+
+  .masked-overflow-horizontal-right {
+    --mask-left-buffer: 20%;
+  }
+  .masked-overflow-horizontal-left {
+    --mask-right-buffer: 120%;
+  }
+}
