@@ -14,7 +14,9 @@
         {
           "id": 475041,
           "slug": "pieces-of-the-action",
-          "title": "Pieces of the Action",
+          "title": "Pieces of the Action2",
+          "likes": 10,
+          "watchlists": 20,
           "pubYear": 1970,
           "image": "https://hardcover.imgix.net/edition/30396246/61162988._SY475_.jpg",
           "author": {
@@ -41,7 +43,9 @@
             "__typename": "authors"
           },
           "isbns": [],
-          "user": null
+          "user": null,
+          "likes": 10,
+          "watchlists": 20
         },
         {
           "id": 491738,
@@ -57,7 +61,9 @@
             "__typename": "authors"
           },
           "isbns": [],
-          "user": null
+          "user": null,
+          "likes": 10,
+          "watchlists": 20
         },
         {
           "id": 496108,
@@ -73,7 +79,9 @@
             "__typename": "authors"
           },
           "isbns": [],
-          "user": null
+          "user": null,
+          "likes": 10,
+          "watchlists": 20
         },
         {
           "id": 470444,
@@ -89,7 +97,9 @@
             "__typename": "authors"
           },
           "isbns": [],
-          "user": null
+          "user": null,
+          "likes": 10,
+          "watchlists": 20
         },
         {
           "id": 491796,
@@ -121,7 +131,9 @@
             "__typename": "authors"
           },
           "isbns": [],
-          "user": null
+          "user": null,
+          "likes": 10,
+          "watchlists": 20
         },
         {
           "id": 490069,
@@ -169,7 +181,9 @@
             "__typename": "authors"
           },
           "isbns": [],
-          "user": null
+          "user": null,
+          "likes": 10,
+          "watchlists": 20
         },
         {
           "id": 464704,
@@ -185,7 +199,9 @@
             "__typename": "authors"
           },
           "isbns": [],
-          "user": null
+          "user": null,
+          "likes": 10,
+          "watchlists": 20
         },
         {
           "id": 441545,
@@ -201,7 +217,9 @@
             "__typename": "authors"
           },
           "isbns": [],
-          "user": null
+          "user": null,
+          "likes": 10,
+          "watchlists": 20
         },
         {
           "id": 441373,
@@ -217,7 +235,9 @@
             "__typename": "authors"
           },
           "isbns": [],
-          "user": null
+          "user": null,
+          "likes": 10,
+          "watchlists": 20
         },
         {
           "id": 431858,
@@ -267,7 +287,9 @@
             "__typename": "authors"
           },
           "isbns": [],
-          "user": null
+          "user": null,
+          "likes": 10,
+          "watchlists": 20
         },
         {
           "id": 427798,

@@ -1,4 +1,6 @@
 @import url('./reset.css');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,6 +8,7 @@
 
 @layer base {
   :root {
+    font-family: Inter;
     --background: 0 0% 100%;
     --foreground: 222.2 84% 4.9%;
 

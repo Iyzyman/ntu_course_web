@@ -1203,7 +1203,9 @@
             "__typename": "authors"
           },
           "isbns": [],
-          "user": null
+          "user": null,
+          "likes": 10,
+          "watchlists": 20
         },
         {
           "id": 491736,
