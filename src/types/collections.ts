@@ -1,4 +1,4 @@
-import Book from '@/components/Book'
+import Course from '@/components/Course'
 
 //#region  //*=========== QUERY PARAMETERS ===========
 export type CollectionsQueryResponse = {
@@ -20,7 +20,7 @@ export type SingleCollection = {
   key: string
   name: string
   source: string
-  books: Book[]
+  books: Course[]
 }
 
 export type UpdateCollectionNameBodyParams = {
@@ -35,7 +35,7 @@ export type CreateCollectionBodyParams = {
   username: string
 }
 
-export type addBookToMultipleCollectionsBodyParams = {
+export type addCourseToMultipleCollectionsBodyParams = {
   collection_keys: string[]
   username: string
   book_key: string

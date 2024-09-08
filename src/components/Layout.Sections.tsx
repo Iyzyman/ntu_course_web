@@ -1,20 +1,20 @@
-import Book from '@/components/Book'
+import Course from '@/components/Course'
 import { cn } from '@/utils/dom'
 import { getLimitedArray } from '@/utils/helpers'
 import { HTMLAttributes } from 'react'
 
-type BookThumbnailSection = {
-  books: Book[]
+type CourseThumbnailSection = {
+  books: Course[]
   displayLimit?: number
 } & HTMLAttributes<HTMLDivElement>
-export const BookThumbnailSection = ({
+export const CourseThumbnailSection = ({
   books,
   displayLimit = 12,
   className,
   children,
   ...rest
-}: BookThumbnailSection) => {
-  const displayBooks = getLimitedArray(books, displayLimit)
+}: CourseThumbnailSection) => {
+  const displayCourses = getLimitedArray(books, displayLimit)
   return (
     <section
       className={cn(
@@ -26,20 +26,20 @@ export const BookThumbnailSection = ({
       )}
       {...rest}
     >
-      {displayBooks.map((book, idx) => {
+      {displayCourses.map((book, idx) => {
         return (
-          <Book
+          <Course
             key={`${book.source}-${idx}-${book.key}`}
             book={book!}
           >
-            <Book.Thumbnail
+            <Course.Thumbnail
               className={cn(
                 'w-fit !rounded-none',
                 idx > 8 && 'hidden sm:block',
               )}
             />
             {children}
-          </Book>
+          </Course>
         )
       })}
     </section>

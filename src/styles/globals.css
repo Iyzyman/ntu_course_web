@@ -11,6 +11,7 @@
     font-family: Inter;
     --background: 0 0% 100%;
     --foreground: 222.2 84% 4.9%;
+    --show-more: black;
 
     --card: 0 0% 100%;
     --card-foreground: 222.2 84% 4.9%;
@@ -43,7 +44,9 @@
   .dark {
     --background: 222.2 84% 4.9%;
     --foreground: 210 40% 98%;
-
+    --school-name: #aabae1;
+    --show-more: #a3a3a3;
+    --book-description: #f8fafc;
     --card: 222.2 84% 4.9%;
     --card-foreground: 210 40% 98%;
 

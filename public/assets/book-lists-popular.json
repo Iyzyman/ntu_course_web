@@ -317,7 +317,7 @@
     },
     {
       "id": 109,
-      "name": "NPRs Top 100 Science-Fiction and Fantasy Books of All Time",
+      "name": "NPRs Top 100 Science-Fiction and Fantasy Courses of All Time",
       "userId": 3,
       "slug": "nprs-top-100-science-fiction-and-fantasy-books-of-all-time",
       "ranked": true,
@@ -631,7 +631,7 @@
     },
     {
       "id": 108,
-      "name": "The 31 Best Fantasy Books Everyone Should Read",
+      "name": "The 31 Best Fantasy Courses Everyone Should Read",
       "userId": 3,
       "slug": "the-31-best-fantasy-books-everyone-should-read",
       "ranked": false,
@@ -880,7 +880,7 @@
         {
           "id": 263544,
           "slug": "the-book-of-dust",
-          "title": "The Book of Dust",
+          "title": "The Course of Dust",
           "pubYear": 2018,
           "image": "https://hardcover.imgix.net/edition/30381147/content.jpeg",
           "author": {
@@ -903,7 +903,7 @@
     },
     {
       "id": 102,
-      "name": "The 100 Best Fantasy Books of All Time by Time Magazine",
+      "name": "The 100 Best Fantasy Courses of All Time by Time Magazine",
       "userId": 3,
       "slug": "the-100-best-fantasy-books-of-all-time-by-time-magazine",
       "ranked": false,
@@ -1000,7 +1000,7 @@
         {
           "id": 62105,
           "slug": "roald-dahl-james-and-the-giant-peach",
-          "title": "Roald Dahl James and the Giant Peach: The Book and Movie Scrapbook",
+          "title": "Roald Dahl James and the Giant Peach: The Course and Movie Scrapbook",
           "pubYear": 1996,
           "image": "https://hardcover.imgix.net/edition/707793/3843269-L.jpg",
           "author": {
@@ -1181,7 +1181,7 @@
     },
     {
       "id": 2540,
-      "name": "Stripe Press Books",
+      "name": "Stripe Press Courses",
       "userId": 3,
       "slug": "stripe-press-books",
       "ranked": false,
@@ -1586,7 +1586,7 @@
         {
           "id": 428542,
           "slug": "the-southern-book-clubs-guide-to-slaying-vampires",
-          "title": "The Southern Book Club's Guide to Slaying Vampires",
+          "title": "The Southern Course Club's Guide to Slaying Vampires",
           "pubYear": 2020,
           "image": "https://hardcover.imgix.net/edition/30400308/44074800._SX98_.jpg",
           "author": {
@@ -1679,7 +1679,7 @@
     },
     {
       "id": 106,
-      "name": "Top 25 Books to Unleash Your Creative Potential",
+      "name": "Top 25 Courses to Unleash Your Creative Potential",
       "userId": 3,
       "slug": "top-25-books-to-unleash-your-creative-potential",
       "ranked": false,
@@ -1939,7 +1939,7 @@
     },
     {
       "id": 105,
-      "name": "The 70 Best Science Books You Need to Read in 2021",
+      "name": "The 70 Best Science Courses You Need to Read in 2021",
       "userId": 3,
       "slug": "the-70-best-science-books-you-need-to-read-in-2021",
       "ranked": false,
@@ -2501,7 +2501,7 @@
     },
     {
       "id": 104,
-      "name": "Ten Best Non-Fiction Science Books to Read Right Now",
+      "name": "Ten Best Non-Fiction Science Courses to Read Right Now",
       "userId": 3,
       "slug": "ten-best-non-fiction-science-books-to-read-right-now",
       "ranked": false,
@@ -2739,7 +2739,7 @@
     },
     {
       "id": 20632,
-      "name": "The Book You Saw on TikTok ",
+      "name": "The Course You Saw on TikTok ",
       "userId": 3772,
       "slug": "the-book-you-saw-on-tiktok",
       "ranked": false,
@@ -3269,7 +3269,7 @@
       "userId": 3,
       "slug": "the-new-york-timess-50-best-memoirs-of-the-past-50-years",
       "ranked": false,
-      "description": "The New York Times' Book critics far and wide have selected the top best memoirs published since 1969.",
+      "description": "The New York Times' Course critics far and wide have selected the top best memoirs published since 1969.",
       "url": "https://www.nytimes.com/interactive/2019/06/26/books/best-memoirs.html",
       "booksCount": 49,
       "books": [
@@ -4033,7 +4033,7 @@
     },
     {
       "id": 1440,
-      "name": "NPR Top 50 Science Fiction and Fantasy Books of the 2010s",
+      "name": "NPR Top 50 Science Fiction and Fantasy Courses of the 2010s",
       "userId": 3,
       "slug": "npr-top-50-science-fiction-and-fantasy-books-of-the-2010s",
       "ranked": false,
@@ -4291,7 +4291,7 @@
       "userId": 696,
       "slug": "product-design-community-building-and-go-to-market",
       "ranked": false,
-      "description": "Books for people interested in building great products based on design, community, developer advocacy, and developer relations.",
+      "description": "Courses for people interested in building great products based on design, community, developer advocacy, and developer relations.",
       "url": "",
       "booksCount": 11,
       "books": [
@@ -4475,11 +4475,11 @@
     },
     {
       "id": 28242,
-      "name": "2023 Year in Books",
+      "name": "2023 Year in Courses",
       "userId": 3,
       "slug": "2023-year-in-books",
       "ranked": false,
-      "description": "All books featured in The Hardcover 2023 Year in Books. This spans all categories and mentions including: top 10 of 2023, top 10 overall, top 5 by month, top 10 from a few genres, a couple of trends we saw and a most saved books releasing in 2024.",
+      "description": "All books featured in The Hardcover 2023 Year in Courses. This spans all categories and mentions including: top 10 of 2023, top 10 overall, top 5 by month, top 10 from a few genres, a couple of trends we saw and a most saved books releasing in 2024.",
       "url": "https://hardcover.app/2023",
       "booksCount": 150,
       "books": [
@@ -5031,11 +5031,11 @@
     },
     {
       "id": 2541,
-      "name": "Design Books",
+      "name": "Design Courses",
       "userId": 7,
       "slug": "design-books",
       "ranked": false,
-      "description": "Books for designers, mostly by designers.",
+      "description": "Courses for designers, mostly by designers.",
       "url": "",
       "booksCount": 12,
       "books": [
@@ -5529,7 +5529,7 @@
       "userId": 696,
       "slug": "the-designers-reading-list",
       "ranked": false,
-      "description": "Books about design, cognitive psychology, and user experience",
+      "description": "Courses about design, cognitive psychology, and user experience",
       "url": "https://mikebifulco.com",
       "booksCount": 25,
       "books": [
@@ -5779,7 +5779,7 @@
     },
     {
       "id": 18067,
-      "name": "Winners of the Booker Prize (1969-2022)",
+      "name": "Winners of the Courseer Prize (1969-2022)",
       "userId": 3,
       "slug": "winners-of-the-booker-prize-1969-2022",
       "ranked": false,
@@ -7439,7 +7439,7 @@
       "userId": 670,
       "slug": "work-reading-technology",
       "ranked": false,
-      "description": "Books related to #ProductManagement, #Design, #Business and #Technology",
+      "description": "Courses related to #ProductManagement, #Design, #Business and #Technology",
       "url": "",
       "booksCount": 44,
       "books": [
@@ -7675,7 +7675,7 @@
       "userId": 3,
       "slug": "13-non-fiction-books-to-inspire-you",
       "ranked": false,
-      "description": "Via Penguin Books:\nHow do we navigate the world around us? Where do we start if we want to learn something new? Here is a reading list of books exploring ideas that matter, including great thinkers Margaret Atwood, Haruki Murakami, Ai Weiwei, Chelsea Manning and more.\n",
+      "description": "Via Penguin Courses:\nHow do we navigate the world around us? Where do we start if we want to learn something new? Here is a reading list of books exploring ideas that matter, including great thinkers Margaret Atwood, Haruki Murakami, Ai Weiwei, Chelsea Manning and more.\n",
       "url": "https://www.penguin.co.uk/articles/2022/12/non-fiction-books-to-inspire",
       "booksCount": 13,
       "books": [
@@ -8419,7 +8419,7 @@
     },
     {
       "id": 390,
-      "name": "Bustle's 21 LGBTQ+ Authors On The Books They Wish They\u2019d Had As Teenagers",
+      "name": "Bustle's 21 LGBTQ+ Authors On The Courses They Wish They\u2019d Had As Teenagers",
       "userId": 3,
       "slug": "bustles-21-lgbtq-authors-on-the-books-they-wish-theyd-had-as-teenagers",
       "ranked": false,
@@ -8824,7 +8824,7 @@
         {
           "id": 1081057,
           "slug": "oppose-book-worship",
-          "title": "Oppose Book Worship",
+          "title": "Oppose Course Worship",
           "pubYear": 1930,
           "image": null,
           "author": {
@@ -9416,7 +9416,7 @@
         {
           "id": 633848,
           "slug": "the-little-book-of-humanism",
-          "title": "The Little Book of Humanism",
+          "title": "The Little Course of Humanism",
           "pubYear": 2020,
           "image": "https://hardcover.imgix.net/edition/30610931/50642602._SY160_.jpg",
           "author": {
@@ -10915,7 +10915,7 @@
     },
     {
       "id": 436,
-      "name": "The Ultimate Best Books of 2020 List from 41 Lists",
+      "name": "The Ultimate Best Courses of 2020 List from 41 Lists",
       "userId": 3,
       "slug": "the-ultimate-best-books-of-2020-list-from-41-lists",
       "ranked": false,
@@ -11163,7 +11163,7 @@
     },
     {
       "id": 2571,
-      "name": "Best Books on Product Management from John Cutler",
+      "name": "Best Courses on Product Management from John Cutler",
       "userId": 3,
       "slug": "best-books-on-product-management-from-john-cutler",
       "ranked": false,
@@ -11535,7 +11535,7 @@
     },
     {
       "id": 2432,
-      "name": "Books about Memory and Learning",
+      "name": "Courses about Memory and Learning",
       "userId": 687,
       "slug": "books-about-memory-and-learning",
       "ranked": true,
@@ -11706,7 +11706,7 @@
         {
           "id": 490822,
           "slug": "the-book-of-memory",
-          "title": "The Book of Memory : A Study of Memory in Medieval Culture",
+          "title": "The Course of Memory : A Study of Memory in Medieval Culture",
           "pubYear": 1990,
           "image": "https://hardcover.imgix.net/edition/30438219/566767f1b6055c50abf3ea8c21745bb270e75bf3.jpeg",
           "author": {
@@ -14719,7 +14719,7 @@
     },
     {
       "id": 28419,
-      "name": "Best History Books of 2023 selected by History Today",
+      "name": "Best History Courses of 2023 selected by History Today",
       "userId": 3,
       "slug": "best-history-books-of-2023-selected-by-history-today",
       "ranked": false,
@@ -15848,7 +15848,7 @@
         {
           "id": 300042,
           "slug": "the-book-thief",
-          "title": "The Book Thief",
+          "title": "The Course Thief",
           "pubYear": 2005,
           "image": "https://storage.googleapis.com/hardcover/external_data/59647911/661863cf1b697b407af812e8b31cc8a60b3c8a5b.jpeg",
           "author": {
@@ -18906,7 +18906,7 @@
         {
           "id": 499341,
           "slug": "the-tibetan-book-of-the-dead",
-          "title": "The Tibetan Book of the Dead",
+          "title": "The Tibetan Course of the Dead",
           "pubYear": 2000,
           "image": "https://hardcover.imgix.net/edition/30448821/content.jpeg",
           "author": {
@@ -20008,7 +20008,7 @@
         {
           "id": 558203,
           "slug": "the-heretics-guide-to-homecoming-book-two-practice",
-          "title": "The Heretic's Guide to Homecoming: Book Two: Practice",
+          "title": "The Heretic's Guide to Homecoming: Course Two: Practice",
           "pubYear": 2022,
           "image": "https://hardcover.imgix.net/edition/30518013/content.jpeg",
           "author": {
@@ -20025,7 +20025,7 @@
     },
     {
       "id": 98,
-      "name": "NPR Book Concierge's 29 Best Historical Fiction of 2020",
+      "name": "NPR Course Concierge's 29 Best Historical Fiction of 2020",
       "userId": 3,
       "slug": "npr-book-concierges-29-best-historical-fiction-of-2020",
       "ranked": false,
@@ -20068,7 +20068,7 @@
         {
           "id": 432234,
           "slug": "the-book-of-v",
-          "title": "The Book of V.",
+          "title": "The Course of V.",
           "pubYear": 2020,
           "image": "https://hardcover.imgix.net/edition/19591497/9411690-L.jpg",
           "author": {
@@ -21640,7 +21640,7 @@
         {
           "id": 515738,
           "slug": "human-all-too-human-a-book-for-free-spirits",
-          "title": "Nietzsche: Human, All Too Human: A Book for Free Spirits",
+          "title": "Nietzsche: Human, All Too Human: A Course for Free Spirits",
           "pubYear": 1878,
           "image": "https://hardcover.imgix.net/edition/30468358/333310-L.jpg",
           "author": {
@@ -21782,7 +21782,7 @@
         {
           "id": 300042,
           "slug": "the-book-thief",
-          "title": "The Book Thief",
+          "title": "The Course Thief",
           "pubYear": 2005,
           "image": "https://storage.googleapis.com/hardcover/external_data/59647911/661863cf1b697b407af812e8b31cc8a60b3c8a5b.jpeg",
           "author": {
@@ -23224,7 +23224,7 @@
         {
           "id": 431769,
           "slug": "the-book",
-          "title": "The Book",
+          "title": "The Course",
           "pubYear": 1966,
           "image": "https://hardcover.imgix.net/edition/24475263/419830-L.jpg",
           "author": {
@@ -24999,7 +24999,7 @@
     },
     {
       "id": 2524,
-      "name": "Books on Reproductive Justice, Health, and Freedom",
+      "name": "Courses on Reproductive Justice, Health, and Freedom",
       "userId": 634,
       "slug": "books-on-reproductive-justice-health-and-freedom",
       "ranked": true,
@@ -25235,7 +25235,7 @@
     },
     {
       "id": 77,
-      "name": "Top 100 Book covers",
+      "name": "Top 100 Course covers",
       "userId": 7,
       "slug": "top-100-book-covers",
       "ranked": false,
@@ -26408,7 +26408,7 @@
         {
           "id": 125331,
           "slug": "a-book-apart",
-          "title": "A Book Apart",
+          "title": "A Course Apart",
           "pubYear": 2010,
           "image": "https://hardcover.imgix.net/edition/30411085/10858916._SX98_.jpg",
           "author": {
@@ -27408,7 +27408,7 @@
         {
           "id": 470334,
           "slug": "the-bookseller-of-kabul",
-          "title": "The Bookseller of Kabul",
+          "title": "The Courseseller of Kabul",
           "pubYear": 2004,
           "image": "https://hardcover.imgix.net/edition/30391159/content.jpeg",
           "author": {

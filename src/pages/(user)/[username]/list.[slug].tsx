@@ -11,7 +11,7 @@ import {
 } from '@/data/stores/search.slice'
 import { Link, Navigate, useParams } from '@/router'
 import {
-  BookSource,
+  CourseSource,
   ListData,
   ListType,
   SearchArtifact,
@@ -38,7 +38,7 @@ const UserListPage = () => {
   const { username = '', slug = '' } = useParams('/:username/list/:slug')
 
   const searchCategory = SearchCategory.enum.lists
-  const source: BookSource = BookSource.enum.shelvd
+  const source: CourseSource = CourseSource.enum.shelvd
 
   const isValidUsername = username.startsWith('@')
   const isValidSlug = !!slug.length
@@ -227,9 +227,9 @@ const UserListPage = () => {
             </Alert>
           )}
           <section className="w-full overflow-auto">
-            <List.Books>
-              {/* <Book.Thumbnail className="w-fit !rounded-none" /> */}
-            </List.Books>
+            <List.Courses>
+              {/* <Course.Thumbnail className="w-fit !rounded-none" /> */}
+            </List.Courses>
           </section>
         </List>
       </RenderGuard>

@@ -1,4 +1,4 @@
-import Book from '@/components/Book'
+import Course from '@/components/Course'
 import { RenderGuard } from '@/components/providers/render.provider'
 import { HardcoverEndpoints } from '@/data/clients/hardcover.api'
 import { Series as SeriesInfo } from '@/types/shelvd'
@@ -66,10 +66,10 @@ export const Series = ({ children, ...value }: SeriesProvider) => {
 
 //#endregion  //*======== COMPONENTS ===========
 
-type SeriesBooks = PropsWithChildren & {
+type SeriesCourses = PropsWithChildren & {
   displayLimit?: number
 }
-export const SeriesBooks = ({ displayLimit, children }: SeriesBooks) => {
+export const SeriesCourses = ({ displayLimit, children }: SeriesCourses) => {
   const {
     series: { titles, source, ...series },
   } = useSeriesContext()
@@ -77,7 +77,7 @@ export const SeriesBooks = ({ displayLimit, children }: SeriesBooks) => {
   //#endregion  //*======== SOURCE/HC ===========
 
   const { searchExactBulk: hcSearchExactBulk } = HardcoverEndpoints
-  const hcSearchBooks = hcSearchExactBulk.useQuery(
+  const hcSearchCourses = hcSearchExactBulk.useQuery(
     titles.map((title) => ({
       category: 'books',
       q: title,
@@ -87,32 +87,32 @@ export const SeriesBooks = ({ displayLimit, children }: SeriesBooks) => {
     },
   )
 
-  const hcBooks: Book[] = useMemo(() => {
-    const { data, isSuccess } = hcSearchBooks
+  const hcCourses: Course[] = useMemo(() => {
+    const { data, isSuccess } = hcSearchCourses
 
     const results = data?.results ?? []
-    const isLoading = hcSearchBooks.isLoading || hcSearchBooks.isFetching
+    const isLoading = hcSearchCourses.isLoading || hcSearchCourses.isFetching
     const isNotFound = !isLoading && !isSuccess && results.length < 1
     if (isNotFound) return []
 
-    const books: Book[] = results.map((result) => {
+    const books: Course[] = results.map((result) => {
       // exact search expects top hit accuracy
       const hit = (result?.hits ?? [])?.[0]
       const book = HardcoverUtils.parseDocument({
         category: 'books',
         hit,
-      }) as Book
+      }) as Course
       return book
     })
     return books
-  }, [hcSearchBooks])
+  }, [hcSearchCourses])
   //#endregion  //*======== SOURCE/HC ===========
 
   const books = useMemo(() => {
-    let books: Book[] = []
+    let books: Course[] = []
     switch (source) {
       case 'hc': {
-        books = hcBooks
+        books = hcCourses
       }
     }
 
@@ -120,21 +120,21 @@ export const SeriesBooks = ({ displayLimit, children }: SeriesBooks) => {
       books = getLimitedArray(books, displayLimit)
     }
     return books
-  }, [source, displayLimit, hcBooks])
+  }, [source, displayLimit, hcCourses])
 
   if (!books.length) return null
 
   return books.map((book, idx) => (
-    <Book
+    <Course
       key={`${series.key}-${source}-${idx}-${book.key}`}
       book={book!}
     >
       {children}
-    </Book>
+    </Course>
   ))
 }
 
-Series.Books = SeriesBooks
+Series.Courses = SeriesCourses
 
 //#endregion  //*======== COMPONENTS ===========
 

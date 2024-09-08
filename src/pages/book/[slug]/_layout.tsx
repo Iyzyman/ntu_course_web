@@ -1,58 +1,70 @@
-import Book from '@/components/Book';
-import Status from '@/components/Layout.Status';
-import { RenderGuard } from '@/components/providers/render.provider';
-import { useRootDispatch, useRootSelector } from '@/data/stores/root';
-import { SearchActions, SearchSelectors, SourceOrigin } from '@/data/stores/search.slice';
-import { useParams } from '@/router';
-import { SearchArtifact, BookSource, SearchCategory } from '@/types/shelvd';
-import { logger } from '@/utils/debug';
-import { cn } from '@/utils/dom';
-import { useEffect, useMemo } from 'react';
-import { Outlet, useLocation } from 'react-router-dom';
-import { mockOrigin, mockSearchArtifact } from '../../../data/clients/mockdata.ts'; // Import updated mock data
+import Course from '@/components/Course'
+import Status from '@/components/Layout.Status'
+import { RenderGuard } from '@/components/providers/render.provider'
+import { useRootDispatch, useRootSelector } from '@/data/stores/root'
+import {
+  SearchActions,
+  SearchSelectors,
+  SourceOrigin,
+} from '@/data/stores/search.slice'
+import { useParams } from '@/router'
+import { SearchArtifact, CourseSource, SearchCategory } from '@/types/shelvd'
+import { logger } from '@/utils/debug'
+import { cn } from '@/utils/dom'
+import { useEffect, useMemo } from 'react'
+import { Outlet, useLocation } from 'react-router-dom'
+import {
+  mockOrigin,
+  mockSearchArtifact,
+} from '../../../data/clients/mockdata.ts' // Import updated mock data
 
-const BookDetailsLayout = () => {
-  const dispatch = useRootDispatch();
+const CourseDetailsLayout = () => {
+  const dispatch = useRootDispatch()
   const [current, setCurrent] = [
     useRootSelector(SearchSelectors.state).current,
     SearchActions.setCurrent,
-  ];
+  ]
 
-  const { slug = '' } = useParams('/book/:slug');
-  const { state } = useLocation();
+  const { slug = '' } = useParams('/book/:slug')
+  const { state } = useLocation()
 
-  const searchCategory = SearchCategory.enum.books;
-  const source: BookSource = (state?.source ?? current.source) as BookSource;
+  const searchCategory = SearchCategory.enum.books
+  const source: CourseSource = (state?.source ?? current.source) as CourseSource
 
-  const isValidSource = BookSource.safeParse(source).success;
-  const isValidSlug = !!slug.length;
-  const isValidParams = isValidSlug && isValidSource;
+  const isValidSource = CourseSource.safeParse(source).success
+  const isValidSlug = !!slug.length
+  const isValidParams = isValidSlug && isValidSource
 
   // Use updated mock data
-  const isLoading = false; // Since we're using mock data, there's no loading
-  const isNotFound = !isValidParams; // Adjust based on your mock data structure
+  const isLoading = false // Since we're using mock data, there's no loading
+  const isNotFound = !isValidParams // Adjust based on your mock data structure
 
   // Use mock data
-  const origin = mockOrigin as SourceOrigin<'hc', 'books'>;
-  const common = mockSearchArtifact as SearchArtifact<'books'>;
+  const origin = mockOrigin as SourceOrigin<'hc', 'books'>
+  const common = mockSearchArtifact as SearchArtifact<'books'>
 
-  const ctx = useMemo(() => ({
-    slug,
-    source,
-    category: searchCategory,
-    origin,
-    common,
-    isNotFound,
-    isLoading,
-  }), [slug, source, searchCategory, origin, common, isNotFound, isLoading]);
-  
-  
+  const ctx = useMemo(
+    () => ({
+      slug,
+      source,
+      category: searchCategory,
+      origin,
+      common,
+      isNotFound,
+      isLoading,
+    }),
+    [slug, source, searchCategory, origin, common, isNotFound, isLoading],
+  )
+
   useEffect(() => {
-    if (isLoading) return;
-    logger({ breakpoint: '[_layout.tsx:88]/BookDetailsLayout/ctx' }, { isLoading, ctx });
+    if (isLoading) return
+    logger(
+      { breakpoint: '[_layout.tsx:88]/CourseDetailsLayout/ctx' },
+      { isLoading, ctx },
+    )
 
-    dispatch(setCurrent(ctx));
-  }, [dispatch, isLoading, ctx, setCurrent]);
+    dispatch(setCurrent(ctx))
+  }, [dispatch, isLoading, ctx, setCurrent])
 
   return (
     <main
@@ -72,7 +84,7 @@ const BookDetailsLayout = () => {
           />
         }
       >
-        <Book book={(common as Book)!}>
+        <Course book={(common as Course)!}>
           {/* HEADER */}
           <section
             style={{
@@ -81,11 +93,7 @@ const BookDetailsLayout = () => {
               backgroundPosition: 'top center',
               backgroundRepeat: 'no-repeat',
             }}
-            className={cn(
-              'relative w-full',
-              'rounded-lg',
-              'pt-8',
-            )}
+            className={cn('relative w-full', 'rounded-lg', 'pt-8')}
           >
             <div
               className={cn(
@@ -93,10 +101,8 @@ const BookDetailsLayout = () => {
                 'flex flex-col flex-wrap place-content-center place-items-center gap-8 sm:flex-row sm:place-content-start sm:place-items-start',
               )}
             >
-
-
               <aside className="flex flex-col gap-1 *:!mt-0">
-                {/* {source === BookSource.enum.hc &&
+                {/* {source === CourseSource.enum.hc &&
                   (origin?.featured_series?.position ?? 0) >= 1 && (
                     <Badge
                       variant="secondary"
@@ -106,15 +112,37 @@ const BookDetailsLayout = () => {
                     </Badge>
                   )} */}
 
-                <h1 style={{ fontFamily: "Bebas Neue", fontSize: '96px', fontWeight: '400', lineHeight: '115px' }}>{common?.code}</h1>
+                <h1
+                  style={{
+                    fontFamily: 'Bebas Neue',
+                    fontSize: '96px',
+                    fontWeight: '400',
+                    lineHeight: '115px',
+                  }}
+                >
+                  {common?.code}
+                </h1>
                 <p>
-                  <div style={{ fontSize: '34px', fontWeight: '900', lineHeight: '41px' }}>{common.title}</div>
-                  <small className="uppercase text-muted-foreground">{common.school}</small>
+                  <div
+                    style={{
+                      fontSize: '34px',
+                      fontWeight: '900',
+                      lineHeight: '41px',
+                    }}
+                  >
+                    {common.title}
+                  </div>
+                  <small className="uppercase text-muted-foreground">
+                    {common.school}
+                  </small>
                 </p>
 
                 <aside>
-                  <div style={{width: '30%' ,marginTop: '10px'}}>
-                    <Book.ClickStats watchlists={common.watchlists} likes={common.likes}></Book.ClickStats>
+                  <div style={{ width: '30%', marginTop: '10px' }}>
+                    <Course.ClickStats
+                      watchlists={common.watchlists}
+                      likes={common.likes}
+                    ></Course.ClickStats>
                   </div>
                 </aside>
               </aside>
@@ -123,10 +151,10 @@ const BookDetailsLayout = () => {
 
           {/* CONTENT */}
           <Outlet />
-        </Book>
+        </Course>
       </RenderGuard>
     </main>
-  );
-};
+  )
+}
 
-export default BookDetailsLayout;
+export default CourseDetailsLayout

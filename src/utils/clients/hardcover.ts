@@ -1,9 +1,9 @@
 import { Hardcover } from '@/types'
 import {
   Author,
-  Book,
-  BookAuthor,
-  BookSource,
+  Course,
+  CourseAuthor,
+  CourseSource,
   Character,
   List,
   SearchCategories,
@@ -11,7 +11,7 @@ import {
 } from '@/types/shelvd'
 import { ShelvdUtils } from '@/utils/clients/shelvd'
 export class HardcoverUtils {
-  static source: BookSource = 'hc'
+  static source: CourseSource = 'hc'
 
   static getCdnUrl = (url: string) => {
     if (!url) return url
@@ -26,26 +26,28 @@ export class HardcoverUtils {
       )
   }
 
-  static parseBook = (hcBook: Hardcover.Book): Book => {
-    const book: Book = {
-      key: hcBook.slug,
-      slug: hcBook.slug,
-      title: hcBook.title,
+  static parseCourse = (hcCourse: Hardcover.Course): Course => {
+    const book: Course = {
+      key: hcCourse.slug,
+      slug: hcCourse.slug,
+      title: hcCourse.title,
       author: {
-        ...hcBook.author,
-        key: hcBook.author?.slug ?? ShelvdUtils.createSlug(hcBook.author?.name),
+        ...hcCourse.author,
+        key:
+          hcCourse.author?.slug ??
+          ShelvdUtils.createSlug(hcCourse.author?.name),
       },
-      image: HardcoverUtils.getCdnUrl(hcBook?.image ?? ''),
-      description: hcBook.description,
+      image: HardcoverUtils.getCdnUrl(hcCourse?.image ?? ''),
+      description: hcCourse.description,
       source: HardcoverUtils.source,
     }
 
-    const hasSeries = +(hcBook?.series?.count ?? 0) > 0
+    const hasSeries = +(hcCourse?.series?.count ?? 0) > 0
     if (hasSeries) {
-      const series: Book['series'] = {
-        key: hcBook?.series?.slug,
-        slug: hcBook?.series?.slug,
-        name: hcBook?.series?.name,
+      const series: Course['series'] = {
+        key: hcCourse?.series?.slug,
+        slug: hcCourse?.series?.slug,
+        name: hcCourse?.series?.name,
       }
       book['series'] = series
     }
@@ -53,13 +55,13 @@ export class HardcoverUtils {
     // logger(
     //   { breakpoint: '[hardcover.ts:52]' },
     //   {
-    //     success: Book.safeParse(book).success,
-    //     safe: Book.safeParse(book),
-    //     hcBook,
+    //     success: Course.safeParse(book).success,
+    //     safe: Course.safeParse(book),
+    //     hcCourse,
     //     book,
     //   },
     // )
-    return Book.parse(book)
+    return Course.parse(book)
   }
   static parseAuthor = (hcAuthor: Hardcover.Author): Author => {
     const author: Author = {
@@ -129,11 +131,11 @@ export class HardcoverUtils {
     return series
   }
 
-  static parseBookDocument = ({
+  static parseCourseDocument = ({
     document,
   }: {
-    document: Hardcover.SearchBook
-  }): Hardcover.Book => {
+    document: Hardcover.SearchCourse
+  }): Hardcover.Course => {
     const image = HardcoverUtils.getCdnUrl(document?.image?.url ?? '')
     const pubYear = +document?.release_year
     const authorNameList = document?.author_names ?? []
@@ -149,7 +151,7 @@ export class HardcoverUtils {
       authorName = displayAuthorNames
     }
 
-    let author: BookAuthor = {
+    let author: CourseAuthor = {
       key: mainAuthorSlug,
       slug: mainAuthorSlug,
       name: authorName.length ? authorName : '???',
@@ -173,14 +175,14 @@ export class HardcoverUtils {
       slug: document?.featured_series?.series_slug ?? '',
     }
 
-    const hcBook: Hardcover.Book = {
+    const hcCourse: Hardcover.Course = {
       ...document,
       author,
       pubYear,
       image,
       series,
     }
-    return hcBook
+    return hcCourse
   }
 
   static parseSeriesDocument = ({
@@ -268,10 +270,10 @@ export class HardcoverUtils {
 
     switch (category) {
       case 'books': {
-        const hcBook = HardcoverUtils.parseBookDocument({
-          document: document as unknown as Hardcover.SearchBook,
+        const hcCourse = HardcoverUtils.parseCourseDocument({
+          document: document as unknown as Hardcover.SearchCourse,
         })
-        const book: Book = HardcoverUtils.parseBook(hcBook)
+        const book: Course = HardcoverUtils.parseCourse(hcCourse)
         return book
       }
       case 'authors': {

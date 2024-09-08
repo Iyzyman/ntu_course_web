@@ -1,4 +1,4 @@
-import Book from '@/components/Book'
+import Course from '@/components/Course'
 import User from '@/components/Layout.User'
 import { useMediaQuery } from '@/components/hooks/use-media-query'
 import { RenderGuard } from '@/components/providers/render.provider'
@@ -44,11 +44,11 @@ import { useRootSelector } from '@/data/stores/root'
 import { SearchSelectors } from '@/data/stores/search.slice'
 import { useNavigate } from '@/router'
 import {
-  BookSource,
+  CourseSource,
   ListData,
   List as ListInfo,
   ListType,
-  Book as zBook,
+  Course as zCourse,
 } from '@/types/shelvd'
 import { HardcoverUtils } from '@/utils/clients/hardcover'
 import { ShelvdUtils } from '@/utils/clients/shelvd'
@@ -87,7 +87,7 @@ type ListContext = {
   data: ListData
   list: List
   // overwriteList?: List
-  overwriteBooks?: Book[]
+  overwriteCourses?: Course[]
   isSkeleton?: boolean
   onNavigate: () => void
 }
@@ -108,12 +108,16 @@ const useListContext = () => {
 
 //#endregion  //*======== PROVIDER ===========
 type ListProvider = PropsWithChildren & Omit<ListContext, 'onNavigate' | 'list'>
-export const List = ({ children, overwriteBooks, ...value }: ListProvider) => {
+export const List = ({
+  children,
+  overwriteCourses,
+  ...value
+}: ListProvider) => {
   // const navigate = useNavigate()
 
-  const bookKeys: string[] = overwriteBooks ? [] : value?.data?.bookKeys ?? []
+  const bookKeys: string[] = overwriteCourses ? [] : value?.data?.bookKeys ?? []
   const { searchExactBulk: hcSearchBulk } = HardcoverEndpoints
-  const hcSearchBookKeys = hcSearchBulk.useQuery(
+  const hcSearchCourseKeys = hcSearchBulk.useQuery(
     bookKeys.map((key) => ({
       category: 'books',
       q: key,
@@ -123,25 +127,26 @@ export const List = ({ children, overwriteBooks, ...value }: ListProvider) => {
     },
   )
 
-  const books: Book[] = useMemo(() => {
-    const { data, isSuccess } = hcSearchBookKeys
+  const books: Course[] = useMemo(() => {
+    const { data, isSuccess } = hcSearchCourseKeys
 
     const results = data?.results ?? []
-    const isLoading = hcSearchBookKeys.isLoading || hcSearchBookKeys.isFetching
+    const isLoading =
+      hcSearchCourseKeys.isLoading || hcSearchCourseKeys.isFetching
     const isNotFound = !isLoading && !isSuccess && results.length < 1
     if (isNotFound) return []
 
-    const books: Book[] = results.map((result) => {
+    const books: Course[] = results.map((result) => {
       // exact search expects top hit accuracy
       const hit = (result?.hits ?? [])?.[0]
       const book = HardcoverUtils.parseDocument({
         category: 'books',
         hit,
-      }) as Book
+      }) as Course
       return book
     })
     return books
-  }, [hcSearchBookKeys])
+  }, [hcSearchCourseKeys])
 
   const onNavigate = () => {
     if (!value?.data) return
@@ -163,13 +168,13 @@ export const List = ({ children, overwriteBooks, ...value }: ListProvider) => {
 
   const list: List = ListInfo.parse({
     ...value.data,
-    books: overwriteBooks ?? books,
+    books: overwriteCourses ?? books,
   })
 
   const isValid = ListInfo.safeParse(list).success
   // logger(
   //   { breakpoint: '[List.tsx:89]/ListProvider' },
-  //   { value, overwriteBooks, list, bookKeys },
+  //   { value, overwriteCourses, list, bookKeys },
   // )
   return (
     <ListContext.Provider
@@ -384,7 +389,7 @@ export const ListCreateForm = ({ className, onClose }: ListCreateForm) => {
     const creatorKey = userId
     const payload = ListData.parse({
       key: values.slug,
-      source: BookSource.enum.shelvd,
+      source: CourseSource.enum.shelvd,
       ...values,
       creator: {
         key: creatorKey,
@@ -807,39 +812,39 @@ List.EditDialog = ListEditDialog
 
 //#endregion  //*======== LIST/UPDATE ===========
 
-type ListBooks = PropsWithChildren & {
+type ListCourses = PropsWithChildren & {
   displayLimit?: number
   isThumbnail?: boolean
   isNumbered?: boolean
 }
-const ListBooks = ({
+const ListCourses = ({
   displayLimit,
   isThumbnail = false,
   isNumbered = false,
   children,
-}: ListBooks) => {
+}: ListCourses) => {
   const {
-    list: { books, key, source },
+    list: { books, key },
   } = useListContext()
 
   const navigate = useNavigate()
 
-  const displayBooks = displayLimit
+  const displayCourses = displayLimit
     ? getLimitedArray(books, displayLimit)
     : books
 
-  if (!displayBooks.length) return null
-  return displayBooks.map((book, idx) => (
+  if (!displayCourses.length) return null
+  return displayCourses.map((book, idx) => (
     <RenderGuard
-      key={`${key}-${source}-${idx}-${book.key}`}
-      renderIf={zBook.safeParse(book).success}
+      key={`${key}-${idx}-${book.key}`}
+      renderIf={zCourse.safeParse(book).success}
     >
-      <Book
-        key={`${key}-${source}-${idx}-${book.key}`}
-        book={zBook.parse(book)!}
+      <Course
+        key={`${key}-${idx}-${book.key}`}
+        book={zCourse.parse(book)!}
       >
         {children ?? isThumbnail ? (
-          <Book.Thumbnail className="w-fit !rounded-none" />
+          <Course.Thumbnail className="w-fit !rounded-none" />
         ) : (
           <div
             onClick={() => {
@@ -848,9 +853,6 @@ const ListBooks = ({
                   pathname: '/book/:slug',
                 },
                 {
-                  state: {
-                    source: book.source,
-                  },
                   params: {
                     slug: book.slug ?? book.key,
                   },
@@ -866,7 +868,7 @@ const ListBooks = ({
             {isNumbered && (
               <small className="whitespace-nowrap	"># {idx + 1}</small>
             )}
-            <Book.Thumbnail className="w-fit !rounded-none" />
+            <Course.Thumbnail className="w-fit !rounded-none" />
 
             <aside>
               <p className="h4 line-clamp-3 truncate text-pretty capitalize">
@@ -874,18 +876,15 @@ const ListBooks = ({
               </p>
               <p className="!m-0 capitalize text-muted-foreground">
                 <small className="font-semibold uppercase">by</small>&nbsp;
-                {ShelvdUtils.printAuthorName(book.author.name, {
-                  mandatoryNames: [book.author.name],
-                })}
               </p>
             </aside>
           </div>
         )}
-      </Book>
+      </Course>
     </RenderGuard>
   ))
 }
-List.Books = ListBooks
+List.Courses = ListCourses
 
 //#endregion  //*======== COMPONENTS ===========
 

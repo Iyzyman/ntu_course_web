@@ -13,7 +13,7 @@ import {
   SearchEdition,
   SearchParams,
   SearchQueryResponse,
-  TrendPeriodBooks,
+  TrendPeriodCourses,
 } from '@/types/hardcover'
 import { SearchCategories } from '@/types/shelvd'
 import { logger } from '@/utils/debug'
@@ -48,7 +48,7 @@ export const HardcoverClient = createApi({
   reducerPath: TagType,
   tagTypes: [TagType],
   endpoints: (build) => ({
-    trending: build.query<QueryResponse<TrendPeriodBooks>, undefined>({
+    trending: build.query<QueryResponse<TrendPeriodCourses>, undefined>({
       query: () => Services.Trending,
     }),
 
@@ -257,7 +257,7 @@ export const HardcoverClient = createApi({
         })
 
         const body = {
-          operationName: 'FindEditionsForBook',
+          operationName: 'FindEditionsForCourse',
           variables: {
             bookId: id,
             formats: [1, 2, 4],
@@ -266,7 +266,7 @@ export const HardcoverClient = createApi({
             includeCurrentUser: false,
           },
           query:
-            'fragment EditionFragment on editions {\n  id\n  title\n  asin\n  isbn10: isbn_10\n  isbn13: isbn_13\n  releaseDate: release_date\n  releaseYear: release_year\n  pages\n  audioSeconds: audio_seconds\n  readingFormatId: reading_format_id\n  usersCount: users_count\n  cachedImage: cached_image\n  editionFormat: edition_format\n  editionInformation: edition_information\n  language {\n    language\n    __typename\n  }\n  readingFormat: reading_format {\n    format\n    __typename\n  }\n  country {\n    name\n    __typename\n  }\n  __typename\n}\n\nfragment ListBookFragment on list_books {\n  id\n  listId: list_id\n  bookId: book_id\n  editionId: edition_id\n  position\n  reason\n  __typename\n}\n\nquery FindEditionsForBook($bookId: Int!, $limit: Int!, $offset: Int!, $formats: [Int]!, $userId: Int, $includeCurrentUser: Boolean!) {\n  editions(\n    where: {book_id: {_eq: $bookId}, reading_format_id: {_in: $formats}}\n    order_by: {users_count: desc}\n    limit: $limit\n    offset: $offset\n  ) {\n    ...EditionFragment\n    list_books(where: {list: {user_id: {_eq: $userId}, slug: {_eq: "owned"}}}) @include(if: $includeCurrentUser) {\n      ...ListBookFragment\n      __typename\n    }\n    __typename\n  }\n}',
+            'fragment EditionFragment on editions {\n  id\n  title\n  asin\n  isbn10: isbn_10\n  isbn13: isbn_13\n  releaseDate: release_date\n  releaseYear: release_year\n  pages\n  audioSeconds: audio_seconds\n  readingFormatId: reading_format_id\n  usersCount: users_count\n  cachedImage: cached_image\n  editionFormat: edition_format\n  editionInformation: edition_information\n  language {\n    language\n    __typename\n  }\n  readingFormat: reading_format {\n    format\n    __typename\n  }\n  country {\n    name\n    __typename\n  }\n  __typename\n}\n\nfragment ListCourseFragment on list_books {\n  id\n  listId: list_id\n  bookId: book_id\n  editionId: edition_id\n  position\n  reason\n  __typename\n}\n\nquery FindEditionsForCourse($bookId: Int!, $limit: Int!, $offset: Int!, $formats: [Int]!, $userId: Int, $includeCurrentUser: Boolean!) {\n  editions(\n    where: {book_id: {_eq: $bookId}, reading_format_id: {_in: $formats}}\n    order_by: {users_count: desc}\n    limit: $limit\n    offset: $offset\n  ) {\n    ...EditionFragment\n    list_books(where: {list: {user_id: {_eq: $userId}, slug: {_eq: "owned"}}}) @include(if: $includeCurrentUser) {\n      ...ListCourseFragment\n      __typename\n    }\n    __typename\n  }\n}',
         }
 
         return {

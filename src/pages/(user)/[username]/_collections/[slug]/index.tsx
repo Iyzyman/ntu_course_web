@@ -3,7 +3,7 @@ import { useNavigate, useParams } from '@/router'
 import { cn } from '@/utils/dom'
 import { useEffect, useState } from 'react'
 import { ErrorAlert, ProgressDemo } from '..'
-import { Book } from '@/components/Book'
+import { Course } from '@/components/Course'
 import { useUser } from '@clerk/clerk-react'
 import { Button } from '@/components/ui/Button'
 
@@ -114,16 +114,16 @@ const UserCollectionPage = () => {
                 className="m-5"
                 key={book.key}
               >
-                <Book
+                <Course
                   key={book.key}
                   book={book}
                 >
-                  <Book.BiggerBookCard
+                  <Course.BiggerCourseCard
                     username={user!.username!}
                     collection_key={slug}
                     isSignedInUser={isSignedInUser}
                   />
-                </Book>
+                </Course>
               </div>
             )
           })}

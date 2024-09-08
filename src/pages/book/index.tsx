@@ -1,7 +1,7 @@
 import { Navigate } from '@/router'
 import { SearchCategory } from '@/types/shelvd'
 
-const BookPage = () => (
+const CoursePage = () => (
   <Navigate
     to={{
       pathname: '/search/:category',
@@ -13,4 +13,4 @@ const BookPage = () => (
   />
 )
 
-export default BookPage
+export default CoursePage

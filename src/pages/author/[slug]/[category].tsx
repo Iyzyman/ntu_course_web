@@ -77,7 +77,7 @@ const AuthorDetailCategoryPage = () => {
       </TabsList>
 
       <TabsContent value={AuthorDetailCategory.enum.books}>
-        <Author.Books />
+        <Author.Courses />
       </TabsContent>
 
       <TabsContent value={AuthorDetailCategory.enum.series}>

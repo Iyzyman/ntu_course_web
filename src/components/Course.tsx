@@ -33,7 +33,7 @@ import {
   HoverCardTrigger,
 } from '@/components/ui/Hover.Card'
 import { Skeleton } from '@/components/ui/Skeleton'
-import { useDeleteBookFromCollectionMutation } from '@/data/clients/collections.api'
+import { useDeleteCourseFromCollectionMutation } from '@/data/clients/collections.api'
 
 import { HardcoverEndpoints } from '@/data/clients/hardcover.api'
 import {
@@ -43,7 +43,7 @@ import {
 import { useRootSelector } from '@/data/stores/root'
 import { UserSelectors } from '@/data/stores/user.slice'
 import { Link, useNavigate } from '@/router'
-import { Book as BookInfo, Series, ListData } from '@/types/shelvd'
+import { Course as CourseInfo, Series, ListData } from '@/types/shelvd'
 import { HardcoverUtils } from '@/utils/clients/hardcover'
 import { ShelvdUtils } from '@/utils/clients/shelvd'
 import { logger } from '@/utils/debug'
@@ -73,23 +73,23 @@ import StarIcon from '@mui/icons-material/Star'
 import AddCircleOutlineOutlinedIcon from '@mui/icons-material/AddCircleOutlineOutlined'
 import { ring2 } from 'ldrs'
 ring2.register()
-export type Book = BookInfo
+export type Course = CourseInfo
 //#endregion  //*======== CONTEXT ===========
-export type BookContext = {
-  book: Book
+export type CourseContext = {
+  book: Course
   isSkeleton?: boolean
   onNavigate: () => void
 }
-const BookContext = createContext<BookContext | undefined>(undefined)
-const useBookContext = () => {
-  let ctxValue = useContext(BookContext)
+const CourseContext = createContext<CourseContext | undefined>(undefined)
+const useCourseContext = () => {
+  let ctxValue = useContext(CourseContext)
   if (ctxValue === undefined) {
     // throw new Error(
     //   'Expected an Context Provider somewhere in the react tree to set context value',
     // )
 
     ctxValue = {
-      book: {} as Book,
+      book: {} as Course,
       isSkeleton: true,
       onNavigate: () => {},
     }
@@ -99,8 +99,8 @@ const useBookContext = () => {
 //#endregion  //*======== CONTEXT ===========
 
 //#endregion  //*======== PROVIDER ===========
-type BookProvider = PropsWithChildren & Omit<BookContext, 'onNavigate'>
-export const Book = ({ children, ...value }: BookProvider) => {
+type CourseProvider = PropsWithChildren & Omit<CourseContext, 'onNavigate'>
+export const Course = ({ children, ...value }: CourseProvider) => {
   const navigate = useNavigate()
 
   const onNavigate = () => {
@@ -110,9 +110,6 @@ export const Book = ({ children, ...value }: BookProvider) => {
         pathname: '/book/:slug',
       },
       {
-        state: {
-          source: value.book.source,
-        },
         params: {
           slug: value.book?.slug ?? value.book.key,
         },
@@ -121,16 +118,16 @@ export const Book = ({ children, ...value }: BookProvider) => {
     )
   }
 
-  const isValid = BookInfo.safeParse(value?.book ?? {}).success
+  const isValid = CourseInfo.safeParse(value?.book ?? {}).success
   if (!isValid) {
     logger(
-      { breakpoint: '[Book.tsx:112]/BookProvider' },
-      BookInfo.safeParse(value?.book),
+      { breakpoint: '[Course.tsx:112]/CourseProvider' },
+      CourseInfo.safeParse(value?.book),
       value,
     )
   }
   return (
-    <BookContext.Provider
+    <CourseContext.Provider
       value={{
         isSkeleton: !isValid,
         onNavigate,
@@ -138,7 +135,7 @@ export const Book = ({ children, ...value }: BookProvider) => {
       }}
     >
       <RenderGuard renderIf={isValid}>{children}</RenderGuard>
-    </BookContext.Provider>
+    </CourseContext.Provider>
   )
 }
 
@@ -146,9 +143,9 @@ export const Book = ({ children, ...value }: BookProvider) => {
 
 //#endregion  //*======== COMPONENTS ===========
 
-type BookImage = Avatar
-export const BookImage = ({ className, children, ...rest }: BookImage) => {
-  const { book } = useBookContext()
+type CourseImage = Avatar
+export const CourseImage = ({ className, children, ...rest }: CourseImage) => {
+  const { book } = useCourseContext()
   //TODO: change to course code
   return (
     <Avatar
@@ -196,15 +193,15 @@ export const BookImage = ({ className, children, ...rest }: BookImage) => {
   )
 }
 
-Book.Image = BookImage
+Course.Image = CourseImage
 
-type BookThumbnail = Card
-export const BookThumbnail = ({
+type CourseThumbnail = Card
+export const CourseThumbnail = ({
   className,
   children,
   ...rest
-}: BookThumbnail) => {
-  const { book, isSkeleton, onNavigate } = useBookContext()
+}: CourseThumbnail) => {
+  const { book, isSkeleton, onNavigate } = useCourseContext()
 
   return (
     <HoverCard>
@@ -223,7 +220,7 @@ export const BookThumbnail = ({
           {...rest}
         >
           {children}
-          <Book.Image />
+          <Course.Image />
         </Card>
       </HoverCardTrigger>
       <HoverCardContent
@@ -256,13 +253,13 @@ export const BookThumbnail = ({
     </HoverCard>
   )
 }
-Book.Thumbnail = BookThumbnail
+Course.Thumbnail = CourseThumbnail
 
-type BookDropdown = PropsWithChildren & {
+type CourseDropdown = PropsWithChildren & {
   button?: ButtonProps
 }
-export const BookDropdownMenu = ({ button, children }: BookDropdown) => {
-  const { book } = useBookContext()
+export const CourseDropdownMenu = ({ button, children }: CourseDropdown) => {
+  const { book } = useCourseContext()
 
   //#endregion  //*======== STORE ===========
   const { openSignIn } = useClerk()
@@ -306,7 +303,7 @@ export const BookDropdownMenu = ({ button, children }: BookDropdown) => {
     setCoreKeys(updatedCoreKeys)
 
     logger(
-      { breakpoint: '[Book.tsx:309]/BookDropdown/onSelectCoreKey' },
+      { breakpoint: '[Course.tsx:309]/CourseDropdown/onSelectCoreKey' },
       {
         created: {
           prev: memberCoreKeys,
@@ -330,7 +327,7 @@ export const BookDropdownMenu = ({ button, children }: BookDropdown) => {
     setCreatedKeys(updatedCreatedKeys)
 
     logger(
-      { breakpoint: '[Book.tsx:309]/BookDropdown/onSelectCreatedKey' },
+      { breakpoint: '[Course.tsx:309]/CourseDropdown/onSelectCreatedKey' },
       {
         created: {
           prev: memberCreatedKeys,
@@ -341,7 +338,7 @@ export const BookDropdownMenu = ({ button, children }: BookDropdown) => {
   }
 
   logger(
-    { breakpoint: '[Book.tsx:309]/BookDropdown' },
+    { breakpoint: '[Course.tsx:309]/CourseDropdown' },
     // { memberCoreKeys, memberCreatedKeys },
     // { coreKeys, createdKeys },
     {
@@ -377,7 +374,7 @@ export const BookDropdownMenu = ({ button, children }: BookDropdown) => {
     })
     upateListMembership(params)
 
-    logger({ breakpoint: '[Book.tsx:309]/BookDropdown/onSubmit' }, params)
+    logger({ breakpoint: '[Course.tsx:309]/CourseDropdown/onSubmit' }, params)
   }
   //#endregion  //*======== MUTATIONS ===========
 
@@ -487,9 +484,9 @@ export const BookDropdownMenu = ({ button, children }: BookDropdown) => {
   )
 }
 
-Book.DropdownMenu = BookDropdownMenu
+Course.DropdownMenu = CourseDropdownMenu
 
-type BookTags = HTMLAttributes<HTMLDivElement> & {
+type CourseTags = HTMLAttributes<HTMLDivElement> & {
   title: ReactNode
   tags: string[]
 
@@ -498,15 +495,15 @@ type BookTags = HTMLAttributes<HTMLDivElement> & {
   header?: HTMLAttributes<HTMLDivElement>
 }
 
-export const BookTags = ({
+export const CourseTags = ({
   title,
   tags,
   children,
   className,
   tag: { className: tagClsx, ...tagProps } = { className: '' },
   ...rest
-}: BookTags) => {
-  const { isSkeleton = !tags.length } = useBookContext()
+}: CourseTags) => {
+  const { isSkeleton = !tags.length } = useCourseContext()
   const [showAllTags, setShowAllTags] = useState<boolean>(false)
 
   const allTags: string[] = isSkeleton ? new Array(5).fill(false) : tags
@@ -563,7 +560,6 @@ export const BookTags = ({
                 height: '31px',
                 borderRadius: '5px',
                 fontWeight: '400',
-                backgroundColor: '#242C3F',
                 fontSize: '16px',
                 justifyContent: 'center',
                 alignContent: 'center',
@@ -579,15 +575,15 @@ export const BookTags = ({
     </section>
   )
 }
-Book.Tags = BookTags
+Course.Tags = CourseTags
 
-type BookDescription = HTMLAttributes<HTMLDivElement>
-export const BookDescription = ({
+type CourseDescription = HTMLAttributes<HTMLDivElement>
+export const CourseDescription = ({
   className,
   children,
   ...rest
-}: BookDescription) => {
-  const { book } = useBookContext()
+}: CourseDescription) => {
+  const { book } = useCourseContext()
 
   const description = book.description ?? ''
   const isEmptyDescription = !description.length
@@ -617,7 +613,7 @@ export const BookDescription = ({
           fontWeight: 300,
           lineHeight: '24.2px',
           textAlign: 'justify',
-          color: '#F8FAFC',
+          color: 'var(----book-description)',
         }}
       >
         {isEmptyDescription
@@ -642,27 +638,31 @@ export const BookDescription = ({
     </article>
   )
 }
-Book.Description = BookDescription
+Course.Description = CourseDescription
 
-type BookSeries = HTMLAttributes<HTMLDivElement>
-export const BookSeries = ({ className, children, ...rest }: BookSeries) => {
-  const { book } = useBookContext()
+type CourseSeries = HTMLAttributes<HTMLDivElement>
+export const CourseSeries = ({
+  className,
+  children,
+  ...rest
+}: CourseSeries) => {
+  const { book } = useCourseContext()
 
   //#endregion  //*======== PARAMS ===========
-  const isInSeries = !!(book?.series?.key ?? book?.series?.slug)
   //#endregion  //*======== PARAMS ===========
 
   //#endregion  //*======== QUERIES ===========
   const { searchExact, searchExactBulk } = HardcoverEndpoints
 
   //#endregion  //*======== SERIES/INFO ===========
+  //TODO remove series
   const querySeries = searchExact.useQuery(
     {
       category: 'series',
-      q: book?.series?.slug ?? '', // hc uses slug
+      q: book?.school ?? '', // hc uses slug
     },
     {
-      skip: book.source !== 'hc' || !isInSeries,
+      skip: false,
     },
   )
 
@@ -681,29 +681,28 @@ export const BookSeries = ({ className, children, ...rest }: BookSeries) => {
 
   //#endregion  //*======== SERIES/BOOKS ===========
   const titles = info?.titles ?? []
-  const querySeriesBooks = searchExactBulk.useQuery(
+  const querySeriesCourses = searchExactBulk.useQuery(
     titles.map((title) => ({
       category: 'books',
       q: title,
     })),
     {
-      skip:
-        book.source !== 'hc' || !isInSeries || !titles.length || infoIsNotFound,
+      skip: !titles.length || infoIsNotFound,
     },
   )
 
-  const booksResults = querySeriesBooks.data?.results?.[0]
+  const booksResults = querySeriesCourses.data?.results?.[0]
   const booksIsLoading =
-    querySeriesBooks.isLoading || querySeriesBooks.isFetching
+    querySeriesCourses.isLoading || querySeriesCourses.isFetching
   const booksIsNotFound =
     !booksIsLoading &&
-    !querySeriesBooks.isSuccess &&
+    !querySeriesCourses.isSuccess &&
     (booksResults?.found ?? 0) < 1
 
   //#endregion  //*======== SERIES/BOOKS ===========
   //#endregion  //*======== QUERIES ===========
 
-  if (!isInSeries || infoIsNotFound || booksIsNotFound) return null
+  if (infoIsNotFound || booksIsNotFound) return null
   return (
     <section
       className={cn('flex flex-col gap-2', className)}
@@ -726,30 +725,30 @@ export const BookSeries = ({ className, children, ...rest }: BookSeries) => {
           'flex flex-row flex-wrap',
         )}
       >
-        {(querySeriesBooks.data?.results ?? []).map((result, idx) => {
+        {(querySeriesCourses.data?.results ?? []).map((result, idx) => {
           const hit = (result?.hits ?? [])?.[0]
           if (!hit) return null
 
-          const seriesBook = HardcoverUtils.parseDocument({
+          const seriesCourse = HardcoverUtils.parseDocument({
             category: 'books',
             hit,
-          }) as Book
-          if (!BookInfo.safeParse(seriesBook).success) return null
+          }) as Course
+          if (!CourseInfo.safeParse(seriesCourse).success) return null
 
-          const isCurrentBook = seriesBook.key == book.key
+          const isCurrentCourse = seriesCourse.key == book.key
           return (
-            <Book
-              key={`${seriesBook.source}-${idx}-${seriesBook.key}`}
-              book={seriesBook!}
+            <Course
+              key={`${idx}-${seriesCourse.key}`}
+              book={seriesCourse!}
             >
-              <Book.Thumbnail
+              <Course.Thumbnail
                 className={cn(
                   'w-fit !rounded-none',
                   idx > 8 && 'hidden sm:block',
-                  isCurrentBook && 'border-primary',
+                  isCurrentCourse && 'border-primary',
                 )}
               />
-            </Book>
+            </Course>
           )
         })}
       </div>
@@ -758,36 +757,36 @@ export const BookSeries = ({ className, children, ...rest }: BookSeries) => {
     </section>
   )
 }
-Book.Series = BookSeries
+Course.Series = CourseSeries
 
-type BiggerBookCard = HTMLAttributes<HTMLDivElement> & {
+type BiggerCourseCard = HTMLAttributes<HTMLDivElement> & {
   username: string
   collection_key: string
   isSignedInUser: boolean
 }
-export const BiggerBookCard = ({
+export const BiggerCourseCard = ({
   className,
   children,
   username,
   collection_key,
   isSignedInUser,
   ...rest
-}: BiggerBookCard) => {
-  const { onNavigate, book } = useBookContext()
-  const [deleteBookFromCollection] = useDeleteBookFromCollectionMutation()
+}: BiggerCourseCard) => {
+  const { onNavigate, book } = useCourseContext()
+  const [deleteCourseFromCollection] = useDeleteCourseFromCollectionMutation()
   const [isDeleting, setIsDeleting] = useState<boolean>(false)
 
   const handleDelete = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation()
     e.preventDefault()
     setIsDeleting(true)
-    console.log('Delete Book')
-    const deleteBookPayload = {
+    console.log('Delete Course')
+    const deleteCoursePayload = {
       username,
       collection_key,
       book_key: book.key,
     }
-    deleteBookFromCollection(deleteBookPayload)
+    deleteCourseFromCollection(deleteCoursePayload)
   }
 
   return (
@@ -832,19 +831,22 @@ export const BiggerBookCard = ({
           <p className="line-clamp-3">{book.description}</p>
         </CardDescription>
       </CardHeader>
-      <Book.Image className="h-full w-full" />
+      <Course.Image className="h-full w-full" />
 
       {children}
     </Card>
   )
 }
-Book.BiggerBookCard = BiggerBookCard
+Course.BiggerCourseCard = BiggerCourseCard
 
-type BookMatrix = HTMLAttributes<HTMLDivElement> & {
+type CourseMatrix = HTMLAttributes<HTMLDivElement> & {
   displayCategoryLists: Hardcover.List[]
   category: string
 }
-export const BookMatrix = ({ displayCategoryLists, category }: BookMatrix) => {
+export const CourseMatrix = ({
+  displayCategoryLists,
+  category,
+}: CourseMatrix) => {
   return (
     <section
       className={cn(
@@ -860,15 +862,15 @@ export const BookMatrix = ({ displayCategoryLists, category }: BookMatrix) => {
     >
       {displayCategoryLists.map((hcList, idx) => {
         const list = HardcoverUtils.parseList(hcList)
-        const books = hcList.books.map((hcBook) =>
-          HardcoverUtils.parseBook(hcBook),
+        const books = hcList.books.map((hcCourse) =>
+          HardcoverUtils.parseCourse(hcCourse),
         )
         const data = ListData.parse(list)
         return (
           <List
             key={`lists-${category}-${idx}-${list.key}`}
             data={data}
-            overwriteBooks={books}
+            overwriteCourses={books}
           >
             <section
               className={cn(
@@ -878,7 +880,9 @@ export const BookMatrix = ({ displayCategoryLists, category }: BookMatrix) => {
             >
               <header className={cn('w-full', 'flex flex-col gap-0.5')}>
                 <div className="flex w-full flex-row flex-wrap place-items-center gap-2">
-                  <span style={{ color: '#AABAE1' }}>{list.name}</span>
+                  <span style={{ color: 'var(--school-name)' }}>
+                    {list.name}
+                  </span>
                 </div>
               </header>
               <div
@@ -887,13 +891,13 @@ export const BookMatrix = ({ displayCategoryLists, category }: BookMatrix) => {
                   'flex flex-row flex-wrap',
                 )}
               >
-                <List.Books displayLimit={15}>
-                  <Book.Thumbnail className="w-fit !rounded-none" />
-                </List.Books>
+                <List.Courses displayLimit={15}>
+                  <Course.Thumbnail className="w-fit !rounded-none" />
+                </List.Courses>
                 <Link
                   style={{
                     width: '100%',
-                    border: '1px solid #A3A3A3',
+                    border: '1px solid var(--show-more)',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
@@ -911,13 +915,14 @@ export const BookMatrix = ({ displayCategoryLists, category }: BookMatrix) => {
                 >
                   <AddCircleOutlineOutlinedIcon
                     fontSize="small"
-                    style={{ color: '#A3A3A3', marginRight: '4px' }}
+                    style={{ color: 'var(--show-more)', marginRight: '4px' }}
                   />
                   <span
                     style={{
                       fontSize: '12px',
-                      fontWeight: '200',
+                      fontWeight: '300',
                       lineHeight: '4px',
+                      color: 'var(--show-more)',
                     }}
                   >
                     Show More
@@ -932,7 +937,7 @@ export const BookMatrix = ({ displayCategoryLists, category }: BookMatrix) => {
   )
 }
 
-Book.BookMatrix = BookMatrix
+Course.CourseMatrix = CourseMatrix
 
 export const Stats = ({
   likes,
@@ -954,7 +959,7 @@ export const Stats = ({
     </div>
   )
 }
-Book.Stats = Stats
+Course.Stats = Stats
 
 export const ClickStats = ({
   likes,
@@ -1003,14 +1008,14 @@ export const ClickStats = ({
   )
 }
 
-Book.ClickStats = ClickStats
-// type BookEditions = HTMLAttributes<HTMLDivElement>
-// const BookEditions = ({
+Course.ClickStats = ClickStats
+// type CourseEditions = HTMLAttributes<HTMLDivElement>
+// const CourseEditions = ({
 //   children,
 //   className,
 //   ...rest
-// }: BookEditions) => {
-//   const { book } = useBookContext()
+// }: CourseEditions) => {
+//   const { book } = useCourseContext()
 
 //   //#endregion  //*======== SOURCE/HC ===========
 //   const { getEditionsById } = HardcoverEndpoints
@@ -1038,7 +1043,7 @@ Book.ClickStats = ClickStats
 //     }
 
 //     if (editions.length) {
-//       logger({ breakpoint: '[Book.tsx:616]/BookEditions' }, { editions })
+//       logger({ breakpoint: '[Course.tsx:616]/CourseEditions' }, { editions })
 //     }
 
 //     return editions
@@ -1064,23 +1069,23 @@ Book.ClickStats = ClickStats
 //           const hit = (result?.hits ?? [])?.[0]
 //           if (!hit) return null
 
-//           const seriesBook = HardcoverUtils.parseDocument({ category: 'books', hit }) as Book
-//           if (!seriesBook) return
+//           const seriesCourse = HardcoverUtils.parseDocument({ category: 'books', hit }) as Course
+//           if (!seriesCourse) return
 
-//           const isCurrentBook = seriesBook.key == book.key
+//           const isCurrentCourse = seriesCourse.key == book.key
 //           return (
-//             <Book
-//               key={`${seriesBook.source}-${idx}-${seriesBook.key}`}
-//               book={seriesBook!}
+//             <Course
+//               key={`${seriesCourse.source}-${idx}-${seriesCourse.key}`}
+//               book={seriesCourse!}
 //             >
-//               <Book.Thumbnail
+//               <Course.Thumbnail
 //                 className={cn(
 //                   'w-fit !rounded-none',
 //                   idx > 8 && 'hidden sm:block',
-//                   isCurrentBook && 'border-primary'
+//                   isCurrentCourse && 'border-primary'
 //                 )}
 //               />
-//             </Book>
+//             </Course>
 //           )
 //         })}
 //       </div> */}
@@ -1089,6 +1094,6 @@ Book.ClickStats = ClickStats
 //     </section>
 //   )
 // }
-// Book.Editions = BookEditions
+// Course.Editions = CourseEditions
 
-export default Book
+export default Course

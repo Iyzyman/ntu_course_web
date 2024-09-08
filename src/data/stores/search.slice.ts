@@ -2,8 +2,8 @@ import { StoreSlicePrefix } from '@/data/static/store'
 import { Hardcover } from '@/types'
 import { ListCategory } from '@/types/hardcover'
 import {
-  BookSource,
-  DefaultBookSource,
+  CourseSource,
+  DefaultCourseSource,
   DefaultSearchCategory,
   List,
   SearchArtifact,
@@ -24,13 +24,13 @@ type SourceOriginMap<TT extends SearchCategories> = {
   shelvd: SearchDocument<TT>
 }
 export type SourceOrigin<
-  T extends BookSource,
+  T extends CourseSource,
   TT extends SearchCategories,
 > = SourceOriginMap<TT>[T]
 
 export type CurrentSourceData = {
   /** @description raw response data from sources */
-  origin?: SourceOrigin<BookSource, SearchCategories>
+  origin?: SourceOrigin<CourseSource, SearchCategories>
   /** @description parsed response data */
   common?: SearchArtifact<SearchCategories>
 
@@ -40,7 +40,7 @@ export type CurrentSourceData = {
 
 export type CurrentSearchMap = CurrentSourceData & {
   slug: string
-  source: BookSource
+  source: CourseSource
   category: SearchCategories
 }
 //#endregion  //*======== TYPES ===========
@@ -63,7 +63,7 @@ const DefaultSearchState: SearchState = {
 
   current: {
     slug: '',
-    source: DefaultBookSource,
+    source: DefaultCourseSource,
     category: DefaultSearchCategory,
 
     origin: undefined,
@@ -193,7 +193,7 @@ export const SearchSlice = createAsyncSlice({
         state,
         action: PayloadAction<{
           slug: string
-          source: BookSource
+          source: CourseSource
           category: SearchCategories
         }>,
       ) => {
