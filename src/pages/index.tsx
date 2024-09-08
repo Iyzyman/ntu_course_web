@@ -160,7 +160,7 @@ export const TrendingPreview = () => {
           </Link>
 
           <p className="small font-light normal-case text-muted-foreground">
-            Don’t know where to start? Heres our reccommendation of the most liked courses in the last{' '}
+            Don’t know where to start? Heres our recommendation of the most liked courses in the{' '}
             {Hardcover.TrendPeriodTitle[period].toLowerCase()}.
           </p>
         </aside>

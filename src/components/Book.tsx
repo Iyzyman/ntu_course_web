@@ -838,6 +838,10 @@ export const BookMatrix = ({ displayCategoryLists, category }: BookMatrix) => {
         'flex flex-col gap-x-8 gap-y-8 lg:grid lg:grid-cols-2',
         'my-6',
         'snap-y snap-proximity overflow-y-auto',
+        'grid', // Always use grid
+        'grid-cols-1', // Default to one column
+        'lg:grid-cols-1', // Two columns for large screens (1024px and up)
+        '2xl:grid-cols-2' // Enforce two columns for extra large screens (1440px and up)
       )}
       style={{ columnGap: '190px' }}
     >
