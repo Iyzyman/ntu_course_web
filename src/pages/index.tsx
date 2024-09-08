@@ -79,14 +79,16 @@ export const FeaturedListsPreviewSection = () => {
           <p className="h3 flex-1 cursor-pointer truncate capitalize leading-none tracking-tight">
             Discover Courses
           </p>
-        
 
-        <p className="small font-light normal-case text-muted-foreground">
-          Click here to browse through our courses by faculties.
-        </p>
+          <p className="small font-light normal-case text-muted-foreground">
+            Click here to browse through our courses by faculties.
+          </p>
         </Link>
       </header>
-          <Book.BookMatrix displayCategoryLists={displayCategoryLists} category={category}></Book.BookMatrix>
+      <Book.BookMatrix
+        displayCategoryLists={displayCategoryLists}
+        category={category}
+      ></Book.BookMatrix>
     </section>
   )
 }
@@ -125,7 +127,7 @@ export const TrendingPreviewSection = ({
           <Book book={zBook.parse(book)!}>
             <Book.Thumbnail
               className={cn(
-                'w-fit !rounded-none mr-1 mt-1',
+                'mr-1 mt-1 w-fit !rounded-none',
                 idx > 8 && 'hidden sm:block',
               )}
             />
@@ -160,7 +162,8 @@ export const TrendingPreview = () => {
           </Link>
 
           <p className="small font-light normal-case text-muted-foreground">
-            Don’t know where to start? Heres our recommendation of the most liked courses in the{' '}
+            Don’t know where to start? Heres our recommendation of the most
+            liked courses in the{' '}
             {Hardcover.TrendPeriodTitle[period].toLowerCase()}.
           </p>
         </aside>

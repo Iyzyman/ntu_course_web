@@ -2,8 +2,8 @@ import { Button } from '@/components/ui/Button'
 import { AppThemeMode } from '@/data/static/app'
 import { AppActions, AppSelectors } from '@/data/stores/app.slice'
 import { useRootDispatch, useRootSelector } from '@/data/stores/root'
-import DarkModeOutlinedIcon from '@mui/icons-material/DarkModeOutlined';
-import LightModeOutlinedIcon from '@mui/icons-material/LightModeOutlined';
+import DarkModeOutlinedIcon from '@mui/icons-material/DarkModeOutlined'
+import LightModeOutlinedIcon from '@mui/icons-material/LightModeOutlined'
 
 export const ThemeButton = () => {
   const dispatch = useRootDispatch()
@@ -13,7 +13,9 @@ export const ThemeButton = () => {
   ]
 
   const isDarkMode = themeMode === AppThemeMode.enum.dark
-  const ThemeModeIcon = isDarkMode ? DarkModeOutlinedIcon : LightModeOutlinedIcon
+  const ThemeModeIcon = isDarkMode
+    ? DarkModeOutlinedIcon
+    : LightModeOutlinedIcon
   return (
     <Button
       variant="outline"

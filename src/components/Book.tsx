@@ -1,5 +1,5 @@
 import { RenderGuard } from '@/components/providers/render.provider'
-import { Avatar} from '@/components/ui/Avatar'
+import { Avatar } from '@/components/ui/Avatar'
 import { Badge, BadgeProps } from '@/components/ui/Badge'
 import { Button, ButtonProps } from '@/components/ui/Button'
 import { Card, CardDescription, CardHeader } from '@/components/ui/Card'
@@ -43,7 +43,7 @@ import {
 import { useRootSelector } from '@/data/stores/root'
 import { UserSelectors } from '@/data/stores/user.slice'
 import { Link, useNavigate } from '@/router'
-import { Book as BookInfo, Series,ListData } from '@/types/shelvd'
+import { Book as BookInfo, Series, ListData } from '@/types/shelvd'
 import { HardcoverUtils } from '@/utils/clients/hardcover'
 import { ShelvdUtils } from '@/utils/clients/shelvd'
 import { logger } from '@/utils/debug'
@@ -66,9 +66,11 @@ import {
   useEffect,
   useState,
 } from 'react'
-import ThumbUpOutlinedIcon from '@mui/icons-material/ThumbUpOutlined';
-import StarBorderOutlinedIcon from '@mui/icons-material/StarBorderOutlined';
-import AddCircleOutlineOutlinedIcon from '@mui/icons-material/AddCircleOutlineOutlined';
+import ThumbUpOutlinedIcon from '@mui/icons-material/ThumbUpOutlined'
+import ThumbUpIcon from '@mui/icons-material/ThumbUp'
+import StarBorderOutlinedIcon from '@mui/icons-material/StarBorderOutlined'
+import StarIcon from '@mui/icons-material/Star'
+import AddCircleOutlineOutlinedIcon from '@mui/icons-material/AddCircleOutlineOutlined'
 import { ring2 } from 'ldrs'
 ring2.register()
 export type Book = BookInfo
@@ -112,7 +114,7 @@ export const Book = ({ children, ...value }: BookProvider) => {
           source: value.book.source,
         },
         params: {
-          slug: value.book?.slug ?? value.book.key
+          slug: value.book?.slug ?? value.book.key,
         },
         // unstable_viewTransition: true,
       },
@@ -146,7 +148,7 @@ export const Book = ({ children, ...value }: BookProvider) => {
 
 type BookImage = Avatar
 export const BookImage = ({ className, children, ...rest }: BookImage) => {
-  const { book } = useBookContext();
+  const { book } = useBookContext()
   //TODO: change to course code
   return (
     <Avatar
@@ -162,11 +164,8 @@ export const BookImage = ({ className, children, ...rest }: BookImage) => {
     >
       {children ?? (
         <>
-        
           <div
-            className={cn(
-              'text-center'
-            )}
+            className={cn('text-center')}
             style={{
               fontFamily: 'Bebas Neue',
               fontWeight: '400', // Corrected fontWeight syntax
@@ -177,9 +176,7 @@ export const BookImage = ({ className, children, ...rest }: BookImage) => {
             {/* {book.title} */}
             SCXXXX
           </div>
-
           <div
-            className="stats flex justify-between w-full px-2"
             style={{
               position: 'absolute', // Absolute positioning
               bottom: '5px', // Align at the bottom
@@ -188,21 +185,16 @@ export const BookImage = ({ className, children, ...rest }: BookImage) => {
               fontSize: '12px', // Adjust size for better fit
             }}
           >
-            <div className="flex items-center gap-1">
-              <ThumbUpOutlinedIcon fontSize="small" /> 
-              <span style={{ marginTop: '2px' }}>{book.likes}</span>
-            </div>
-            <div className="flex items-center gap-0.5">
-              <StarBorderOutlinedIcon fontSize="small" />
-              <span style={{ marginTop: '2px' }}>{book.watchlists}</span>
-            </div>
+            <Stats
+              likes={book.likes}
+              watchlists={book.watchlists}
+            ></Stats>
           </div>
         </>
-        
       )}
     </Avatar>
-  );
-};
+  )
+}
 
 Book.Image = BookImage
 
@@ -243,7 +235,7 @@ export const BookThumbnail = ({
           'h-[113]',
           'p-4', // Increase padding for more space inside
           'py-4', // Optional: Increase padding-top and padding-bottom
-          'rounded-md'
+          'rounded-md',
         )}
       >
         <HoverCardArrow className="fill-secondary" />
@@ -258,9 +250,7 @@ export const BookThumbnail = ({
         {isSkeleton ? (
           <Skeleton className="h-4 w-[100px]" />
         ) : (
-          <small className="capitalize text-muted-foreground">
-            <span className="uppercase">by</span>&nbsp;{book.author.name}
-          </small>
+          <small className="capitalize text-muted-foreground"></small>
         )}
       </HoverCardContent>
     </HoverCard>
@@ -507,17 +497,16 @@ type BookTags = HTMLAttributes<HTMLDivElement> & {
 
   header?: HTMLAttributes<HTMLDivElement>
 }
+
 export const BookTags = ({
   title,
   tags,
   children,
   className,
-
   tag: { className: tagClsx, ...tagProps } = { className: '' },
   ...rest
 }: BookTags) => {
   const { isSkeleton = !tags.length } = useBookContext()
-
   const [showAllTags, setShowAllTags] = useState<boolean>(false)
 
   const allTags: string[] = isSkeleton ? new Array(5).fill(false) : tags
@@ -525,10 +514,12 @@ export const BookTags = ({
   const isTagsLong = allTags.length > tagsPreviewThreshold
 
   const TagChevron = showAllTags ? ChevronUpIcon : ChevronDownIcon
+
   if (!allTags.length) return null
+
   return (
     <section
-      className={cn('flex flex-1 flex-col gap-2 md:w-min', className)}
+      className={cn('flex flex-1 flex-col gap-2', className)}
       {...rest}
     >
       <header className="flex flex-row place-content-between place-items-center gap-2">
@@ -537,14 +528,22 @@ export const BookTags = ({
           <Button
             variant="link"
             onClick={() => setShowAllTags(!showAllTags)}
-            className="flex text-xs text-muted-foreground !no-underline sm:hidden lg:flex"
+            className="flex text-xs text-muted-foreground !no-underline"
           >
             <TagChevron className="size-4" />
             {showAllTags ? 'Collapse' : 'Expand'}
           </Button>
         )}
       </header>
-      <aside className="flex flex-row flex-wrap place-items-center gap-2">
+      <aside
+        className={cn(
+          'flex flex-row flex-wrap place-items-center gap-2 overflow-hidden transition-all',
+          showAllTags ? 'max-h-full' : 'max-h-8',
+        )}
+        style={{
+          maxHeight: showAllTags ? 'none' : 'calc(1rem * 2 + 4px)', // Adjust for one row (approximate)
+        }}
+      >
         {allTags.map((tag, idx) =>
           isSkeleton ? (
             <Skeleton
@@ -557,10 +556,18 @@ export const BookTags = ({
               variant="secondary"
               className={cn(
                 'truncate text-xs capitalize',
-                idx + 1 > tagsPreviewThreshold &&
-                (showAllTags ? 'block' : 'hidden sm:block lg:hidden'),
+                idx + 1 > tagsPreviewThreshold && (showAllTags ? 'block' : ''),
                 tagClsx,
               )}
+              style={{
+                height: '31px',
+                borderRadius: '5px',
+                fontWeight: '400',
+                backgroundColor: '#242C3F',
+                fontSize: '16px',
+                justifyContent: 'center',
+                alignContent: 'center',
+              }}
               {...tagProps}
             >
               {tag}
@@ -596,19 +603,27 @@ export const BookDescription = ({
       )}
       {...rest}
     >
-      <p
+      <div
         className={cn(
-          'p whitespace-break-spaces text-pretty font-sans',
+          'p whitespace-break-spaces text-pretty',
           'relative flex-1',
           !showFullDesc &&
-          'masked-overflow masked-overflow-top line-clamp-4 !overflow-y-hidden',
+            'masked-overflow masked-overflow-top line-clamp-4 !overflow-y-hidden',
           isEmptyDescription && 'italic text-muted-foreground',
         )}
+        style={{
+          fontFamily: 'Inter',
+          fontSize: '20px',
+          fontWeight: 300,
+          lineHeight: '24.2px',
+          textAlign: 'justify',
+          color: '#F8FAFC',
+        }}
       >
         {isEmptyDescription
           ? "We don't have a description for this book yet."
           : description}
-      </p>
+      </div>
 
       {children}
 
@@ -791,7 +806,6 @@ export const BiggerBookCard = ({
     >
       <CardHeader>
         <h4 className="text-lg font-bold">{book.title}</h4>
-        <small className="text-muted-foreground">{book.author.name}</small>
         {isSignedInUser &&
           (!isDeleting ? (
             <Button
@@ -838,20 +852,18 @@ export const BookMatrix = ({ displayCategoryLists, category }: BookMatrix) => {
         'flex flex-col gap-x-8 gap-y-8 lg:grid lg:grid-cols-2',
         'my-6',
         'snap-y snap-proximity overflow-y-auto',
-        'grid', // Always use grid
-        'grid-cols-1', // Default to one column
-        'lg:grid-cols-1', // Two columns for large screens (1024px and up)
-        '2xl:grid-cols-2' // Enforce two columns for extra large screens (1440px and up)
+        'grid',
+        'lg:grid-cols-1',
+        '2xl:grid-cols-2',
       )}
       style={{ columnGap: '190px' }}
     >
       {displayCategoryLists.map((hcList, idx) => {
-        const list = HardcoverUtils.parseList(hcList);
+        const list = HardcoverUtils.parseList(hcList)
         const books = hcList.books.map((hcBook) =>
           HardcoverUtils.parseBook(hcBook),
-        );
-        const data = ListData.parse(list);
-        console.log(books)
+        )
+        const data = ListData.parse(list)
         return (
           <List
             key={`lists-${category}-${idx}-${list.key}`}
@@ -886,7 +898,7 @@ export const BookMatrix = ({ displayCategoryLists, category }: BookMatrix) => {
                     alignItems: 'center',
                     justifyContent: 'center',
                     borderRadius: '5px',
-                    height: '28px'
+                    height: '28px',
                   }}
                   to={{
                     pathname: '/discover/:category/:slug',
@@ -897,19 +909,101 @@ export const BookMatrix = ({ displayCategoryLists, category }: BookMatrix) => {
                   }}
                   unstable_viewTransition
                 >
-                  <AddCircleOutlineOutlinedIcon fontSize='small' style={{color: "#A3A3A3", marginRight:'4px'}} />
-                  <span style={{fontSize:"12px",fontWeight: "200",lineHeight: "4px"}}>Show More</span>
+                  <AddCircleOutlineOutlinedIcon
+                    fontSize="small"
+                    style={{ color: '#A3A3A3', marginRight: '4px' }}
+                  />
+                  <span
+                    style={{
+                      fontSize: '12px',
+                      fontWeight: '200',
+                      lineHeight: '4px',
+                    }}
+                  >
+                    Show More
+                  </span>
                 </Link>
               </div>
             </section>
           </List>
-        );
+        )
       })}
     </section>
-  );
-};
+  )
+}
 
 Book.BookMatrix = BookMatrix
+
+export const Stats = ({
+  likes,
+  watchlists,
+}: {
+  likes: number
+  watchlists: number
+}) => {
+  return (
+    <div className="stats flex w-full justify-between px-2">
+      <div className="flex items-center gap-1">
+        <ThumbUpOutlinedIcon fontSize="small" />
+        <span style={{ marginTop: '2px' }}>{likes}</span>
+      </div>
+      <div className="flex items-center gap-0.5">
+        <StarBorderOutlinedIcon fontSize="small" />
+        <span style={{ marginTop: '2px' }}>{watchlists}</span>
+      </div>
+    </div>
+  )
+}
+Book.Stats = Stats
+
+export const ClickStats = ({
+  likes,
+  watchlists,
+}: {
+  likes: number
+  watchlists: number
+}) => {
+  const [isLiked, setIsLiked] = useState(false)
+  const [isFavorited, setIsFavorited] = useState(false)
+  //TODO call likes and watchlist api when click
+
+  const handleLikeClick = () => {
+    setIsLiked((prev) => !prev)
+  }
+
+  const handleFavoriteClick = () => {
+    setIsFavorited((prev) => !prev)
+  }
+
+  return (
+    <div className="stats flex w-full justify-between px-1">
+      <div
+        className="flex cursor-pointer items-center gap-1"
+        onClick={handleLikeClick}
+      >
+        {isLiked ? (
+          <ThumbUpIcon fontSize="small" />
+        ) : (
+          <ThumbUpOutlinedIcon fontSize="small" />
+        )}
+        <span style={{ marginTop: '2px' }}>{likes}</span>
+      </div>
+      <div
+        className="flex cursor-pointer items-center gap-0.5"
+        onClick={handleFavoriteClick}
+      >
+        {isFavorited ? (
+          <StarIcon fontSize="small" />
+        ) : (
+          <StarBorderOutlinedIcon fontSize="small" />
+        )}
+        <span style={{ marginTop: '2px' }}>{watchlists}</span>
+      </div>
+    </div>
+  )
+}
+
+Book.ClickStats = ClickStats
 // type BookEditions = HTMLAttributes<HTMLDivElement>
 // const BookEditions = ({
 //   children,
