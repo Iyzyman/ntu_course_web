@@ -3,7 +3,7 @@
   "results": [
     {
       "id": 2540,
-      "name": "Stripe Press Books",
+      "name": "Stripe Press Courses",
       "userId": 3,
       "slug": "stripe-press-books",
       "ranked": false,
@@ -259,7 +259,7 @@
     },
     {
       "id": 109,
-      "name": "NPRs Top 100 Science-Fiction and Fantasy Books of All Time",
+      "name": "NPRs Top 100 Science-Fiction and Fantasy Courses of All Time",
       "userId": 3,
       "slug": "nprs-top-100-science-fiction-and-fantasy-books-of-all-time",
       "ranked": true,
@@ -575,7 +575,7 @@
     },
     {
       "id": 106,
-      "name": "Top 25 Books to Unleash Your Creative Potential",
+      "name": "Top 25 Courses to Unleash Your Creative Potential",
       "userId": 3,
       "slug": "top-25-books-to-unleash-your-creative-potential",
       "ranked": false,
@@ -835,7 +835,7 @@
     },
     {
       "id": 102,
-      "name": "The 100 Best Fantasy Books of All Time by Time Magazine",
+      "name": "The 100 Best Fantasy Courses of All Time by Time Magazine",
       "userId": 3,
       "slug": "the-100-best-fantasy-books-of-all-time-by-time-magazine",
       "ranked": false,
@@ -932,7 +932,7 @@
         {
           "id": 62105,
           "slug": "roald-dahl-james-and-the-giant-peach",
-          "title": "Roald Dahl James and the Giant Peach: The Book and Movie Scrapbook",
+          "title": "Roald Dahl James and the Giant Peach: The Course and Movie Scrapbook",
           "pubYear": 1996,
           "image": "https://hardcover.imgix.net/edition/707793/3843269-L.jpg",
           "author": {
@@ -1431,7 +1431,7 @@
       "userId": 3,
       "slug": "the-new-york-timess-50-best-memoirs-of-the-past-50-years",
       "ranked": false,
-      "description": "The New York Times' Book critics far and wide have selected the top best memoirs published since 1969.",
+      "description": "The New York Times' Course critics far and wide have selected the top best memoirs published since 1969.",
       "url": "https://www.nytimes.com/interactive/2019/06/26/books/best-memoirs.html",
       "booksCount": 49,
       "books": [
@@ -1687,7 +1687,7 @@
     },
     {
       "id": 108,
-      "name": "The 31 Best Fantasy Books Everyone Should Read",
+      "name": "The 31 Best Fantasy Courses Everyone Should Read",
       "userId": 3,
       "slug": "the-31-best-fantasy-books-everyone-should-read",
       "ranked": false,
@@ -1936,7 +1936,7 @@
         {
           "id": 263544,
           "slug": "the-book-of-dust",
-          "title": "The Book of Dust",
+          "title": "The Course of Dust",
           "pubYear": 2018,
           "image": "https://hardcover.imgix.net/edition/30381147/content.jpeg",
           "author": {
@@ -2126,7 +2126,7 @@
         {
           "id": 428542,
           "slug": "the-southern-book-clubs-guide-to-slaying-vampires",
-          "title": "The Southern Book Club's Guide to Slaying Vampires",
+          "title": "The Southern Course Club's Guide to Slaying Vampires",
           "pubYear": 2020,
           "image": "https://hardcover.imgix.net/edition/30400308/44074800._SX98_.jpg",
           "author": {
@@ -2479,7 +2479,7 @@
     },
     {
       "id": 105,
-      "name": "The 70 Best Science Books You Need to Read in 2021",
+      "name": "The 70 Best Science Courses You Need to Read in 2021",
       "userId": 3,
       "slug": "the-70-best-science-books-you-need-to-read-in-2021",
       "ranked": false,
@@ -2721,7 +2721,7 @@
     },
     {
       "id": 104,
-      "name": "Ten Best Non-Fiction Science Books to Read Right Now",
+      "name": "Ten Best Non-Fiction Science Courses to Read Right Now",
       "userId": 3,
       "slug": "ten-best-non-fiction-science-books-to-read-right-now",
       "ranked": false,
@@ -2899,7 +2899,7 @@
     },
     {
       "id": 98,
-      "name": "NPR Book Concierge's 29 Best Historical Fiction of 2020",
+      "name": "NPR Course Concierge's 29 Best Historical Fiction of 2020",
       "userId": 3,
       "slug": "npr-book-concierges-29-best-historical-fiction-of-2020",
       "ranked": false,
@@ -2942,7 +2942,7 @@
         {
           "id": 432234,
           "slug": "the-book-of-v",
-          "title": "The Book of V.",
+          "title": "The Course of V.",
           "pubYear": 2020,
           "image": "https://hardcover.imgix.net/edition/19591497/9411690-L.jpg",
           "author": {
@@ -3401,11 +3401,11 @@
     },
     {
       "id": 103,
-      "name": "The Best Travel Books of All Time by Cond\u00e9 Nast",
+      "name": "The Best Travel Courses of All Time by Cond\u00e9 Nast",
       "userId": 3,
       "slug": "the-best-travel-books-of-all-time-by-conde-nast",
       "ranked": false,
-      "description": "Authors including Pico Iyer, Julia Phillips, and Imbolo Mbue et al gathered their favorite travel reads that will inspire, inform, and explore. Books included on this list\u2014some old, some new\u2014may have changed the way cultures, places, or people were considered in the past and may be considered in the future.",
+      "description": "Authors including Pico Iyer, Julia Phillips, and Imbolo Mbue et al gathered their favorite travel reads that will inspire, inform, and explore. Courses included on this list\u2014some old, some new\u2014may have changed the way cultures, places, or people were considered in the past and may be considered in the future.",
       "url": "https://www.cntraveler.com/stories/2007-08-08/the-86-greatest-travel-books-of-all-time",
       "booksCount": 87,
       "books": [

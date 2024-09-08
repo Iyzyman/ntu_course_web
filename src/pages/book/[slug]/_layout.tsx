@@ -1,4 +1,4 @@
-import Book from '@/components/Book'
+import Course from '@/components/Course'
 import Status from '@/components/Layout.Status'
 import { RenderGuard } from '@/components/providers/render.provider'
 import { useRootDispatch, useRootSelector } from '@/data/stores/root'
@@ -8,7 +8,7 @@ import {
   SourceOrigin,
 } from '@/data/stores/search.slice'
 import { useParams } from '@/router'
-import { SearchArtifact, BookSource, SearchCategory } from '@/types/shelvd'
+import { SearchArtifact, CourseSource, SearchCategory } from '@/types/shelvd'
 import { logger } from '@/utils/debug'
 import { cn } from '@/utils/dom'
 import { useEffect, useMemo } from 'react'
@@ -18,7 +18,7 @@ import {
   mockSearchArtifact,
 } from '../../../data/clients/mockdata.ts' // Import updated mock data
 
-const BookDetailsLayout = () => {
+const CourseDetailsLayout = () => {
   const dispatch = useRootDispatch()
   const [current, setCurrent] = [
     useRootSelector(SearchSelectors.state).current,
@@ -29,9 +29,9 @@ const BookDetailsLayout = () => {
   const { state } = useLocation()
 
   const searchCategory = SearchCategory.enum.books
-  const source: BookSource = (state?.source ?? current.source) as BookSource
+  const source: CourseSource = (state?.source ?? current.source) as CourseSource
 
-  const isValidSource = BookSource.safeParse(source).success
+  const isValidSource = CourseSource.safeParse(source).success
   const isValidSlug = !!slug.length
   const isValidParams = isValidSlug && isValidSource
 
@@ -59,7 +59,7 @@ const BookDetailsLayout = () => {
   useEffect(() => {
     if (isLoading) return
     logger(
-      { breakpoint: '[_layout.tsx:88]/BookDetailsLayout/ctx' },
+      { breakpoint: '[_layout.tsx:88]/CourseDetailsLayout/ctx' },
       { isLoading, ctx },
     )
 
@@ -84,7 +84,7 @@ const BookDetailsLayout = () => {
           />
         }
       >
-        <Book book={(common as Book)!}>
+        <Course book={(common as Course)!}>
           {/* HEADER */}
           <section
             style={{
@@ -102,7 +102,7 @@ const BookDetailsLayout = () => {
               )}
             >
               <aside className="flex flex-col gap-1 *:!mt-0">
-                {/* {source === BookSource.enum.hc &&
+                {/* {source === CourseSource.enum.hc &&
                   (origin?.featured_series?.position ?? 0) >= 1 && (
                     <Badge
                       variant="secondary"
@@ -139,10 +139,10 @@ const BookDetailsLayout = () => {
 
                 <aside>
                   <div style={{ width: '30%', marginTop: '10px' }}>
-                    <Book.ClickStats
+                    <Course.ClickStats
                       watchlists={common.watchlists}
                       likes={common.likes}
-                    ></Book.ClickStats>
+                    ></Course.ClickStats>
                   </div>
                 </aside>
               </aside>
@@ -151,10 +151,10 @@ const BookDetailsLayout = () => {
 
           {/* CONTENT */}
           <Outlet />
-        </Book>
+        </Course>
       </RenderGuard>
     </main>
   )
 }
 
-export default BookDetailsLayout
+export default CourseDetailsLayout

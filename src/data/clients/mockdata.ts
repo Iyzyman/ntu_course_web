@@ -1,8 +1,8 @@
 // mockData.ts
-import { Book, SearchArtifact } from '@/types/shelvd'
+import { Course, SearchArtifact } from '@/types/shelvd'
 import { SourceOrigin } from '@/data/stores/search.slice'
 
-export const mockBook: Book = {
+export const mockCourse: Course = {
   slug: 'mock-book-slug',
   code: 'SC3004',
   title: 'SC3004',
@@ -84,7 +84,7 @@ export const mockSearchArtifact: SearchArtifact<'books'> = {
     'The Multidisciplinary Design Project (MDP) is a group-based design project undertaken by a mixedgroup of students comprising of undergraduates from the CE, CS, BCG and BCE programmes. Theproject is practical-oriented and multi-disciplinary in nature, requiring system level integration of sub-systems developed by different team members. MDP is to be done over one semester by students who have reached at least a year 3 standing.Eligible students will be automatically registered by the school and will be allocated to their respectiveproject group based on a composition of students from different programmes.', // Optional
 }
 
-export const mockCourseData: Array<Book> = [
+export const mockCourseData: Array<Course> = [
   {
     key: 'pieces-of-the-action',
     slug: 'pieces-of-the-action',

@@ -1,4 +1,4 @@
-import Book from '@/components/Book'
+import Course from '@/components/Course'
 import Status from '@/components/Layout.Status'
 import WIPAlert from '@/components/Layout.WIP'
 import List from '@/components/List'
@@ -71,8 +71,8 @@ const ListPage = () => {
       >
         {results.map((hcList) => {
           const list: List = HardcoverUtils.parseList(hcList)
-          const books: Book[] = hcList.books.map((hcBook) =>
-            HardcoverUtils.parseBook(hcBook),
+          const books: Course[] = hcList.books.map((hcCourse) =>
+            HardcoverUtils.parseCourse(hcCourse),
           )
           const data = ListData.parse(list)
 
@@ -80,7 +80,7 @@ const ListPage = () => {
             <List
               key={`lists-${category}-${list.key}`}
               data={data}
-              overwriteBooks={books}
+              overwriteCourses={books}
             >
               {/* HEADER */}
               <section
@@ -116,9 +116,9 @@ const ListPage = () => {
               </section>
 
               <section className="w-full overflow-auto">
-                <List.Books isNumbered>
-                  {/* <Book.Thumbnail className="w-fit !rounded-none" /> */}
-                </List.Books>
+                <List.Courses isNumbered>
+                  {/* <Course.Thumbnail className="w-fit !rounded-none" /> */}
+                </List.Courses>
               </section>
             </List>
           )

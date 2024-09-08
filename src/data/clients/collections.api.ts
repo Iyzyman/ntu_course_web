@@ -3,7 +3,7 @@ import {
   CollectionsQueryResponse as CollectionsQueryResponse,
   UpdateCollectionNameBodyParams,
   deleteMultipleCollectionsBodyParams,
-  addBookToMultipleCollectionsBodyParams,
+  addCourseToMultipleCollectionsBodyParams,
   CollectionQueryResponse,
 } from '@/types/collections'
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
@@ -11,7 +11,7 @@ import { StoreClientPrefix } from '../static/store'
 import { logger } from '@/utils/debug'
 import { url } from '@/utils/http'
 import { getStringifiedRecord } from '@/utils/helpers'
-import { Book } from '@/types/shelvd'
+import { Course } from '@/types/shelvd'
 
 /** @deprecated for scaffold purposes only */
 // const getEndpoint = (
@@ -39,24 +39,24 @@ router.route("/api/users/:username/collections/:collectionType(core|user)").get(
 
 router.route("/api/users/:username/collections").post(createCollection);
 
-router.route("/api/users/:username/collections/:collection_key").get(getBooksInCollection);
+router.route("/api/users/:username/collections/:collection_key").get(getCoursesInCollection);
 
 router.route("/api/users/:username/collections/:collection_key").put(updateCollectionName);
 
 router.route("/api/users/:username/collections/:collection_key").delete(deleteCollection);
 
-router.route("/api/users/:username/collections/:collection_key/books/:book_key").post(addBookToCollection); --> This takes the book_key, username and collection key specified in the url.
+router.route("/api/users/:username/collections/:collection_key/books/:book_key").post(addCourseToCollection); --> This takes the book_key, username and collection key specified in the url.
 
-router.route("/api/users/:username/collections/:collection_key/books/:book_key").delete(removeBookFromCollection);
+router.route("/api/users/:username/collections/:collection_key/books/:book_key").delete(removeCourseFromCollection);
 
 router.route("/api/users/:username/collections").delete(deleteMultipleCollections);
 
-router.route("/api/users/:username/collectionsBatch").post(addBookToMultipleCollections);
+router.route("/api/users/:username/collectionsBatch").post(addCourseToMultipleCollections);
  */
 
 const Services: Record<string, string> = {
   User: `/api/users/:username`,
-  AddBook: `/api/add_book`,
+  AddCourse: `/api/add_book`,
 }
 
 const Routes: Record<string, Record<string, string>> = {
@@ -70,8 +70,8 @@ const Routes: Record<string, Record<string, string>> = {
   },
 }
 
-type AddBookRequest = {
-  book: Book
+type AddCourseRequest = {
+  book: Course
 }
 
 export const CollectionClient = createApi({
@@ -80,11 +80,11 @@ export const CollectionClient = createApi({
   tagTypes: [TagType],
   endpoints: (build) => ({
     /**@description Add book */
-    addBookToBooksTable: build.mutation<void, AddBookRequest>({
+    addCourseToCoursesTable: build.mutation<void, AddCourseRequest>({
       query: (book) => {
         const request = url({
           endpoint: `${Endpoint}`,
-          route: `${Services.AddBook}`,
+          route: `${Services.AddCourse}`,
         })
 
         logger({ breakpoint: `[collections.api.ts:89] POST /add_book` }, book)
@@ -192,8 +192,8 @@ export const CollectionClient = createApi({
       },
       invalidatesTags: [TagType],
     }),
-    /**@description Add a Book to a Collection */
-    addBookToCollection: build.mutation<
+    /**@description Add a Course to a Collection */
+    addCourseToCollection: build.mutation<
       CollectionsQueryResponse,
       { username: string; collection_key: string; book_key: string }
     >({
@@ -204,7 +204,7 @@ export const CollectionClient = createApi({
           routeParams: getStringifiedRecord(params),
         })
         logger(
-          { breakpoint: '[collections.api.ts:158] addBookToCollection' },
+          { breakpoint: '[collections.api.ts:158] addCourseToCollection' },
           params,
           request,
         )
@@ -215,10 +215,10 @@ export const CollectionClient = createApi({
       },
       invalidatesTags: [TagType],
     }),
-    /**@description Add a Book to Multiple Collection */
-    addBookToMultipleCollection: build.mutation<
+    /**@description Add a Course to Multiple Collection */
+    addCourseToMultipleCollection: build.mutation<
       CollectionsQueryResponse,
-      addBookToMultipleCollectionsBodyParams
+      addCourseToMultipleCollectionsBodyParams
     >({
       query: (body) => {
         logger({ breakpoint: '[collections.api.ts:177]' }, body)
@@ -236,7 +236,7 @@ export const CollectionClient = createApi({
       invalidatesTags: [TagType],
     }),
     /**@description Delete book from collection */
-    deleteBookFromCollection: build.mutation<
+    deleteCourseFromCollection: build.mutation<
       CollectionsQueryResponse,
       { username: string; collection_key: string; book_key: string }
     >({
@@ -300,12 +300,12 @@ export const {
   useGetCollectionQuery,
   useCreateCollectionMutation,
   useUpdateCollectionMutation,
-  useAddBookToCollectionMutation,
-  useAddBookToMultipleCollectionMutation,
-  useDeleteBookFromCollectionMutation,
+  useAddCourseToCollectionMutation,
+  useAddCourseToMultipleCollectionMutation,
+  useDeleteCourseFromCollectionMutation,
   useDeleteCollectionMutation,
   useDeleteMultipleCollectionMutation,
-  useAddBookToBooksTableMutation,
+  useAddCourseToCoursesTableMutation,
 } = CollectionClient
 
 export const CollectionEndpoints = CollectionClient.endpoints

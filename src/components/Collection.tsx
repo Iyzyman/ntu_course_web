@@ -19,7 +19,7 @@ import React, {
   useState,
 } from 'react'
 import { useNavigate } from 'react-router-dom'
-import Book from './Book'
+import Course from './Course'
 import { CreateCollectionForm } from './Collection.CreateForm'
 import { EditCollectionForm } from './Collection.EditForm'
 import { Badge } from './ui/Badge'
@@ -168,11 +168,11 @@ export const CollectionViewCard = ({
           <div className="flex min-h-[100px] w-full justify-start">
             {collection.books.map((book) => {
               return (
-                <Book
+                <Course
                   key={book.key}
                   book={book}
                 >
-                  <Book.Thumbnail
+                  <Course.Thumbnail
                     className={cn(
                       'ml-5 mt-5',
                       'rounded-lg',
@@ -180,7 +180,7 @@ export const CollectionViewCard = ({
                       'hover:shadow-xl',
                     )}
                   />
-                </Book>
+                </Course>
               )
             })}
             {
@@ -235,19 +235,19 @@ Collection.ViewCard = CollectionViewCard
 
 // Collection.Header = CollectionHeader
 
-// export type CollectionBookList = Card
-// export const CollectionBookList = () => {
+// export type CollectionCourseList = Card
+// export const CollectionCourseList = () => {
 //   const { collection, username } = useCollectionContext()
-//   const [deleteBookFromCollection] = useDeleteBookFromCollectionMutation()
-//   const handleBookDelete = (book_key: string) => {
+//   const [deleteCourseFromCollection] = useDeleteCourseFromCollectionMutation()
+//   const handleCourseDelete = (book_key: string) => {
 //     // use the hook for deleting book from collection
-//     deleteBookFromCollection({
+//     deleteCourseFromCollection({
 //       username: username,
 //       collection_key: collection.key,
 //       book_key: book_key,
 //     }).then((res) => {
 //       logger(
-//         { breakpoint: `[Collection.BookList:handleBookDelete:177]` },
+//         { breakpoint: `[Collection.CourseList:handleCourseDelete:177]` },
 //         `Response: ${res}`,
 //       )
 //     })
@@ -257,34 +257,34 @@ Collection.ViewCard = CollectionViewCard
 //     <div className="box-border w-[500px]">
 //       <Card className="mt-5 flex w-full flex-col ">
 //         <CardHeader className="m-2 flex justify-self-center">
-//           <CardTitle className="m-5">Book Details</CardTitle>
+//           <CardTitle className="m-5">Course Details</CardTitle>
 //         </CardHeader>
 //         {collection.books.map(
-//           (book: Book, idx) => (
-//             console.log('Book', book),
+//           (book: Course, idx) => (
+//             console.log('Course', book),
 //             (
 //               <CardContent
 //                 key={book.key}
 //                 className="flex flex-row justify-between space-x-2"
 //               >
-//                 <Book
+//                 <Course
 //                   key={book.key}
 //                   book={book!}
 //                 >
-//                   <Book.Thumbnail
+//                   <Course.Thumbnail
 //                     className={cn(
 //                       idx >= 9 && 'hidden',
 //                       idx >= 6 && 'hidden lg:block',
 //                     )}
 //                   />
-//                 </Book>
+//                 </Course>
 //                 <div className="flex flex-col">
 //                   <h3>{book.title}</h3>
 //                   <p>{book.author.name}</p>
 //                 </div>
 //                 <Button
 //                   className="mr-2"
-//                   onClick={() => handleBookDelete(book.key)}
+//                   onClick={() => handleCourseDelete(book.key)}
 //                 >
 //                   Delete
 //                 </Button>
@@ -297,7 +297,7 @@ Collection.ViewCard = CollectionViewCard
 //   )
 // }
 
-// Collection.BookList = CollectionBookList
+// Collection.CourseList = CollectionCourseList
 
 export type CollectionCreateButton = Dialog
 export const CollectionCreateButton = ({ username }: { username: string }) => {

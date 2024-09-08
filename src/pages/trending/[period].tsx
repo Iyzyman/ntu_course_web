@@ -1,4 +1,4 @@
-import Book from '@/components/Book'
+import Course from '@/components/Course'
 import Status from '@/components/Layout.Status'
 import { RenderGuard } from '@/components/providers/render.provider'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/Tabs'
@@ -31,7 +31,7 @@ const TrendingPeriodPage = () => {
   } = trending.useQuery(undefined)
 
   const results = (data?.results?.[period as Hardcover.TrendPeriod] ??
-    []) as Hardcover.Book[]
+    []) as Hardcover.Course[]
   const isLoading = isLoadingTrending || isFetchingTrending
   const isNotFound =
     !isValidParams || (!isLoading && !isSuccess && !results.length)
@@ -148,10 +148,10 @@ const TrendingPeriodPage = () => {
                 'w-full overflow-auto',
               )}
             >
-              {results.map((hcBook, idx) => {
-                const book: Book = HardcoverUtils.parseBook(hcBook)
+              {results.map((hcCourse, idx) => {
+                const book: Course = HardcoverUtils.parseCourse(hcCourse)
                 return (
-                  <Book
+                  <Course
                     key={`${idx}-${book.key}`}
                     book={book!}
                   >
@@ -175,7 +175,7 @@ const TrendingPeriodPage = () => {
                       )}
                     >
                       <small className="whitespace-nowrap	"># {idx + 1}</small>
-                      <Book.Thumbnail className="w-fit !rounded-none" />
+                      <Course.Thumbnail className="w-fit !rounded-none" />
 
                       <aside>
                         <p className="h4 line-clamp-3 truncate text-pretty capitalize">
@@ -187,7 +187,7 @@ const TrendingPeriodPage = () => {
                         </p>
                       </aside>
                     </div>
-                  </Book>
+                  </Course>
                 )
               })}
             </section>

@@ -1,5 +1,5 @@
 import Author from '@/components/Author'
-import Book from '@/components/Book'
+import Course from '@/components/Course'
 import Series from '@/components/Series'
 import { RenderGuard } from '@/components/providers/render.provider'
 import { Badge } from '@/components/ui/Badge'
@@ -512,9 +512,9 @@ export const SearchResults = ({ className, ...rest }: SearchResults) => {
         {(results?.hits ?? []).map((hit, idx) => {
           if (!hit) return
           if (category === 'books') {
-            const document = hit.document as Hardcover.SearchBook
-            const hcBook = HardcoverUtils.parseBookDocument({ document })
-            const book = HardcoverUtils.parseBook(hcBook) as Book
+            const document = hit.document as Hardcover.SearchCourse
+            const hcCourse = HardcoverUtils.parseCourseDocument({ document })
+            const book = HardcoverUtils.parseCourse(hcCourse) as Course
             if (!book) return null
             return (
               <Search.ResultItem
@@ -540,8 +540,8 @@ export const SearchResults = ({ className, ...rest }: SearchResults) => {
                   // 'flex-col sm:flex-row'
                 )}
               >
-                <Book book={book!}>
-                  <Book.Image />
+                <Course book={book!}>
+                  <Course.Image />
 
                   <article
                     className={cn(
@@ -580,7 +580,7 @@ export const SearchResults = ({ className, ...rest }: SearchResults) => {
                         )}
                         &nbsp;
                         <small className="text-muted-foreground">
-                          ({hcBook?.pubYear ?? '???'})
+                          ({hcCourse?.pubYear ?? '???'})
                         </small>
                       </p>
 
@@ -609,7 +609,7 @@ export const SearchResults = ({ className, ...rest }: SearchResults) => {
                           'max-sm:hidden',
                         )}
                       >
-                        {getLimitedArray(hcBook?.genres ?? [], 5).map(
+                        {getLimitedArray(hcCourse?.genres ?? [], 5).map(
                           (tag, idx) => (
                             <Badge
                               key={`book-tag-${idx}`}
@@ -627,10 +627,10 @@ export const SearchResults = ({ className, ...rest }: SearchResults) => {
                     </div>
 
                     <aside className="flex flex-row place-content-end max-md:place-content-start md:flex-col">
-                      <Book.DropdownMenu />
+                      <Course.DropdownMenu />
                     </aside>
                   </article>
-                </Book>
+                </Course>
               </Search.ResultItem>
             )
           } else if (category === 'authors') {
@@ -740,9 +740,9 @@ export const SearchResults = ({ className, ...rest }: SearchResults) => {
                       'sm:max-w-xl',
                     )}
                   >
-                    <Series.Books displayLimit={12}>
-                      <Book.Thumbnail className="w-fit !rounded-none" />
-                    </Series.Books>
+                    <Series.Courses displayLimit={12}>
+                      <Course.Thumbnail className="w-fit !rounded-none" />
+                    </Series.Courses>
                   </aside>
                 </Series>
               </SearchCommand.ResultItem>
@@ -907,13 +907,13 @@ export const SearchCommandResults = () => {
         if (!hit) return
 
         if (category === 'books') {
-          const book = HardcoverUtils.parseDocument({ category, hit }) as Book
+          const book = HardcoverUtils.parseDocument({ category, hit }) as Course
           return (
             <SearchCommand.ResultItem
               key={`${idx}-${book.key}`}
               asChild
             >
-              <Book book={book!}>
+              <Course book={book!}>
                 <CommandItem
                   value={book.title}
                   className={cn(
@@ -943,26 +943,28 @@ export const SearchCommandResults = () => {
                   {isEmptyQuery ? (
                     <MagnifyingGlassIcon className="size-4" />
                   ) : (
-                    <Book.Image />
+                    <Course.Image />
                   )}
 
                   <p className="!m-0">
-                    {book?.title?.split(' ').map((titleText, idx) => (
-                      <span
-                        key={`${book.key}-title-${idx}`}
-                        className={cn(
-                          query
-                            .toLowerCase()
-                            .includes(titleText.toLowerCase()) &&
-                            'text-yellow-500',
-                        )}
-                      >
-                        {titleText}&nbsp;
-                      </span>
-                    ))}
+                    {book?.title
+                      ?.split(' ')
+                      .map((titleText: string, idx: number) => (
+                        <span
+                          key={`${book.key}-title-${idx}`}
+                          className={cn(
+                            query
+                              .toLowerCase()
+                              .includes(titleText.toLowerCase()) &&
+                              'text-yellow-500',
+                          )}
+                        >
+                          {titleText}&nbsp;
+                        </span>
+                      ))}
                   </p>
                 </CommandItem>
-              </Book>
+              </Course>
             </SearchCommand.ResultItem>
           )
         } else if (category === 'authors') {

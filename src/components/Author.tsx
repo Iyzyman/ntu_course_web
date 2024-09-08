@@ -1,4 +1,4 @@
-import Book from '@/components/Book'
+import Course from '@/components/Course'
 import Series from '@/components/Series'
 import { RenderGuard } from '@/components/providers/render.provider'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/Avatar'
@@ -102,8 +102,8 @@ const AuthorImage = ({
 }
 Author.Image = AuthorImage
 
-type AuthorBooks = HTMLAttributes<HTMLDivElement>
-const AuthorBooks = ({ children, className, ...rest }: AuthorBooks) => {
+type AuthorCourses = HTMLAttributes<HTMLDivElement>
+const AuthorCourses = ({ children, className, ...rest }: AuthorCourses) => {
   const { author } = useAuthorContext()
 
   const navigate = useNavigate()
@@ -111,7 +111,7 @@ const AuthorBooks = ({ children, className, ...rest }: AuthorBooks) => {
   //#endregion  //*======== SOURCE/HC ===========
   const { search: hcSearch } = HardcoverEndpoints
 
-  const hcSearchBooks = hcSearch.useQuery(
+  const hcSearchCourses = hcSearch.useQuery(
     {
       q: author?.name ?? '',
       page: 1,
@@ -127,32 +127,33 @@ const AuthorBooks = ({ children, className, ...rest }: AuthorBooks) => {
     },
   )
 
-  const hcBooks: Book[] = useMemo(() => {
-    const { data, isSuccess } = hcSearchBooks
+  const hcCourses: Course[] = useMemo(() => {
+    const { data, isSuccess } = hcSearchCourses
 
     const results = data?.results?.[0]
-    const isLoading = hcSearchBooks.isLoading || hcSearchBooks.isFetching
+    const isLoading = hcSearchCourses.isLoading || hcSearchCourses.isFetching
     const isNotFound = !isLoading && !isSuccess && (results?.found ?? 0) < 1
     if (isNotFound) return []
 
     const hits = results?.hits ?? []
     const books = hits.map(
-      (hit) => HardcoverUtils.parseDocument({ category: 'books', hit }) as Book,
+      (hit) =>
+        HardcoverUtils.parseDocument({ category: 'books', hit }) as Course,
     )
     return books
-  }, [hcSearchBooks])
+  }, [hcSearchCourses])
   //#endregion  //*======== SOURCE/HC ===========
 
   const books = useMemo(() => {
-    let books: Book[] = []
+    let books: Course[] = []
     switch (author.source) {
       case 'hc': {
-        books = hcBooks
+        books = hcCourses
       }
     }
 
     return books
-  }, [author.source, hcBooks])
+  }, [author.source, hcCourses])
 
   if (!books.length) return null
 
@@ -163,7 +164,7 @@ const AuthorBooks = ({ children, className, ...rest }: AuthorBooks) => {
     >
       {children}
       {books.map((book, idx) => (
-        <Book
+        <Course
           key={`${author.key}-${book.source}-${idx}-${book.key}`}
           book={book!}
         >
@@ -189,7 +190,7 @@ const AuthorBooks = ({ children, className, ...rest }: AuthorBooks) => {
               'w-full border-b py-2',
             )}
           >
-            <Book.Thumbnail className="w-fit !rounded-none" />
+            <Course.Thumbnail className="w-fit !rounded-none" />
 
             <aside>
               <p className="h4 line-clamp-3 truncate text-pretty capitalize">
@@ -203,12 +204,12 @@ const AuthorBooks = ({ children, className, ...rest }: AuthorBooks) => {
               </p>
             </aside>
           </div>
-        </Book>
+        </Course>
       ))}
     </section>
   )
 }
-Author.Books = AuthorBooks
+Author.Courses = AuthorCourses
 
 type AuthorSeries = HTMLAttributes<HTMLDivElement>
 const AuthorSeries = ({
@@ -318,9 +319,9 @@ const AuthorSeries = ({
                 'sm:max-w-xl',
               )}
             >
-              <Series.Books displayLimit={12}>
-                <Book.Thumbnail className="w-fit !rounded-none" />
-              </Series.Books>
+              <Series.Courses displayLimit={12}>
+                <Course.Thumbnail className="w-fit !rounded-none" />
+              </Series.Courses>
             </aside>
           </div>
         </Series>

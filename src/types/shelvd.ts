@@ -6,10 +6,10 @@ export type User = Pick<
   'id' | 'createdAt' | 'username' | 'profileImageUrl' | 'firstName' | 'lastName'
 >
 
-export const BookSources = [`ol`, `nyt`, `google`, `hc`, `shelvd`] as const
-export const BookSource = z.enum(BookSources)
-export type BookSource = z.infer<typeof BookSource>
-export const DefaultBookSource = BookSource.enum.hc
+export const CourseSources = [`ol`, `nyt`, `google`, `hc`, `shelvd`] as const
+export const CourseSource = z.enum(CourseSources)
+export type CourseSource = z.infer<typeof CourseSource>
+export const DefaultCourseSource = CourseSource.enum.hc
 
 export const BaseInfo = z.object({
   key: z.string().min(1),
@@ -24,15 +24,15 @@ export const Author = BaseInfo.extend({
 })
 export type Author = z.infer<typeof Author>
 
-export const BookAuthor = Author.pick({
+export const CourseAuthor = Author.pick({
   key: true,
   slug: true,
   name: true,
   image: true,
 })
-export type BookAuthor = z.infer<typeof BookAuthor>
+export type CourseAuthor = z.infer<typeof CourseAuthor>
 
-export const Book = BaseInfo.extend({
+export const Course = BaseInfo.extend({
   title: z.string().min(1).default(''),
   code: z.string().min(1).default('').optional(),
   school: z.string().min(1).default('').optional(),
@@ -41,7 +41,7 @@ export const Book = BaseInfo.extend({
   likes: z.number().default(0),
   watchlists: z.number().default(0),
 })
-export type Book = z.infer<typeof Book>
+export type Course = z.infer<typeof Course>
 
 export const Character = BaseInfo.extend({
   name: z.string().min(1),
@@ -68,7 +68,7 @@ export const List = BaseInfo.extend({
     .trim(),
   description: z.string().default('').optional(),
   booksCount: z.number().default(0).optional(),
-  books: Book.array().default([]),
+  books: Course.array().default([]),
   creator: BaseInfo.pick({ key: true })
     .default({
       key: 'unknown',
@@ -106,16 +106,16 @@ export const ListData = List.omit({ books: true }).extend({
 })
 export type ListData = z.infer<typeof ListData>
 
-export const BookDetailCategories = [
+export const CourseDetailCategories = [
   `information`,
   `reviews`,
   `editions`,
   `lists`,
 ] as const
-export const BookDetailCategory = z.enum(BookDetailCategories)
-export type BookDetailCategory = z.infer<typeof BookDetailCategory>
-export const DefaultBookDetailCategory: BookDetailCategory =
-  BookDetailCategory.enum.information
+export const CourseDetailCategory = z.enum(CourseDetailCategories)
+export type CourseDetailCategory = z.infer<typeof CourseDetailCategory>
+export const DefaultCourseDetailCategory: CourseDetailCategory =
+  CourseDetailCategory.enum.information
 
 export const AuthorDetailCategories = [`books`, `series`] as const
 export const AuthorDetailCategory = z.enum(AuthorDetailCategories)
@@ -136,7 +136,7 @@ export const SearchCategory = z.enum(SearchCategories)
 export const DefaultSearchCategory = SearchCategory.enum.books
 
 type SearchArtifactMap = {
-  books: Book
+  books: Course
   authors: Author
   characters: Character
   lists: List
@@ -152,7 +152,7 @@ export const SearchCategoryHistory = z.record(
 export type SearchCategoryHistory = z.infer<typeof SearchCategoryHistory>
 
 type SearchDocumentMap = {
-  books: Book
+  books: Course
   authors: Author
   characters: Character
   lists: ListData

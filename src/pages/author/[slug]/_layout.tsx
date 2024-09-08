@@ -11,7 +11,7 @@ import {
 import { Navigate, useParams } from '@/router'
 import { Hardcover } from '@/types'
 import {
-  BookSource,
+  CourseSource,
   SearchArtifact,
   SearchCategory,
   Author as zAuthor,
@@ -36,9 +36,9 @@ const AuthorDetailsLayout = () => {
   const { state } = useLocation()
 
   const searchCategory = SearchCategory.enum.authors
-  const source: BookSource = (state?.source ?? current.source) as BookSource
+  const source: CourseSource = (state?.source ?? current.source) as CourseSource
 
-  const isValidSource = BookSource.safeParse(source).success
+  const isValidSource = CourseSource.safeParse(source).success
   const isValidSlug = !!slug.length
   const isValidParams = isValidSlug && isValidSource
   //#endregion  //*======== PARAMS ===========
@@ -48,7 +48,7 @@ const AuthorDetailsLayout = () => {
   const {
     data,
     isSuccess,
-    isLoading: isLoadingBook,
+    isLoading: isLoadingCourse,
     isFetching,
   } = searchExact.useQuery(
     {
@@ -61,7 +61,7 @@ const AuthorDetailsLayout = () => {
   )
 
   const results = data?.results?.[0]
-  const isLoading = isLoadingBook || isFetching
+  const isLoading = isLoadingCourse || isFetching
   let isNotFound =
     !isValidParams || (!isLoading && !isSuccess && (results?.found ?? 0) < 1)
 

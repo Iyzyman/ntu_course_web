@@ -1,23 +1,23 @@
-import Book from '@/components/Book'
+import Course from '@/components/Course'
 import WIPAlert from '@/components/Layout.WIP'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/Tabs'
 import { useRootSelector } from '@/data/stores/root'
 import { SearchSelectors, SourceOrigin } from '@/data/stores/search.slice'
 import { useNavigate, useParams } from '@/router'
 import {
-  BookDetailCategory,
-  DefaultBookDetailCategory,
+  CourseDetailCategory,
+  DefaultCourseDetailCategory,
   SearchArtifact,
 } from '@/types/shelvd'
 import { cn } from '@/utils/dom'
 import { Separator } from '@radix-ui/react-dropdown-menu'
 
-const DisplayBookDetailCategories = BookDetailCategory.extract([
+const DisplayCourseDetailCategories = CourseDetailCategory.extract([
   'information',
   'reviews',
 ])
 
-const BookDetailCategoryPage = () => {
+const CourseDetailCategoryPage = () => {
   const navigate = useNavigate()
 
   //#endregion  //*======== STORE ===========
@@ -27,12 +27,12 @@ const BookDetailCategoryPage = () => {
   //#endregion  //*======== STORE ===========
 
   //#endregion  //*======== PARAMS ===========
-  const { slug, category = DefaultBookDetailCategory } = useParams(
+  const { slug, category = DefaultCourseDetailCategory } = useParams(
     '/book/:slug/:category',
   )
 
   const isValidCategory =
-    DisplayBookDetailCategories.safeParse(category).success
+    DisplayCourseDetailCategories.safeParse(category).success
   const isValidCurrentCategory = current.category === 'books'
   const isValidParams = isValidCategory && isValidCurrentCategory
   //#endregion  //*======== PARAMS ===========
@@ -43,10 +43,11 @@ const BookDetailCategoryPage = () => {
     <Tabs
       value={category}
       onValueChange={(c) => {
-        const isValidCategory = DisplayBookDetailCategories.safeParse(c).success
+        const isValidCategory =
+          DisplayCourseDetailCategories.safeParse(c).success
         if (!isValidCategory) return
 
-        const isDefaultCategory = c === DefaultBookDetailCategory
+        const isDefaultCategory = c === DefaultCourseDetailCategory
         navigate(
           {
             pathname: '/book/:slug/:category',
@@ -74,7 +75,7 @@ const BookDetailCategoryPage = () => {
           'overflow-x-auto border-transparent sm:border-border',
         )}
       >
-        {DisplayBookDetailCategories.options.map((cat) => (
+        {DisplayCourseDetailCategories.options.map((cat) => (
           <TabsTrigger
             key={`search-tab-${cat}`}
             value={cat}
@@ -91,10 +92,10 @@ const BookDetailCategoryPage = () => {
         ))}
       </TabsList>
 
-      {category !== BookDetailCategory.enum.information && <WIPAlert />}
+      {category !== CourseDetailCategory.enum.information && <WIPAlert />}
 
-      <TabsContent value={DisplayBookDetailCategories.enum.information}>
-        <BookInfo />
+      <TabsContent value={DisplayCourseDetailCategories.enum.information}>
+        <CourseInfo />
       </TabsContent>
     </Tabs>
   )
@@ -102,7 +103,7 @@ const BookDetailCategoryPage = () => {
 
 //#endregion  //*======== COMPONENTS ===========
 
-const BookInfo = () => {
+const CourseInfo = () => {
   //#endregion  //*======== STORE ===========
   const current = useRootSelector(SearchSelectors.state).current
   const origin = current.origin as SourceOrigin<'hc', 'books'>
@@ -116,13 +117,13 @@ const BookInfo = () => {
   // return null
   return (
     <section className="my-4 flex flex-col gap-6">
-      <Book book={common}>
-        <Book.Description />
+      <Course book={common}>
+        <Course.Description />
 
         <Separator />
 
         <div className={cn('flex flex-col-reverse place-items-start')}>
-          <Book.Series className="flex-1" />
+          <Course.Series className="flex-1" />
 
           <aside
             className={cn(
@@ -131,18 +132,18 @@ const BookInfo = () => {
               '!w-full flex-1',
             )}
           >
-            <Book.Tags
+            <Course.Tags
               title="Tags"
               tags={origin?.genres ?? []}
               className="h-full !w-full"
             />
           </aside>
         </div>
-      </Book>
+      </Course>
     </section>
   )
 }
 
 //#endregion  //*======== COMPONENTS ===========
 
-export default BookDetailCategoryPage
+export default CourseDetailCategoryPage
