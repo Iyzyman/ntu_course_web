@@ -19,8 +19,12 @@
   },
   "dependencies": {
     "@clerk/clerk-react": "^4.30.4",
+    "@emotion/react": "^11.13.3",
+    "@emotion/styled": "^11.13.0",
     "@generouted/react-router": "^1.18.2",
     "@hookform/resolvers": "^3.3.4",
+    "@mui/icons-material": "^6.0.2",
+    "@mui/material": "^6.0.2",
     "@radix-ui/react-accordion": "^1.1.2",
     "@radix-ui/react-avatar": "^1.0.4",
     "@radix-ui/react-checkbox": "^1.0.4",

@@ -2,7 +2,8 @@ import { Button } from '@/components/ui/Button'
 import { AppThemeMode } from '@/data/static/app'
 import { AppActions, AppSelectors } from '@/data/stores/app.slice'
 import { useRootDispatch, useRootSelector } from '@/data/stores/root'
-import { MoonIcon, SunIcon } from '@radix-ui/react-icons'
+import DarkModeOutlinedIcon from '@mui/icons-material/DarkModeOutlined';
+import LightModeOutlinedIcon from '@mui/icons-material/LightModeOutlined';
 
 export const ThemeButton = () => {
   const dispatch = useRootDispatch()
@@ -12,7 +13,7 @@ export const ThemeButton = () => {
   ]
 
   const isDarkMode = themeMode === AppThemeMode.enum.dark
-  const ThemeModeIcon = isDarkMode ? MoonIcon : SunIcon
+  const ThemeModeIcon = isDarkMode ? DarkModeOutlinedIcon : LightModeOutlinedIcon
   return (
     <Button
       variant="outline"
@@ -25,7 +26,7 @@ export const ThemeButton = () => {
       }}
       className="group"
     >
-      <ThemeModeIcon className="size-4 group-active:animate-bounce" />
+      <ThemeModeIcon className="size-4" />
     </Button>
   )
 }

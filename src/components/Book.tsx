@@ -1,9 +1,11 @@
 import { RenderGuard } from '@/components/providers/render.provider'
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/Avatar'
+import { Avatar} from '@/components/ui/Avatar'
 import { Badge, BadgeProps } from '@/components/ui/Badge'
 import { Button, ButtonProps } from '@/components/ui/Button'
 import { Card, CardDescription, CardHeader } from '@/components/ui/Card'
 import { Checkbox } from '@/components/ui/Checkbox'
+import { List } from '@/components/List'
+import { Hardcover } from '@/types'
 import {
   Command,
   CommandEmpty,
@@ -40,8 +42,8 @@ import {
 } from '@/data/clients/shelvd.api'
 import { useRootSelector } from '@/data/stores/root'
 import { UserSelectors } from '@/data/stores/user.slice'
-import { useNavigate } from '@/router'
-import { Book as BookInfo, Series } from '@/types/shelvd'
+import { Link, useNavigate } from '@/router'
+import { Book as BookInfo, Series,ListData } from '@/types/shelvd'
 import { HardcoverUtils } from '@/utils/clients/hardcover'
 import { ShelvdUtils } from '@/utils/clients/shelvd'
 import { logger } from '@/utils/debug'
@@ -64,7 +66,9 @@ import {
   useEffect,
   useState,
 } from 'react'
-
+import ThumbUpOutlinedIcon from '@mui/icons-material/ThumbUpOutlined';
+import StarBorderOutlinedIcon from '@mui/icons-material/StarBorderOutlined';
+import AddCircleOutlineOutlinedIcon from '@mui/icons-material/AddCircleOutlineOutlined';
 import { ring2 } from 'ldrs'
 ring2.register()
 export type Book = BookInfo
@@ -108,7 +112,7 @@ export const Book = ({ children, ...value }: BookProvider) => {
           source: value.book.source,
         },
         params: {
-          slug: value.book?.slug ?? value.book.key,
+          slug: value.book?.slug ?? value.book.key
         },
         // unstable_viewTransition: true,
       },
@@ -142,77 +146,64 @@ export const Book = ({ children, ...value }: BookProvider) => {
 
 type BookImage = Avatar
 export const BookImage = ({ className, children, ...rest }: BookImage) => {
-  const { book, isSkeleton } = useBookContext()
-
-  const getRandomCoverSource = (idx: number = 0) => {
-    // const maxCoverIdx = 9
-    // if (!idx) idx = Math.floor(Math.random() * maxCoverIdx) + 1
-    const coverSrc = `/images/covers/cover-${idx + 1}.png`
-    return coverSrc
-  }
-
+  const { book } = useBookContext();
+  //TODO: change to course code
   return (
     <Avatar
       className={cn(
         'flex place-content-center place-items-center overflow-clip p-0.5',
-        'aspect-[3/4.5] min-h-28 min-w-20',
-        // '!h-28 !w-auto !max-w-20',
-        '!rounded-none hover:bg-primary',
-        // 'rounded-lg',
+        'aspect-square', // Ensures aspect ratio of 1:1
+        'h-[113px] w-[113px]', // Set the size to 113px by 113px
+        'bg-[#373B45]', // Set background color
         className,
       )}
+      style={{ borderRadius: '5px', position: 'relative' }}
       {...rest}
     >
       {children ?? (
         <>
-          {!isSkeleton && (
-            <AvatarImage
-              src={book.image}
-              alt={book.title}
-              className={cn(
-                'h-full w-full',
-                // 'h-full w-20',
-                '!rounded-none',
-              )}
-            />
-          )}
-
-          <AvatarFallback
+        
+          <div
             className={cn(
-              'relative',
-              '!rounded-none',
-              'h-full w-full',
-              // 'h-full w-20',
-              'flex place-content-center place-items-center',
-              'bg-gradient-to-b from-transparent to-background/100',
-              isSkeleton && 'animate-pulse',
+              'text-center'
             )}
+            style={{
+              fontFamily: 'Bebas Neue',
+              fontWeight: '400', // Corrected fontWeight syntax
+              fontSize: '40px',
+              cursor: 'default', // Sets the cursor to default, preventing text selection pointer
+            }}
           >
-            <img
-              src={getRandomCoverSource()}
-              alt={book.title}
-              className={cn(
-                'h-full w-full',
-                // 'h-full w-20',
-                '!rounded-none',
-              )}
-            />
+            {/* {book.title} */}
+            SCXXXX
+          </div>
 
-            <span
-              className={cn(
-                'absolute inset-x-1 bottom-1',
-                'h4 line-clamp-2 truncate text-pretty text-sm capitalize leading-tight tracking-tighter',
-                'text-muted-foreground brightness-50 invert',
-              )}
-            >
-              {book.title}
-            </span>
-          </AvatarFallback>
+          <div
+            className="stats flex justify-between w-full px-2"
+            style={{
+              position: 'absolute', // Absolute positioning
+              bottom: '5px', // Align at the bottom
+              left: '0', // Full width alignment
+              right: '0', // Full width alignment
+              fontSize: '12px', // Adjust size for better fit
+            }}
+          >
+            <div className="flex items-center gap-1">
+              <ThumbUpOutlinedIcon fontSize="small" /> 
+              <span style={{ marginTop: '2px' }}>{book.likes}</span>
+            </div>
+            <div className="flex items-center gap-0.5">
+              <StarBorderOutlinedIcon fontSize="small" />
+              <span style={{ marginTop: '2px' }}>{book.watchlists}</span>
+            </div>
+          </div>
         </>
+        
       )}
     </Avatar>
-  )
-}
+  );
+};
+
 Book.Image = BookImage
 
 type BookThumbnail = Card
@@ -231,8 +222,11 @@ export const BookThumbnail = ({
             'flex place-content-center place-items-center',
             'hover:bg-primary',
             'shrink-0',
+            'rounded-md',
+            'border-none',
             className,
           )}
+          style={{ width: '113px', height: '113px', borderRadius: '8px' }}
           onClick={onNavigate}
           {...rest}
         >
@@ -243,7 +237,14 @@ export const BookThumbnail = ({
       <HoverCardContent
         side="top"
         sideOffset={5}
-        className={cn('flex flex-col gap-2', 'bg-secondary', 'w-fit py-2')}
+        className={cn(
+          'flex flex-col gap-2',
+          'w-[113]',
+          'h-[113]',
+          'p-4', // Increase padding for more space inside
+          'py-4', // Optional: Increase padding-top and padding-bottom
+          'rounded-md'
+        )}
       >
         <HoverCardArrow className="fill-secondary" />
         {isSkeleton ? (
@@ -557,7 +558,7 @@ export const BookTags = ({
               className={cn(
                 'truncate text-xs capitalize',
                 idx + 1 > tagsPreviewThreshold &&
-                  (showAllTags ? 'block' : 'hidden sm:block lg:hidden'),
+                (showAllTags ? 'block' : 'hidden sm:block lg:hidden'),
                 tagClsx,
               )}
               {...tagProps}
@@ -600,7 +601,7 @@ export const BookDescription = ({
           'p whitespace-break-spaces text-pretty font-sans',
           'relative flex-1',
           !showFullDesc &&
-            'masked-overflow masked-overflow-top line-clamp-4 !overflow-y-hidden',
+          'masked-overflow masked-overflow-top line-clamp-4 !overflow-y-hidden',
           isEmptyDescription && 'italic text-muted-foreground',
         )}
       >
@@ -825,6 +826,90 @@ export const BiggerBookCard = ({
 }
 Book.BiggerBookCard = BiggerBookCard
 
+type BookMatrix = HTMLAttributes<HTMLDivElement> & {
+  displayCategoryLists: Hardcover.List[]
+  category: string
+}
+export const BookMatrix = ({ displayCategoryLists, category }: BookMatrix) => {
+  return (
+    <section
+      className={cn(
+        'w-full',
+        'flex flex-col gap-x-8 gap-y-8 lg:grid lg:grid-cols-2',
+        'my-6',
+        'snap-y snap-proximity overflow-y-auto',
+        'grid', // Always use grid
+        'grid-cols-1', // Default to one column
+        'lg:grid-cols-1', // Two columns for large screens (1024px and up)
+        '2xl:grid-cols-2' // Enforce two columns for extra large screens (1440px and up)
+      )}
+      style={{ columnGap: '190px' }}
+    >
+      {displayCategoryLists.map((hcList, idx) => {
+        const list = HardcoverUtils.parseList(hcList);
+        const books = hcList.books.map((hcBook) =>
+          HardcoverUtils.parseBook(hcBook),
+        );
+        const data = ListData.parse(list);
+        console.log(books)
+        return (
+          <List
+            key={`lists-${category}-${idx}-${list.key}`}
+            data={data}
+            overwriteBooks={books}
+          >
+            <section
+              className={cn(
+                'flex flex-col place-content-start place-items-start gap-1',
+              )}
+              style={{ width: '600px' }}
+            >
+              <header className={cn('w-full', 'flex flex-col gap-0.5')}>
+                <div className="flex w-full flex-row flex-wrap place-items-center gap-2">
+                  <span style={{ color: '#AABAE1' }}>{list.name}</span>
+                </div>
+              </header>
+              <div
+                className={cn(
+                  'w-fit place-content-start place-items-start gap-2',
+                  'flex flex-row flex-wrap',
+                )}
+              >
+                <List.Books displayLimit={15}>
+                  <Book.Thumbnail className="w-fit !rounded-none" />
+                </List.Books>
+                <Link
+                  style={{
+                    width: '100%',
+                    border: '1px solid #A3A3A3',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    borderRadius: '5px',
+                    height: '28px'
+                  }}
+                  to={{
+                    pathname: '/discover/:category/:slug',
+                  }}
+                  params={{
+                    category,
+                    slug: list?.slug ?? list?.key ?? '',
+                  }}
+                  unstable_viewTransition
+                >
+                  <AddCircleOutlineOutlinedIcon fontSize='small' style={{color: "#A3A3A3", marginRight:'4px'}} />
+                  <span style={{fontSize:"12px",fontWeight: "200",lineHeight: "4px"}}>Show More</span>
+                </Link>
+              </div>
+            </section>
+          </List>
+        );
+      })}
+    </section>
+  );
+};
+
+Book.BookMatrix = BookMatrix
 // type BookEditions = HTMLAttributes<HTMLDivElement>
 // const BookEditions = ({
 //   children,

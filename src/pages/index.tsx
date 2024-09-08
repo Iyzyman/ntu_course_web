@@ -1,5 +1,4 @@
 import { Book } from '@/components/Book'
-import { List } from '@/components/List'
 import { RenderGuard } from '@/components/providers/render.provider'
 import { Separator } from '@/components/ui/Separator'
 import { Skeleton } from '@/components/ui/Skeleton'
@@ -9,7 +8,7 @@ import { NYTEndpoints } from '@/data/clients/nyt.api'
 import { Link, useNavigate } from '@/router'
 import { Hardcover } from '@/types'
 import { TrendPeriodTitle } from '@/types/hardcover'
-import { ListData, Book as zBook } from '@/types/shelvd'
+import { Book as zBook } from '@/types/shelvd'
 import { HardcoverUtils } from '@/utils/clients/hardcover'
 import { NYTUtils } from '@/utils/clients/nyt'
 import { cn } from '@/utils/dom'
@@ -29,10 +28,11 @@ const IndexPage = () => {
       <section>
         <header className="flex flex-col place-items-center gap-10 *:w-full">
           <h1 className="inline-flex flex-col gap-2">
-            <span>Track books you’ve read.</span>
-            <span>Save those you want to read.</span>
+            <span>Don’t know which courses to take?</span>
+            <span>Find courses that suits you.</span>
+            <span>Save those interesting ones.</span>
             <span>
-              Tell your friends what’s good{' '}
+              Tell us why the course is good{' '}
               <span className="text-muted-foreground">(or don't)</span>.
             </span>
           </h1>
@@ -60,7 +60,7 @@ export const FeaturedListsPreviewSection = () => {
   })
   const categoryLists: Hardcover.List[] = (data?.results ??
     []) as Hardcover.List[]
-  const displayLimit = 6
+  const displayLimit = 4
   const displayCategoryLists: Hardcover.List[] = getLimitedArray(
     categoryLists,
     displayLimit,
@@ -77,61 +77,16 @@ export const FeaturedListsPreviewSection = () => {
           unstable_viewTransition
         >
           <p className="h3 flex-1 cursor-pointer truncate capitalize leading-none tracking-tight">
-            Discover Lists ✨
+            Discover Courses
           </p>
-        </Link>
+        
 
         <p className="small font-light normal-case text-muted-foreground">
-          Browse our catalogue of user curated lists to find your next read.
+          Click here to browse through our courses by faculties.
         </p>
+        </Link>
       </header>
-
-      <section
-        className={cn(
-          // 'max-h-[80dvh] w-full',
-          'w-full',
-
-          'flex flex-col gap-6 lg:grid lg:grid-cols-2',
-
-          'snap-y snap-proximity overflow-y-auto',
-        )}
-      >
-        {displayCategoryLists.map((hcList, idx) => {
-          const list: List = HardcoverUtils.parseList(hcList)
-          const books: Book[] = hcList.books.map((hcBook) =>
-            HardcoverUtils.parseBook(hcBook),
-          )
-          const data = ListData.parse(list)
-
-          return (
-            <RenderGuard
-              key={`lists-${category}-${idx}-${list.key}`}
-              renderIf={ListData.safeParse(data).success}
-            >
-              <List
-                data={data}
-                overwriteBooks={books}
-              >
-                <div className="flex flex-col gap-y-2">
-                  <h3 className="small line-clamp-1 truncate text-pretty font-semibold uppercase leading-none tracking-tight text-muted-foreground">
-                    {list.name}
-                  </h3>
-                  <div
-                    className={cn(
-                      'w-full place-content-start place-items-start gap-2',
-                      'flex flex-row flex-wrap',
-                    )}
-                  >
-                    <List.Books>
-                      {/* <Book.Thumbnail className="w-fit !rounded-none" /> */}
-                    </List.Books>
-                  </div>
-                </div>
-              </List>
-            </RenderGuard>
-          )
-        })}
-      </section>
+          <Book.BookMatrix displayCategoryLists={displayCategoryLists} category={category}></Book.BookMatrix>
     </section>
   )
 }
@@ -155,8 +110,8 @@ export const TrendingPreviewSection = ({
       pauseOnClick
       autoFill
       gradient
-      gradientColor="hsl(var(--background))"
-      className={cn('place-items-start gap-2', className)}
+      gradientColor="#020817"
+      className={cn('place-items-start', className)}
       {...marquee}
     >
       {displayBooks.map((book, idx) => (
@@ -170,7 +125,7 @@ export const TrendingPreviewSection = ({
           <Book book={zBook.parse(book)!}>
             <Book.Thumbnail
               className={cn(
-                'w-fit !rounded-none',
+                'w-fit !rounded-none mr-1 mt-1',
                 idx > 8 && 'hidden sm:block',
               )}
             />
@@ -200,12 +155,12 @@ export const TrendingPreview = () => {
             }}
           >
             <p className="h3 flex-1 cursor-pointer truncate capitalize leading-none tracking-tight">
-              Trending Now 🤩
+              Trending Courses
             </p>
           </Link>
 
           <p className="small font-light normal-case text-muted-foreground">
-            Here are a few books that have been read the most in the{' '}
+            Don’t know where to start? Heres our recommendation of the most liked courses in the{' '}
             {Hardcover.TrendPeriodTitle[period].toLowerCase()}.
           </p>
         </aside>

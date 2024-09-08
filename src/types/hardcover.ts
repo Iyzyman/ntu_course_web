@@ -109,7 +109,7 @@ export type TrendPeriod = z.infer<typeof TrendPeriod>
 export const DefaultTrendPeriod: TrendPeriod = TrendPeriod.enum.recent
 export const TrendPeriodTitle: Record<TrendPeriod, string> = {
   [TrendPeriod.enum.recent]: 'Last 3 Months',
-  [TrendPeriod.enum.year]: 'Last 12 Months',
+  [TrendPeriod.enum.year]: 'Last Year',
   [TrendPeriod.enum.all]: 'All Time',
 }
 

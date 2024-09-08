@@ -43,6 +43,8 @@ export const Book = BaseInfo.extend({
       name: z.string().min(1),
     })
     .optional(),
+  likes: z.number().default(0),
+  watchlists: z.number().default(0),
 })
 export type Book = z.infer<typeof Book>
 
