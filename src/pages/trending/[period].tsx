@@ -8,7 +8,6 @@ import { Navigate, useNavigate, useParams } from '@/router'
 import { Hardcover } from '@/types'
 import { TrendPeriodTitle } from '@/types/hardcover'
 import { HardcoverUtils } from '@/utils/clients/hardcover'
-import { ShelvdUtils } from '@/utils/clients/shelvd'
 import { cn } from '@/utils/dom'
 
 const TrendingPeriodPage = () => {
@@ -188,9 +187,7 @@ const TrendingPeriodPage = () => {
                         <p className="!m-0 capitalize text-muted-foreground">
                           <small className="font-semibold uppercase">by</small>
                           &nbsp;
-                          {ShelvdUtils.printAuthorName(book.author.name, {
-                            mandatoryNames: [book.author.name],
-                          })}
+                         
                         </p>
                       </aside>
                     </div>
