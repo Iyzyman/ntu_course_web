@@ -152,7 +152,7 @@ const TrendingPeriodPage = () => {
                 const book: Book = HardcoverUtils.parseBook(hcBook)
                 return (
                   <Book
-                    key={`${book.source}-${idx}-${book.key}`}
+                    key={`${idx}-${book.key}`}
                     book={book!}
                   >
                     <div
@@ -162,9 +162,6 @@ const TrendingPeriodPage = () => {
                             pathname: '/book/:slug',
                           },
                           {
-                            state: {
-                              source: book.source,
-                            },
                             params: {
                               slug: book.slug ?? book.key,
                             },
@@ -187,7 +184,6 @@ const TrendingPeriodPage = () => {
                         <p className="!m-0 capitalize text-muted-foreground">
                           <small className="font-semibold uppercase">by</small>
                           &nbsp;
-                         
                         </p>
                       </aside>
                     </div>

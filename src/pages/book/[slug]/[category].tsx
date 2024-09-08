@@ -110,7 +110,6 @@ const BookInfo = () => {
   //#endregion  //*======== STORE ===========
 
   //#endregion  //*======== PARAMS ===========
-  const isInSeries = !!(common?.series?.key ?? common?.series?.slug)
 
   //#endregion  //*======== PARAMS ===========
 
@@ -129,7 +128,7 @@ const BookInfo = () => {
             className={cn(
               '!w-full lg:w-auto lg:basis-2/5',
               'flex flex-col flex-wrap gap-4 lg:flex-row',
-              !isInSeries && '!w-full flex-1',
+              '!w-full flex-1',
             )}
           >
             <Book.Tags

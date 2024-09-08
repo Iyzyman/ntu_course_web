@@ -4,17 +4,16 @@ import { Separator } from '@/components/ui/Separator'
 import { Skeleton } from '@/components/ui/Skeleton'
 import { Tabs, TabsList, TabsTrigger } from '@/components/ui/Tabs'
 import { HardcoverEndpoints } from '@/data/clients/hardcover.api'
-import { NYTEndpoints } from '@/data/clients/nyt.api'
 import { Link, useNavigate } from '@/router'
 import { Hardcover } from '@/types'
 import { TrendPeriodTitle } from '@/types/hardcover'
 import { Book as zBook } from '@/types/shelvd'
 import { HardcoverUtils } from '@/utils/clients/hardcover'
-import { NYTUtils } from '@/utils/clients/nyt'
 import { cn } from '@/utils/dom'
 import { getLimitedArray, getShuffledArray } from '@/utils/helpers'
 import { ComponentProps, HTMLAttributes } from 'react'
 import Marquee from 'react-fast-marquee'
+import { mockCourseData } from '@/data/clients/mockdata'
 
 export const Loader = () => 'Route loader'
 export const Action = () => 'Route action'
@@ -118,7 +117,7 @@ export const TrendingPreviewSection = ({
     >
       {displayBooks.map((book, idx) => (
         <RenderGuard
-          key={`${book.source}-${idx}-${book.key}`}
+          key={`${idx}-${book.key}`}
           renderIf={zBook.safeParse(book).success}
           fallback={
             <Skeleton className={cn('aspect-[3/4.5] min-h-28 min-w-20')} />
@@ -161,7 +160,7 @@ export const TrendingPreview = () => {
             </p>
           </Link>
 
-          <p className="small font-light normal-case text-muted-foreground">
+          <p className="small font-light normal-case tracking-tight text-muted-foreground">
             Don’t know where to start? Heres our recommendation of the most
             liked courses in the{' '}
             {Hardcover.TrendPeriodTitle[period].toLowerCase()}.
@@ -232,14 +231,7 @@ export const TrendingPreview = () => {
 }
 
 export const TrendingPreivewBestsellers = () => {
-  const { booksGetBestsellerLists } = NYTEndpoints
-  const { data } = booksGetBestsellerLists.useQuery()
-
-  const books = getLimitedArray(data?.results?.lists ?? [], 2).flatMap(
-    (list) => list.books ?? [],
-  )
-
-  const displayBooks: Book[] = books.map((book) => NYTUtils.parseBook(book))
+  const displayBooks: Book[] = mockCourseData
 
   return (
     <div className="flex flex-col gap-2">

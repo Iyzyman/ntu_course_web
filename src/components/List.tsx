@@ -819,7 +819,7 @@ const ListBooks = ({
   children,
 }: ListBooks) => {
   const {
-    list: { books, key, source },
+    list: { books, key },
   } = useListContext()
 
   const navigate = useNavigate()
@@ -831,11 +831,11 @@ const ListBooks = ({
   if (!displayBooks.length) return null
   return displayBooks.map((book, idx) => (
     <RenderGuard
-      key={`${key}-${source}-${idx}-${book.key}`}
+      key={`${key}-${idx}-${book.key}`}
       renderIf={zBook.safeParse(book).success}
     >
       <Book
-        key={`${key}-${source}-${idx}-${book.key}`}
+        key={`${key}-${idx}-${book.key}`}
         book={zBook.parse(book)!}
       >
         {children ?? isThumbnail ? (
@@ -848,9 +848,6 @@ const ListBooks = ({
                   pathname: '/book/:slug',
                 },
                 {
-                  state: {
-                    source: book.source,
-                  },
                   params: {
                     slug: book.slug ?? book.key,
                   },
@@ -874,9 +871,6 @@ const ListBooks = ({
               </p>
               <p className="!m-0 capitalize text-muted-foreground">
                 <small className="font-semibold uppercase">by</small>&nbsp;
-                {ShelvdUtils.printAuthorName(book.author.name, {
-                  mandatoryNames: [book.author.name],
-                })}
               </p>
             </aside>
           </div>

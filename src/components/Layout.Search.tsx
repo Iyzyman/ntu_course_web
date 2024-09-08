@@ -35,7 +35,7 @@ import { AppCommandKey } from '@/data/static/app'
 import { AppActions, AppSelectors } from '@/data/stores/app.slice'
 import { useRootDispatch, useRootSelector } from '@/data/stores/root'
 import { SearchActions, SearchSelectors } from '@/data/stores/search.slice'
-import { Link, useNavigate } from '@/router'
+import { useNavigate } from '@/router'
 import { Hardcover } from '@/types'
 import {
   Character,
@@ -518,16 +518,13 @@ export const SearchResults = ({ className, ...rest }: SearchResults) => {
             if (!book) return null
             return (
               <Search.ResultItem
-                key={`${book.source}-${idx}-${book.key}`}
+                key={`${idx}-${book.key}`}
                 onClick={() => {
                   navigate(
                     {
                       pathname: '/book/:slug',
                     },
                     {
-                      state: {
-                        source: book.source,
-                      },
                       params: {
                         slug: book?.slug ?? book.key,
                       },
@@ -592,27 +589,6 @@ export const SearchResults = ({ className, ...rest }: SearchResults) => {
                           by
                         </small>
                         &nbsp;
-                        <Link
-                          to={{
-                            pathname: '/author/:slug',
-                          }}
-                          params={{
-                            slug: book.author?.slug ?? book?.author?.key ?? '',
-                          }}
-                          state={{
-                            source: book.source,
-                          }}
-                          unstable_viewTransition
-                        >
-                          <span
-                            className={cn(
-                              'capitalize',
-                              'cursor-pointer underline-offset-4 hover:underline',
-                            )}
-                          >
-                            {book?.author?.name ?? ''}
-                          </span>
-                        </Link>
                       </p>
 
                       {book?.description && (
@@ -665,16 +641,13 @@ export const SearchResults = ({ className, ...rest }: SearchResults) => {
             if (!author) return null
             return (
               <SearchCommand.ResultItem
-                key={`${author.source}-${idx}-${author.key}`}
+                key={`${idx}-${author.key}`}
                 onClick={() => {
                   navigate(
                     {
                       pathname: '/author/:slug',
                     },
                     {
-                      state: {
-                        source: author.source,
-                      },
                       params: {
                         slug: author?.slug ?? author.key,
                       },
@@ -714,7 +687,7 @@ export const SearchResults = ({ className, ...rest }: SearchResults) => {
             if (!series || isEmptySeries) return null
             return (
               <SearchCommand.ResultItem
-                key={`${series.source}-${idx}-${series.key}`}
+                key={`${idx}-${series.key}`}
                 // onClick={() => {
                 //   navigate(
                 //     {
@@ -780,9 +753,7 @@ export const SearchResults = ({ className, ...rest }: SearchResults) => {
             | Character
             | List
           return (
-            <SearchCommand.ResultItem
-              key={`${artifact.source}-${idx}-${artifact.key}`}
-            >
+            <SearchCommand.ResultItem key={`${idx}-${artifact.key}`}>
               <p>
                 {artifact?.name?.split(' ').map((titleText, idx) => (
                   <span
@@ -939,7 +910,7 @@ export const SearchCommandResults = () => {
           const book = HardcoverUtils.parseDocument({ category, hit }) as Book
           return (
             <SearchCommand.ResultItem
-              key={`${book.source}-${idx}-${book.key}`}
+              key={`${idx}-${book.key}`}
               asChild
             >
               <Book book={book!}>
@@ -958,9 +929,6 @@ export const SearchCommandResults = () => {
                           pathname: '/book/:slug',
                         },
                         {
-                          state: {
-                            source: book.source,
-                          },
                           params: {
                             slug: book?.slug ?? book.key,
                           },
@@ -1005,7 +973,7 @@ export const SearchCommandResults = () => {
           if (!author) return null
           return (
             <SearchCommand.ResultItem
-              key={`${author.source}-${idx}-${author.key}`}
+              key={`${idx}-${author.key}`}
               asChild
             >
               <Author author={author!}>
@@ -1024,9 +992,6 @@ export const SearchCommandResults = () => {
                           pathname: '/author/:slug',
                         },
                         {
-                          state: {
-                            source: author.source,
-                          },
                           params: {
                             slug: author?.slug ?? author.key,
                           },
@@ -1072,7 +1037,7 @@ export const SearchCommandResults = () => {
           if (!series || isEmptySeries) return null
           return (
             <SearchCommand.ResultItem
-              key={`${series.source}-${idx}-${series.key}`}
+              key={`${idx}-${series.key}`}
               asChild
             >
               <Series series={series!}>
@@ -1144,9 +1109,7 @@ export const SearchCommandResults = () => {
 
         if (!artifact) return null
         return (
-          <SearchCommand.ResultItem
-            key={`${artifact.source}-${idx}-${artifact.key}`}
-          >
+          <SearchCommand.ResultItem key={`${idx}-${artifact.key}`}>
             <CommandItem
               value={artifact?.name ?? ''}
               className={cn(
@@ -1242,7 +1205,6 @@ export const SearchCommandTrigger = () => {
 
       <kbd className="pointer-events-none inline-flex h-5 select-none items-center gap-1 rounded border bg-muted px-1.5 font-mono text-[10px] font-medium text-muted-foreground opacity-100">
         <span className="text-xs">Ctrl + {AppCommandKey.toUpperCase()}</span>
-        
       </kbd>
     </div>
   )

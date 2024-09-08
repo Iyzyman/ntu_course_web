@@ -110,9 +110,6 @@ export const Book = ({ children, ...value }: BookProvider) => {
         pathname: '/book/:slug',
       },
       {
-        state: {
-          source: value.book.source,
-        },
         params: {
           slug: value.book?.slug ?? value.book.key,
         },
@@ -563,7 +560,6 @@ export const BookTags = ({
                 height: '31px',
                 borderRadius: '5px',
                 fontWeight: '400',
-                backgroundColor: '#242C3F',
                 fontSize: '16px',
                 justifyContent: 'center',
                 alignContent: 'center',
@@ -617,7 +613,7 @@ export const BookDescription = ({
           fontWeight: 300,
           lineHeight: '24.2px',
           textAlign: 'justify',
-          color: '#F8FAFC',
+          color: 'var(----book-description)',
         }}
       >
         {isEmptyDescription
@@ -649,20 +645,20 @@ export const BookSeries = ({ className, children, ...rest }: BookSeries) => {
   const { book } = useBookContext()
 
   //#endregion  //*======== PARAMS ===========
-  const isInSeries = !!(book?.series?.key ?? book?.series?.slug)
   //#endregion  //*======== PARAMS ===========
 
   //#endregion  //*======== QUERIES ===========
   const { searchExact, searchExactBulk } = HardcoverEndpoints
 
   //#endregion  //*======== SERIES/INFO ===========
+  //TODO remove series
   const querySeries = searchExact.useQuery(
     {
       category: 'series',
-      q: book?.series?.slug ?? '', // hc uses slug
+      q: book?.school ?? '', // hc uses slug
     },
     {
-      skip: book.source !== 'hc' || !isInSeries,
+      skip: false,
     },
   )
 
@@ -687,8 +683,7 @@ export const BookSeries = ({ className, children, ...rest }: BookSeries) => {
       q: title,
     })),
     {
-      skip:
-        book.source !== 'hc' || !isInSeries || !titles.length || infoIsNotFound,
+      skip: !titles.length || infoIsNotFound,
     },
   )
 
@@ -703,7 +698,7 @@ export const BookSeries = ({ className, children, ...rest }: BookSeries) => {
   //#endregion  //*======== SERIES/BOOKS ===========
   //#endregion  //*======== QUERIES ===========
 
-  if (!isInSeries || infoIsNotFound || booksIsNotFound) return null
+  if (infoIsNotFound || booksIsNotFound) return null
   return (
     <section
       className={cn('flex flex-col gap-2', className)}
@@ -739,7 +734,7 @@ export const BookSeries = ({ className, children, ...rest }: BookSeries) => {
           const isCurrentBook = seriesBook.key == book.key
           return (
             <Book
-              key={`${seriesBook.source}-${idx}-${seriesBook.key}`}
+              key={`${idx}-${seriesBook.key}`}
               book={seriesBook!}
             >
               <Book.Thumbnail
@@ -878,7 +873,9 @@ export const BookMatrix = ({ displayCategoryLists, category }: BookMatrix) => {
             >
               <header className={cn('w-full', 'flex flex-col gap-0.5')}>
                 <div className="flex w-full flex-row flex-wrap place-items-center gap-2">
-                  <span style={{ color: '#AABAE1' }}>{list.name}</span>
+                  <span style={{ color: 'var(--school-name)' }}>
+                    {list.name}
+                  </span>
                 </div>
               </header>
               <div
@@ -893,7 +890,7 @@ export const BookMatrix = ({ displayCategoryLists, category }: BookMatrix) => {
                 <Link
                   style={{
                     width: '100%',
-                    border: '1px solid #A3A3A3',
+                    border: '1px solid var(--show-more)',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
@@ -911,13 +908,14 @@ export const BookMatrix = ({ displayCategoryLists, category }: BookMatrix) => {
                 >
                   <AddCircleOutlineOutlinedIcon
                     fontSize="small"
-                    style={{ color: '#A3A3A3', marginRight: '4px' }}
+                    style={{ color: 'var(--show-more)', marginRight: '4px' }}
                   />
                   <span
                     style={{
                       fontSize: '12px',
-                      fontWeight: '200',
+                      fontWeight: '300',
                       lineHeight: '4px',
+                      color: 'var(--show-more)',
                     }}
                   >
                     Show More

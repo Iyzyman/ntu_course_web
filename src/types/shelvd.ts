@@ -14,7 +14,6 @@ export const DefaultBookSource = BookSource.enum.hc
 export const BaseInfo = z.object({
   key: z.string().min(1),
   slug: z.string().default('').optional(),
-  source: BookSource,
 })
 export type BaseInfo = z.infer<typeof BaseInfo>
 
@@ -39,11 +38,6 @@ export const Book = BaseInfo.extend({
   school: z.string().min(1).default('').optional(),
   image: z.string().default('').optional(),
   description: z.string().default('').optional(),
-  series: BaseInfo.omit({ source: true })
-    .extend({
-      name: z.string().min(1),
-    })
-    .optional(),
   likes: z.number().default(0),
   watchlists: z.number().default(0),
 })
