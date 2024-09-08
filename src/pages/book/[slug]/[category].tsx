@@ -13,7 +13,7 @@ import { cn } from '@/utils/dom'
 import { Separator } from '@radix-ui/react-dropdown-menu'
 
 const DisplayBookDetailCategories = BookDetailCategory.extract([
-  'info',
+  'information',
   'reviews',
 ])
 
@@ -91,9 +91,9 @@ const BookDetailCategoryPage = () => {
         ))}
       </TabsList>
 
-      {category !== BookDetailCategory.enum.info && <WIPAlert />}
+      {category !== BookDetailCategory.enum.information && <WIPAlert />}
 
-      <TabsContent value={DisplayBookDetailCategories.enum.info}>
+      <TabsContent value={DisplayBookDetailCategories.enum.information}>
         <BookInfo />
       </TabsContent>
     </Tabs>
@@ -122,12 +122,7 @@ const BookInfo = () => {
 
         <Separator />
 
-        <div
-          className={cn(
-            'flex flex-col-reverse place-items-start gap-8 lg:flex-row',
-            '*:!m-0 *:w-fit',
-          )}
-        >
+        <div className={cn('flex flex-col-reverse place-items-start')}>
           <Book.Series className="flex-1" />
 
           <aside
@@ -138,14 +133,8 @@ const BookInfo = () => {
             )}
           >
             <Book.Tags
-              title="Genres"
+              title="Tags"
               tags={origin?.genres ?? []}
-              className="h-full !w-full"
-            />
-
-            <Book.Tags
-              title="Moods"
-              tags={origin?.moods ?? []}
               className="h-full !w-full"
             />
           </aside>

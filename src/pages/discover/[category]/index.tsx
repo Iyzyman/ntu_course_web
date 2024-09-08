@@ -204,7 +204,10 @@ const ListCategoryPage = () => {
 
           {/* CONTENT */}
           <TabsContent value={category}>
-            <Book.BookMatrix displayCategoryLists={segment} category={category}></Book.BookMatrix>
+            <Book.BookMatrix
+              displayCategoryLists={segment}
+              category={category}
+            ></Book.BookMatrix>
 
             <Pagination className={cn(isPaginationDisabled && 'hidden')}>
               <PaginationContent className="m-0">

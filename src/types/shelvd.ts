@@ -35,7 +35,8 @@ export type BookAuthor = z.infer<typeof BookAuthor>
 
 export const Book = BaseInfo.extend({
   title: z.string().min(1).default(''),
-  author: BookAuthor,
+  code: z.string().min(1).default('').optional(),
+  school: z.string().min(1).default('').optional(),
   image: z.string().default('').optional(),
   description: z.string().default('').optional(),
   series: BaseInfo.omit({ source: true })
@@ -112,7 +113,7 @@ export const ListData = List.omit({ books: true }).extend({
 export type ListData = z.infer<typeof ListData>
 
 export const BookDetailCategories = [
-  `info`,
+  `information`,
   `reviews`,
   `editions`,
   `lists`,
@@ -120,7 +121,7 @@ export const BookDetailCategories = [
 export const BookDetailCategory = z.enum(BookDetailCategories)
 export type BookDetailCategory = z.infer<typeof BookDetailCategory>
 export const DefaultBookDetailCategory: BookDetailCategory =
-  BookDetailCategory.enum.info
+  BookDetailCategory.enum.information
 
 export const AuthorDetailCategories = [`books`, `series`] as const
 export const AuthorDetailCategory = z.enum(AuthorDetailCategories)
