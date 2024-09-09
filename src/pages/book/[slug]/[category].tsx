@@ -1,6 +1,6 @@
 import Book from '@/components/Book'
-import WIPAlert from '@/components/Layout.WIP'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/Tabs'
+import { AggregateReviewScore, AllReviews, ReviewForm } from '@/components/Reviews'
 import { useRootSelector } from '@/data/stores/root'
 import { SearchSelectors, SourceOrigin } from '@/data/stores/search.slice'
 import { useNavigate, useParams } from '@/router'
@@ -82,8 +82,8 @@ const BookDetailCategoryPage = () => {
             style={{
               ...(source == 'hc' &&
                 cat === category && {
-                  borderColor: origin?.image?.color,
-                }),
+                borderColor: origin?.image?.color,
+              }),
             }}
           >
             <span className="h4">{cat}</span>
@@ -91,10 +91,12 @@ const BookDetailCategoryPage = () => {
         ))}
       </TabsList>
 
-      {category !== BookDetailCategory.enum.information && <WIPAlert />}
-
       <TabsContent value={DisplayBookDetailCategories.enum.information}>
         <BookInfo />
+      </TabsContent>
+
+      <TabsContent value={DisplayBookDetailCategories.enum.reviews}>
+        <ReviewInfo />
       </TabsContent>
     </Tabs>
   )
@@ -140,6 +142,16 @@ const BookInfo = () => {
           </aside>
         </div>
       </Book>
+    </section>
+  )
+}
+
+const ReviewInfo = () => {
+  return (
+    <section>
+      <AggregateReviewScore />
+      <AllReviews />
+      <ReviewForm />
     </section>
   )
 }
