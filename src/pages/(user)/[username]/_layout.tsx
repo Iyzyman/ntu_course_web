@@ -5,7 +5,7 @@ import { ShelvdEndpoints } from '@/data/clients/shelvd.api'
 import { useRootDispatch, useRootSelector } from '@/data/stores/root'
 import { SearchActions, SearchSelectors } from '@/data/stores/search.slice'
 import { Navigate, useParams } from '@/router'
-import { BookSource, SearchCategory } from '@/types/shelvd'
+import { CourseSource, SearchCategory } from '@/types/shelvd'
 import { logger } from '@/utils/debug'
 import { cn } from '@/utils/dom'
 import { useEffect } from 'react'
@@ -25,7 +25,7 @@ const UserLayout = () => {
   const { username = '' } = useParams('/:username')
 
   const searchCategory = SearchCategory.enum.users
-  const source: BookSource = BookSource.enum.shelvd
+  const source: CourseSource = CourseSource.enum.shelvd
 
   const isValidUsername = username.startsWith('@') && username.length > 1
   //#endregion  //*======== PARAMS ===========

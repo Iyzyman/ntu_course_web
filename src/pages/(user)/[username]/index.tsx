@@ -1,4 +1,4 @@
-import Book from '@/components/Book'
+import Course from '@/components/Course'
 import User from '@/components/Layout.User'
 import List from '@/components/List'
 import { RenderGuard } from '@/components/providers/render.provider'
@@ -175,9 +175,9 @@ const UserPage = () => {
                           // 'sm:max-w-xl',
                         )}
                       >
-                        <List.Books>
-                          <Book.Thumbnail className="w-fit !rounded-none" />
-                        </List.Books>
+                        <List.Courses>
+                          <Course.Thumbnail className="w-fit !rounded-none" />
+                        </List.Courses>
                       </div>
                     </div>
                   </List>
@@ -255,9 +255,9 @@ const UserPage = () => {
                           // 'sm:max-w-xl',
                         )}
                       >
-                        <List.Books displayLimit={6}>
-                          <Book.Thumbnail className="w-fit !rounded-none" />
-                        </List.Books>
+                        <List.Courses displayLimit={6}>
+                          <Course.Thumbnail className="w-fit !rounded-none" />
+                        </List.Courses>
                       </div>
                     </div>
                   </List>

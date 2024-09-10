@@ -1,20 +1,19 @@
-import { Book } from '@/components/Book'
+import { Course } from '@/components/Course'
 import { RenderGuard } from '@/components/providers/render.provider'
 import { Separator } from '@/components/ui/Separator'
 import { Skeleton } from '@/components/ui/Skeleton'
 import { Tabs, TabsList, TabsTrigger } from '@/components/ui/Tabs'
 import { HardcoverEndpoints } from '@/data/clients/hardcover.api'
-import { NYTEndpoints } from '@/data/clients/nyt.api'
 import { Link, useNavigate } from '@/router'
 import { Hardcover } from '@/types'
 import { TrendPeriodTitle } from '@/types/hardcover'
-import { Book as zBook } from '@/types/shelvd'
+import { Course as zCourse } from '@/types/shelvd'
 import { HardcoverUtils } from '@/utils/clients/hardcover'
-import { NYTUtils } from '@/utils/clients/nyt'
 import { cn } from '@/utils/dom'
 import { getLimitedArray, getShuffledArray } from '@/utils/helpers'
 import { ComponentProps, HTMLAttributes } from 'react'
 import Marquee from 'react-fast-marquee'
+import { mockCourseData } from '@/data/clients/mockdata'
 
 export const Loader = () => 'Route loader'
 export const Action = () => 'Route action'
@@ -85,16 +84,16 @@ export const FeaturedListsPreviewSection = () => {
           </p>
         </Link>
       </header>
-      <Book.BookMatrix
+      <Course.CourseMatrix
         displayCategoryLists={displayCategoryLists}
         category={category}
-      ></Book.BookMatrix>
+      ></Course.CourseMatrix>
     </section>
   )
 }
 
 type TrendingPreviewSection = {
-  books: Book[]
+  books: Course[]
   displayLimit?: number
   marquee?: ComponentProps<typeof Marquee>
 } & HTMLAttributes<HTMLDivElement>
@@ -105,7 +104,7 @@ export const TrendingPreviewSection = ({
   children,
   marquee,
 }: TrendingPreviewSection) => {
-  const displayBooks = getLimitedArray(books, displayLimit)
+  const displayCourses = getLimitedArray(books, displayLimit)
   return (
     <Marquee
       pauseOnHover
@@ -116,22 +115,22 @@ export const TrendingPreviewSection = ({
       className={cn('place-items-start', className)}
       {...marquee}
     >
-      {displayBooks.map((book, idx) => (
+      {displayCourses.map((book, idx) => (
         <RenderGuard
-          key={`${book.source}-${idx}-${book.key}`}
-          renderIf={zBook.safeParse(book).success}
+          key={`${idx}-${book.key}`}
+          renderIf={zCourse.safeParse(book).success}
           fallback={
             <Skeleton className={cn('aspect-[3/4.5] min-h-28 min-w-20')} />
           }
         >
-          <Book book={zBook.parse(book)!}>
-            <Book.Thumbnail
+          <Course book={zCourse.parse(book)!}>
+            <Course.Thumbnail
               className={cn(
                 'mr-1 mt-1 w-fit !rounded-none',
                 idx > 8 && 'hidden sm:block',
               )}
             />
-          </Book>
+          </Course>
         </RenderGuard>
       ))}
       {children}
@@ -161,7 +160,7 @@ export const TrendingPreview = () => {
             </p>
           </Link>
 
-          <p className="small font-light normal-case text-muted-foreground">
+          <p className="small font-light normal-case tracking-tight text-muted-foreground">
             Don’t know where to start? Heres our recommendation of the most
             liked courses in the{' '}
             {Hardcover.TrendPeriodTitle[period].toLowerCase()}.
@@ -207,11 +206,11 @@ export const TrendingPreview = () => {
 
       <section>
         {Hardcover.TrendPeriod.options.map((period, idx) => {
-          const books: Hardcover.Book[] = isSuccess
+          const books: Hardcover.Course[] = isSuccess
             ? data?.results?.[period] ?? []
             : []
-          const displayBooks = getShuffledArray(
-            books.map((book) => HardcoverUtils.parseBook(book)),
+          const displayCourses = getShuffledArray(
+            books.map((book) => HardcoverUtils.parseCourse(book)),
           )
 
           const direction = idx % 2 === 0 ? 'left' : 'right'
@@ -219,7 +218,7 @@ export const TrendingPreview = () => {
           return (
             <TrendingPreviewSection
               key={`trend-${period}`}
-              books={displayBooks}
+              books={displayCourses}
               marquee={{
                 direction,
               }}
@@ -232,14 +231,7 @@ export const TrendingPreview = () => {
 }
 
 export const TrendingPreivewBestsellers = () => {
-  const { booksGetBestsellerLists } = NYTEndpoints
-  const { data } = booksGetBestsellerLists.useQuery()
-
-  const books = getLimitedArray(data?.results?.lists ?? [], 2).flatMap(
-    (list) => list.books ?? [],
-  )
-
-  const displayBooks: Book[] = books.map((book) => NYTUtils.parseBook(book))
+  const displayCourses: Course[] = mockCourseData
 
   return (
     <div className="flex flex-col gap-2">
@@ -248,7 +240,7 @@ export const TrendingPreivewBestsellers = () => {
       </h3>
       <Separator />
 
-      <TrendingPreviewSection books={displayBooks} />
+      <TrendingPreviewSection books={displayCourses} />
     </div>
   )
 }

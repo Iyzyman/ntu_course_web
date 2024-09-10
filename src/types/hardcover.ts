@@ -1,4 +1,4 @@
-import { BookAuthor, SearchCategories, SearchCategory } from '@/types/shelvd'
+import { CourseAuthor, SearchCategories, SearchCategory } from '@/types/shelvd'
 import { z } from 'zod'
 
 export type BaseInfo = {
@@ -12,9 +12,9 @@ export type Author = BaseInfo & {
   booksCount: number
 }
 
-export type Book = BaseInfo & {
+export type Course = BaseInfo & {
   title: string
-  author: BookAuthor
+  author: CourseAuthor
   pubYear: number
   image: string
   isbns: string[]
@@ -39,7 +39,7 @@ export type List = BaseInfo & {
   name: string
   description: string
   booksCount: number
-  books: Book[]
+  books: Course[]
   titles?: string[]
 }
 
@@ -50,7 +50,7 @@ export type Series = BaseInfo & {
   titles: string[]
 }
 
-export type SearchBook = Omit<Book, 'author' | 'pubYear' | 'image'> & {
+export type SearchCourse = Omit<Course, 'author' | 'pubYear' | 'image'> & {
   image: {
     url: string
     color: string
@@ -113,8 +113,8 @@ export const TrendPeriodTitle: Record<TrendPeriod, string> = {
   [TrendPeriod.enum.all]: 'All Time',
 }
 
-export type TrendPeriodBooks = Record<TrendPeriod, Book[]>
-export type TrendPeriodBooksMap = Map<TrendPeriod, Book[]>
+export type TrendPeriodCourses = Record<TrendPeriod, Course[]>
+export type TrendPeriodCoursesMap = Map<TrendPeriod, Course[]>
 
 export type QueryResponse<T> = {
   total: number
@@ -122,7 +122,7 @@ export type QueryResponse<T> = {
 }
 
 type SearchDocumentMap = {
-  books: SearchBook
+  books: SearchCourse
   authors: SearchAuthor
   characters: SearchCharacter
   lists: SearchList
@@ -186,7 +186,7 @@ export const SearchCategoryCollectionParams: Record<
     query_by_weights: '5,5,5,3,1,1',
     // sort_by: '_text_match:desc, users_count:desc',
     sort_by: 'users_count:desc, _text_match:desc',
-    collection: 'Book_production',
+    collection: 'Course_production',
   },
   [SearchCategory.enum.authors]: {
     query_by: 'slug,name,name_personal,alternate_names,series_names,books',

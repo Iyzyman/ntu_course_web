@@ -1,7 +1,4 @@
-import { GoogleClient } from '@/data/clients/google.api'
 import { HardcoverClient } from '@/data/clients/hardcover.api'
-import { NYTClient } from '@/data/clients/nyt.api'
-import { OLClient } from '@/data/clients/ol.api'
 import { AppSlice } from '@/data/stores/app.slice'
 import { env } from '@/env'
 import {
@@ -29,10 +26,6 @@ const RootState = combineSlices(
   AppSlice,
   SearchSlice,
   UserSlice,
-
-  GoogleClient,
-  NYTClient,
-  OLClient,
   CollectionClient,
   HardcoverClient,
   ShelvdClient,
@@ -70,9 +63,6 @@ export const RootStore = (() => {
           ], // Paths to be excluded from serialization checks
         },
       }).concat([
-        GoogleClient.middleware,
-        NYTClient.middleware,
-        OLClient.middleware,
         HardcoverClient.middleware,
         ShelvdClient.middleware,
         CollectionClient.middleware,

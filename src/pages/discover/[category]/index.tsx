@@ -1,4 +1,4 @@
-import Book from '@/components/Book'
+import Course from '@/components/Course'
 import Status from '@/components/Layout.Status'
 import { RenderGuard } from '@/components/providers/render.provider'
 import {
@@ -204,10 +204,10 @@ const ListCategoryPage = () => {
 
           {/* CONTENT */}
           <TabsContent value={category}>
-            <Book.BookMatrix
+            <Course.CourseMatrix
               displayCategoryLists={segment}
               category={category}
-            ></Book.BookMatrix>
+            ></Course.CourseMatrix>
 
             <Pagination className={cn(isPaginationDisabled && 'hidden')}>
               <PaginationContent className="m-0">

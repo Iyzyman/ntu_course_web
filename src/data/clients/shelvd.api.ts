@@ -91,7 +91,7 @@ const Routes = {
     CreateList: '/create',
     DeleteList: '/delete',
     UpdateListMembership: '/update/book',
-    UpdateListBooks: '/update/books',
+    UpdateListCourses: '/update/books',
     UpdateListDetails: '/update/details',
 
     GetList: '/',
