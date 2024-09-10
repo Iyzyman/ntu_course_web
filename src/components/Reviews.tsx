@@ -62,8 +62,8 @@ const useReviewContext = () => {
     }
     return ctxValue
 }
-const ReviewContext = createContext<ReviewContext | undefined>(undefined)
 
+const ReviewContext = createContext<ReviewContext | undefined>(undefined)
 export const AggregateReviewScore = () => {
     const { overall_score } = useReviewContext()
     return (
@@ -124,10 +124,10 @@ export const AllReviews = () => {
             {reviews.map((review) => (
                 <Box py={2} px={4} sx={{ border: 1, borderRadius: 1 }}>
                     <Typography>{review.author}</Typography>
-                    <Box display='flex' justifyContent='space-between' alignItems='center' p={4}>
+                    <Box display='flex' justifyContent='space-between' alignItems='center' px={4} py={2}>
                         {Object.entries(review.score).map(([key, value]) => (
-                            <Stack>
-                                <Rating defaultValue={value} size='medium' readOnly />
+                            <Stack alignItems='center'>
+                                <Rating sx={{ width: 'auto' }} value={value} readOnly />
                                 <Typography>{key}</Typography>
                             </Stack>
                         ))}
@@ -147,15 +147,26 @@ export const AllReviews = () => {
 
 export const ReviewForm = () => {
     const { overall_score } = useReviewContext()
-    const [recommend, setRecommend] = React.useState<string | null>(null)
+    const [recommend, setRecommend] = React.useState<string>('Yes')
     const [name, setName] = React.useState<string>()
+    const [rating, setRating] = React.useState<ReviewScore>(overall_score)
     const [reviewText, setReviewText] = React.useState<string>()
 
     const handleRecommendChange = (event: React.MouseEvent<HTMLElement>, newValue: string | null) => {
-        setRecommend(newValue)
+        if (newValue !== null) {
+            setRecommend(newValue)
+        }
     }
     const handleNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setName(event.target.value)
+    }
+    const handleRatingChange = (name: string) => (event: React.SyntheticEvent, value: number | null) => {
+        if (value !== null) {
+            setRating((prevRating) => ({
+                ...prevRating,
+                [name]: value
+            }))
+        }
     }
     const handleReviewTextChamge = (event: React.ChangeEvent<HTMLInputElement>) => {
         setReviewText(event.target.value)
@@ -180,9 +191,9 @@ export const ReviewForm = () => {
                 </ToggleButtonGroup>
             </div>
             <Box display='flex' justifyContent='space-between' alignItems='center'>
-                {Object.entries(overall_score).map(([key, value]) => (
-                    <Stack>
-                        <Rating name={key} value={value} size='medium' />
+                {Object.entries(rating).map(([key, value]) => (
+                    <Stack alignItems='center'>
+                        <Rating sx={{ width: 'auto' }} value={value} onChange={handleRatingChange(key)} />
                         <Typography>{key}</Typography>
                     </Stack>
                 ))}
