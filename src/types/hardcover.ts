@@ -1,4 +1,4 @@
-import { CourseAuthor, SearchCategories, SearchCategory } from '@/types/shelvd'
+import { Course, SearchCategories, SearchCategory } from '@/types/shelvd'
 import { z } from 'zod'
 
 export type BaseInfo = {
@@ -10,23 +10,6 @@ export type Author = BaseInfo & {
   name: string
   image: string
   booksCount: number
-}
-
-export type Course = BaseInfo & {
-  title: string
-  author: CourseAuthor
-  pubYear: number
-  image: string
-  isbns: string[]
-  description: string
-  genres: string[]
-
-  series: {
-    position: number
-    count: number
-    name: string
-    slug: string
-  }
 }
 
 export type Character = BaseInfo & {

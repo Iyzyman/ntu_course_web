@@ -40,7 +40,11 @@ export const Course = BaseInfo.extend({
   description: z.string().default('').optional(),
   likes: z.number().default(0),
   watchlists: z.number().default(0),
+  tags: z.array(z.string()).default([]).optional(),
+  prerequisites: z.array(z.any()).default([]),
+  color: z.string().min(1).default('').optional(),
 })
+
 export type Course = z.infer<typeof Course>
 
 export const Character = BaseInfo.extend({

@@ -206,9 +206,7 @@ export const TrendingPreview = () => {
 
       <section>
         {Hardcover.TrendPeriod.options.map((period, idx) => {
-          const books: Hardcover.Course[] = isSuccess
-            ? data?.results?.[period] ?? []
-            : []
+          const books: Course[] = isSuccess ? data?.results?.[period] ?? [] : []
           const displayCourses = getShuffledArray(
             books.map((book) => HardcoverUtils.parseCourse(book)),
           )

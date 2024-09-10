@@ -35,7 +35,6 @@ import {
 import { Skeleton } from '@/components/ui/Skeleton'
 import { useDeleteCourseFromCollectionMutation } from '@/data/clients/collections.api'
 
-import { HardcoverEndpoints } from '@/data/clients/hardcover.api'
 import {
   UpdateListMembershipParams,
   useUpdateListMembershipMutation,
@@ -43,7 +42,7 @@ import {
 import { useRootSelector } from '@/data/stores/root'
 import { UserSelectors } from '@/data/stores/user.slice'
 import { Link, useNavigate } from '@/router'
-import { Course as CourseInfo, Series, ListData } from '@/types/shelvd'
+import { Course as CourseInfo, ListData } from '@/types/shelvd'
 import { HardcoverUtils } from '@/utils/clients/hardcover'
 import { ShelvdUtils } from '@/utils/clients/shelvd'
 import { logger } from '@/utils/debug'
@@ -519,7 +518,7 @@ export const CourseTags = ({
       className={cn('flex flex-1 flex-col gap-2', className)}
       {...rest}
     >
-      <header className="flex flex-row place-content-between place-items-center gap-2">
+      <header className="flex flex-row place-content-between gap-2">
         {typeof title === 'string' ? <h4>{title}</h4> : title}
         {isTagsLong && (
           <Button
@@ -640,69 +639,19 @@ export const CourseDescription = ({
 }
 Course.Description = CourseDescription
 
-type CourseSeries = HTMLAttributes<HTMLDivElement>
-export const CourseSeries = ({
+type CoursePrerequisitesProps = HTMLAttributes<HTMLDivElement> & {
+  className?: string
+  prerequisites?: Course[]
+  children?: React.ReactNode
+}
+
+export const CoursePrerequisites: React.FC<CoursePrerequisitesProps> = ({
   className,
+  prerequisites,
   children,
   ...rest
-}: CourseSeries) => {
-  const { book } = useCourseContext()
-
-  //#endregion  //*======== PARAMS ===========
-  //#endregion  //*======== PARAMS ===========
-
-  //#endregion  //*======== QUERIES ===========
-  const { searchExact, searchExactBulk } = HardcoverEndpoints
-
-  //#endregion  //*======== SERIES/INFO ===========
-  //TODO remove series
-  const querySeries = searchExact.useQuery(
-    {
-      category: 'series',
-      q: book?.school ?? '', // hc uses slug
-    },
-    {
-      skip: false,
-    },
-  )
-
-  const infoResults = querySeries.data?.results?.[0]
-  const infoIsLoading = querySeries.isLoading || querySeries.isFetching
-  let infoIsNotFound =
-    !infoIsLoading && !querySeries.isSuccess && (infoResults?.found ?? 0) < 1
-
-  let info: Series = {} as Series
-  const hit = (infoResults?.hits ?? [])?.[0]
-  if (hit) {
-    info = HardcoverUtils.parseDocument({ category: 'series', hit }) as Series
-    infoIsNotFound = !Series.safeParse(info).success
-  }
-  //#endregion  //*======== SERIES/INFO ===========
-
-  //#endregion  //*======== SERIES/BOOKS ===========
-  const titles = info?.titles ?? []
-  const querySeriesCourses = searchExactBulk.useQuery(
-    titles.map((title) => ({
-      category: 'books',
-      q: title,
-    })),
-    {
-      skip: !titles.length || infoIsNotFound,
-    },
-  )
-
-  const booksResults = querySeriesCourses.data?.results?.[0]
-  const booksIsLoading =
-    querySeriesCourses.isLoading || querySeriesCourses.isFetching
-  const booksIsNotFound =
-    !booksIsLoading &&
-    !querySeriesCourses.isSuccess &&
-    (booksResults?.found ?? 0) < 1
-
-  //#endregion  //*======== SERIES/BOOKS ===========
-  //#endregion  //*======== QUERIES ===========
-
-  if (infoIsNotFound || booksIsNotFound) return null
+}) => {
+  if (!prerequisites || prerequisites.length === 0) return null
   return (
     <section
       className={cn('flex flex-col gap-2', className)}
@@ -710,12 +659,7 @@ export const CourseSeries = ({
     >
       <header>
         <h4>
-          <span className="capitalize">Series: </span>
-          <span
-            className={cn(' leading-none tracking-tight text-muted-foreground')}
-          >
-            {info.name}
-          </span>
+          <span>Prerequisites </span>
         </h4>
       </header>
 
@@ -725,27 +669,20 @@ export const CourseSeries = ({
           'flex flex-row flex-wrap',
         )}
       >
-        {(querySeriesCourses.data?.results ?? []).map((result, idx) => {
-          const hit = (result?.hits ?? [])?.[0]
-          if (!hit) return null
+        {(prerequisites ?? []).map((prerequisite, idx) => {
+          // Validate prerequisite using CourseInfo.safeParse
+          const validation = CourseInfo.safeParse(prerequisite)
+          if (!validation.success) return null
 
-          const seriesCourse = HardcoverUtils.parseDocument({
-            category: 'books',
-            hit,
-          }) as Course
-          if (!CourseInfo.safeParse(seriesCourse).success) return null
-
-          const isCurrentCourse = seriesCourse.key == book.key
           return (
             <Course
-              key={`${idx}-${seriesCourse.key}`}
-              book={seriesCourse!}
+              key={`${idx}-${prerequisite.key}`}
+              book={prerequisite}
             >
               <Course.Thumbnail
                 className={cn(
                   'w-fit !rounded-none',
                   idx > 8 && 'hidden sm:block',
-                  isCurrentCourse && 'border-primary',
                 )}
               />
             </Course>
@@ -757,7 +694,7 @@ export const CourseSeries = ({
     </section>
   )
 }
-Course.Series = CourseSeries
+Course.Prerequisites = CoursePrerequisites
 
 type BiggerCourseCard = HTMLAttributes<HTMLDivElement> & {
   username: string

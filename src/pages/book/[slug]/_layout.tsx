@@ -2,20 +2,15 @@ import Course from '@/components/Course'
 import Status from '@/components/Layout.Status'
 import { RenderGuard } from '@/components/providers/render.provider'
 import { useRootDispatch, useRootSelector } from '@/data/stores/root'
-import {
-  SearchActions,
-  SearchSelectors,
-  SourceOrigin,
-} from '@/data/stores/search.slice'
+import { SearchActions, SearchSelectors } from '@/data/stores/search.slice'
 import { useParams } from '@/router'
-import { SearchArtifact, CourseSource, SearchCategory } from '@/types/shelvd'
+import { CourseSource, SearchCategory } from '@/types/shelvd'
 import { logger } from '@/utils/debug'
 import { cn } from '@/utils/dom'
 import { useEffect, useMemo } from 'react'
 import { Outlet, useLocation } from 'react-router-dom'
 import {
-  mockOrigin,
-  mockSearchArtifact,
+  mockCourse
 } from '../../../data/clients/mockdata.ts' // Import updated mock data
 
 const CourseDetailsLayout = () => {
@@ -40,8 +35,7 @@ const CourseDetailsLayout = () => {
   const isNotFound = !isValidParams // Adjust based on your mock data structure
 
   // Use mock data
-  const origin = mockOrigin as SourceOrigin<'hc', 'books'>
-  const common = mockSearchArtifact as SearchArtifact<'books'>
+  const origin = mockCourse
 
   const ctx = useMemo(
     () => ({
@@ -49,11 +43,10 @@ const CourseDetailsLayout = () => {
       source,
       category: searchCategory,
       origin,
-      common,
       isNotFound,
       isLoading,
     }),
-    [slug, source, searchCategory, origin, common, isNotFound, isLoading],
+    [slug, source, searchCategory, origin, isNotFound, isLoading],
   )
 
   useEffect(() => {
@@ -84,12 +77,12 @@ const CourseDetailsLayout = () => {
           />
         }
       >
-        <Course book={(common as Course)!}>
+        <Course book={(origin as Course)!}>
           {/* HEADER */}
           <section
             style={{
               height: '302px',
-              backgroundImage: `linear-gradient(to bottom, ${origin?.image.color ?? 'hsl(var(--muted))'} 0%, transparent 100%)`,
+              backgroundImage: `linear-gradient(to bottom, ${origin?.color ?? 'hsl(var(--muted))'} 0%, transparent 100%)`,
               backgroundPosition: 'top center',
               backgroundRepeat: 'no-repeat',
             }}
@@ -120,7 +113,7 @@ const CourseDetailsLayout = () => {
                     lineHeight: '115px',
                   }}
                 >
-                  {common?.code}
+                  {origin?.code}
                 </h1>
                 <p>
                   <div
@@ -130,18 +123,18 @@ const CourseDetailsLayout = () => {
                       lineHeight: '41px',
                     }}
                   >
-                    {common.title}
+                    {origin.title}
                   </div>
                   <small className="uppercase text-muted-foreground">
-                    {common.school}
+                    {origin.school}
                   </small>
                 </p>
 
                 <aside>
                   <div style={{ width: '30%', marginTop: '10px' }}>
                     <Course.ClickStats
-                      watchlists={common.watchlists}
-                      likes={common.likes}
+                      watchlists={origin.watchlists}
+                      likes={origin.likes}
                     ></Course.ClickStats>
                   </div>
                 </aside>
