@@ -1,6 +1,7 @@
 import Course from '@/components/Course'
 import WIPAlert from '@/components/Layout.WIP'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/Tabs'
+import { AggregateReviewScore, AllReviews, ReviewForm } from '@/components/Reviews'
 import { useRootSelector } from '@/data/stores/root'
 import { SearchSelectors, SourceOrigin } from '@/data/stores/search.slice'
 import { useNavigate, useParams } from '@/router'
@@ -83,8 +84,8 @@ const CourseDetailCategoryPage = () => {
             style={{
               ...(source == 'hc' &&
                 cat === category && {
-                  borderColor: origin?.image?.color,
-                }),
+                borderColor: origin?.image?.color,
+              }),
             }}
           >
             <span className="h4">{cat}</span>
@@ -92,10 +93,12 @@ const CourseDetailCategoryPage = () => {
         ))}
       </TabsList>
 
-      {category !== CourseDetailCategory.enum.information && <WIPAlert />}
-
       <TabsContent value={DisplayCourseDetailCategories.enum.information}>
         <CourseInfo />
+      </TabsContent>
+
+      <TabsContent value={DisplayBookDetailCategories.enum.reviews}>
+        <ReviewInfo />
       </TabsContent>
     </Tabs>
   )
@@ -140,6 +143,16 @@ const CourseInfo = () => {
           </aside>
         </div>
       </Course>
+    </section>
+  )
+}
+
+const ReviewInfo = () => {
+  return (
+    <section>
+      <AggregateReviewScore />
+      <AllReviews />
+      <ReviewForm />
     </section>
   )
 }
