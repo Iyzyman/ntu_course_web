@@ -1,5 +1,4 @@
 import Course from '@/components/Course'
-import WIPAlert from '@/components/Layout.WIP'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/Tabs'
 import { AggregateReviewScore, AllReviews, ReviewForm } from '@/components/Reviews'
 import { useRootSelector } from '@/data/stores/root'
@@ -97,7 +96,7 @@ const CourseDetailCategoryPage = () => {
         <CourseInfo />
       </TabsContent>
 
-      <TabsContent value={DisplayBookDetailCategories.enum.reviews}>
+      <TabsContent value={DisplayCourseDetailCategories.enum.reviews}>
         <ReviewInfo />
       </TabsContent>
     </Tabs>
