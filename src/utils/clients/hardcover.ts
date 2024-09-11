@@ -27,7 +27,7 @@ export class HardcoverUtils {
   }
 
   static parseCourse = (hcCourse: Hardcover.Course): Course => {
-    const book: Course = {
+    const course: Course = {
       key: hcCourse.slug,
       slug: hcCourse.slug,
       title: hcCourse.title,
@@ -49,19 +49,19 @@ export class HardcoverUtils {
         slug: hcCourse?.series?.slug,
         name: hcCourse?.series?.name,
       }
-      book['series'] = series
+      course['series'] = series
     }
 
     // logger(
     //   { breakpoint: '[hardcover.ts:52]' },
     //   {
-    //     success: Course.safeParse(book).success,
-    //     safe: Course.safeParse(book),
+    //     success: Course.safeParse(course).success,
+    //     safe: Course.safeParse(course),
     //     hcCourse,
-    //     book,
+    //     course,
     //   },
     // )
-    return Course.parse(book)
+    return Course.parse(course)
   }
   static parseAuthor = (hcAuthor: Hardcover.Author): Author => {
     const author: Author = {
@@ -69,7 +69,7 @@ export class HardcoverUtils {
       slug: hcAuthor.slug,
       name: hcAuthor.name,
       image: hcAuthor.image,
-      booksCount: hcAuthor.booksCount,
+      coursesCount: hcAuthor.coursesCount,
       source: HardcoverUtils.source,
     }
 
@@ -89,7 +89,7 @@ export class HardcoverUtils {
       key: hcCharacter.slug,
       slug: hcCharacter.slug,
       name: hcCharacter.name,
-      booksCount: hcCharacter.booksCount,
+      coursesCount: hcCharacter.coursesCount,
       author: hcCharacter.author,
       source: HardcoverUtils.source,
     }
@@ -100,9 +100,9 @@ export class HardcoverUtils {
       key: hcList.slug,
       slug: hcList.slug,
       name: hcList.name,
-      booksCount: hcList.booksCount,
+      coursesCount: hcList.coursesCount,
       description: hcList.description,
-      books: [],
+      courses: [],
       source: HardcoverUtils.source,
     }
 
@@ -123,7 +123,7 @@ export class HardcoverUtils {
       key: hcSeries.slug,
       slug: hcSeries.slug,
       name: hcSeries.name,
-      booksCount: hcSeries.booksCount,
+      coursesCount: hcSeries.coursesCount,
       author: hcSeries.author,
       source: HardcoverUtils.source,
       titles: hcSeries.titles,
@@ -170,7 +170,7 @@ export class HardcoverUtils {
 
     const series = {
       position: +(document?.featured_series?.position ?? 0),
-      count: +(document?.featured_series?.series_books_count ?? 0),
+      count: +(document?.featured_series?.series_courses_count ?? 0),
       name: document?.featured_series?.series_name ?? '',
       slug: document?.featured_series?.series_slug ?? '',
     }
@@ -190,14 +190,14 @@ export class HardcoverUtils {
   }: {
     document: Hardcover.SearchSeries
   }): Hardcover.Series => {
-    const booksCount: number = +(document?.books_count ?? 0)
+    const coursesCount: number = +(document?.courses_count ?? 0)
     const author = document?.author_name ?? '???'
-    const titles = document?.books ?? []
+    const titles = document?.courses ?? []
 
     const hcSeries: Hardcover.Series = {
       ...document,
       author,
-      booksCount,
+      coursesCount,
       titles,
     }
     return hcSeries
@@ -210,13 +210,13 @@ export class HardcoverUtils {
   }): Hardcover.Author => {
     const name: string = document?.name ?? '???'
     const image = HardcoverUtils.getCdnUrl(document?.image?.url ?? '')
-    const booksCount: number = +(document?.books_count ?? 0)
+    const coursesCount: number = +(document?.courses_count ?? 0)
 
     const hcAuthor: Hardcover.Author = {
       ...document,
       name,
       image,
-      booksCount,
+      coursesCount,
     }
     return hcAuthor
   }
@@ -228,13 +228,13 @@ export class HardcoverUtils {
   }): Hardcover.Character => {
     const name: string = document?.name ?? '???'
     const author = document?.author_names?.[0] ?? '???'
-    const booksCount: number = +(document?.books_count ?? 0)
+    const coursesCount: number = +(document?.courses_count ?? 0)
 
     const hcCharacter: Hardcover.Character = {
       ...document,
       name,
       author,
-      booksCount,
+      coursesCount,
     }
     return hcCharacter
   }
@@ -244,14 +244,14 @@ export class HardcoverUtils {
   }: {
     document: Hardcover.SearchList
   }): Hardcover.List => {
-    const titles: string[] = document?.books ?? []
-    const booksCount: number = +(document?.books_count ?? 0)
+    const titles: string[] = document?.courses ?? []
+    const coursesCount: number = +(document?.courses_count ?? 0)
 
     const hcList: Hardcover.List = {
       ...document,
       titles,
-      booksCount,
-      books: [],
+      coursesCount,
+      courses: [],
     }
     return hcList
   }
@@ -269,12 +269,12 @@ export class HardcoverUtils {
     if (!document) return
 
     switch (category) {
-      case 'books': {
+      case 'courses': {
         const hcCourse = HardcoverUtils.parseCourseDocument({
           document: document as unknown as Hardcover.SearchCourse,
         })
-        const book: Course = HardcoverUtils.parseCourse(hcCourse)
-        return book
+        const course: Course = HardcoverUtils.parseCourse(hcCourse)
+        return course
       }
       case 'authors': {
         const hcAuthor = HardcoverUtils.parseAuthorDocument({

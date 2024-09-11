@@ -19,7 +19,7 @@ export type BaseInfo = z.infer<typeof BaseInfo>
 
 export const Author = BaseInfo.extend({
   name: z.string().min(1).default(''),
-  booksCount: z.number().default(0).optional(),
+  coursesCount: z.number().default(0).optional(),
   image: z.string().default('').optional(),
 })
 export type Author = z.infer<typeof Author>
@@ -40,20 +40,24 @@ export const Course = BaseInfo.extend({
   description: z.string().default('').optional(),
   likes: z.number().default(0),
   watchlists: z.number().default(0),
+  tags: z.array(z.string()).default([]).optional(),
+  prerequisites: z.array(z.any()).default([]),
+  color: z.string().min(1).default('').optional(),
 })
+
 export type Course = z.infer<typeof Course>
 
 export const Character = BaseInfo.extend({
   name: z.string().min(1),
   author: z.string().min(1),
-  booksCount: z.number().default(0).optional(),
+  coursesCount: z.number().default(0).optional(),
 })
 export type Character = z.infer<typeof Character>
 
 export const Series = BaseInfo.extend({
   name: z.string().min(1),
   author: z.string().min(1),
-  booksCount: z.number().default(0).optional(),
+  coursesCount: z.number().default(0).optional(),
   titles: z.string().array().default([]),
 })
 export type Series = z.infer<typeof Series>
@@ -67,8 +71,8 @@ export const List = BaseInfo.extend({
     .min(1, { message: "Can't be an empty string" })
     .trim(),
   description: z.string().default('').optional(),
-  booksCount: z.number().default(0).optional(),
-  books: Course.array().default([]),
+  coursesCount: z.number().default(0).optional(),
+  courses: Course.array().default([]),
   creator: BaseInfo.pick({ key: true })
     .default({
       key: 'unknown',
@@ -81,9 +85,9 @@ export const ListInfo = List.pick({
   key: true,
   slug: true,
   name: true,
-  booksCount: true,
+  coursesCount: true,
 }).extend({
-  bookKeys: z.string().array().default([]),
+  courseKeys: z.string().array().default([]),
 })
 export type ListInfo = z.infer<typeof ListInfo>
 
@@ -101,8 +105,8 @@ export const DefaultListTypeInfo: ListTypeInfo = Object.fromEntries(
   ListType.options.map((type) => [type, []]),
 )
 
-export const ListData = List.omit({ books: true }).extend({
-  bookKeys: z.string().array().default([]),
+export const ListData = List.omit({ courses: true }).extend({
+  courseKeys: z.string().array().default([]),
 })
 export type ListData = z.infer<typeof ListData>
 
@@ -117,14 +121,14 @@ export type CourseDetailCategory = z.infer<typeof CourseDetailCategory>
 export const DefaultCourseDetailCategory: CourseDetailCategory =
   CourseDetailCategory.enum.information
 
-export const AuthorDetailCategories = [`books`, `series`] as const
+export const AuthorDetailCategories = [`courses`, `series`] as const
 export const AuthorDetailCategory = z.enum(AuthorDetailCategories)
 export type AuthorDetailCategory = z.infer<typeof AuthorDetailCategory>
 export const DefaultAuthorDetailCategory: AuthorDetailCategory =
-  AuthorDetailCategory.enum.books
+  AuthorDetailCategory.enum.courses
 
 export const SearchCategories = [
-  `books`,
+  `courses`,
   `authors`,
   'characters',
   'lists',
@@ -133,10 +137,10 @@ export const SearchCategories = [
 ] as const
 export type SearchCategories = (typeof SearchCategories)[number]
 export const SearchCategory = z.enum(SearchCategories)
-export const DefaultSearchCategory = SearchCategory.enum.books
+export const DefaultSearchCategory = SearchCategory.enum.courses
 
 type SearchArtifactMap = {
-  books: Course
+  courses: Course
   authors: Author
   characters: Character
   lists: List
@@ -152,7 +156,7 @@ export const SearchCategoryHistory = z.record(
 export type SearchCategoryHistory = z.infer<typeof SearchCategoryHistory>
 
 type SearchDocumentMap = {
-  books: Course
+  courses: Course
   authors: Author
   characters: Character
   lists: ListData

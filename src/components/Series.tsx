@@ -79,7 +79,7 @@ export const SeriesCourses = ({ displayLimit, children }: SeriesCourses) => {
   const { searchExactBulk: hcSearchExactBulk } = HardcoverEndpoints
   const hcSearchCourses = hcSearchExactBulk.useQuery(
     titles.map((title) => ({
-      category: 'books',
+      category: 'courses',
       q: title,
     })),
     {
@@ -95,39 +95,39 @@ export const SeriesCourses = ({ displayLimit, children }: SeriesCourses) => {
     const isNotFound = !isLoading && !isSuccess && results.length < 1
     if (isNotFound) return []
 
-    const books: Course[] = results.map((result) => {
+    const courses: Course[] = results.map((result) => {
       // exact search expects top hit accuracy
       const hit = (result?.hits ?? [])?.[0]
-      const book = HardcoverUtils.parseDocument({
-        category: 'books',
+      const course = HardcoverUtils.parseDocument({
+        category: 'courses',
         hit,
       }) as Course
-      return book
+      return course
     })
-    return books
+    return courses
   }, [hcSearchCourses])
   //#endregion  //*======== SOURCE/HC ===========
 
-  const books = useMemo(() => {
-    let books: Course[] = []
+  const courses = useMemo(() => {
+    let courses: Course[] = []
     switch (source) {
       case 'hc': {
-        books = hcCourses
+        courses = hcCourses
       }
     }
 
     if (displayLimit) {
-      books = getLimitedArray(books, displayLimit)
+      courses = getLimitedArray(courses, displayLimit)
     }
-    return books
+    return courses
   }, [source, displayLimit, hcCourses])
 
-  if (!books.length) return null
+  if (!courses.length) return null
 
-  return books.map((book, idx) => (
+  return courses.map((course, idx) => (
     <Course
-      key={`${series.key}-${source}-${idx}-${book.key}`}
-      book={book!}
+      key={`${series.key}-${source}-${idx}-${course.key}`}
+      course={course!}
     >
       {children}
     </Course>

@@ -71,7 +71,7 @@ const ListPage = () => {
       >
         {results.map((hcList) => {
           const list: List = HardcoverUtils.parseList(hcList)
-          const books: Course[] = hcList.books.map((hcCourse) =>
+          const courses: Course[] = hcList.courses.map((hcCourse) =>
             HardcoverUtils.parseCourse(hcCourse),
           )
           const data = ListData.parse(list)
@@ -80,7 +80,7 @@ const ListPage = () => {
             <List
               key={`lists-${category}-${list.key}`}
               data={data}
-              overwriteCourses={books}
+              overwriteCourses={courses}
             >
               {/* HEADER */}
               <section
@@ -105,7 +105,7 @@ const ListPage = () => {
                   <aside className="flex flex-col gap-1 *:!mt-0">
                     <h1>{list.name}</h1>
                     {/* <Badge variant={'outline'}>
-                      {list?.booksCount ?? 0} books
+                      {list?.coursesCount ?? 0} courses
                     </Badge> */}
 
                     <p className="leading-tight text-muted-foreground">

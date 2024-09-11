@@ -7,7 +7,7 @@ const CoursePage = () => (
       pathname: '/search/:category',
     }}
     params={{
-      category: SearchCategory.enum.books,
+      category: SearchCategory.enum.courses,
     }}
     unstable_viewTransition
   />

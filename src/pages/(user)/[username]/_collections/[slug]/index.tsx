@@ -72,10 +72,10 @@ const UserCollectionPage = () => {
             {username}'s {slug} Collection
           </h1>
         }
-        {isSuccess && user && slug && data.results[0].books.length === 0 && (
+        {isSuccess && user && slug && data.results[0].courses.length === 0 && (
           <div className="m-5 grid w-full place-content-center justify-items-center">
             <p className="text-muted-foreground">
-              No books in this collection yet! Add one!
+              No courses in this collection yet! Add one!
             </p>
             <Button
               variant="outline"
@@ -108,15 +108,15 @@ const UserCollectionPage = () => {
         {isSuccess &&
           user &&
           slug &&
-          data.results[0].books.map((book) => {
+          data.results[0].courses.map((course) => {
             return (
               <div
                 className="m-5"
-                key={book.key}
+                key={course.key}
               >
                 <Course
-                  key={book.key}
-                  book={book}
+                  key={course.key}
+                  course={course}
                 >
                   <Course.BiggerCourseCard
                     username={user!.username!}

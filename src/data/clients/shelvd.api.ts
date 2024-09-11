@@ -37,7 +37,7 @@ const KeyChanges = z.object({
 export const UpdateListMembershipParams = z.object({
   userId: z.string().min(1).trim(),
 
-  bookKey: z.string().min(1).trim(),
+  courseKey: z.string().min(1).trim(),
   core: KeyChanges.optional(),
   created: KeyChanges.optional(),
 })
@@ -52,8 +52,8 @@ export const UpdateListDetailsParams = GetListParam.omit({
 
   data: ListData.omit({
     creator: true,
-    bookKeys: true,
-    booksCount: true,
+    courseKeys: true,
+    coursesCount: true,
   }).partial(),
 })
 export type UpdateListDetailsParams = z.infer<typeof UpdateListDetailsParams>
@@ -90,8 +90,8 @@ const Routes = {
   List: {
     CreateList: '/create',
     DeleteList: '/delete',
-    UpdateListMembership: '/update/book',
-    UpdateListCourses: '/update/books',
+    UpdateListMembership: '/update/course',
+    UpdateListCourses: '/update/courses',
     UpdateListDetails: '/update/details',
 
     GetList: '/',

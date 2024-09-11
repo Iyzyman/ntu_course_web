@@ -4,17 +4,17 @@ import { getLimitedArray } from '@/utils/helpers'
 import { HTMLAttributes } from 'react'
 
 type CourseThumbnailSection = {
-  books: Course[]
+  courses: Course[]
   displayLimit?: number
 } & HTMLAttributes<HTMLDivElement>
 export const CourseThumbnailSection = ({
-  books,
+  courses,
   displayLimit = 12,
   className,
   children,
   ...rest
 }: CourseThumbnailSection) => {
-  const displayCourses = getLimitedArray(books, displayLimit)
+  const displayCourses = getLimitedArray(courses, displayLimit)
   return (
     <section
       className={cn(
@@ -26,11 +26,11 @@ export const CourseThumbnailSection = ({
       )}
       {...rest}
     >
-      {displayCourses.map((book, idx) => {
+      {displayCourses.map((course, idx) => {
         return (
           <Course
-            key={`${book.source}-${idx}-${book.key}`}
-            book={book!}
+            key={`${course.source}-${idx}-${course.key}`}
+            course={course!}
           >
             <Course.Thumbnail
               className={cn(

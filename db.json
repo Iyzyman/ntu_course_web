@@ -5,7 +5,7 @@
         "key": "to-read",
         "name": "To Read",
         "source": "shelvd",
-        "books": [
+        "courses": [
           {
             "key": "1638434662",
             "source": "shelvd",
@@ -27,7 +27,7 @@
         "key": "reading",
         "name": "Reading",
         "source": "shelvd",
-        "books": [
+        "courses": [
           {
             "key": "1638434662",
             "source": "shelvd",
@@ -49,7 +49,7 @@
         "key": "completed",
         "name": "Completed",
         "source": "shelvd",
-        "books": [
+        "courses": [
           {
             "key": "1638434662",
             "source": "shelvd",
@@ -71,7 +71,7 @@
         "key": "dnf",
         "name": "DNF",
         "source": "shelvd",
-        "books": []
+        "courses": []
       }
     ],
     "created": [
@@ -79,13 +79,13 @@
         "key": "created-1",
         "name": "Created 1",
         "source": "shelvd",
-        "books": []
+        "courses": []
       },
       {
         "key": "created-2",
         "name": "Created 2",
         "source": "shelvd",
-        "books": []
+        "courses": []
       }
     ]
   },
@@ -93,7 +93,7 @@
     {
       "id": "1",
       "title": "To Read",
-      "booklist": [
+      "courselist": [
         {
           "key": "496108",
           "slug": "scientific-freedom-the-elixir-of-civilization",
@@ -139,7 +139,7 @@
     {
       "id": "2",
       "title": "Reading",
-      "booklist": [
+      "courselist": [
         {
           "key": "1782265279",
           "source": "google",
@@ -148,7 +148,7 @@
             "key": "geronimo-stilton",
             "name": "Geronimo Stilton",
             "slug": "geronimo-stilton",
-            "image": "http://books.google.com/books/content?id=OkmiwwEACAAJ&printsec=frontcover&img=1&zoom=5&source=gbs_api"
+            "image": "http://courses.google.com/courses/content?id=OkmiwwEACAAJ&printsec=frontcover&img=1&zoom=5&source=gbs_api"
           },
           "slug": "a-cheese-coloured-camper-van",
           "image": "",
@@ -163,7 +163,7 @@
             "key": "geronimo-stilton",
             "name": "Geronimo Stilton",
             "slug": "geronimo-stilton",
-            "image": "http://books.google.com/books/content?id=Wz-ODwAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api"
+            "image": "http://courses.google.com/courses/content?id=Wz-ODwAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api"
           },
           "slug": "happy-birthday-geronimo-geronimo-stilton-74",
           "image": "",
@@ -228,7 +228,7 @@
             "image": ""
           },
           "image": "https://storage.googleapis.com/hardcover/editions/30399651/9485519905660492-lg_url.jpg",
-          "description": "The girl who wouldn’t die. Hunting a killer who shouldn’t exist. Chicago 1931. Violent drifter Harper Curtis stumbles upon a house that hides a secret as shocking as his own twisted nature: it opens onto other times. Harper uses it to stalk his ‘shining girls’ across decades – and cut the fire out of them. He’s the perfect killer. Unstoppable. Untraceable. Until one of his victims survives and turns the hunt around. Chicago, 1992. Kirby Mazrachi’s determination to find the man who tried to kill her has taken over her life. The cops no longer return her calls. Her mother copes by writing morbid children’s books. Her only ally is Dan, the burnt-out ex-homicide reporter who covered her case. As Kirby closes in on her would-be killer, what she finds is ... impossible. Murders scattered across the decades along with evidence that makes no sense. Meanwhile, Harper is closing in on her too",
+          "description": "The girl who wouldn’t die. Hunting a killer who shouldn’t exist. Chicago 1931. Violent drifter Harper Curtis stumbles upon a house that hides a secret as shocking as his own twisted nature: it opens onto other times. Harper uses it to stalk his ‘shining girls’ across decades – and cut the fire out of them. He’s the perfect killer. Unstoppable. Untraceable. Until one of his victims survives and turns the hunt around. Chicago, 1992. Kirby Mazrachi’s determination to find the man who tried to kill her has taken over her life. The cops no longer return her calls. Her mother copes by writing morbid children’s courses. Her only ally is Dan, the burnt-out ex-homicide reporter who covered her case. As Kirby closes in on her would-be killer, what she finds is ... impossible. Murders scattered across the decades along with evidence that makes no sense. Meanwhile, Harper is closing in on her too",
           "source": "hc",
           "series": {
             "key": "",
@@ -267,7 +267,7 @@
     {
       "id": "3",
       "title": "Completed",
-      "booklist": [
+      "courselist": [
         {
           "key": "0141351322",
           "source": "google",
@@ -276,7 +276,7 @@
             "key": "geronimo-stilton",
             "name": "Geronimo Stilton",
             "slug": "geronimo-stilton",
-            "image": "http://books.google.com/books/content?id=XfyiAgAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api"
+            "image": "http://courses.google.com/courses/content?id=XfyiAgAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api"
           },
           "slug": "geronimo-stilton-the-temple-of-the-ruby-of-fire-12",
           "image": "",
@@ -291,7 +291,7 @@
             "key": "geronimo-stilton",
             "name": "Geronimo Stilton",
             "slug": "geronimo-stilton",
-            "image": "http://books.google.com/books/content?id=sLKhAgAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api"
+            "image": "http://courses.google.com/courses/content?id=sLKhAgAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api"
           },
           "slug": "geronimo-stilton-a-fabumouse-vacation-for-geronimo-9",
           "image": "",
@@ -310,7 +310,7 @@
             "image": ""
           },
           "image": "https://storage.googleapis.com/hardcover/editions/30706608/7798138539052064-fourth-wing.jpeg",
-          "description": "Twenty-year-old Violet Sorrengail was supposed to enter the Scribe Quadrant, living a quiet life among books and history. Now, the commanding general—also known as her tough-as-talons mother—has ordered Violet to join the hundreds of candidates striving to become the elite of Navarre: dragon riders. But when you’re smaller than everyone else and your body is brittle, death is only a heartbeat away...because dragons don’t bond to “fragile” humans. They incinerate them. With fewer dragons willing to bond than cadets, most would kill Violet to better their own chances of success. The rest would kill her just for being her mother’s daughter—like Xaden Riorson, the most powerful and ruthless wingleader in the Riders Quadrant. She’ll need every edge her wits can give her just to see the next sunrise. Yet, with every day that passes, the war outside grows more deadly, the kingdom's protective wards are failing, and the death toll continues to rise. Even worse, Violet begins to suspect leadership is hiding a terrible secret. Friends, enemies, lovers. Everyone at Basgiath War College has an agenda—because once you enter, there are only two ways out: graduate or die.",
+          "description": "Twenty-year-old Violet Sorrengail was supposed to enter the Scribe Quadrant, living a quiet life among courses and history. Now, the commanding general—also known as her tough-as-talons mother—has ordered Violet to join the hundreds of candidates striving to become the elite of Navarre: dragon riders. But when you’re smaller than everyone else and your body is brittle, death is only a heartbeat away...because dragons don’t bond to “fragile” humans. They incinerate them. With fewer dragons willing to bond than cadets, most would kill Violet to better their own chances of success. The rest would kill her just for being her mother’s daughter—like Xaden Riorson, the most powerful and ruthless wingleader in the Riders Quadrant. She’ll need every edge her wits can give her just to see the next sunrise. Yet, with every day that passes, the war outside grows more deadly, the kingdom's protective wards are failing, and the death toll continues to rise. Even worse, Violet begins to suspect leadership is hiding a terrible secret. Friends, enemies, lovers. Everyone at Basgiath War College has an agenda—because once you enter, there are only two ways out: graduate or die.",
           "source": "hc",
           "series": {
             "key": "the-empyrean",
@@ -343,7 +343,7 @@
     {
       "id": "4",
       "title": "My Favourites",
-      "booklist": [
+      "courselist": [
         {
           "key": "89506",
           "slug": "kings-of-the-wyld",
@@ -376,7 +376,7 @@
             "image": ""
           },
           "image": "https://storage.googleapis.com/hardcover/editions/30399651/9485519905660492-lg_url.jpg",
-          "description": "The girl who wouldn’t die. Hunting a killer who shouldn’t exist. Chicago 1931. Violent drifter Harper Curtis stumbles upon a house that hides a secret as shocking as his own twisted nature: it opens onto other times. Harper uses it to stalk his ‘shining girls’ across decades – and cut the fire out of them. He’s the perfect killer. Unstoppable. Untraceable. Until one of his victims survives and turns the hunt around. Chicago, 1992. Kirby Mazrachi’s determination to find the man who tried to kill her has taken over her life. The cops no longer return her calls. Her mother copes by writing morbid children’s books. Her only ally is Dan, the burnt-out ex-homicide reporter who covered her case. As Kirby closes in on her would-be killer, what she finds is ... impossible. Murders scattered across the decades along with evidence that makes no sense. Meanwhile, Harper is closing in on her too",
+          "description": "The girl who wouldn’t die. Hunting a killer who shouldn’t exist. Chicago 1931. Violent drifter Harper Curtis stumbles upon a house that hides a secret as shocking as his own twisted nature: it opens onto other times. Harper uses it to stalk his ‘shining girls’ across decades – and cut the fire out of them. He’s the perfect killer. Unstoppable. Untraceable. Until one of his victims survives and turns the hunt around. Chicago, 1992. Kirby Mazrachi’s determination to find the man who tried to kill her has taken over her life. The cops no longer return her calls. Her mother copes by writing morbid children’s courses. Her only ally is Dan, the burnt-out ex-homicide reporter who covered her case. As Kirby closes in on her would-be killer, what she finds is ... impossible. Murders scattered across the decades along with evidence that makes no sense. Meanwhile, Harper is closing in on her too",
           "source": "hc",
           "series": {
             "key": "",
@@ -389,12 +389,12 @@
     {
       "id": "5",
       "title": "My cats",
-      "booklist": []
+      "courselist": []
     },
     {
       "id": "6",
       "title": "My dogs",
-      "booklist": []
+      "courselist": []
     }
   ]
 }

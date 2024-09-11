@@ -15,12 +15,12 @@ const AuthorDetailCategoryPage = () => {
   //#endregion  //*======== STORE ===========
   const current = useRootSelector(SearchSelectors.state).current
   // const origin = current.origin as SourceOrigin<'hc', 'authors'>
-  // const common = current.common as SearchArtifact<'books'>
+  // const common = current.common as SearchArtifact<'courses'>
   //#endregion  //*======== STORE ===========
 
   //#endregion  //*======== PARAMS ===========
   const { slug, category = DefaultAuthorDetailCategory } = useParams(
-    '/book/:slug/:category',
+    '/course/:slug/:category',
   )
 
   const isValidCategory = AuthorDetailCategory.safeParse(category).success
@@ -76,7 +76,7 @@ const AuthorDetailCategoryPage = () => {
         ))}
       </TabsList>
 
-      <TabsContent value={AuthorDetailCategory.enum.books}>
+      <TabsContent value={AuthorDetailCategory.enum.courses}>
         <Author.Courses />
       </TabsContent>
 

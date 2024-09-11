@@ -5,12 +5,12 @@
       "id": 2540,
       "name": "Stripe Press Courses",
       "userId": 3,
-      "slug": "stripe-press-books",
+      "slug": "stripe-press-courses",
       "ranked": false,
-      "description": "Stripe partners with millions of the world\u2019s most innovative businesses. These businesses are the result of many different inputs. Perhaps the most important ingredient is \u201cideas.\u201d\n\nStripe Press highlights ideas that we think can be broadly useful. Some books contain entirely new material, some are collections of existing work reimagined, and others are republications of previous works that have remained relevant over time or have renewed relevance today.",
+      "description": "Stripe partners with millions of the world\u2019s most innovative businesses. These businesses are the result of many different inputs. Perhaps the most important ingredient is \u201cideas.\u201d\n\nStripe Press highlights ideas that we think can be broadly useful. Some courses contain entirely new material, some are collections of existing work reimagined, and others are republications of previous works that have remained relevant over time or have renewed relevance today.",
       "url": "https://press.stripe.com/",
-      "booksCount": 14,
-      "books": [
+      "coursesCount": 14,
+      "courses": [
         {
           "id": 475041,
           "slug": "pieces-of-the-action",
@@ -23,7 +23,7 @@
             "name": "Vannevar Bush",
             "slug": "vannevar-bush",
             "cachedImage": {},
-            "booksCount": 4,
+            "coursesCount": 4,
             "__typename": "authors"
           },
           "isbns": [],
@@ -39,7 +39,7 @@
             "name": "J. Storrs Hall",
             "slug": "j-storrs-hall",
             "cachedImage": {},
-            "booksCount": 5,
+            "coursesCount": 5,
             "__typename": "authors"
           },
           "isbns": [],
@@ -57,7 +57,7 @@
             "name": "Michael S. Malone",
             "slug": "michael-s-malone",
             "cachedImage": {},
-            "booksCount": 10,
+            "coursesCount": 10,
             "__typename": "authors"
           },
           "isbns": [],
@@ -75,7 +75,7 @@
             "name": "Donald W. Braben",
             "slug": "donald-w-braben",
             "cachedImage": {},
-            "booksCount": 1,
+            "coursesCount": 1,
             "__typename": "authors"
           },
           "isbns": [],
@@ -93,7 +93,7 @@
             "name": "Jordan Mechner",
             "slug": "jordan-mechner",
             "cachedImage": {},
-            "booksCount": 13,
+            "coursesCount": 13,
             "__typename": "authors"
           },
           "isbns": [],
@@ -111,7 +111,7 @@
             "name": "Bailey Richardson",
             "slug": "bailey-richardson",
             "cachedImage": {},
-            "booksCount": 1,
+            "coursesCount": 1,
             "__typename": "authors"
           },
           "isbns": [],
@@ -127,7 +127,7 @@
             "name": "Martin Gurri",
             "slug": "martin-gurri",
             "cachedImage": {},
-            "booksCount": 1,
+            "coursesCount": 1,
             "__typename": "authors"
           },
           "isbns": [],
@@ -145,7 +145,7 @@
             "name": "Tyler Cowen",
             "slug": "tyler-cowen",
             "cachedImage": {},
-            "booksCount": 16,
+            "coursesCount": 16,
             "__typename": "authors"
           },
           "isbns": [],
@@ -161,7 +161,7 @@
             "name": "M. Mitchell Waldrop",
             "slug": "m-mitchell-waldrop",
             "cachedImage": {},
-            "booksCount": 3,
+            "coursesCount": 3,
             "__typename": "authors"
           },
           "isbns": [],
@@ -169,15 +169,15 @@
         },
         {
           "id": 427616,
-          "slug": "high-growth-handbook",
-          "title": "High Growth Handbook",
+          "slug": "high-growth-handcourse",
+          "title": "High Growth Handcourse",
           "pubYear": 2018,
           "image": "https://hardcover.imgix.net/edition/781664/9205954-L.jpg",
           "author": {
             "name": "Elad Gil",
             "slug": "elad-gil",
             "cachedImage": {},
-            "booksCount": 1,
+            "coursesCount": 1,
             "__typename": "authors"
           },
           "isbns": [],
@@ -195,7 +195,7 @@
             "name": "Nadia Eghbal",
             "slug": "nadia-eghbal",
             "cachedImage": {},
-            "booksCount": 2,
+            "coursesCount": 2,
             "__typename": "authors"
           },
           "isbns": [],
@@ -213,7 +213,7 @@
             "name": "Richard R. Hamming",
             "slug": "richard-r-hamming",
             "cachedImage": {},
-            "booksCount": 1,
+            "coursesCount": 1,
             "__typename": "authors"
           },
           "isbns": [],
@@ -231,7 +231,7 @@
             "name": "Will Larson",
             "slug": "will-larson",
             "cachedImage": {},
-            "booksCount": 4,
+            "coursesCount": 4,
             "__typename": "authors"
           },
           "isbns": [],
@@ -249,7 +249,7 @@
             "name": "Charles T. Munger",
             "slug": "charles-t-munger",
             "cachedImage": {},
-            "booksCount": 6,
+            "coursesCount": 6,
             "__typename": "authors"
           },
           "isbns": [],
@@ -261,12 +261,12 @@
       "id": 109,
       "name": "NPRs Top 100 Science-Fiction and Fantasy Courses of All Time",
       "userId": 3,
-      "slug": "nprs-top-100-science-fiction-and-fantasy-books-of-all-time",
+      "slug": "nprs-top-100-science-fiction-and-fantasy-courses-of-all-time",
       "ranked": true,
-      "description": "In 2011, NPR set out to make a list of what their listeners believed to be the best science fiction and fantasy books ever written. More than 5,000 people nominated books, then over 60,000 people voted on the best ones. This list is highlights the most popular books voted by NPR readers across these two genres.",
-      "url": "https://www.npr.org/2011/08/11/139085843/your-picks-top-100-science-fiction-fantasy-books",
-      "booksCount": 100,
-      "books": [
+      "description": "In 2011, NPR set out to make a list of what their listeners believed to be the best science fiction and fantasy courses ever written. More than 5,000 people nominated courses, then over 60,000 people voted on the best ones. This list is highlights the most popular courses voted by NPR readers across these two genres.",
+      "url": "https://www.npr.org/2011/08/11/139085843/your-picks-top-100-science-fiction-fantasy-courses",
+      "coursesCount": 100,
+      "courses": [
         {
           "id": 377938,
           "slug": "the-lord-of-the-rings",
@@ -283,7 +283,7 @@
               "width": 187,
               "height": 266
             },
-            "booksCount": 229,
+            "coursesCount": 229,
             "__typename": "authors"
           },
           "isbns": [],
@@ -307,7 +307,7 @@
               "width": 333,
               "height": 386
             },
-            "booksCount": 104,
+            "coursesCount": 104,
             "__typename": "authors"
           },
           "isbns": [],
@@ -329,7 +329,7 @@
               "width": 200,
               "height": 283
             },
-            "booksCount": 213,
+            "coursesCount": 213,
             "__typename": "authors"
           },
           "isbns": [],
@@ -351,7 +351,7 @@
               "width": 137,
               "height": 200
             },
-            "booksCount": 96,
+            "coursesCount": 96,
             "__typename": "authors"
           },
           "isbns": [],
@@ -373,7 +373,7 @@
               "width": 200,
               "height": 257
             },
-            "booksCount": 362,
+            "coursesCount": 362,
             "__typename": "authors"
           },
           "isbns": [],
@@ -395,7 +395,7 @@
               "width": 500,
               "height": 281
             },
-            "booksCount": 151,
+            "coursesCount": 151,
             "__typename": "authors"
           },
           "isbns": [],
@@ -417,7 +417,7 @@
               "width": 407,
               "height": 500
             },
-            "booksCount": 237,
+            "coursesCount": 237,
             "__typename": "authors"
           },
           "isbns": [],
@@ -439,7 +439,7 @@
               "width": 354,
               "height": 500
             },
-            "booksCount": 608,
+            "coursesCount": 608,
             "__typename": "authors"
           },
           "isbns": [],
@@ -461,7 +461,7 @@
               "width": 200,
               "height": 250
             },
-            "booksCount": 93,
+            "coursesCount": 93,
             "__typename": "authors"
           },
           "isbns": [],
@@ -483,7 +483,7 @@
               "width": 375,
               "height": 500
             },
-            "booksCount": 657,
+            "coursesCount": 657,
             "__typename": "authors"
           },
           "isbns": [],
@@ -499,7 +499,7 @@
             "name": "William Goldman",
             "slug": "william-goldman",
             "cachedImage": {},
-            "booksCount": 25,
+            "coursesCount": 25,
             "__typename": "authors"
           },
           "isbns": [],
@@ -521,7 +521,7 @@
               "width": 330,
               "height": 500
             },
-            "booksCount": 153,
+            "coursesCount": 153,
             "__typename": "authors"
           },
           "isbns": [],
@@ -543,7 +543,7 @@
               "width": 500,
               "height": 281
             },
-            "booksCount": 151,
+            "coursesCount": 151,
             "__typename": "authors"
           },
           "isbns": [],
@@ -565,7 +565,7 @@
               "width": 500,
               "height": 333
             },
-            "booksCount": 106,
+            "coursesCount": 106,
             "__typename": "authors"
           },
           "isbns": [],
@@ -577,23 +577,23 @@
       "id": 106,
       "name": "Top 25 Courses to Unleash Your Creative Potential",
       "userId": 3,
-      "slug": "top-25-books-to-unleash-your-creative-potential",
+      "slug": "top-25-courses-to-unleash-your-creative-potential",
       "ranked": false,
-      "description": "Creativity can flourish if fed by curiosity, self-motivation, and a thirst for knowledge. Below is a treasure trove of brilliant books for creatives as gathered by Lifehack's Tayyab Babar.",
-      "url": "https://www.lifehack.org/articles/productivity/top-25-books-unleash-your-creative-potential.html",
-      "booksCount": 26,
-      "books": [
+      "description": "Creativity can flourish if fed by curiosity, self-motivation, and a thirst for knowledge. Below is a treasure trove of brilliant courses for creatives as gathered by Lifehack's Tayyab Babar.",
+      "url": "https://www.lifehack.org/articles/productivity/top-25-courses-unleash-your-creative-potential.html",
+      "coursesCount": 26,
+      "courses": [
         {
           "id": 33767,
-          "slug": "drawing-on-the-right-side-of-the-brain-workbook",
-          "title": "Drawing on the right side of the brain workbook",
+          "slug": "drawing-on-the-right-side-of-the-brain-workcourse",
+          "title": "Drawing on the right side of the brain workcourse",
           "pubYear": 2012,
           "image": "https://hardcover.imgix.net/edition/30090454/8784064-L.jpg",
           "author": {
             "name": "Betty Edwards",
             "slug": "betty-edwards",
             "cachedImage": {},
-            "booksCount": 7,
+            "coursesCount": 7,
             "__typename": "authors"
           },
           "isbns": [],
@@ -609,7 +609,7 @@
             "name": "William Strunk Jr.",
             "slug": "william-strunk-jr",
             "cachedImage": {},
-            "booksCount": 5,
+            "coursesCount": 5,
             "__typename": "authors"
           },
           "isbns": [],
@@ -625,7 +625,7 @@
             "name": "Blake Snyder",
             "slug": "blake-snyder",
             "cachedImage": {},
-            "booksCount": 7,
+            "coursesCount": 7,
             "__typename": "authors"
           },
           "isbns": [],
@@ -647,7 +647,7 @@
               "width": 333,
               "height": 500
             },
-            "booksCount": 15,
+            "coursesCount": 15,
             "__typename": "authors"
           },
           "isbns": [],
@@ -663,7 +663,7 @@
             "name": "Jonah Berger",
             "slug": "jonah-berger",
             "cachedImage": {},
-            "booksCount": 9,
+            "coursesCount": 9,
             "__typename": "authors"
           },
           "isbns": [],
@@ -679,7 +679,7 @@
             "name": "Dan Ariely",
             "slug": "dan-ariely",
             "cachedImage": {},
-            "booksCount": 27,
+            "coursesCount": 27,
             "__typename": "authors"
           },
           "isbns": [],
@@ -695,7 +695,7 @@
             "name": "Jocelyn K. Glei",
             "slug": "jocelyn-k-glei",
             "cachedImage": {},
-            "booksCount": 5,
+            "coursesCount": 5,
             "__typename": "authors"
           },
           "isbns": [],
@@ -711,7 +711,7 @@
             "name": "Austin Kleon",
             "slug": "austin-kleon",
             "cachedImage": {},
-            "booksCount": 23,
+            "coursesCount": 23,
             "__typename": "authors"
           },
           "isbns": [],
@@ -733,7 +733,7 @@
               "width": 231,
               "height": 231
             },
-            "booksCount": 27,
+            "coursesCount": 27,
             "__typename": "authors"
           },
           "isbns": [],
@@ -755,7 +755,7 @@
               "width": 332,
               "height": 500
             },
-            "booksCount": 18,
+            "coursesCount": 18,
             "__typename": "authors"
           },
           "isbns": [],
@@ -771,7 +771,7 @@
             "name": "Bill Buxton",
             "slug": "bill-buxton",
             "cachedImage": {},
-            "booksCount": 2,
+            "coursesCount": 2,
             "__typename": "authors"
           },
           "isbns": [],
@@ -787,7 +787,7 @@
             "name": "Tom Kelley",
             "slug": "tom-kelley",
             "cachedImage": {},
-            "booksCount": 3,
+            "coursesCount": 3,
             "__typename": "authors"
           },
           "isbns": [],
@@ -809,7 +809,7 @@
               "width": 387,
               "height": 451
             },
-            "booksCount": 32,
+            "coursesCount": 32,
             "__typename": "authors"
           },
           "isbns": [],
@@ -825,7 +825,7 @@
             "name": "Chris Barez-Brown",
             "slug": "chris-barez-brown-b630fcf9-4ef0-4c47-a41a-57aeee01837c",
             "cachedImage": {},
-            "booksCount": 1,
+            "coursesCount": 1,
             "__typename": "authors"
           },
           "isbns": [],
@@ -837,12 +837,12 @@
       "id": 102,
       "name": "The 100 Best Fantasy Courses of All Time by Time Magazine",
       "userId": 3,
-      "slug": "the-100-best-fantasy-books-of-all-time-by-time-magazine",
+      "slug": "the-100-best-fantasy-courses-of-all-time-by-time-magazine",
       "ranked": false,
       "description": "Time Magazine called upon top fantasy authors (e.g., N.K. Jemisin, Neil Gaiman, Sabaa Tahir, Tomi Edeyemi, Diana Gabaldon, George R.R. Martin, Cassandra Clare, and Marlon James) to collect the most influential works of fantasy fiction in chronological order starting in the 9th century A.D.",
-      "url": "https://time.com/collection/100-best-fantasy-books/",
-      "booksCount": 96,
-      "books": [
+      "url": "https://time.com/collection/100-best-fantasy-courses/",
+      "coursesCount": 96,
+      "courses": [
         {
           "id": 432239,
           "slug": "the-palm-wine-drinkard",
@@ -853,7 +853,7 @@
             "name": "Amos Tutuola",
             "slug": "amos-tutuola",
             "cachedImage": {},
-            "booksCount": 8,
+            "coursesCount": 8,
             "__typename": "authors"
           },
           "isbns": [],
@@ -869,7 +869,7 @@
             "name": "Sir Thomas Malory",
             "slug": "sir-thomas-malory",
             "cachedImage": {},
-            "booksCount": 17,
+            "coursesCount": 17,
             "__typename": "authors"
           },
           "isbns": [],
@@ -891,7 +891,7 @@
               "width": 268,
               "height": 326
             },
-            "booksCount": 129,
+            "coursesCount": 129,
             "__typename": "authors"
           },
           "isbns": [],
@@ -907,7 +907,7 @@
             "name": "Robin Lawrie",
             "slug": "robin-lawrie",
             "cachedImage": {},
-            "booksCount": 10,
+            "coursesCount": 10,
             "__typename": "authors"
           },
           "isbns": [],
@@ -923,7 +923,7 @@
             "name": "Jin Yong",
             "slug": "jin-yong",
             "cachedImage": {},
-            "booksCount": 21,
+            "coursesCount": 21,
             "__typename": "authors"
           },
           "isbns": [],
@@ -932,14 +932,14 @@
         {
           "id": 62105,
           "slug": "roald-dahl-james-and-the-giant-peach",
-          "title": "Roald Dahl James and the Giant Peach: The Course and Movie Scrapbook",
+          "title": "Roald Dahl James and the Giant Peach: The Course and Movie Scrapcourse",
           "pubYear": 1996,
           "image": "https://hardcover.imgix.net/edition/707793/3843269-L.jpg",
           "author": {
             "name": "Lucy Dahl",
             "slug": "lucy-dahl",
             "cachedImage": {},
-            "booksCount": 3,
+            "coursesCount": 3,
             "__typename": "authors"
           },
           "isbns": [],
@@ -961,7 +961,7 @@
               "width": 199,
               "height": 196
             },
-            "booksCount": 9,
+            "coursesCount": 9,
             "__typename": "authors"
           },
           "isbns": [],
@@ -983,7 +983,7 @@
               "width": 305,
               "height": 392
             },
-            "booksCount": 196,
+            "coursesCount": 196,
             "__typename": "authors"
           },
           "isbns": [],
@@ -1005,7 +1005,7 @@
               "width": 280,
               "height": 340
             },
-            "booksCount": 256,
+            "coursesCount": 256,
             "__typename": "authors"
           },
           "isbns": [],
@@ -1021,7 +1021,7 @@
             "name": "Mary  Stewart",
             "slug": "mary-stewart-7ac53ba6-120c-4f84-ae80-aa7a861c375b",
             "cachedImage": {},
-            "booksCount": 23,
+            "coursesCount": 23,
             "__typename": "authors"
           },
           "isbns": [],
@@ -1043,7 +1043,7 @@
               "width": 202,
               "height": 233
             },
-            "booksCount": 16,
+            "coursesCount": 16,
             "__typename": "authors"
           },
           "isbns": [],
@@ -1059,7 +1059,7 @@
             "name": "Angela Carter",
             "slug": "angela-carter-26e2b606-cf2f-4325-97ac-413b6887597a",
             "cachedImage": {},
-            "booksCount": 42,
+            "coursesCount": 42,
             "__typename": "authors"
           },
           "isbns": [],
@@ -1081,7 +1081,7 @@
               "width": 371,
               "height": 500
             },
-            "booksCount": 59,
+            "coursesCount": 59,
             "__typename": "authors"
           },
           "isbns": [],
@@ -1103,7 +1103,7 @@
               "width": 330,
               "height": 500
             },
-            "booksCount": 153,
+            "coursesCount": 153,
             "__typename": "authors"
           },
           "isbns": [],
@@ -1119,8 +1119,8 @@
       "ranked": true,
       "description": "This list was created by NPR.",
       "url": "",
-      "booksCount": 100,
-      "books": [
+      "coursesCount": 100,
+      "courses": [
         {
           "id": 377938,
           "slug": "the-lord-of-the-rings",
@@ -1137,7 +1137,7 @@
               "width": 187,
               "height": 266
             },
-            "booksCount": 229,
+            "coursesCount": 229,
             "__typename": "authors"
           },
           "isbns": [],
@@ -1159,7 +1159,7 @@
               "width": 333,
               "height": 386
             },
-            "booksCount": 104,
+            "coursesCount": 104,
             "__typename": "authors"
           },
           "isbns": [],
@@ -1181,7 +1181,7 @@
               "width": 200,
               "height": 283
             },
-            "booksCount": 213,
+            "coursesCount": 213,
             "__typename": "authors"
           },
           "isbns": [],
@@ -1203,7 +1203,7 @@
               "width": 137,
               "height": 200
             },
-            "booksCount": 96,
+            "coursesCount": 96,
             "__typename": "authors"
           },
           "isbns": [],
@@ -1225,7 +1225,7 @@
               "width": 200,
               "height": 257
             },
-            "booksCount": 362,
+            "coursesCount": 362,
             "__typename": "authors"
           },
           "isbns": [],
@@ -1247,7 +1247,7 @@
               "width": 500,
               "height": 281
             },
-            "booksCount": 151,
+            "coursesCount": 151,
             "__typename": "authors"
           },
           "isbns": [],
@@ -1269,7 +1269,7 @@
               "width": 407,
               "height": 500
             },
-            "booksCount": 237,
+            "coursesCount": 237,
             "__typename": "authors"
           },
           "isbns": [],
@@ -1291,7 +1291,7 @@
               "width": 354,
               "height": 500
             },
-            "booksCount": 608,
+            "coursesCount": 608,
             "__typename": "authors"
           },
           "isbns": [],
@@ -1313,7 +1313,7 @@
               "width": 200,
               "height": 250
             },
-            "booksCount": 93,
+            "coursesCount": 93,
             "__typename": "authors"
           },
           "isbns": [],
@@ -1335,7 +1335,7 @@
               "width": 375,
               "height": 500
             },
-            "booksCount": 657,
+            "coursesCount": 657,
             "__typename": "authors"
           },
           "isbns": [],
@@ -1351,7 +1351,7 @@
             "name": "William Goldman",
             "slug": "william-goldman",
             "cachedImage": {},
-            "booksCount": 25,
+            "coursesCount": 25,
             "__typename": "authors"
           },
           "isbns": [],
@@ -1373,7 +1373,7 @@
               "width": 330,
               "height": 500
             },
-            "booksCount": 153,
+            "coursesCount": 153,
             "__typename": "authors"
           },
           "isbns": [],
@@ -1395,7 +1395,7 @@
               "width": 500,
               "height": 281
             },
-            "booksCount": 151,
+            "coursesCount": 151,
             "__typename": "authors"
           },
           "isbns": [],
@@ -1417,7 +1417,7 @@
               "width": 500,
               "height": 333
             },
-            "booksCount": 106,
+            "coursesCount": 106,
             "__typename": "authors"
           },
           "isbns": [],
@@ -1432,9 +1432,9 @@
       "slug": "the-new-york-timess-50-best-memoirs-of-the-past-50-years",
       "ranked": false,
       "description": "The New York Times' Course critics far and wide have selected the top best memoirs published since 1969.",
-      "url": "https://www.nytimes.com/interactive/2019/06/26/books/best-memoirs.html",
-      "booksCount": 49,
-      "books": [
+      "url": "https://www.nytimes.com/interactive/2019/06/26/courses/best-memoirs.html",
+      "coursesCount": 49,
+      "courses": [
         {
           "id": 440858,
           "slug": "palimpsest-1995",
@@ -1451,7 +1451,7 @@
               "width": 500,
               "height": 346
             },
-            "booksCount": 53,
+            "coursesCount": 53,
             "__typename": "authors"
           },
           "isbns": [],
@@ -1467,7 +1467,7 @@
             "name": "Harry Crews",
             "slug": "harry-crews",
             "cachedImage": {},
-            "booksCount": 17,
+            "coursesCount": 17,
             "__typename": "authors"
           },
           "isbns": [],
@@ -1489,7 +1489,7 @@
               "width": 352,
               "height": 500
             },
-            "booksCount": 93,
+            "coursesCount": 93,
             "__typename": "authors"
           },
           "isbns": [],
@@ -1505,7 +1505,7 @@
             "name": "Theodore Rosengarten",
             "slug": "theodore-rosengarten",
             "cachedImage": {},
-            "booksCount": 2,
+            "coursesCount": 2,
             "__typename": "authors"
           },
           "isbns": [],
@@ -1521,7 +1521,7 @@
             "name": "Rachel Cusk",
             "slug": "rachel-cusk",
             "cachedImage": {},
-            "booksCount": 30,
+            "coursesCount": 30,
             "__typename": "authors"
           },
           "isbns": [],
@@ -1537,7 +1537,7 @@
             "name": "J.M. Coetzee",
             "slug": "jm-coetzee",
             "cachedImage": {},
-            "booksCount": 49,
+            "coursesCount": 49,
             "__typename": "authors"
           },
           "isbns": [],
@@ -1559,7 +1559,7 @@
               "width": 110,
               "height": 172
             },
-            "booksCount": 23,
+            "coursesCount": 23,
             "__typename": "authors"
           },
           "isbns": [],
@@ -1575,7 +1575,7 @@
             "name": "Sally Mann",
             "slug": "sally-mann",
             "cachedImage": {},
-            "booksCount": 5,
+            "coursesCount": 5,
             "__typename": "authors"
           },
           "isbns": [],
@@ -1591,7 +1591,7 @@
             "name": "Viv Albertine",
             "slug": "viv-albertine",
             "cachedImage": {},
-            "booksCount": 7,
+            "coursesCount": 7,
             "__typename": "authors"
           },
           "isbns": [],
@@ -1613,7 +1613,7 @@
               "width": 375,
               "height": 500
             },
-            "booksCount": 55,
+            "coursesCount": 55,
             "__typename": "authors"
           },
           "isbns": [],
@@ -1629,7 +1629,7 @@
             "name": "Eve Babitz",
             "slug": "eve-babitz",
             "cachedImage": {},
-            "booksCount": 18,
+            "coursesCount": 18,
             "__typename": "authors"
           },
           "isbns": [],
@@ -1645,7 +1645,7 @@
             "name": "Russell Baker",
             "slug": "russell-baker",
             "cachedImage": {},
-            "booksCount": 3,
+            "coursesCount": 3,
             "__typename": "authors"
           },
           "isbns": [],
@@ -1661,7 +1661,7 @@
             "name": "Anatole Broyard",
             "slug": "anatole-broyard",
             "cachedImage": {},
-            "booksCount": 4,
+            "coursesCount": 4,
             "__typename": "authors"
           },
           "isbns": [],
@@ -1677,7 +1677,7 @@
             "name": "William Finnegan",
             "slug": "william-finnegan",
             "cachedImage": {},
-            "booksCount": 8,
+            "coursesCount": 8,
             "__typename": "authors"
           },
           "isbns": [],
@@ -1689,12 +1689,12 @@
       "id": 108,
       "name": "The 31 Best Fantasy Courses Everyone Should Read",
       "userId": 3,
-      "slug": "the-31-best-fantasy-books-everyone-should-read",
+      "slug": "the-31-best-fantasy-courses-everyone-should-read",
       "ranked": false,
-      "description": "WIRED's team has summoned some of the strangest creatures in the most fantastic worlds in this list of the best fantasy books everyone should read. ",
-      "url": "https://www.wired.co.uk/article/best-fantasy-books-novels-series",
-      "booksCount": 30,
-      "books": [
+      "description": "WIRED's team has summoned some of the strangest creatures in the most fantastic worlds in this list of the best fantasy courses everyone should read. ",
+      "url": "https://www.wired.co.uk/article/best-fantasy-courses-novels-series",
+      "coursesCount": 30,
+      "courses": [
         {
           "id": 432346,
           "slug": "black-leopard-red-wolf",
@@ -1705,7 +1705,7 @@
             "name": "Marlon James",
             "slug": "marlon-james",
             "cachedImage": {},
-            "booksCount": 17,
+            "coursesCount": 17,
             "__typename": "authors"
           },
           "isbns": [],
@@ -1727,7 +1727,7 @@
               "width": 400,
               "height": 400
             },
-            "booksCount": 137,
+            "coursesCount": 137,
             "__typename": "authors"
           },
           "isbns": [],
@@ -1743,7 +1743,7 @@
             "name": "Naomi Alderman",
             "slug": "naomi-alderman",
             "cachedImage": {},
-            "booksCount": 26,
+            "coursesCount": 26,
             "__typename": "authors"
           },
           "isbns": [],
@@ -1759,7 +1759,7 @@
             "name": "Tochi Onyebuchi",
             "slug": "tochi-onyebuchi-26452e0e-2813-4b91-b94c-2d91f73c9457",
             "cachedImage": {},
-            "booksCount": 26,
+            "coursesCount": 26,
             "__typename": "authors"
           },
           "isbns": [],
@@ -1775,7 +1775,7 @@
             "name": "Octavia E. Butler",
             "slug": "octavia-e-butler-c68106cb-01c1-48b2-aab8-b2fe9300b032",
             "cachedImage": {},
-            "booksCount": 57,
+            "coursesCount": 57,
             "__typename": "authors"
           },
           "isbns": [],
@@ -1791,7 +1791,7 @@
             "name": "Sayaka Murata",
             "slug": "sayaka-murata",
             "cachedImage": {},
-            "booksCount": 25,
+            "coursesCount": 25,
             "__typename": "authors"
           },
           "isbns": [],
@@ -1813,7 +1813,7 @@
               "width": 230,
               "height": 230
             },
-            "booksCount": 17,
+            "coursesCount": 17,
             "__typename": "authors"
           },
           "isbns": [],
@@ -1824,12 +1824,12 @@
           "slug": "gardens-of-the-moon",
           "title": "Gardens of the Moon",
           "pubYear": 2004,
-          "image": "https://hardcover.imgix.net/book_mappings/7332552/1af7e141aca8e2104850f41d82bc41c0b6c39214.jpeg",
+          "image": "https://hardcover.imgix.net/course_mappings/7332552/1af7e141aca8e2104850f41d82bc41c0b6c39214.jpeg",
           "author": {
             "name": "Steven Erikson",
             "slug": "steven-erikson",
             "cachedImage": {},
-            "booksCount": 92,
+            "coursesCount": 92,
             "__typename": "authors"
           },
           "isbns": [],
@@ -1845,7 +1845,7 @@
             "name": "Helene Wecker",
             "slug": "helene-wecker",
             "cachedImage": {},
-            "booksCount": 8,
+            "coursesCount": 8,
             "__typename": "authors"
           },
           "isbns": [],
@@ -1867,7 +1867,7 @@
               "width": 393,
               "height": 500
             },
-            "booksCount": 740,
+            "coursesCount": 740,
             "__typename": "authors"
           },
           "isbns": [],
@@ -1889,7 +1889,7 @@
               "width": 300,
               "height": 387
             },
-            "booksCount": 120,
+            "coursesCount": 120,
             "__typename": "authors"
           },
           "isbns": [],
@@ -1905,7 +1905,7 @@
             "name": "Mervyn Peake",
             "slug": "mervyn-peake",
             "cachedImage": {},
-            "booksCount": 25,
+            "coursesCount": 25,
             "__typename": "authors"
           },
           "isbns": [],
@@ -1927,7 +1927,7 @@
               "width": 419,
               "height": 500
             },
-            "booksCount": 153,
+            "coursesCount": 153,
             "__typename": "authors"
           },
           "isbns": [],
@@ -1935,7 +1935,7 @@
         },
         {
           "id": 263544,
-          "slug": "the-book-of-dust",
+          "slug": "the-course-of-dust",
           "title": "The Course of Dust",
           "pubYear": 2018,
           "image": "https://hardcover.imgix.net/edition/30381147/content.jpeg",
@@ -1949,7 +1949,7 @@
               "width": 419,
               "height": 500
             },
-            "booksCount": 153,
+            "coursesCount": 153,
             "__typename": "authors"
           },
           "isbns": [],
@@ -1965,8 +1965,8 @@
       "ranked": false,
       "description": "These stories take place in worlds similar to ours with magical elements that blue the lines between fantasy and reality. Their characters must first conquer their own demons before they can conquer any others.",
       "url": "",
-      "booksCount": 20,
-      "books": [
+      "coursesCount": 20,
+      "courses": [
         {
           "id": 432263,
           "slug": "how-to-live-safely-in-a-science-fictional-universe",
@@ -1977,7 +1977,7 @@
             "name": "Charles Yu",
             "slug": "charles-yu",
             "cachedImage": {},
-            "booksCount": 24,
+            "coursesCount": 24,
             "__typename": "authors"
           },
           "isbns": [],
@@ -1993,7 +1993,7 @@
             "name": "Kevin Wilson",
             "slug": "kevin-wilson",
             "cachedImage": {},
-            "booksCount": 9,
+            "coursesCount": 9,
             "__typename": "authors"
           },
           "isbns": [],
@@ -2015,7 +2015,7 @@
               "width": 389,
               "height": 500
             },
-            "booksCount": 64,
+            "coursesCount": 64,
             "__typename": "authors"
           },
           "isbns": [],
@@ -2031,7 +2031,7 @@
             "name": "Ciara Smyth",
             "slug": "ciara-smyth",
             "cachedImage": {},
-            "booksCount": 4,
+            "coursesCount": 4,
             "__typename": "authors"
           },
           "isbns": [],
@@ -2053,7 +2053,7 @@
               "width": 375,
               "height": 500
             },
-            "booksCount": 121,
+            "coursesCount": 121,
             "__typename": "authors"
           },
           "isbns": [],
@@ -2069,7 +2069,7 @@
             "name": "Silvia Moreno-Garcia",
             "slug": "silvia-moreno-garcia",
             "cachedImage": {},
-            "booksCount": 49,
+            "coursesCount": 49,
             "__typename": "authors"
           },
           "isbns": [],
@@ -2085,7 +2085,7 @@
             "name": "Elisabeth    Thomas",
             "slug": "elisabeth-thomas-a09625a9-d9ac-442d-a114-632bcf3c9c67",
             "cachedImage": {},
-            "booksCount": 1,
+            "coursesCount": 1,
             "__typename": "authors"
           },
           "isbns": [],
@@ -2101,7 +2101,7 @@
             "name": "Matt Haig",
             "slug": "matt-haig",
             "cachedImage": {},
-            "booksCount": 84,
+            "coursesCount": 84,
             "__typename": "authors"
           },
           "isbns": [],
@@ -2117,7 +2117,7 @@
             "name": "Susanna Kearsley",
             "slug": "susanna-kearsley-0584ed1e-1bad-4c41-9278-8bae5bc64446",
             "cachedImage": {},
-            "booksCount": 15,
+            "coursesCount": 15,
             "__typename": "authors"
           },
           "isbns": [],
@@ -2125,7 +2125,7 @@
         },
         {
           "id": 428542,
-          "slug": "the-southern-book-clubs-guide-to-slaying-vampires",
+          "slug": "the-southern-course-clubs-guide-to-slaying-vampires",
           "title": "The Southern Course Club's Guide to Slaying Vampires",
           "pubYear": 2020,
           "image": "https://hardcover.imgix.net/edition/30400308/44074800._SX98_.jpg",
@@ -2133,7 +2133,7 @@
             "name": "Grady Hendrix",
             "slug": "grady-hendrix",
             "cachedImage": {},
-            "booksCount": 41,
+            "coursesCount": 41,
             "__typename": "authors"
           },
           "isbns": [],
@@ -2155,7 +2155,7 @@
               "width": 360,
               "height": 480
             },
-            "booksCount": 96,
+            "coursesCount": 96,
             "__typename": "authors"
           },
           "isbns": [],
@@ -2171,7 +2171,7 @@
             "name": "Nghi Vo",
             "slug": "nghi-vo-3bae20f7-86b3-464a-a3c4-00e5c039f89e",
             "cachedImage": {},
-            "booksCount": 20,
+            "coursesCount": 20,
             "__typename": "authors"
           },
           "isbns": [],
@@ -2187,7 +2187,7 @@
             "name": "Yann Martel",
             "slug": "yann-martel",
             "cachedImage": {},
-            "booksCount": 19,
+            "coursesCount": 19,
             "__typename": "authors"
           },
           "isbns": [],
@@ -2209,7 +2209,7 @@
               "width": 498,
               "height": 374
             },
-            "booksCount": 287,
+            "coursesCount": 287,
             "__typename": "authors"
           },
           "isbns": [],
@@ -2223,10 +2223,10 @@
       "userId": 3,
       "slug": "pulitzer-prize-winning-fiction",
       "ranked": false,
-      "description": "This list contains Pulitzer Prize-winning fiction since the Fiction Prize's inception in 1948. The Pulitzer Prizes and Fellowships were established in Columbia University by Joseph Pulitzer. Prizes are awarded by the University on the recommendation of The Pulitzer Prize Board and are announced in Spring. Nominees are organized into 22 categories across journalism, books, drama and music.",
+      "description": "This list contains Pulitzer Prize-winning fiction since the Fiction Prize's inception in 1948. The Pulitzer Prizes and Fellowships were established in Columbia University by Joseph Pulitzer. Prizes are awarded by the University on the recommendation of The Pulitzer Prize Board and are announced in Spring. Nominees are organized into 22 categories across journalism, courses, drama and music.",
       "url": "https://www.pulitzer.org/prize-winners-by-category/219",
-      "booksCount": 66,
-      "books": [
+      "coursesCount": 66,
+      "courses": [
         {
           "id": 445453,
           "slug": "the-collected-stories-of-jean-stafford",
@@ -2237,7 +2237,7 @@
             "name": "Jean Stafford",
             "slug": "jean-stafford",
             "cachedImage": {},
-            "booksCount": 6,
+            "coursesCount": 6,
             "__typename": "authors"
           },
           "isbns": [],
@@ -2253,7 +2253,7 @@
             "name": "Louise Erdrich",
             "slug": "louise-erdrich-93f7d3b8-4b65-45bd-bbf6-beb6d5d2b06a",
             "cachedImage": {},
-            "booksCount": 48,
+            "coursesCount": 48,
             "__typename": "authors"
           },
           "isbns": [],
@@ -2275,7 +2275,7 @@
               "width": 500,
               "height": 334
             },
-            "booksCount": 15,
+            "coursesCount": 15,
             "__typename": "authors"
           },
           "isbns": [],
@@ -2297,7 +2297,7 @@
               "width": 220,
               "height": 330
             },
-            "booksCount": 23,
+            "coursesCount": 23,
             "__typename": "authors"
           },
           "isbns": [],
@@ -2313,7 +2313,7 @@
             "name": "Paul Harding",
             "slug": "paul-harding",
             "cachedImage": {},
-            "booksCount": 5,
+            "coursesCount": 5,
             "__typename": "authors"
           },
           "isbns": [],
@@ -2335,7 +2335,7 @@
               "width": 500,
               "height": 485
             },
-            "booksCount": 18,
+            "coursesCount": 18,
             "__typename": "authors"
           },
           "isbns": [],
@@ -2357,7 +2357,7 @@
               "width": 220,
               "height": 336
             },
-            "booksCount": 38,
+            "coursesCount": 38,
             "__typename": "authors"
           },
           "isbns": [],
@@ -2373,7 +2373,7 @@
             "name": "Robert Olen Butler",
             "slug": "robert-olen-butler",
             "cachedImage": {},
-            "booksCount": 24,
+            "coursesCount": 24,
             "__typename": "authors"
           },
           "isbns": [],
@@ -2389,7 +2389,7 @@
             "name": "Oscar Hijuelos",
             "slug": "oscar-hijuelos",
             "cachedImage": {},
-            "booksCount": 9,
+            "coursesCount": 9,
             "__typename": "authors"
           },
           "isbns": [],
@@ -2405,7 +2405,7 @@
             "name": "Peter Taylor",
             "slug": "peter-taylor-f19ed839-c8e7-4867-a5ea-86706ac5f16c",
             "cachedImage": {},
-            "booksCount": 6,
+            "coursesCount": 6,
             "__typename": "authors"
           },
           "isbns": [],
@@ -2421,7 +2421,7 @@
             "name": "William  Kennedy",
             "slug": "william-kennedy-93539e57-72d5-4a62-b1cd-d035a917f2dc",
             "cachedImage": {},
-            "booksCount": 9,
+            "coursesCount": 9,
             "__typename": "authors"
           },
           "isbns": [],
@@ -2437,7 +2437,7 @@
             "name": "John Cheever",
             "slug": "john-cheever",
             "cachedImage": {},
-            "booksCount": 43,
+            "coursesCount": 43,
             "__typename": "authors"
           },
           "isbns": [],
@@ -2453,7 +2453,7 @@
             "name": "James Alan McPherson",
             "slug": "james-alan-mcpherson-32c6bf1b-455c-4758-8cf7-e9cec50d53f1",
             "cachedImage": {},
-            "booksCount": 7,
+            "coursesCount": 7,
             "__typename": "authors"
           },
           "isbns": [],
@@ -2469,7 +2469,7 @@
             "name": "Saul Bellow",
             "slug": "saul-bellow-635e7edd-9c5e-437d-ac1c-0a9cd970ffb4",
             "cachedImage": {},
-            "booksCount": 39,
+            "coursesCount": 39,
             "__typename": "authors"
           },
           "isbns": [],
@@ -2481,12 +2481,12 @@
       "id": 105,
       "name": "The 70 Best Science Courses You Need to Read in 2021",
       "userId": 3,
-      "slug": "the-70-best-science-books-you-need-to-read-in-2021",
+      "slug": "the-70-best-science-courses-you-need-to-read-in-2021",
       "ranked": false,
-      "description": "Well-researched, peer-reviewed discoveries fuel both Science and Science Fiction as this list rounds up the best science books you need to read in 2021.",
-      "url": "https://www.sciencefocus.com/books/science-books-2/",
-      "booksCount": 69,
-      "books": [
+      "description": "Well-researched, peer-reviewed discoveries fuel both Science and Science Fiction as this list rounds up the best science courses you need to read in 2021.",
+      "url": "https://www.sciencefocus.com/courses/science-courses-2/",
+      "coursesCount": 69,
+      "courses": [
         {
           "id": 432410,
           "slug": "the-science-of-can-and-cant",
@@ -2497,7 +2497,7 @@
             "name": "Chiara Marletto",
             "slug": "chiara-marletto",
             "cachedImage": {},
-            "booksCount": 3,
+            "coursesCount": 3,
             "__typename": "authors"
           },
           "isbns": [],
@@ -2513,7 +2513,7 @@
             "name": "Saliha Mahmood Ahmed",
             "slug": "saliha-mahmood-ahmed",
             "cachedImage": {},
-            "booksCount": 5,
+            "coursesCount": 5,
             "__typename": "authors"
           },
           "isbns": [],
@@ -2529,7 +2529,7 @@
             "name": "Rory Cellan-Jones",
             "slug": "rory-cellan-jones",
             "cachedImage": {},
-            "booksCount": 2,
+            "coursesCount": 2,
             "__typename": "authors"
           },
           "isbns": [],
@@ -2545,7 +2545,7 @@
             "name": "Anna Ploszajski",
             "slug": "anna-ploszajski",
             "cachedImage": {},
-            "booksCount": 5,
+            "coursesCount": 5,
             "__typename": "authors"
           },
           "isbns": [],
@@ -2561,7 +2561,7 @@
             "name": "Christian Jarrett",
             "slug": "christian-jarrett",
             "cachedImage": {},
-            "booksCount": 7,
+            "coursesCount": 7,
             "__typename": "authors"
           },
           "isbns": [],
@@ -2577,7 +2577,7 @@
             "name": "Melissa Hogenboom",
             "slug": "melissa-hogenboom",
             "cachedImage": {},
-            "booksCount": 4,
+            "coursesCount": 4,
             "__typename": "authors"
           },
           "isbns": [],
@@ -2599,7 +2599,7 @@
               "width": 333,
               "height": 500
             },
-            "booksCount": 5,
+            "coursesCount": 5,
             "__typename": "authors"
           },
           "isbns": [],
@@ -2615,7 +2615,7 @@
             "name": "Emma Byrne",
             "slug": "emma-byrne",
             "cachedImage": {},
-            "booksCount": 1,
+            "coursesCount": 1,
             "__typename": "authors"
           },
           "isbns": [],
@@ -2631,7 +2631,7 @@
             "name": "Thibault Damour",
             "slug": "thibault-damour",
             "cachedImage": {},
-            "booksCount": 3,
+            "coursesCount": 3,
             "__typename": "authors"
           },
           "isbns": [],
@@ -2647,7 +2647,7 @@
             "name": "Jack Waley-Cohen",
             "slug": "jack-waley-cohen",
             "cachedImage": {},
-            "booksCount": 1,
+            "coursesCount": 1,
             "__typename": "authors"
           },
           "isbns": [],
@@ -2663,7 +2663,7 @@
             "name": "John Bradshaw",
             "slug": "john-bradshaw",
             "cachedImage": {},
-            "booksCount": 13,
+            "coursesCount": 13,
             "__typename": "authors"
           },
           "isbns": [],
@@ -2679,7 +2679,7 @@
             "name": "Eugenia Cheng",
             "slug": "eugenia-cheng",
             "cachedImage": {},
-            "booksCount": 11,
+            "coursesCount": 11,
             "__typename": "authors"
           },
           "isbns": [],
@@ -2695,7 +2695,7 @@
             "name": "Darryl Cunningham",
             "slug": "darryl-cunningham",
             "cachedImage": {},
-            "booksCount": 7,
+            "coursesCount": 7,
             "__typename": "authors"
           },
           "isbns": [],
@@ -2711,7 +2711,7 @@
             "name": "Angela Saini",
             "slug": "angela-saini-374a9205-c8f8-4fe1-9db2-1416308a9928",
             "cachedImage": {},
-            "booksCount": 7,
+            "coursesCount": 7,
             "__typename": "authors"
           },
           "isbns": [],
@@ -2723,12 +2723,12 @@
       "id": 104,
       "name": "Ten Best Non-Fiction Science Courses to Read Right Now",
       "userId": 3,
-      "slug": "ten-best-non-fiction-science-books-to-read-right-now",
+      "slug": "ten-best-non-fiction-science-courses-to-read-right-now",
       "ranked": false,
-      "description": "From Einstein's quantum theory to human evolution and beyond\u2014this list includes science books that tap into a universe of knowledge as collected by New Scientist's Simon Ings.",
-      "url": "https://www.newscientist.com/article/2245364-10-of-the-best-non-fiction-science-books-to-read-right-now/#ixzz70p8rMMrl",
-      "booksCount": 10,
-      "books": [
+      "description": "From Einstein's quantum theory to human evolution and beyond\u2014this list includes science courses that tap into a universe of knowledge as collected by New Scientist's Simon Ings.",
+      "url": "https://www.newscientist.com/article/2245364-10-of-the-best-non-fiction-science-courses-to-read-right-now/#ixzz70p8rMMrl",
+      "coursesCount": 10,
+      "courses": [
         {
           "id": 432349,
           "slug": "einsteins-unfinished-revolution",
@@ -2739,7 +2739,7 @@
             "name": "Lee Smolin",
             "slug": "lee-smolin-714e83b4-d5d8-40a4-8a51-8d43f88cecc2",
             "cachedImage": {},
-            "booksCount": 10,
+            "coursesCount": 10,
             "__typename": "authors"
           },
           "isbns": [],
@@ -2755,7 +2755,7 @@
             "name": "Stuart A. Kauffman",
             "slug": "stuart-a-kauffman",
             "cachedImage": {},
-            "booksCount": 7,
+            "coursesCount": 7,
             "__typename": "authors"
           },
           "isbns": [],
@@ -2771,7 +2771,7 @@
             "name": "Anne Harrington",
             "slug": "anne-harrington-af4e729b-955d-430e-8597-3a2bc0822554",
             "cachedImage": {},
-            "booksCount": 2,
+            "coursesCount": 2,
             "__typename": "authors"
           },
           "isbns": [],
@@ -2787,7 +2787,7 @@
             "name": "Lee Alan Dugatkin",
             "slug": "lee-alan-dugatkin",
             "cachedImage": {},
-            "booksCount": 6,
+            "coursesCount": 6,
             "__typename": "authors"
           },
           "isbns": [],
@@ -2803,7 +2803,7 @@
             "name": "Frans de Waal",
             "slug": "frans-de-waal-db115fee-95e6-4dc6-8651-5fe3812ce21a",
             "cachedImage": {},
-            "booksCount": 25,
+            "coursesCount": 25,
             "__typename": "authors"
           },
           "isbns": [],
@@ -2819,7 +2819,7 @@
             "name": "Donald R. Prothero",
             "slug": "donald-r-prothero",
             "cachedImage": {},
-            "booksCount": 14,
+            "coursesCount": 14,
             "__typename": "authors"
           },
           "isbns": [],
@@ -2835,7 +2835,7 @@
             "name": "Gaia Vince",
             "slug": "gaia-vince",
             "cachedImage": {},
-            "booksCount": 6,
+            "coursesCount": 6,
             "__typename": "authors"
           },
           "isbns": [],
@@ -2851,7 +2851,7 @@
             "name": "Jo Dunkley",
             "slug": "jo-dunkley",
             "cachedImage": {},
-            "booksCount": 3,
+            "coursesCount": 3,
             "__typename": "authors"
           },
           "isbns": [],
@@ -2873,7 +2873,7 @@
               "width": 384,
               "height": 500
             },
-            "booksCount": 2,
+            "coursesCount": 2,
             "__typename": "authors"
           },
           "isbns": [],
@@ -2889,7 +2889,7 @@
             "name": "Shoshana Zuboff",
             "slug": "shoshana-zuboff",
             "cachedImage": {},
-            "booksCount": 9,
+            "coursesCount": 9,
             "__typename": "authors"
           },
           "isbns": [],
@@ -2901,12 +2901,12 @@
       "id": 98,
       "name": "NPR Course Concierge's 29 Best Historical Fiction of 2020",
       "userId": 3,
-      "slug": "npr-book-concierges-29-best-historical-fiction-of-2020",
+      "slug": "npr-course-concierges-29-best-historical-fiction-of-2020",
       "ranked": false,
-      "description": "National Public Radio's 29 best historical fiction books of 2020 as aggregated by Rose Friedman, Petra Mayer, Beth Novey, and Meghan Sullivan with Executive Producer Ellen Silva.",
-      "url": "https://apps.npr.org/best-books/#tags=historical+fiction&view=covers&year=2020",
-      "booksCount": 28,
-      "books": [
+      "description": "National Public Radio's 29 best historical fiction courses of 2020 as aggregated by Rose Friedman, Petra Mayer, Beth Novey, and Meghan Sullivan with Executive Producer Ellen Silva.",
+      "url": "https://apps.npr.org/best-courses/#tags=historical+fiction&view=covers&year=2020",
+      "coursesCount": 28,
+      "courses": [
         {
           "id": 432341,
           "slug": "at-night-all-blood-is-black",
@@ -2917,7 +2917,7 @@
             "name": "David Diop",
             "slug": "david-diop",
             "cachedImage": {},
-            "booksCount": 6,
+            "coursesCount": 6,
             "__typename": "authors"
           },
           "isbns": [],
@@ -2933,7 +2933,7 @@
             "name": "Alice Randall",
             "slug": "alice-randall",
             "cachedImage": {},
-            "booksCount": 4,
+            "coursesCount": 4,
             "__typename": "authors"
           },
           "isbns": [],
@@ -2941,7 +2941,7 @@
         },
         {
           "id": 432234,
-          "slug": "the-book-of-v",
+          "slug": "the-course-of-v",
           "title": "The Course of V.",
           "pubYear": 2020,
           "image": "https://hardcover.imgix.net/edition/19591497/9411690-L.jpg",
@@ -2949,7 +2949,7 @@
             "name": "Anna Solomon",
             "slug": "anna-solomon",
             "cachedImage": {},
-            "booksCount": 4,
+            "coursesCount": 4,
             "__typename": "authors"
           },
           "isbns": [],
@@ -2965,7 +2965,7 @@
             "name": "Olivia Waite",
             "slug": "olivia-waite",
             "cachedImage": {},
-            "booksCount": 5,
+            "coursesCount": 5,
             "__typename": "authors"
           },
           "isbns": [],
@@ -2981,7 +2981,7 @@
             "name": "Afia Atakora",
             "slug": "afia-atakora",
             "cachedImage": {},
-            "booksCount": 1,
+            "coursesCount": 1,
             "__typename": "authors"
           },
           "isbns": [],
@@ -2997,7 +2997,7 @@
             "name": "Lauren Wolk",
             "slug": "lauren-wolk-1b6728f3-7460-497f-b430-237a50ec9dd7",
             "cachedImage": {},
-            "booksCount": 9,
+            "coursesCount": 9,
             "__typename": "authors"
           },
           "isbns": [],
@@ -3013,7 +3013,7 @@
             "name": "Annette Saunooke Clapsaddle",
             "slug": "annette-saunooke-clapsaddle",
             "cachedImage": {},
-            "booksCount": 1,
+            "coursesCount": 1,
             "__typename": "authors"
           },
           "isbns": [],
@@ -3029,7 +3029,7 @@
             "name": "C Pam Zhang",
             "slug": "c-pam-zhang",
             "cachedImage": {},
-            "booksCount": 5,
+            "coursesCount": 5,
             "__typename": "authors"
           },
           "isbns": [],
@@ -3045,7 +3045,7 @@
             "name": "Marilynne Robinson",
             "slug": "marilynne-robinson-e53b381b-a945-4fe7-90c8-a2ae8e0a0cb6",
             "cachedImage": {},
-            "booksCount": 25,
+            "coursesCount": 25,
             "__typename": "authors"
           },
           "isbns": [],
@@ -3061,7 +3061,7 @@
             "name": "Andrea L. Rogers",
             "slug": "andrea-l-rogers",
             "cachedImage": {},
-            "booksCount": 5,
+            "coursesCount": 5,
             "__typename": "authors"
           },
           "isbns": [],
@@ -3083,7 +3083,7 @@
               "width": 125,
               "height": 180
             },
-            "booksCount": 48,
+            "coursesCount": 48,
             "__typename": "authors"
           },
           "isbns": [],
@@ -3099,7 +3099,7 @@
             "name": "Au\u00f0ur Ava \u00d3lafsd\u00f3ttir",
             "slug": "audur-ava-olafsdottir-620fd94e-82b6-4b7b-b220-d86fa77a63b9",
             "cachedImage": {},
-            "booksCount": 8,
+            "coursesCount": 8,
             "__typename": "authors"
           },
           "isbns": [],
@@ -3115,7 +3115,7 @@
             "name": "Nguy\u1ec5n Phan Qu\u1ebf Mai",
             "slug": "nguy-n-phan-qu-mai",
             "cachedImage": {},
-            "booksCount": 5,
+            "coursesCount": 5,
             "__typename": "authors"
           },
           "isbns": [],
@@ -3131,7 +3131,7 @@
             "name": "Louise Erdrich",
             "slug": "louise-erdrich-93f7d3b8-4b65-45bd-bbf6-beb6d5d2b06a",
             "cachedImage": {},
-            "booksCount": 48,
+            "coursesCount": 48,
             "__typename": "authors"
           },
           "isbns": [],
@@ -3145,10 +3145,10 @@
       "userId": 3,
       "slug": "pulitzer-prize-winning-novels",
       "ranked": false,
-      "description": "This list contains Pulitzer Prize-winning fiction from 1918 to 1947. The Pulitzer Prizes and Fellowships were established in Columbia University by Joseph Pulitzer. Prizes are awarded by the University on the recommendation of The Pulitzer Prize Board and are announced in Spring. Nominees are organized into 22 categories across journalism, books, drama and music.",
+      "description": "This list contains Pulitzer Prize-winning fiction from 1918 to 1947. The Pulitzer Prizes and Fellowships were established in Columbia University by Joseph Pulitzer. Prizes are awarded by the University on the recommendation of The Pulitzer Prize Board and are announced in Spring. Nominees are organized into 22 categories across journalism, courses, drama and music.",
       "url": "https://www.pulitzer.org/prize-winners-by-category/261",
-      "booksCount": 27,
-      "books": [
+      "coursesCount": 27,
+      "courses": [
         {
           "id": 302346,
           "slug": "all-the-kings-men",
@@ -3165,7 +3165,7 @@
               "width": 344,
               "height": 500
             },
-            "booksCount": 15,
+            "coursesCount": 15,
             "__typename": "authors"
           },
           "isbns": [],
@@ -3187,7 +3187,7 @@
               "width": 406,
               "height": 500
             },
-            "booksCount": 16,
+            "coursesCount": 16,
             "__typename": "authors"
           },
           "isbns": [],
@@ -3203,7 +3203,7 @@
             "name": "Martin Flavin",
             "slug": "martin-flavin",
             "cachedImage": {},
-            "booksCount": 2,
+            "coursesCount": 2,
             "__typename": "authors"
           },
           "isbns": [],
@@ -3225,7 +3225,7 @@
               "width": 145,
               "height": 168
             },
-            "booksCount": 36,
+            "coursesCount": 36,
             "__typename": "authors"
           },
           "isbns": [],
@@ -3241,7 +3241,7 @@
             "name": "Ellen Glasgow",
             "slug": "ellen-glasgow",
             "cachedImage": {},
-            "booksCount": 16,
+            "coursesCount": 16,
             "__typename": "authors"
           },
           "isbns": [],
@@ -3263,7 +3263,7 @@
               "width": 220,
               "height": 275
             },
-            "booksCount": 13,
+            "coursesCount": 13,
             "__typename": "authors"
           },
           "isbns": [],
@@ -3279,7 +3279,7 @@
             "name": "H.L. Davis",
             "slug": "hl-davis",
             "cachedImage": {},
-            "booksCount": 2,
+            "coursesCount": 2,
             "__typename": "authors"
           },
           "isbns": [],
@@ -3295,7 +3295,7 @@
             "name": "Josephine Winslow Johnson",
             "slug": "josephine-winslow-johnson",
             "cachedImage": {},
-            "booksCount": 3,
+            "coursesCount": 3,
             "__typename": "authors"
           },
           "isbns": [],
@@ -3311,7 +3311,7 @@
             "name": "T.S. Stribling",
             "slug": "ts-stribling",
             "cachedImage": {},
-            "booksCount": 2,
+            "coursesCount": 2,
             "__typename": "authors"
           },
           "isbns": [],
@@ -3327,7 +3327,7 @@
             "name": "Margaret Ayer Barnes",
             "slug": "margaret-ayer-barnes-aef7b4fd-f30c-48c1-8d5c-428682ea550f",
             "cachedImage": {},
-            "booksCount": 2,
+            "coursesCount": 2,
             "__typename": "authors"
           },
           "isbns": [],
@@ -3343,7 +3343,7 @@
             "name": "Oliver La Farge",
             "slug": "oliver-la-farge",
             "cachedImage": {},
-            "booksCount": 6,
+            "coursesCount": 6,
             "__typename": "authors"
           },
           "isbns": [],
@@ -3359,7 +3359,7 @@
             "name": "Julia Peterkin",
             "slug": "julia-peterkin",
             "cachedImage": {},
-            "booksCount": 1,
+            "coursesCount": 1,
             "__typename": "authors"
           },
           "isbns": [],
@@ -3375,7 +3375,7 @@
             "name": "Louis Bromfield",
             "slug": "louis-bromfield",
             "cachedImage": {},
-            "booksCount": 10,
+            "coursesCount": 10,
             "__typename": "authors"
           },
           "isbns": [],
@@ -3386,12 +3386,12 @@
           "slug": "the-able-mclaughlins",
           "title": "The Able McLaughlins",
           "pubYear": 2007,
-          "image": "https://storage.googleapis.com/hardcover/books/432300/672349-L.jpg",
+          "image": "https://storage.googleapis.com/hardcover/courses/432300/672349-L.jpg",
           "author": {
             "name": "Margaret Wilson",
             "slug": "margaret-wilson",
             "cachedImage": {},
-            "booksCount": 2,
+            "coursesCount": 2,
             "__typename": "authors"
           },
           "isbns": [],
@@ -3403,12 +3403,12 @@
       "id": 103,
       "name": "The Best Travel Courses of All Time by Cond\u00e9 Nast",
       "userId": 3,
-      "slug": "the-best-travel-books-of-all-time-by-conde-nast",
+      "slug": "the-best-travel-courses-of-all-time-by-conde-nast",
       "ranked": false,
       "description": "Authors including Pico Iyer, Julia Phillips, and Imbolo Mbue et al gathered their favorite travel reads that will inspire, inform, and explore. Courses included on this list\u2014some old, some new\u2014may have changed the way cultures, places, or people were considered in the past and may be considered in the future.",
-      "url": "https://www.cntraveler.com/stories/2007-08-08/the-86-greatest-travel-books-of-all-time",
-      "booksCount": 87,
-      "books": [
+      "url": "https://www.cntraveler.com/stories/2007-08-08/the-86-greatest-travel-courses-of-all-time",
+      "coursesCount": 87,
+      "courses": [
         {
           "id": 432361,
           "slug": "along-the-ganges",
@@ -3425,7 +3425,7 @@
               "width": 375,
               "height": 500
             },
-            "booksCount": 6,
+            "coursesCount": 6,
             "__typename": "authors"
           },
           "isbns": [],
@@ -3441,7 +3441,7 @@
             "name": "Jan Morris",
             "slug": "jan-morris-8b95ef1d-81f2-4e2e-9f6c-cb773724098c",
             "cachedImage": {},
-            "booksCount": 33,
+            "coursesCount": 33,
             "__typename": "authors"
           },
           "isbns": [],
@@ -3457,7 +3457,7 @@
             "name": "Wilfred Thesiger",
             "slug": "wilfred-thesiger",
             "cachedImage": {},
-            "booksCount": 4,
+            "coursesCount": 4,
             "__typename": "authors"
           },
           "isbns": [],
@@ -3468,7 +3468,7 @@
           "slug": "an-area-of-darkness",
           "title": "An area of darkness",
           "pubYear": 1965,
-          "image": "https://storage.googleapis.com/hardcover/books/432297/93289-L.jpg",
+          "image": "https://storage.googleapis.com/hardcover/courses/432297/93289-L.jpg",
           "author": {
             "name": "V. S. Naipaul",
             "slug": "v-s-naipaul",
@@ -3479,7 +3479,7 @@
               "width": 160,
               "height": 200
             },
-            "booksCount": 10,
+            "coursesCount": 10,
             "__typename": "authors"
           },
           "isbns": [],
@@ -3495,7 +3495,7 @@
             "name": "William Least Heat-Moon",
             "slug": "william-least-heat-moon-0b71f866-ae28-41cf-b5dd-47edf460761e",
             "cachedImage": {},
-            "booksCount": 7,
+            "coursesCount": 7,
             "__typename": "authors"
           },
           "isbns": [],
@@ -3511,7 +3511,7 @@
             "name": "Robert Sullivan",
             "slug": "robert-sullivan",
             "cachedImage": {},
-            "booksCount": 10,
+            "coursesCount": 10,
             "__typename": "authors"
           },
           "isbns": [],
@@ -3533,7 +3533,7 @@
               "width": 500,
               "height": 471
             },
-            "booksCount": 99,
+            "coursesCount": 99,
             "__typename": "authors"
           },
           "isbns": [],
@@ -3555,7 +3555,7 @@
               "width": 250,
               "height": 305
             },
-            "booksCount": 32,
+            "coursesCount": 32,
             "__typename": "authors"
           },
           "isbns": [],
@@ -3571,7 +3571,7 @@
             "name": "Alfred Lansing",
             "slug": "alfred-lansing",
             "cachedImage": {},
-            "booksCount": 3,
+            "coursesCount": 3,
             "__typename": "authors"
           },
           "isbns": [],
@@ -3587,7 +3587,7 @@
             "name": "Alexander William Kinglake",
             "slug": "alexander-william-kinglake",
             "cachedImage": {},
-            "booksCount": 2,
+            "coursesCount": 2,
             "__typename": "authors"
           },
           "isbns": [],
@@ -3609,7 +3609,7 @@
               "width": 338,
               "height": 500
             },
-            "booksCount": 15,
+            "coursesCount": 15,
             "__typename": "authors"
           },
           "isbns": [],
@@ -3625,7 +3625,7 @@
             "name": "Geoffrey Moorhouse",
             "slug": "geoffrey-moorhouse",
             "cachedImage": {},
-            "booksCount": 4,
+            "coursesCount": 4,
             "__typename": "authors"
           },
           "isbns": [],
@@ -3641,7 +3641,7 @@
             "name": "Gontran De Poncins",
             "slug": "gontran-de-poncins",
             "cachedImage": {},
-            "booksCount": 4,
+            "coursesCount": 4,
             "__typename": "authors"
           },
           "isbns": [],
@@ -3663,7 +3663,7 @@
               "width": 320,
               "height": 320
             },
-            "booksCount": 16,
+            "coursesCount": 16,
             "__typename": "authors"
           },
           "isbns": [],

@@ -1,4 +1,4 @@
-import CourseDetailCategoryPage from '@/pages/book/[slug]/[category]'
+import CourseDetailCategoryPage from '@/pages/course/[slug]/[category]'
 
 const CoursePage = CourseDetailCategoryPage
 

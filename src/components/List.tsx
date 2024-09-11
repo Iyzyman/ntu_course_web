@@ -115,19 +115,21 @@ export const List = ({
 }: ListProvider) => {
   // const navigate = useNavigate()
 
-  const bookKeys: string[] = overwriteCourses ? [] : value?.data?.bookKeys ?? []
+  const courseKeys: string[] = overwriteCourses
+    ? []
+    : value?.data?.courseKeys ?? []
   const { searchExactBulk: hcSearchBulk } = HardcoverEndpoints
   const hcSearchCourseKeys = hcSearchBulk.useQuery(
-    bookKeys.map((key) => ({
-      category: 'books',
+    courseKeys.map((key) => ({
+      category: 'courses',
       q: key,
     })),
     {
-      skip: !bookKeys.length,
+      skip: !courseKeys.length,
     },
   )
 
-  const books: Course[] = useMemo(() => {
+  const courses: Course[] = useMemo(() => {
     const { data, isSuccess } = hcSearchCourseKeys
 
     const results = data?.results ?? []
@@ -136,16 +138,16 @@ export const List = ({
     const isNotFound = !isLoading && !isSuccess && results.length < 1
     if (isNotFound) return []
 
-    const books: Course[] = results.map((result) => {
+    const courses: Course[] = results.map((result) => {
       // exact search expects top hit accuracy
       const hit = (result?.hits ?? [])?.[0]
-      const book = HardcoverUtils.parseDocument({
-        category: 'books',
+      const course = HardcoverUtils.parseDocument({
+        category: 'courses',
         hit,
       }) as Course
-      return book
+      return course
     })
-    return books
+    return courses
   }, [hcSearchCourseKeys])
 
   const onNavigate = () => {
@@ -168,13 +170,13 @@ export const List = ({
 
   const list: List = ListInfo.parse({
     ...value.data,
-    books: overwriteCourses ?? books,
+    courses: overwriteCourses ?? courses,
   })
 
   const isValid = ListInfo.safeParse(list).success
   // logger(
   //   { breakpoint: '[List.tsx:89]/ListProvider' },
-  //   { value, overwriteCourses, list, bookKeys },
+  //   { value, overwriteCourses, list, courseKeys },
   // )
   return (
     <ListContext.Provider
@@ -394,8 +396,8 @@ export const ListCreateForm = ({ className, onClose }: ListCreateForm) => {
       creator: {
         key: creatorKey,
       },
-      booksCount: 0,
-      bookKeys: [],
+      coursesCount: 0,
+      courseKeys: [],
     })
     logger(
       { breakpoint: '[index.tsx:283]' },
@@ -824,24 +826,24 @@ const ListCourses = ({
   children,
 }: ListCourses) => {
   const {
-    list: { books, key },
+    list: { courses, key },
   } = useListContext()
 
   const navigate = useNavigate()
 
   const displayCourses = displayLimit
-    ? getLimitedArray(books, displayLimit)
-    : books
+    ? getLimitedArray(courses, displayLimit)
+    : courses
 
   if (!displayCourses.length) return null
-  return displayCourses.map((book, idx) => (
+  return displayCourses.map((course, idx) => (
     <RenderGuard
-      key={`${key}-${idx}-${book.key}`}
-      renderIf={zCourse.safeParse(book).success}
+      key={`${key}-${idx}-${course.key}`}
+      renderIf={zCourse.safeParse(course).success}
     >
       <Course
-        key={`${key}-${idx}-${book.key}`}
-        book={zCourse.parse(book)!}
+        key={`${key}-${idx}-${course.key}`}
+        course={zCourse.parse(course)!}
       >
         {children ?? isThumbnail ? (
           <Course.Thumbnail className="w-fit !rounded-none" />
@@ -850,11 +852,11 @@ const ListCourses = ({
             onClick={() => {
               navigate(
                 {
-                  pathname: '/book/:slug',
+                  pathname: '/course/:slug',
                 },
                 {
                   params: {
-                    slug: book.slug ?? book.key,
+                    slug: course.slug ?? course.key,
                   },
                   unstable_viewTransition: true,
                 },
@@ -872,7 +874,7 @@ const ListCourses = ({
 
             <aside>
               <p className="h4 line-clamp-3 truncate text-pretty capitalize">
-                {book.title}
+                {course.title}
               </p>
               <p className="!m-0 capitalize text-muted-foreground">
                 <small className="font-semibold uppercase">by</small>&nbsp;

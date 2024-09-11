@@ -1,4 +1,4 @@
-import { CourseAuthor, SearchCategories, SearchCategory } from '@/types/shelvd'
+import { Course, SearchCategories, SearchCategory } from '@/types/shelvd'
 import { z } from 'zod'
 
 export type BaseInfo = {
@@ -9,43 +9,26 @@ export type BaseInfo = {
 export type Author = BaseInfo & {
   name: string
   image: string
-  booksCount: number
-}
-
-export type Course = BaseInfo & {
-  title: string
-  author: CourseAuthor
-  pubYear: number
-  image: string
-  isbns: string[]
-  description: string
-  genres: string[]
-
-  series: {
-    position: number
-    count: number
-    name: string
-    slug: string
-  }
+  coursesCount: number
 }
 
 export type Character = BaseInfo & {
   name: string
-  booksCount: number
+  coursesCount: number
   author: string
 }
 
 export type List = BaseInfo & {
   name: string
   description: string
-  booksCount: number
-  books: Course[]
+  coursesCount: number
+  courses: Course[]
   titles?: string[]
 }
 
 export type Series = BaseInfo & {
   name: string
-  booksCount: number
+  coursesCount: number
   author: string
   titles: string[]
 }
@@ -66,7 +49,7 @@ export type SearchCourse = Omit<Course, 'author' | 'pubYear' | 'image'> & {
   }[]
   featured_series: {
     position: number
-    series_books_count: number
+    series_courses_count: number
     series_name: string
     series_slug: string
   }
@@ -74,28 +57,31 @@ export type SearchCourse = Omit<Course, 'author' | 'pubYear' | 'image'> & {
   content_warnings: string[]
 }
 
-export type SearchAuthor = Omit<Author, 'booksCount' | 'image'> & {
+export type SearchAuthor = Omit<Author, 'coursesCount' | 'image'> & {
   image: {
     url: string
     color: string
   }
-  books_count: number
+  courses_count: number
 }
 
-export type SearchCharacter = Omit<Character, 'booksCount' | 'author'> & {
-  books_count: number
+export type SearchCharacter = Omit<Character, 'coursesCount' | 'author'> & {
+  courses_count: number
   author_names: string[]
 }
 
-export type SearchList = Omit<List, 'books' | 'booksCount'> & {
-  books: string[]
-  books_count: number
+export type SearchList = Omit<List, 'courses' | 'coursesCount'> & {
+  courses: string[]
+  courses_count: number
 }
 
-export type SearchSeries = Omit<Series, 'booksCount' | 'author' | 'titles'> & {
-  books_count: number
+export type SearchSeries = Omit<
+  Series,
+  'coursesCount' | 'author' | 'titles'
+> & {
+  courses_count: number
   author_name: string
-  books: string[]
+  courses: string[]
 }
 
 export const ListCategories = ['featured', 'popular'] as const
@@ -122,7 +108,7 @@ export type QueryResponse<T> = {
 }
 
 type SearchDocumentMap = {
-  books: SearchCourse
+  courses: SearchCourse
   authors: SearchAuthor
   characters: SearchCharacter
   lists: SearchList
@@ -181,7 +167,7 @@ export const SearchCategoryCollectionParams: Record<
   SearchCategories,
   SearchCollectionParams
 > = {
-  [SearchCategory.enum.books]: {
+  [SearchCategory.enum.courses]: {
     query_by: 'slug,title,isbns,series_names,author_names,alternative_titles',
     query_by_weights: '5,5,5,3,1,1',
     // sort_by: '_text_match:desc, users_count:desc',
@@ -189,28 +175,28 @@ export const SearchCategoryCollectionParams: Record<
     collection: 'Course_production',
   },
   [SearchCategory.enum.authors]: {
-    query_by: 'slug,name,name_personal,alternate_names,series_names,books',
+    query_by: 'slug,name,name_personal,alternate_names,series_names,courses',
     query_by_weights: '5,3,3,3,2,1',
-    // sort_by: '_text_match:desc,books_count:desc',
-    sort_by: 'books_count:desc, _text_match:desc',
+    // sort_by: '_text_match:desc,courses_count:desc',
+    sort_by: 'courses_count:desc, _text_match:desc',
     collection: 'Author_production',
   },
   [SearchCategory.enum.characters]: {
-    query_by: 'name,books,author_names',
+    query_by: 'name,courses,author_names',
     query_by_weights: '4,2,2',
-    // sort_by: '_text_match:desc,books_count:desc',
-    sort_by: 'books_count:desc, _text_match:desc',
+    // sort_by: '_text_match:desc,courses_count:desc',
+    sort_by: 'courses_count:desc, _text_match:desc',
     collection: 'Character_production',
   },
   [SearchCategory.enum.lists]: {
-    query_by: 'name,description,books',
+    query_by: 'name,description,courses',
     query_by_weights: '3,2,1',
     // sort_by: '_text_match:desc,followers_count:desc',
     sort_by: 'followers_count:desc, _text_match:desc',
     collection: 'List_production',
   },
   [SearchCategory.enum.series]: {
-    query_by: 'slug,name,books,author_name',
+    query_by: 'slug,name,courses,author_name',
     query_by_weights: '3,2,1,1',
     // sort_by: '_text_match:desc, readers_count:desc',
     sort_by: 'readers_count:desc, _text_match:desc',

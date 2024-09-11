@@ -115,7 +115,7 @@ const AuthorCourses = ({ children, className, ...rest }: AuthorCourses) => {
     {
       q: author?.name ?? '',
       page: 1,
-      category: 'books',
+      category: 'courses',
       overwriteCollectionParams: {
         query_by: 'author_names',
         sort_by: '_text_match:desc, users_count:desc',
@@ -136,26 +136,26 @@ const AuthorCourses = ({ children, className, ...rest }: AuthorCourses) => {
     if (isNotFound) return []
 
     const hits = results?.hits ?? []
-    const books = hits.map(
+    const courses = hits.map(
       (hit) =>
-        HardcoverUtils.parseDocument({ category: 'books', hit }) as Course,
+        HardcoverUtils.parseDocument({ category: 'courses', hit }) as Course,
     )
-    return books
+    return courses
   }, [hcSearchCourses])
   //#endregion  //*======== SOURCE/HC ===========
 
-  const books = useMemo(() => {
-    let books: Course[] = []
+  const courses = useMemo(() => {
+    let courses: Course[] = []
     switch (author.source) {
       case 'hc': {
-        books = hcCourses
+        courses = hcCourses
       }
     }
 
-    return books
+    return courses
   }, [author.source, hcCourses])
 
-  if (!books.length) return null
+  if (!courses.length) return null
 
   return (
     <section
@@ -163,23 +163,23 @@ const AuthorCourses = ({ children, className, ...rest }: AuthorCourses) => {
       {...rest}
     >
       {children}
-      {books.map((book, idx) => (
+      {courses.map((course, idx) => (
         <Course
-          key={`${author.key}-${book.source}-${idx}-${book.key}`}
-          book={book!}
+          key={`${author.key}-${course.source}-${idx}-${course.key}`}
+          course={course!}
         >
           <div
             onClick={() => {
               navigate(
                 {
-                  pathname: '/book/:slug',
+                  pathname: '/course/:slug',
                 },
                 {
                   state: {
-                    source: book.source,
+                    source: course.source,
                   },
                   params: {
-                    slug: book?.slug ?? book?.key ?? '',
+                    slug: course?.slug ?? course?.key ?? '',
                   },
                   unstable_viewTransition: true,
                 },
@@ -194,11 +194,11 @@ const AuthorCourses = ({ children, className, ...rest }: AuthorCourses) => {
 
             <aside>
               <p className="h4 line-clamp-3 truncate text-pretty capitalize">
-                {book.title}
+                {course.title}
               </p>
               <p className="!m-0 capitalize text-muted-foreground">
                 <small className="font-semibold uppercase">by</small>&nbsp;
-                {ShelvdUtils.printAuthorName(book.author.name, {
+                {ShelvdUtils.printAuthorName(course.author.name, {
                   mandatoryNames: [author.name],
                 })}
               </p>
@@ -255,7 +255,7 @@ const AuthorSeries = ({
         (hit) =>
           HardcoverUtils.parseDocument({ category: 'series', hit }) as Series,
       )
-      .filter((serie) => !!(serie?.booksCount ?? 0))
+      .filter((serie) => !!(serie?.coursesCount ?? 0))
 
     return series
   }, [hcSearchSeries])
@@ -289,7 +289,7 @@ const AuthorSeries = ({
             // onClick={() => {
             //   navigate(
             //     {
-            //       pathname: '/book/:slug',
+            //       pathname: '/course/:slug',
             //     },
             //     {
             //       state: {
@@ -309,7 +309,9 @@ const AuthorSeries = ({
           >
             <header className="flex flex-row flex-wrap place-content-center place-items-center gap-2">
               <p className="h4 capitalize">{serie.name}</p>
-              <Badge variant={'outline'}>{serie?.booksCount ?? 0} books</Badge>
+              <Badge variant={'outline'}>
+                {serie?.coursesCount ?? 0} courses
+              </Badge>
             </header>
 
             <aside

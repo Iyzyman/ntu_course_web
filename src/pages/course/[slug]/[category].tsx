@@ -1,6 +1,10 @@
 import Course from '@/components/Course'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/Tabs'
-import { AggregateReviewScore, AllReviews, ReviewForm } from '@/components/Reviews'
+import {
+  AggregateReviewScore,
+  AllReviews,
+  ReviewForm,
+} from '@/components/Reviews'
 import { useRootSelector } from '@/data/stores/root'
 import { SearchSelectors, SourceOrigin } from '@/data/stores/search.slice'
 import { useNavigate, useParams } from '@/router'
@@ -22,18 +26,17 @@ const CourseDetailCategoryPage = () => {
 
   //#endregion  //*======== STORE ===========
   const current = useRootSelector(SearchSelectors.state).current
-  const origin = current.origin as SourceOrigin<'hc', 'books'>
-  // const common = current.common as SearchArtifact<'books'>
+  const origin = current.origin as SourceOrigin<'hc', 'courses'>
   //#endregion  //*======== STORE ===========
 
   //#endregion  //*======== PARAMS ===========
   const { slug, category = DefaultCourseDetailCategory } = useParams(
-    '/book/:slug/:category',
+    '/course/:slug/:category',
   )
 
   const isValidCategory =
     DisplayCourseDetailCategories.safeParse(category).success
-  const isValidCurrentCategory = current.category === 'books'
+  const isValidCurrentCategory = current.category === 'courses'
   const isValidParams = isValidCategory && isValidCurrentCategory
   //#endregion  //*======== PARAMS ===========
 
@@ -50,7 +53,7 @@ const CourseDetailCategoryPage = () => {
         const isDefaultCategory = c === DefaultCourseDetailCategory
         navigate(
           {
-            pathname: '/book/:slug/:category',
+            pathname: '/course/:slug/:category',
           },
           {
             state: {
@@ -83,8 +86,8 @@ const CourseDetailCategoryPage = () => {
             style={{
               ...(source == 'hc' &&
                 cat === category && {
-                borderColor: origin?.image?.color,
-              }),
+                  borderColor: origin?.image?.color,
+                }),
             }}
           >
             <span className="h4">{cat}</span>
@@ -108,8 +111,8 @@ const CourseDetailCategoryPage = () => {
 const CourseInfo = () => {
   //#endregion  //*======== STORE ===========
   const current = useRootSelector(SearchSelectors.state).current
-  const origin = current.origin as SourceOrigin<'hc', 'books'>
-  const common = current.common as SearchArtifact<'books'>
+  const origin = current.origin as SourceOrigin<'hc', 'courses'>
+  const common = current.common as SearchArtifact<'courses'>
   //#endregion  //*======== STORE ===========
 
   //#endregion  //*======== PARAMS ===========
@@ -119,25 +122,27 @@ const CourseInfo = () => {
   // return null
   return (
     <section className="my-4 flex flex-col gap-6">
-      <Course book={common}>
+      <Course course={common}>
         <Course.Description />
 
         <Separator />
 
-        <div className={cn('flex flex-col-reverse place-items-start')}>
-          <Course.Series className="flex-1" />
+        <div className={cn('flex gap-4')}>
+          <Course.Prerequisites
+            prerequisites={origin?.prerequisites}
+            className="flex-1"
+          />
 
           <aside
             className={cn(
-              '!w-full lg:w-auto lg:basis-2/5',
+              'flex-1 lg:basis-2/5', // Adjusted to share space properly
               'flex flex-col flex-wrap gap-4 lg:flex-row',
-              '!w-full flex-1',
             )}
           >
             <Course.Tags
               title="Tags"
-              tags={origin?.genres ?? []}
-              className="h-full !w-full"
+              tags={origin?.tags ?? []}
+              className="h-full w-full"
             />
           </aside>
         </div>

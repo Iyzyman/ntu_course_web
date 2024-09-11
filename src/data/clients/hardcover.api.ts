@@ -29,8 +29,8 @@ const SubEndpoints: Record<string, string> = {
   Graphql: env.VITE_HARDCOVER_HOST,
 }
 const Services: Record<string, string> = {
-  Trending: '/book-trending.json',
-  // Lists: '/book-lists.json',
+  Trending: '/course-trending.json',
+  // Lists: '/course-lists.json',
   Lists: '',
 }
 
@@ -39,7 +39,7 @@ const Routes: Record<string, Record<string, string>> = {
     Search: '/multi_search',
   },
   Lists: {
-    Category: '/book-lists-:category.json',
+    Category: '/course-lists-:category.json',
   },
 }
 
@@ -151,7 +151,7 @@ export const HardcoverClient = createApi({
           prioritize_exact_match: true,
         }
 
-        if (category === 'books') {
+        if (category === 'courses') {
           allSearchParams.sort_by = '_text_match:desc, users_count:desc'
         }
 
@@ -209,7 +209,7 @@ export const HardcoverClient = createApi({
             prioritize_exact_match: true,
           }
 
-          if (category === 'books') {
+          if (category === 'courses') {
             allSearchParams.sort_by = '_text_match:desc, users_count:desc'
           }
 
@@ -259,14 +259,14 @@ export const HardcoverClient = createApi({
         const body = {
           operationName: 'FindEditionsForCourse',
           variables: {
-            bookId: id,
+            courseId: id,
             formats: [1, 2, 4],
             limit: 25,
             offset: 0,
             includeCurrentUser: false,
           },
           query:
-            'fragment EditionFragment on editions {\n  id\n  title\n  asin\n  isbn10: isbn_10\n  isbn13: isbn_13\n  releaseDate: release_date\n  releaseYear: release_year\n  pages\n  audioSeconds: audio_seconds\n  readingFormatId: reading_format_id\n  usersCount: users_count\n  cachedImage: cached_image\n  editionFormat: edition_format\n  editionInformation: edition_information\n  language {\n    language\n    __typename\n  }\n  readingFormat: reading_format {\n    format\n    __typename\n  }\n  country {\n    name\n    __typename\n  }\n  __typename\n}\n\nfragment ListCourseFragment on list_books {\n  id\n  listId: list_id\n  bookId: book_id\n  editionId: edition_id\n  position\n  reason\n  __typename\n}\n\nquery FindEditionsForCourse($bookId: Int!, $limit: Int!, $offset: Int!, $formats: [Int]!, $userId: Int, $includeCurrentUser: Boolean!) {\n  editions(\n    where: {book_id: {_eq: $bookId}, reading_format_id: {_in: $formats}}\n    order_by: {users_count: desc}\n    limit: $limit\n    offset: $offset\n  ) {\n    ...EditionFragment\n    list_books(where: {list: {user_id: {_eq: $userId}, slug: {_eq: "owned"}}}) @include(if: $includeCurrentUser) {\n      ...ListCourseFragment\n      __typename\n    }\n    __typename\n  }\n}',
+            'fragment EditionFragment on editions {\n  id\n  title\n  asin\n  isbn10: isbn_10\n  isbn13: isbn_13\n  releaseDate: release_date\n  releaseYear: release_year\n  pages\n  audioSeconds: audio_seconds\n  readingFormatId: reading_format_id\n  usersCount: users_count\n  cachedImage: cached_image\n  editionFormat: edition_format\n  editionInformation: edition_information\n  language {\n    language\n    __typename\n  }\n  readingFormat: reading_format {\n    format\n    __typename\n  }\n  country {\n    name\n    __typename\n  }\n  __typename\n}\n\nfragment ListCourseFragment on list_courses {\n  id\n  listId: list_id\n  courseId: course_id\n  editionId: edition_id\n  position\n  reason\n  __typename\n}\n\nquery FindEditionsForCourse($courseId: Int!, $limit: Int!, $offset: Int!, $formats: [Int]!, $userId: Int, $includeCurrentUser: Boolean!) {\n  editions(\n    where: {course_id: {_eq: $courseId}, reading_format_id: {_in: $formats}}\n    order_by: {users_count: desc}\n    limit: $limit\n    offset: $offset\n  ) {\n    ...EditionFragment\n    list_courses(where: {list: {user_id: {_eq: $userId}, slug: {_eq: "owned"}}}) @include(if: $includeCurrentUser) {\n      ...ListCourseFragment\n      __typename\n    }\n    __typename\n  }\n}',
         }
 
         return {
