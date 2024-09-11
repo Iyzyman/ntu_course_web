@@ -78,7 +78,7 @@ const UserListPage = () => {
       origin = ListData.parse(results)
       common = zList.parse({
         ...results,
-        books: [],
+        courses: [],
       })
     }
   } else {
@@ -191,12 +191,12 @@ const UserListPage = () => {
             </div>
           </section>
 
-          {!(origin?.booksCount ?? 0) && (
+          {!(origin?.coursesCount ?? 0) && (
             <Alert className="my-4 mb-8">
               <InfoCircledIcon className="size-4" />
               <AlertTitle>TIP</AlertTitle>
               <AlertDescription>
-                Don't know which books to add?
+                Don't know which courses to add?
                 <br />
                 Find out what's&nbsp;
                 <Link

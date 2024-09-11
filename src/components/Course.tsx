@@ -75,7 +75,7 @@ ring2.register()
 export type Course = CourseInfo
 //#endregion  //*======== CONTEXT ===========
 export type CourseContext = {
-  book: Course
+  course: Course
   isSkeleton?: boolean
   onNavigate: () => void
 }
@@ -88,7 +88,7 @@ const useCourseContext = () => {
     // )
 
     ctxValue = {
-      book: {} as Course,
+      course: {} as Course,
       isSkeleton: true,
       onNavigate: () => {},
     }
@@ -103,25 +103,25 @@ export const Course = ({ children, ...value }: CourseProvider) => {
   const navigate = useNavigate()
 
   const onNavigate = () => {
-    if (!value.book) return
+    if (!value.course) return
     navigate(
       {
-        pathname: '/book/:slug',
+        pathname: '/course/:slug',
       },
       {
         params: {
-          slug: value.book?.slug ?? value.book.key,
+          slug: value.course?.slug ?? value.course.key,
         },
         // unstable_viewTransition: true,
       },
     )
   }
 
-  const isValid = CourseInfo.safeParse(value?.book ?? {}).success
+  const isValid = CourseInfo.safeParse(value?.course ?? {}).success
   if (!isValid) {
     logger(
       { breakpoint: '[Course.tsx:112]/CourseProvider' },
-      CourseInfo.safeParse(value?.book),
+      CourseInfo.safeParse(value?.course),
       value,
     )
   }
@@ -144,7 +144,7 @@ export const Course = ({ children, ...value }: CourseProvider) => {
 
 type CourseImage = Avatar
 export const CourseImage = ({ className, children, ...rest }: CourseImage) => {
-  const { book } = useCourseContext()
+  const { course } = useCourseContext()
   //TODO: change to course code
   return (
     <Avatar
@@ -169,7 +169,7 @@ export const CourseImage = ({ className, children, ...rest }: CourseImage) => {
               cursor: 'default', // Sets the cursor to default, preventing text selection pointer
             }}
           >
-            {/* {book.title} */}
+            {/* {course.title} */}
             SCXXXX
           </div>
           <div
@@ -182,8 +182,8 @@ export const CourseImage = ({ className, children, ...rest }: CourseImage) => {
             }}
           >
             <Stats
-              likes={book.likes}
-              watchlists={book.watchlists}
+              likes={course.likes}
+              watchlists={course.watchlists}
             ></Stats>
           </div>
         </>
@@ -200,7 +200,7 @@ export const CourseThumbnail = ({
   children,
   ...rest
 }: CourseThumbnail) => {
-  const { book, isSkeleton, onNavigate } = useCourseContext()
+  const { course, isSkeleton, onNavigate } = useCourseContext()
 
   return (
     <HoverCard>
@@ -239,7 +239,7 @@ export const CourseThumbnail = ({
           <Skeleton className="h-4 w-[100px]" />
         ) : (
           <small className="text-sm leading-none">
-            <small className="capitalize">{book.title.toLowerCase()}</small>
+            <small className="capitalize">{course.title.toLowerCase()}</small>
           </small>
         )}
 
@@ -258,7 +258,7 @@ type CourseDropdown = PropsWithChildren & {
   button?: ButtonProps
 }
 export const CourseDropdownMenu = ({ button, children }: CourseDropdown) => {
-  const { book } = useCourseContext()
+  const { course } = useCourseContext()
 
   //#endregion  //*======== STORE ===========
   const { openSignIn } = useClerk()
@@ -267,11 +267,11 @@ export const CourseDropdownMenu = ({ button, children }: CourseDropdown) => {
 
   const coreLists = lists?.core ?? []
   const memberCoreKeys = coreLists
-    .filter((list) => list.bookKeys.includes(book.key))
+    .filter((list) => list.courseKeys.includes(course.key))
     .map(({ key }) => key)
   const createdLists = lists?.created ?? []
   const memberCreatedKeys = createdLists
-    .filter((list) => list.bookKeys.includes(book.key))
+    .filter((list) => list.courseKeys.includes(course.key))
     .map(({ key }) => key)
   //#endregion  //*======== STORE ===========
 
@@ -291,7 +291,7 @@ export const CourseDropdownMenu = ({ button, children }: CourseDropdown) => {
   useEffect(() => {
     reset()
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [book.key])
+  }, [course.key])
   //#endregion  //*======== STATES ===========
 
   const onSelectCoreKey = (key: string) => {
@@ -361,7 +361,7 @@ export const CourseDropdownMenu = ({ button, children }: CourseDropdown) => {
     if (!isSignedIn) return
     const params = UpdateListMembershipParams.parse({
       userId: user?.id,
-      bookKey: book.key,
+      courseKey: course.key,
       core: {
         prev: memberCoreKeys,
         curr: coreKeys,
@@ -409,7 +409,7 @@ export const CourseDropdownMenu = ({ button, children }: CourseDropdown) => {
       </DropdownMenuTrigger>
       <DropdownMenuContent>
         <DropdownMenuLabel className="small py-0 text-xs capitalize text-muted-foreground">
-          {book.title}
+          {course.title}
         </DropdownMenuLabel>
 
         {!!coreLists.length && (
@@ -421,7 +421,7 @@ export const CourseDropdownMenu = ({ button, children }: CourseDropdown) => {
             >
               {coreLists.map((list) => (
                 <DropdownMenuRadioItem
-                  key={`book-${book.key}-collection-core-${list.key}`}
+                  key={`course-${course.key}-collection-core-${list.key}`}
                   value={list.key}
                 >
                   {list.name}
@@ -458,7 +458,7 @@ export const CourseDropdownMenu = ({ button, children }: CourseDropdown) => {
                     <CommandGroup>
                       {createdLists.map((list) => (
                         <CommandItem
-                          key={`book-${book.key}-collection-user-${list.key}`}
+                          key={`course-${course.key}-collection-user-${list.key}`}
                           value={list.key}
                           onSelect={onSelectCreatedKey}
                           className="flex flex-row place-items-center gap-2"
@@ -582,9 +582,9 @@ export const CourseDescription = ({
   children,
   ...rest
 }: CourseDescription) => {
-  const { book } = useCourseContext()
+  const { course } = useCourseContext()
 
-  const description = book.description ?? ''
+  const description = course.description ?? ''
   const isEmptyDescription = !description.length
   const [showFullDesc, setShowFullDesc] = useState<boolean>(isEmptyDescription)
 
@@ -612,11 +612,11 @@ export const CourseDescription = ({
           fontWeight: 300,
           lineHeight: '24.2px',
           textAlign: 'justify',
-          color: 'var(----book-description)',
+          color: 'var(----course-description)',
         }}
       >
         {isEmptyDescription
-          ? "We don't have a description for this book yet."
+          ? "We don't have a description for this course yet."
           : description}
       </div>
 
@@ -677,7 +677,7 @@ export const CoursePrerequisites: React.FC<CoursePrerequisitesProps> = ({
           return (
             <Course
               key={`${idx}-${prerequisite.key}`}
-              book={prerequisite}
+              course={prerequisite}
             >
               <Course.Thumbnail
                 className={cn(
@@ -709,7 +709,7 @@ export const BiggerCourseCard = ({
   isSignedInUser,
   ...rest
 }: BiggerCourseCard) => {
-  const { onNavigate, book } = useCourseContext()
+  const { onNavigate, course } = useCourseContext()
   const [deleteCourseFromCollection] = useDeleteCourseFromCollectionMutation()
   const [isDeleting, setIsDeleting] = useState<boolean>(false)
 
@@ -721,7 +721,7 @@ export const BiggerCourseCard = ({
     const deleteCoursePayload = {
       username,
       collection_key,
-      book_key: book.key,
+      course_key: course.key,
     }
     deleteCourseFromCollection(deleteCoursePayload)
   }
@@ -741,7 +741,7 @@ export const BiggerCourseCard = ({
       {...rest}
     >
       <CardHeader>
-        <h4 className="text-lg font-bold">{book.title}</h4>
+        <h4 className="text-lg font-bold">{course.title}</h4>
         {isSignedInUser &&
           (!isDeleting ? (
             <Button
@@ -765,7 +765,7 @@ export const BiggerCourseCard = ({
             ></l-ring-2>
           ))}
         <CardDescription>
-          <p className="line-clamp-3">{book.description}</p>
+          <p className="line-clamp-3">{course.description}</p>
         </CardDescription>
       </CardHeader>
       <Course.Image className="h-full w-full" />
@@ -799,7 +799,7 @@ export const CourseMatrix = ({
     >
       {displayCategoryLists.map((hcList, idx) => {
         const list = HardcoverUtils.parseList(hcList)
-        const books = hcList.books.map((hcCourse) =>
+        const courses = hcList.courses.map((hcCourse) =>
           HardcoverUtils.parseCourse(hcCourse),
         )
         const data = ListData.parse(list)
@@ -807,7 +807,7 @@ export const CourseMatrix = ({
           <List
             key={`lists-${category}-${idx}-${list.key}`}
             data={data}
-            overwriteCourses={books}
+            overwriteCourses={courses}
           >
             <section
               className={cn(
@@ -952,14 +952,14 @@ Course.ClickStats = ClickStats
 //   className,
 //   ...rest
 // }: CourseEditions) => {
-//   const { book } = useCourseContext()
+//   const { course } = useCourseContext()
 
 //   //#endregion  //*======== SOURCE/HC ===========
 //   const { getEditionsById } = HardcoverEndpoints
 //   const hcEditionsQuery = getEditionsById.useQuery({
-//     id: +(book.key) ?? 0,
+//     id: +(course.key) ?? 0,
 //   }, {
-//     skip: (book.source !== 'hc'),
+//     skip: (course.source !== 'hc'),
 //   })
 
 //   const hcEditions = useMemo(() => {
@@ -973,7 +973,7 @@ Course.ClickStats = ClickStats
 
 //   const editions = useMemo(() => {
 //     let editions = []
-//     switch (book.source) {
+//     switch (course.source) {
 //       case 'hc': {
 //         editions = hcEditions
 //       }
@@ -984,7 +984,7 @@ Course.ClickStats = ClickStats
 //     }
 
 //     return editions
-//   }, [book.source, hcEditions])
+//   }, [course.source, hcEditions])
 //   if (!editions.length) return null
 
 //   return (
@@ -992,7 +992,7 @@ Course.ClickStats = ClickStats
 
 //       <pre>
 //         {JSON.stringify({
-//           book,
+//           course,
 //           editions,
 //         }, null, 2)}
 //       </pre>
@@ -1006,14 +1006,14 @@ Course.ClickStats = ClickStats
 //           const hit = (result?.hits ?? [])?.[0]
 //           if (!hit) return null
 
-//           const seriesCourse = HardcoverUtils.parseDocument({ category: 'books', hit }) as Course
+//           const seriesCourse = HardcoverUtils.parseDocument({ category: 'courses', hit }) as Course
 //           if (!seriesCourse) return
 
-//           const isCurrentCourse = seriesCourse.key == book.key
+//           const isCurrentCourse = seriesCourse.key == course.key
 //           return (
 //             <Course
 //               key={`${seriesCourse.source}-${idx}-${seriesCourse.key}`}
-//               book={seriesCourse!}
+//               course={seriesCourse!}
 //             >
 //               <Course.Thumbnail
 //                 className={cn(

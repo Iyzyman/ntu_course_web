@@ -68,7 +68,7 @@
         "isbns": []
       },
       {
-        "slug": "bookshops-bonedust",
+        "slug": "courseshops-bonedust",
         "title": "Courseshops & Bonedust",
         "author": {
           "key": "travis-baldree",
@@ -185,7 +185,7 @@
           "name": "Pierce Brown"
         },
         "pubYear": 2014,
-        "image": "https://cdn.hardcover.app/enlarge?url=https://storage.googleapis.com/hardcover/book_mappings/7332335/52a603705b75533337c4eb9b4fc03217976b489a.jpeg&width=67&height=100&type=webp",
+        "image": "https://cdn.hardcover.app/enlarge?url=https://storage.googleapis.com/hardcover/course_mappings/7332335/52a603705b75533337c4eb9b4fc03217976b489a.jpeg&width=67&height=100&type=webp",
         "id": "427473",
         "isbns": []
       },
@@ -320,7 +320,7 @@
           "name": "Brandon Sanderson"
         },
         "pubYear": 2007,
-        "image": "https://cdn.hardcover.app/enlarge?url=https://storage.googleapis.com/hardcover/book_mappings/7332358/43f95ab5370016fe0b2eddf9adee5f338850e6c4.jpeg&width=67&height=100&type=webp",
+        "image": "https://cdn.hardcover.app/enlarge?url=https://storage.googleapis.com/hardcover/course_mappings/7332358/43f95ab5370016fe0b2eddf9adee5f338850e6c4.jpeg&width=67&height=100&type=webp",
         "id": "427383",
         "isbns": []
       },
@@ -590,7 +590,7 @@
           "name": "Becky Chambers"
         },
         "pubYear": 2014,
-        "image": "https://cdn.hardcover.app/enlarge?url=https://storage.googleapis.com/hardcover/book_mappings/7332344/609300364f9338024acbf2528646ab6764e845a7.jpeg&width=67&height=100&type=webp",
+        "image": "https://cdn.hardcover.app/enlarge?url=https://storage.googleapis.com/hardcover/course_mappings/7332344/609300364f9338024acbf2528646ab6764e845a7.jpeg&width=67&height=100&type=webp",
         "id": "33868",
         "isbns": []
       },
@@ -983,7 +983,7 @@
           "name": "Tara Westover"
         },
         "pubYear": 2018,
-        "image": "https://cdn.hardcover.app/enlarge?url=https://storage.googleapis.com/hardcover/book_mappings/7332324/e6fe1a74bff78e323bef5a82bc505aed21ca4724.jpeg&width=67&height=100&type=webp",
+        "image": "https://cdn.hardcover.app/enlarge?url=https://storage.googleapis.com/hardcover/course_mappings/7332324/e6fe1a74bff78e323bef5a82bc505aed21ca4724.jpeg&width=67&height=100&type=webp",
         "id": "44186",
         "isbns": []
       },
@@ -1396,8 +1396,8 @@
         "isbns": []
       },
       {
-        "slug": "the-frugal-wizards-handbook-for-surviving-medieval-england",
-        "title": "The Frugal Wizard's Handbook for Surviving Medieval England",
+        "slug": "the-frugal-wizards-handcourse-for-surviving-medieval-england",
+        "title": "The Frugal Wizard's Handcourse for Surviving Medieval England",
         "author": {
           "key": "brandon-sanderson",
           "slug": "brandon-sanderson",
@@ -1713,8 +1713,8 @@
         "isbns": []
       },
       {
-        "slug": "the-frugal-wizards-handbook-for-surviving-medieval-england",
-        "title": "The Frugal Wizard's Handbook for Surviving Medieval England",
+        "slug": "the-frugal-wizards-handcourse-for-surviving-medieval-england",
+        "title": "The Frugal Wizard's Handcourse for Surviving Medieval England",
         "author": {
           "key": "brandon-sanderson",
           "slug": "brandon-sanderson",
@@ -2030,8 +2030,8 @@
         "isbns": []
       },
       {
-        "slug": "the-frugal-wizards-handbook-for-surviving-medieval-england",
-        "title": "The Frugal Wizard's Handbook for Surviving Medieval England",
+        "slug": "the-frugal-wizards-handcourse-for-surviving-medieval-england",
+        "title": "The Frugal Wizard's Handcourse for Surviving Medieval England",
         "author": {
           "key": "brandon-sanderson",
           "slug": "brandon-sanderson",
@@ -2347,8 +2347,8 @@
         "isbns": []
       },
       {
-        "slug": "the-frugal-wizards-handbook-for-surviving-medieval-england",
-        "title": "The Frugal Wizard's Handbook for Surviving Medieval England",
+        "slug": "the-frugal-wizards-handcourse-for-surviving-medieval-england",
+        "title": "The Frugal Wizard's Handcourse for Surviving Medieval England",
         "author": {
           "key": "brandon-sanderson",
           "slug": "brandon-sanderson",
@@ -2814,7 +2814,7 @@
           "name": "Tara Westover"
         },
         "pubYear": 2018,
-        "image": "https://cdn.hardcover.app/enlarge?url=https://storage.googleapis.com/hardcover/book_mappings/7332324/e6fe1a74bff78e323bef5a82bc505aed21ca4724.jpeg&width=67&height=100&type=webp",
+        "image": "https://cdn.hardcover.app/enlarge?url=https://storage.googleapis.com/hardcover/course_mappings/7332324/e6fe1a74bff78e323bef5a82bc505aed21ca4724.jpeg&width=67&height=100&type=webp",
         "id": "44186",
         "isbns": []
       },
@@ -2914,7 +2914,7 @@
           "name": "Becky Chambers"
         },
         "pubYear": 2014,
-        "image": "https://cdn.hardcover.app/enlarge?url=https://storage.googleapis.com/hardcover/book_mappings/7332344/609300364f9338024acbf2528646ab6764e845a7.jpeg&width=67&height=100&type=webp",
+        "image": "https://cdn.hardcover.app/enlarge?url=https://storage.googleapis.com/hardcover/course_mappings/7332344/609300364f9338024acbf2528646ab6764e845a7.jpeg&width=67&height=100&type=webp",
         "id": "33868",
         "isbns": []
       },
@@ -3256,7 +3256,7 @@
           "name": "Jack Thorne"
         },
         "pubYear": 2001,
-        "image": "https://cdn.hardcover.app/enlarge?url=https://storage.googleapis.com/hardcover/book_mappings/7332623/8966b25d369e08596714f87891935994faa28843.jpeg&width=67&height=100&type=webp",
+        "image": "https://cdn.hardcover.app/enlarge?url=https://storage.googleapis.com/hardcover/course_mappings/7332623/8966b25d369e08596714f87891935994faa28843.jpeg&width=67&height=100&type=webp",
         "id": "279285",
         "isbns": []
       },
@@ -3330,7 +3330,7 @@
           "name": "N.K. Jemisin"
         },
         "pubYear": 2016,
-        "image": "https://cdn.hardcover.app/enlarge?url=https://storage.googleapis.com/hardcover/book_mappings/7332528/81c49a2bb8465316ee14ab187e9ae58939e99716.jpeg&width=67&height=100&type=webp",
+        "image": "https://cdn.hardcover.app/enlarge?url=https://storage.googleapis.com/hardcover/course_mappings/7332528/81c49a2bb8465316ee14ab187e9ae58939e99716.jpeg&width=67&height=100&type=webp",
         "id": "427868",
         "isbns": []
       },
@@ -3452,12 +3452,12 @@
           "name": "Neil Gaiman"
         },
         "pubYear": 2013,
-        "image": "https://cdn.hardcover.app/enlarge?url=https://storage.googleapis.com/hardcover/book_mappings/7332367/f23aac20ca501a73b6f2b348485f015091d1e361.jpeg&width=67&height=100&type=webp",
+        "image": "https://cdn.hardcover.app/enlarge?url=https://storage.googleapis.com/hardcover/course_mappings/7332367/f23aac20ca501a73b6f2b348485f015091d1e361.jpeg&width=67&height=100&type=webp",
         "id": "380549",
         "isbns": []
       },
       {
-        "slug": "the-book-thief",
+        "slug": "the-course-thief",
         "title": "The Course Thief",
         "author": {
           "name": "Markus Zusak"

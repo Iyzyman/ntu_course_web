@@ -71,7 +71,7 @@ import { UseFormReturn, useForm } from 'react-hook-form'
 import { useSearchParams } from 'react-router-dom'
 import { z } from 'zod'
 
-const DisplaySearchCategories = SearchCategory.extract(['books', 'authors'])
+const DisplaySearchCategories = SearchCategory.extract(['courses', 'authors'])
 
 const SearchFormSchema = Hardcover.QuerySearchParams.extend({
   category: SearchCategory.default(DefaultSearchCategory),
@@ -295,7 +295,7 @@ export const SearchForm = ({
             <FormControl>
               <Input
                 {...field}
-                placeholder="Search for a book, author or character ..."
+                placeholder="Search for a course, author or character ..."
                 onKeyDown={(e) => {
                   const key = e.key.toLowerCase()
                   const isEnter = key === 'Enter'.toLowerCase()
@@ -367,7 +367,7 @@ export const SearchCommand = ({ children }: SearchCommand) => {
             const isEnter = key === 'Enter'.toLowerCase()
             if (isEnter) return onSubmitSearch()
           }}
-          placeholder={'Search for a book, author or character ...'}
+          placeholder={'Search for a course, author or character ...'}
         />
 
         <SearchCommand.Tabs />
@@ -511,22 +511,22 @@ export const SearchResults = ({ className, ...rest }: SearchResults) => {
       >
         {(results?.hits ?? []).map((hit, idx) => {
           if (!hit) return
-          if (category === 'books') {
+          if (category === 'courses') {
             const document = hit.document as Hardcover.SearchCourse
             const hcCourse = HardcoverUtils.parseCourseDocument({ document })
-            const book = HardcoverUtils.parseCourse(hcCourse) as Course
-            if (!book) return null
+            const course = HardcoverUtils.parseCourse(hcCourse) as Course
+            if (!course) return null
             return (
               <Search.ResultItem
-                key={`${idx}-${book.key}`}
+                key={`${idx}-${course.key}`}
                 onClick={() => {
                   navigate(
                     {
-                      pathname: '/book/:slug',
+                      pathname: '/course/:slug',
                     },
                     {
                       params: {
-                        slug: book?.slug ?? book.key,
+                        slug: course?.slug ?? course.key,
                       },
                       unstable_viewTransition: true,
                     },
@@ -540,7 +540,7 @@ export const SearchResults = ({ className, ...rest }: SearchResults) => {
                   // 'flex-col sm:flex-row'
                 )}
               >
-                <Course book={book!}>
+                <Course course={course!}>
                   <Course.Image />
 
                   <article
@@ -563,10 +563,10 @@ export const SearchResults = ({ className, ...rest }: SearchResults) => {
                           'inline-flex w-full max-w-prose flex-row flex-wrap place-items-center *:truncate *:text-pretty',
                         )}
                       >
-                        {(book?.title?.split(' ') ?? []).map(
+                        {(course?.title?.split(' ') ?? []).map(
                           (titleText: string, idx: number) => (
                             <span
-                              key={`${book.key}-title-${idx}`}
+                              key={`${course.key}-title-${idx}`}
                               className={cn(
                                 query
                                   .toLowerCase()
@@ -591,7 +591,7 @@ export const SearchResults = ({ className, ...rest }: SearchResults) => {
                         &nbsp;
                       </p>
 
-                      {book?.description && (
+                      {course?.description && (
                         <p
                           className={cn(
                             'small font-light normal-case text-muted-foreground',
@@ -599,7 +599,7 @@ export const SearchResults = ({ className, ...rest }: SearchResults) => {
                             'max-sm:hidden',
                           )}
                         >
-                          {book.description}
+                          {course.description}
                         </p>
                       )}
 
@@ -612,7 +612,7 @@ export const SearchResults = ({ className, ...rest }: SearchResults) => {
                         {getLimitedArray(hcCourse?.genres ?? [], 5).map(
                           (tag, idx) => (
                             <Badge
-                              key={`book-tag-${idx}`}
+                              key={`course-tag-${idx}`}
                               variant="secondary"
                               className={cn(
                                 'truncate text-xs capitalize',
@@ -683,7 +683,7 @@ export const SearchResults = ({ className, ...rest }: SearchResults) => {
               category,
               hit,
             }) as Series
-            const isEmptySeries = !(series?.booksCount ?? 0)
+            const isEmptySeries = !(series?.coursesCount ?? 0)
             if (!series || isEmptySeries) return null
             return (
               <SearchCommand.ResultItem
@@ -729,7 +729,7 @@ export const SearchResults = ({ className, ...rest }: SearchResults) => {
                       )}
                     </p>
                     <Badge variant={'outline'}>
-                      {series?.booksCount ?? 0} books
+                      {series?.coursesCount ?? 0} courses
                     </Badge>
                   </header>
 
@@ -767,7 +767,7 @@ export const SearchResults = ({ className, ...rest }: SearchResults) => {
                   </span>
                 ))}
               </p>
-              <small>{+(artifact.booksCount ?? 0)}</small>
+              <small>{+(artifact.coursesCount ?? 0)}</small>
             </SearchCommand.ResultItem>
           )
         })}
@@ -906,16 +906,19 @@ export const SearchCommandResults = () => {
       {displayHits.map((hit, idx) => {
         if (!hit) return
 
-        if (category === 'books') {
-          const book = HardcoverUtils.parseDocument({ category, hit }) as Course
+        if (category === 'courses') {
+          const course = HardcoverUtils.parseDocument({
+            category,
+            hit,
+          }) as Course
           return (
             <SearchCommand.ResultItem
-              key={`${idx}-${book.key}`}
+              key={`${idx}-${course.key}`}
               asChild
             >
-              <Course book={book!}>
+              <Course course={course!}>
                 <CommandItem
-                  value={book.title}
+                  value={course.title}
                   className={cn(
                     'flex w-full flex-row place-items-center gap-2',
                   )}
@@ -926,11 +929,11 @@ export const SearchCommandResults = () => {
                     } else {
                       navigate(
                         {
-                          pathname: '/book/:slug',
+                          pathname: '/course/:slug',
                         },
                         {
                           params: {
-                            slug: book?.slug ?? book.key,
+                            slug: course?.slug ?? course.key,
                           },
                           unstable_viewTransition: true,
                         },
@@ -947,11 +950,11 @@ export const SearchCommandResults = () => {
                   )}
 
                   <p className="!m-0">
-                    {book?.title
+                    {course?.title
                       ?.split(' ')
                       .map((titleText: string, idx: number) => (
                         <span
-                          key={`${book.key}-title-${idx}`}
+                          key={`${course.key}-title-${idx}`}
                           className={cn(
                             query
                               .toLowerCase()
@@ -1035,7 +1038,7 @@ export const SearchCommandResults = () => {
             category,
             hit,
           }) as Series
-          const isEmptySeries = !(series?.booksCount ?? 0)
+          const isEmptySeries = !(series?.coursesCount ?? 0)
           if (!series || isEmptySeries) return null
           return (
             <SearchCommand.ResultItem
@@ -1096,7 +1099,7 @@ export const SearchCommandResults = () => {
                   </p>
 
                   <Badge variant={'outline'}>
-                    {series?.booksCount ?? 0} books
+                    {series?.coursesCount ?? 0} courses
                   </Badge>
                 </CommandItem>
               </Series>
@@ -1131,7 +1134,7 @@ export const SearchCommandResults = () => {
                   </span>
                 ))}
               </p>
-              <small>{+(artifact?.booksCount ?? 0)}</small>
+              <small>{+(artifact?.coursesCount ?? 0)}</small>
             </CommandItem>
           </SearchCommand.ResultItem>
         )

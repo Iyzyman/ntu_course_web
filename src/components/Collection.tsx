@@ -159,18 +159,18 @@ export const CollectionViewCard = ({
                 variant={'outline'}
               >
                 {' '}
-                {collection.books.length} books
+                {collection.courses.length} courses
               </Badge>
             </div>
           </div>
           <Separator />
-          {/**Show list of books */}
+          {/**Show list of courses */}
           <div className="flex min-h-[100px] w-full justify-start">
-            {collection.books.map((book) => {
+            {collection.courses.map((course) => {
               return (
                 <Course
-                  key={book.key}
-                  book={book}
+                  key={course.key}
+                  course={course}
                 >
                   <Course.Thumbnail
                     className={cn(
@@ -239,12 +239,12 @@ Collection.ViewCard = CollectionViewCard
 // export const CollectionCourseList = () => {
 //   const { collection, username } = useCollectionContext()
 //   const [deleteCourseFromCollection] = useDeleteCourseFromCollectionMutation()
-//   const handleCourseDelete = (book_key: string) => {
-//     // use the hook for deleting book from collection
+//   const handleCourseDelete = (course_key: string) => {
+//     // use the hook for deleting course from collection
 //     deleteCourseFromCollection({
 //       username: username,
 //       collection_key: collection.key,
-//       book_key: book_key,
+//       course_key: course_key,
 //     }).then((res) => {
 //       logger(
 //         { breakpoint: `[Collection.CourseList:handleCourseDelete:177]` },
@@ -259,17 +259,17 @@ Collection.ViewCard = CollectionViewCard
 //         <CardHeader className="m-2 flex justify-self-center">
 //           <CardTitle className="m-5">Course Details</CardTitle>
 //         </CardHeader>
-//         {collection.books.map(
-//           (book: Course, idx) => (
-//             console.log('Course', book),
+//         {collection.courses.map(
+//           (course: Course, idx) => (
+//             console.log('Course', course),
 //             (
 //               <CardContent
-//                 key={book.key}
+//                 key={course.key}
 //                 className="flex flex-row justify-between space-x-2"
 //               >
 //                 <Course
-//                   key={book.key}
-//                   book={book!}
+//                   key={course.key}
+//                   course={course!}
 //                 >
 //                   <Course.Thumbnail
 //                     className={cn(
@@ -279,12 +279,12 @@ Collection.ViewCard = CollectionViewCard
 //                   />
 //                 </Course>
 //                 <div className="flex flex-col">
-//                   <h3>{book.title}</h3>
-//                   <p>{book.author.name}</p>
+//                   <h3>{course.title}</h3>
+//                   <p>{course.author.name}</p>
 //                 </div>
 //                 <Button
 //                   className="mr-2"
-//                   onClick={() => handleCourseDelete(book.key)}
+//                   onClick={() => handleCourseDelete(course.key)}
 //                 >
 //                   Delete
 //                 </Button>

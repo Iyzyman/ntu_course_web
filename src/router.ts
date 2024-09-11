@@ -11,9 +11,9 @@ export type Path =
   | `/author`
   | `/author/:slug`
   | `/author/:slug/:category`
-  | `/book`
-  | `/book/:slug`
-  | `/book/:slug/:category`
+  | `/course`
+  | `/course/:slug`
+  | `/course/:slug/:category`
   | `/discover`
   | `/discover/:category`
   | `/discover/:category/:slug`
@@ -28,8 +28,8 @@ export type Params = {
   '/:username/list/:slug': { username: string; slug: string }
   '/author/:slug': { slug: string }
   '/author/:slug/:category': { slug: string; category: string }
-  '/book/:slug': { slug: string }
-  '/book/:slug/:category': { slug: string; category: string }
+  '/course/:slug': { slug: string }
+  '/course/:slug/:category': { slug: string; category: string }
   '/discover/:category': { category: string }
   '/discover/:category/:slug': { category: string; slug: string }
   '/search/:category': { category: string }

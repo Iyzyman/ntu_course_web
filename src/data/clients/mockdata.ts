@@ -1,32 +1,31 @@
 // mockData.ts
-import { Course} from '@/types/shelvd'
-
+import { Course } from '@/types/shelvd'
 
 export const mockPrerequistie: Course[] = [
   {
-    key: 'mock-book-key',
+    key: 'mock-course-key',
     code: 'SC3004',
     title: 'Multi-Disciplinary Project (MDP)',
     likes: 120,
     watchlists: 45,
     prerequisites: [],
     school: 'College of Computing & Data Science',
-    slug: 'mock-book-slug', // Optional
-    image: '/path/to/mock-book-image.jpg', // Optional
+    slug: 'mock-course-slug', // Optional
+    image: '/path/to/mock-course-image.jpg', // Optional
     description:
       'The Multidisciplinary Design Project (MDP) is a group-based design project undertaken by a mixedgroup of students comprising of undergraduates from the CE, CS, BCG and BCE programmes. Theproject is practical-oriented and multi-disciplinary in nature, requiring system level integration of sub-systems developed by different team members. MDP is to be done over one semester by students who have reached at least a year 3 standing.Eligible students will be automatically registered by the school and will be allocated to their respectiveproject group based on a composition of students from different programmes.', // Optional
   },
 ]
 
 export const mockCourse: Course = {
-  slug: 'mock-book-slug',
+  slug: 'mock-course-slug',
   code: 'SC3004',
   title: 'SC3004',
   prerequisites: mockPrerequistie,
   description:
     'TThe Multidisciplinary Design Project (MDP) is a group-based design project undertaken by a mixedgroup of students comprising of undergraduates from the CE, CS, BCG and BCE programmes. Theproject is practical-oriented and multi-disciplinary in nature, requiring system level integration of sub-systems developed by different team members. MDP is to be done over one semester by students who have reached at least a year 3 standing.Eligible students will be automatically registered by the school and will be allocated to their respectiveproject group based on a composition of students from different programmes.',
   school: 'College of Computing & Data Science',
-  key: 'mock-book-slug',
+  key: 'mock-course-slug',
   watchlists: 1,
   color: 'green',
   likes: 1,

@@ -26,17 +26,17 @@ const CourseDetailCategoryPage = () => {
 
   //#endregion  //*======== STORE ===========
   const current = useRootSelector(SearchSelectors.state).current
-  const origin = current.origin as SourceOrigin<'hc', 'books'>
+  const origin = current.origin as SourceOrigin<'hc', 'courses'>
   //#endregion  //*======== STORE ===========
 
   //#endregion  //*======== PARAMS ===========
   const { slug, category = DefaultCourseDetailCategory } = useParams(
-    '/book/:slug/:category',
+    '/course/:slug/:category',
   )
 
   const isValidCategory =
     DisplayCourseDetailCategories.safeParse(category).success
-  const isValidCurrentCategory = current.category === 'books'
+  const isValidCurrentCategory = current.category === 'courses'
   const isValidParams = isValidCategory && isValidCurrentCategory
   //#endregion  //*======== PARAMS ===========
 
@@ -53,7 +53,7 @@ const CourseDetailCategoryPage = () => {
         const isDefaultCategory = c === DefaultCourseDetailCategory
         navigate(
           {
-            pathname: '/book/:slug/:category',
+            pathname: '/course/:slug/:category',
           },
           {
             state: {
@@ -111,8 +111,8 @@ const CourseDetailCategoryPage = () => {
 const CourseInfo = () => {
   //#endregion  //*======== STORE ===========
   const current = useRootSelector(SearchSelectors.state).current
-  const origin = current.origin as SourceOrigin<'hc', 'books'>
-  const common = current.common as SearchArtifact<'books'>
+  const origin = current.origin as SourceOrigin<'hc', 'courses'>
+  const common = current.common as SearchArtifact<'courses'>
   //#endregion  //*======== STORE ===========
 
   //#endregion  //*======== PARAMS ===========
@@ -122,7 +122,7 @@ const CourseInfo = () => {
   // return null
   return (
     <section className="my-4 flex flex-col gap-6">
-      <Course book={common}>
+      <Course course={common}>
         <Course.Description />
 
         <Separator />

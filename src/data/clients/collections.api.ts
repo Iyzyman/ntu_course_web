@@ -45,9 +45,9 @@ router.route("/api/users/:username/collections/:collection_key").put(updateColle
 
 router.route("/api/users/:username/collections/:collection_key").delete(deleteCollection);
 
-router.route("/api/users/:username/collections/:collection_key/books/:book_key").post(addCourseToCollection); --> This takes the book_key, username and collection key specified in the url.
+router.route("/api/users/:username/collections/:collection_key/courses/:course_key").post(addCourseToCollection); --> This takes the course_key, username and collection key specified in the url.
 
-router.route("/api/users/:username/collections/:collection_key/books/:book_key").delete(removeCourseFromCollection);
+router.route("/api/users/:username/collections/:collection_key/courses/:course_key").delete(removeCourseFromCollection);
 
 router.route("/api/users/:username/collections").delete(deleteMultipleCollections);
 
@@ -56,7 +56,7 @@ router.route("/api/users/:username/collectionsBatch").post(addCourseToMultipleCo
 
 const Services: Record<string, string> = {
   User: `/api/users/:username`,
-  AddCourse: `/api/add_book`,
+  AddCourse: `/api/add_course`,
 }
 
 const Routes: Record<string, Record<string, string>> = {
@@ -66,12 +66,12 @@ const Routes: Record<string, Record<string, string>> = {
     collectionsBatch: '/collectionsBatch',
     collectionsCore: '/collections/core',
     collectionsUser: '/collections/user',
-    bookToCollection: '/collections/:collection_key/books/:book_key',
+    courseToCollection: '/collections/:collection_key/courses/:course_key',
   },
 }
 
 type AddCourseRequest = {
-  book: Course
+  course: Course
 }
 
 export const CollectionClient = createApi({
@@ -79,19 +79,22 @@ export const CollectionClient = createApi({
   reducerPath: TagType,
   tagTypes: [TagType],
   endpoints: (build) => ({
-    /**@description Add book */
+    /**@description Add course */
     addCourseToCoursesTable: build.mutation<void, AddCourseRequest>({
-      query: (book) => {
+      query: (course) => {
         const request = url({
           endpoint: `${Endpoint}`,
           route: `${Services.AddCourse}`,
         })
 
-        logger({ breakpoint: `[collections.api.ts:89] POST /add_book` }, book)
+        logger(
+          { breakpoint: `[collections.api.ts:89] POST /add_course` },
+          course,
+        )
         return {
           url: `${request.pathname}`,
           method: 'POST',
-          body: book,
+          body: course,
         }
       },
     }),
@@ -120,7 +123,7 @@ export const CollectionClient = createApi({
         providesTags: [TagType],
       },
     ),
-    /**@description Get a specific collection, including the books it contains */
+    /**@description Get a specific collection, including the courses it contains */
     getCollection: build.query<
       CollectionQueryResponse,
       { username: string; collection_key: string }
@@ -195,12 +198,12 @@ export const CollectionClient = createApi({
     /**@description Add a Course to a Collection */
     addCourseToCollection: build.mutation<
       CollectionsQueryResponse,
-      { username: string; collection_key: string; book_key: string }
+      { username: string; collection_key: string; course_key: string }
     >({
       query: (params) => {
         const request = url({
           endpoint: `${Endpoint}`,
-          route: `${Services.User}${Routes.Api.bookToCollection}`,
+          route: `${Services.User}${Routes.Api.courseToCollection}`,
           routeParams: getStringifiedRecord(params),
         })
         logger(
@@ -235,15 +238,15 @@ export const CollectionClient = createApi({
       },
       invalidatesTags: [TagType],
     }),
-    /**@description Delete book from collection */
+    /**@description Delete course from collection */
     deleteCourseFromCollection: build.mutation<
       CollectionsQueryResponse,
-      { username: string; collection_key: string; book_key: string }
+      { username: string; collection_key: string; course_key: string }
     >({
       query: (params) => {
         const request = url({
           endpoint: `${Endpoint}`,
-          route: `${Services.User}${Routes.Api.bookToCollection}`,
+          route: `${Services.User}${Routes.Api.courseToCollection}`,
           routeParams: getStringifiedRecord(params),
         })
         logger({ breakpoint: '[collections.api.ts:205]' }, params)

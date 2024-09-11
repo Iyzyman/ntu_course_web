@@ -32,7 +32,7 @@ const AuthorDetailsLayout = () => {
   //#endregion  //*======== STORE ===========
 
   //#endregion  //*======== PARAMS ===========
-  const { slug = '' } = useParams('/book/:slug')
+  const { slug = '' } = useParams('/course/:slug')
   const { state } = useLocation()
 
   const searchCategory = SearchCategory.enum.authors
@@ -167,7 +167,7 @@ const AuthorDetailsLayout = () => {
 
                 <p>
                   {common?.name ?? ''} has written at least{' '}
-                  {common?.booksCount ?? 0} books.
+                  {common?.coursesCount ?? 0} courses.
                 </p>
               </aside>
             </div>

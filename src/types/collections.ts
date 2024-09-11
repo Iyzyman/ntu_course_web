@@ -20,7 +20,7 @@ export type SingleCollection = {
   key: string
   name: string
   source: string
-  books: Course[]
+  courses: Course[]
 }
 
 export type UpdateCollectionNameBodyParams = {
@@ -38,7 +38,7 @@ export type CreateCollectionBodyParams = {
 export type addCourseToMultipleCollectionsBodyParams = {
   collection_keys: string[]
   username: string
-  book_key: string
+  course_key: string
 }
 
 export type deleteSingleCollectionParams = {

@@ -119,7 +119,7 @@ const CollectionsPage = () => {
           </div>
           <div className="sm:col-span-2">
             <p className="text-center leading-tight text-muted-foreground">
-              Discover the books you have been reading recently and your
+              Discover the courses you have been reading recently and your
               favorite collections so far!
             </p>
           </div>
@@ -158,10 +158,10 @@ const CollectionsPage = () => {
                     key={collection.key}
                     collection={{
                       ...collection,
-                      books: collection.books.map((book) => ({
-                        ...book,
-                        key: book.key,
-                        source: book.source as
+                      courses: collection.courses.map((course) => ({
+                        ...course,
+                        key: course.key,
+                        source: course.source as
                           | 'shelvd'
                           | 'ol'
                           | 'nyt'
@@ -186,10 +186,10 @@ const CollectionsPage = () => {
                     key={collection.key}
                     collection={{
                       ...collection,
-                      books: collection.books.map((book) => ({
-                        ...book,
-                        key: book.key,
-                        source: book.source as
+                      courses: collection.courses.map((course) => ({
+                        ...course,
+                        key: course.key,
+                        source: course.source as
                           | 'shelvd'
                           | 'ol'
                           | 'nyt'

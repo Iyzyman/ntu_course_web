@@ -13,7 +13,6 @@ import { cn } from '@/utils/dom'
 import { getLimitedArray, getShuffledArray } from '@/utils/helpers'
 import { ComponentProps, HTMLAttributes } from 'react'
 import Marquee from 'react-fast-marquee'
-import { mockCourseData } from '@/data/clients/mockdata'
 
 export const Loader = () => 'Route loader'
 export const Action = () => 'Route action'
@@ -36,7 +35,7 @@ const IndexPage = () => {
             </span>
           </h1>
           <Separator />
-          {/* <small className='text-center uppercase leading-none tracking-snug text-muted-foreground truncate text-pretty'>The social network for book lovers</small> */}
+          {/* <small className='text-center uppercase leading-none tracking-snug text-muted-foreground truncate text-pretty'>The social network for course lovers</small> */}
         </header>
 
         <div></div>
@@ -93,18 +92,18 @@ export const FeaturedListsPreviewSection = () => {
 }
 
 type TrendingPreviewSection = {
-  books: Course[]
+  courses: Course[]
   displayLimit?: number
   marquee?: ComponentProps<typeof Marquee>
 } & HTMLAttributes<HTMLDivElement>
 export const TrendingPreviewSection = ({
-  books,
+  courses,
   displayLimit = 12,
   className,
   children,
   marquee,
 }: TrendingPreviewSection) => {
-  const displayCourses = getLimitedArray(books, displayLimit)
+  const displayCourses = getLimitedArray(courses, displayLimit)
   return (
     <Marquee
       pauseOnHover
@@ -115,15 +114,15 @@ export const TrendingPreviewSection = ({
       className={cn('place-items-start', className)}
       {...marquee}
     >
-      {displayCourses.map((book, idx) => (
+      {displayCourses.map((course, idx) => (
         <RenderGuard
-          key={`${idx}-${book.key}`}
-          renderIf={zCourse.safeParse(book).success}
+          key={`${idx}-${course.key}`}
+          renderIf={zCourse.safeParse(course).success}
           fallback={
             <Skeleton className={cn('aspect-[3/4.5] min-h-28 min-w-20')} />
           }
         >
-          <Course book={zCourse.parse(book)!}>
+          <Course course={zCourse.parse(course)!}>
             <Course.Thumbnail
               className={cn(
                 'mr-1 mt-1 w-fit !rounded-none',
@@ -206,9 +205,11 @@ export const TrendingPreview = () => {
 
       <section>
         {Hardcover.TrendPeriod.options.map((period, idx) => {
-          const books: Course[] = isSuccess ? data?.results?.[period] ?? [] : []
+          const courses: Course[] = isSuccess
+            ? data?.results?.[period] ?? []
+            : []
           const displayCourses = getShuffledArray(
-            books.map((book) => HardcoverUtils.parseCourse(book)),
+            courses.map((course) => HardcoverUtils.parseCourse(course)),
           )
 
           const direction = idx % 2 === 0 ? 'left' : 'right'
@@ -216,7 +217,7 @@ export const TrendingPreview = () => {
           return (
             <TrendingPreviewSection
               key={`trend-${period}`}
-              books={displayCourses}
+              courses={displayCourses}
               marquee={{
                 direction,
               }}
@@ -225,21 +226,6 @@ export const TrendingPreview = () => {
         })}
       </section>
     </section>
-  )
-}
-
-export const TrendingPreivewBestsellers = () => {
-  const displayCourses: Course[] = mockCourseData
-
-  return (
-    <div className="flex flex-col gap-2">
-      <h3 className="small font-semibold uppercase leading-none tracking-tight text-muted-foreground">
-        New York Times' Bestsellers
-      </h3>
-      <Separator />
-
-      <TrendingPreviewSection books={displayCourses} />
-    </div>
   )
 }
 

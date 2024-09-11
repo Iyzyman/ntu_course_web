@@ -48,7 +48,7 @@ const UserPage = () => {
     },
   )
   const corelistsResults = (queryCorelists.data ?? []) as ListData[]
-  const isCoreAllEmpty = corelistsResults.every((list) => !list.booksCount)
+  const isCoreAllEmpty = corelistsResults.every((list) => !list.coursesCount)
   // const corelistsIsLoading =
   //   queryCorelists.isLoading || queryCorelists.isFetching
   // const corelistsIsNotFound =
@@ -128,8 +128,8 @@ const UserPage = () => {
           <AccordionTrigger className="w-full !place-content-between gap-4">
             <aside className="inline-flex flex-row !place-content-start place-items-center gap-2">
               <img
-                src="/images/icons/bookshelf.png"
-                alt="bookshelf"
+                src="/images/icons/courseshelf.png"
+                alt="courseshelf"
                 className="size-8"
               />
               <h2 className="h3 capitalize">currently shelved</h2>
@@ -142,13 +142,13 @@ const UserPage = () => {
                 <InfoCircledIcon className="size-4" />
                 <AlertTitle>TIP</AlertTitle>
                 <AlertDescription>
-                  Start your reading journey by shelfing your books
+                  Start your reading journey by shelfing your courses
                 </AlertDescription>
               </Alert>
             )}
 
             {corelistsResults.map((list) => {
-              // if (!list.booksCount) return null
+              // if (!list.coursesCount) return null
               return (
                 <RenderGuard
                   key={`${user.id}-list-core-${list.key}`}
@@ -164,7 +164,7 @@ const UserPage = () => {
                       >
                         {list.name}&nbsp;
                         <Badge variant={'outline'}>
-                          {list?.booksCount ?? 0} books
+                          {list?.coursesCount ?? 0} courses
                         </Badge>
                       </h3>
 
@@ -190,8 +190,8 @@ const UserPage = () => {
           <AccordionTrigger className="w-full !place-content-between gap-4">
             <aside className="inline-flex flex-row !place-content-start place-items-center gap-2">
               <img
-                src="/images/icons/booklist.png"
-                alt="booklist"
+                src="/images/icons/courselist.png"
+                alt="courselist"
                 className="size-8"
               />
               <h2 className="h3 capitalize">curated lists</h2>
@@ -209,13 +209,13 @@ const UserPage = () => {
                 <InfoCircledIcon className="size-4" />
                 <AlertTitle>TIP</AlertTitle>
                 <AlertDescription>
-                  Start curating your book collection by creating a list
+                  Start curating your course collection by creating a list
                 </AlertDescription>
               </Alert>
             )}
 
             {createdlistsResults.map((list) => {
-              // if (!list.booksCount) return null
+              // if (!list.coursesCount) return null
               return (
                 <RenderGuard
                   key={`${user.id}-list-created-${list.key}`}
@@ -242,7 +242,7 @@ const UserPage = () => {
                           >
                             {list.name}&nbsp;
                             <Badge variant={'outline'}>
-                              {list?.booksCount ?? 0} books
+                              {list?.coursesCount ?? 0} courses
                             </Badge>
                           </h3>
                         </Link>

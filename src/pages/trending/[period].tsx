@@ -149,21 +149,21 @@ const TrendingPeriodPage = () => {
               )}
             >
               {results.map((hcCourse, idx) => {
-                const book: Course = HardcoverUtils.parseCourse(hcCourse)
+                const course: Course = HardcoverUtils.parseCourse(hcCourse)
                 return (
                   <Course
-                    key={`${idx}-${book.key}`}
-                    book={book!}
+                    key={`${idx}-${course.key}`}
+                    course={course!}
                   >
                     <div
                       onClick={() => {
                         navigate(
                           {
-                            pathname: '/book/:slug',
+                            pathname: '/course/:slug',
                           },
                           {
                             params: {
-                              slug: book.slug ?? book.key,
+                              slug: course.slug ?? course.key,
                             },
                             unstable_viewTransition: true,
                           },
@@ -179,7 +179,7 @@ const TrendingPeriodPage = () => {
 
                       <aside>
                         <p className="h4 line-clamp-3 truncate text-pretty capitalize">
-                          {book.title}
+                          {course.title}
                         </p>
                         <p className="!m-0 capitalize text-muted-foreground">
                           <small className="font-semibold uppercase">by</small>

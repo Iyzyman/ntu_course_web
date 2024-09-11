@@ -9,9 +9,7 @@ import { logger } from '@/utils/debug'
 import { cn } from '@/utils/dom'
 import { useEffect, useMemo } from 'react'
 import { Outlet, useLocation } from 'react-router-dom'
-import {
-  mockCourse
-} from '../../../data/clients/mockdata.ts' // Import updated mock data
+import { mockCourse } from '../../../data/clients/mockdata.ts' // Import updated mock data
 
 const CourseDetailsLayout = () => {
   const dispatch = useRootDispatch()
@@ -20,10 +18,10 @@ const CourseDetailsLayout = () => {
     SearchActions.setCurrent,
   ]
 
-  const { slug = '' } = useParams('/book/:slug')
+  const { slug = '' } = useParams('/course/:slug')
   const { state } = useLocation()
 
-  const searchCategory = SearchCategory.enum.books
+  const searchCategory = SearchCategory.enum.courses
   const source: CourseSource = (state?.source ?? current.source) as CourseSource
 
   const isValidSource = CourseSource.safeParse(source).success
@@ -36,6 +34,7 @@ const CourseDetailsLayout = () => {
 
   // Use mock data
   const origin = mockCourse
+  const common = mockCourse
 
   const ctx = useMemo(
     () => ({
@@ -43,10 +42,11 @@ const CourseDetailsLayout = () => {
       source,
       category: searchCategory,
       origin,
+      common,
       isNotFound,
       isLoading,
     }),
-    [slug, source, searchCategory, origin, isNotFound, isLoading],
+    [slug, source, common, searchCategory, origin, isNotFound, isLoading],
   )
 
   useEffect(() => {
@@ -77,7 +77,7 @@ const CourseDetailsLayout = () => {
           />
         }
       >
-        <Course book={(origin as Course)!}>
+        <Course course={(origin as Course)!}>
           {/* HEADER */}
           <section
             style={{
@@ -101,7 +101,7 @@ const CourseDetailsLayout = () => {
                       variant="secondary"
                       className="!mb-2 w-fit"
                     >
-                      {`#${origin?.featured_series?.position ?? 1} of ${origin?.featured_series?.series_books_count} in ${origin?.featured_series?.series_name}`}
+                      {`#${origin?.featured_series?.position ?? 1} of ${origin?.featured_series?.series_courses_count} in ${origin?.featured_series?.series_name}`}
                     </Badge>
                   )} */}
 
