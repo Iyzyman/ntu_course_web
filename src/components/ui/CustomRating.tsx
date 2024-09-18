@@ -5,7 +5,7 @@ export const CustomRating = ({ sx, ...rest }: RatingProps) => {
     <Rating
       sx={{
         width: 'auto',
-        '& .MuiRating-iconFilled': { color: 'white' },
+        '& .MuiRating-iconFilled': { color: '#A3A3A3' },
         '& .MuiRating-iconEmpty': { color: '#A3A3A3' },
         ...sx,
       }}
