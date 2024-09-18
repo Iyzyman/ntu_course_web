@@ -3,13 +3,13 @@ import {
   Stack,
   CircularProgress,
   Typography,
-  Rating,
   ToggleButtonGroup,
   ToggleButton,
   Select,
   TextField,
   Button,
 } from '@mui/material'
+import { CustomRating } from './ui/CustomRating'
 import { createContext, useContext } from 'react'
 import ThumbUpOutlinedIcon from '@mui/icons-material/ThumbUpOutlined'
 import * as React from 'react'
@@ -36,11 +36,11 @@ const useReviewContext = () => {
   let ctxValue = useContext(ReviewContext)
   if (ctxValue === undefined) {
     const score: ReviewScore = {
-      'Content Usefulness': 3,
-      'Lecture Clarity': 3,
-      'Assignment Difficulty': 3,
-      'Team Dependency': 3,
-      'Overall Workload': 3,
+      'Content Usefulness': 3.0,
+      'Lecture Clarity': 3.1,
+      'Assignment Difficulty': 3.2,
+      'Team Dependency': 3.3,
+      'Overall Workload': 3.4,
     }
     ctxValue = {
       overall_score: score,
@@ -151,16 +151,15 @@ export const AllReviews = () => {
           >
             {Object.entries(review.score).map(([key, value]) => (
               <Stack alignItems="center">
-                <Rating
-                  sx={{ width: 'auto' }}
+                <CustomRating
                   value={value}
                   readOnly
                 />
-                <Typography>{key}</Typography>
+                <Typography fontSize={16}>{key}</Typography>
               </Stack>
             ))}
           </Box>
-          <Typography>{review.description}</Typography>
+          <Typography fontSize={18}>{review.description}</Typography>
 
           {review.recommended && (
             <Stack
@@ -169,7 +168,7 @@ export const AllReviews = () => {
               py={2}
             >
               <ThumbUpOutlinedIcon />
-              <Typography>{review.author} recommends this course</Typography>
+              <Typography fontSize={16}>{review.author} recommends this course</Typography>
             </Stack>
           )}
         </Box>
@@ -210,7 +209,15 @@ export const ReviewForm = () => {
   ) => {
     setReviewText(event.target.value)
   }
-  const handleSubmit = () => {}
+  const handleSubmit = () => {
+    // let dataToSubmit = {
+    //   name: { name },
+    //   semester: {},
+    //   recommend: { recommend },
+    //   rating: { rating },
+    //   description: { reviewText }
+    // }
+  }
 
   return (
     <Stack
@@ -220,6 +227,7 @@ export const ReviewForm = () => {
       <Typography sx={{ borderBottom: 2, borderColor: '#A3A3A3' }}>
         Leave your Review
       </Typography>
+
       <div>
         <Typography>Name (Optional)</Typography>
         <TextField
@@ -227,7 +235,9 @@ export const ReviewForm = () => {
           value={name}
         />
       </div>
+
       <Select label="When did you take this module?" />
+
       <div>
         <Typography>Do you recommend this course?</Typography>
         <ToggleButtonGroup
@@ -239,6 +249,7 @@ export const ReviewForm = () => {
           <ToggleButton value="No">No</ToggleButton>
         </ToggleButtonGroup>
       </div>
+
       <Box
         display="flex"
         justifyContent="space-between"
@@ -246,8 +257,7 @@ export const ReviewForm = () => {
       >
         {Object.entries(rating).map(([key, value]) => (
           <Stack alignItems="center">
-            <Rating
-              sx={{ width: 'auto' }}
+            <CustomRating
               value={value}
               onChange={handleRatingChange(key)}
             />
@@ -255,6 +265,7 @@ export const ReviewForm = () => {
           </Stack>
         ))}
       </Box>
+
       <TextField
         onChange={handleReviewTextChamge}
         value={reviewText}
