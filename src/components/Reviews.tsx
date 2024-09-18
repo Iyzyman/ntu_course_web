@@ -3,15 +3,20 @@ import {
   Stack,
   CircularProgress,
   Typography,
-  ToggleButtonGroup,
-  ToggleButton,
   Select,
-  TextField,
   Button,
+  MenuItem,
+  InputLabel,
+  FormControl,
+  SelectChangeEvent,
+  ToggleButton,
 } from '@mui/material'
 import { CustomRating } from './ui/CustomRating'
+import { CustomTextField } from './ui/CustomTextField'
+import { CustomToggleButtonGroup } from './ui/CustomToggleButton'
 import { createContext, useContext } from 'react'
 import ThumbUpOutlinedIcon from '@mui/icons-material/ThumbUpOutlined'
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
 import * as React from 'react'
 
 interface ReviewScore {
@@ -29,6 +34,7 @@ export type ReviewContext = {
     author: string
     score: ReviewScore
     recommended: boolean
+    date: string
   }[]
 }
 
@@ -46,16 +52,20 @@ const useReviewContext = () => {
       overall_score: score,
       reviews: [
         {
-          description: 'Lorem Ipsum Dolor Sit',
-          author: 'Roland',
+          description:
+            'Consistency is very important for this course as there is no finals rather it is 4 test spread throughout the semester',
+          author: 'David Teo',
           score: score,
           recommended: true,
+          date: '2023 Semester 2',
         },
         {
-          description: 'Lorem Ipsum Dolor Sit',
-          author: 'Roland',
+          description:
+            'Consistency is very important for this course as there is no finals rather it is 4 test spread throughout the semester',
+          author: 'David Teo',
           score: score,
           recommended: false,
+          date: '2023 Semester 2',
         },
       ],
     }
@@ -139,9 +149,22 @@ export const AllReviews = () => {
         <Box
           py={2}
           px={4}
-          sx={{ border: 1, borderRadius: 1 }}
+          sx={{ border: 1, borderRadius: 2 }}
         >
-          <Typography>{review.author}</Typography>
+          <Typography
+            fontSize={20}
+            fontFamily="Inter"
+            fontWeight={500}
+          >
+            {review.author}
+          </Typography>
+          <Typography
+            fontSize={16}
+            fontFamily="Inter"
+            fontWeight={300}
+          >
+            Took the module on {review.date}
+          </Typography>
           <Box
             display="flex"
             justifyContent="space-between"
@@ -155,11 +178,21 @@ export const AllReviews = () => {
                   value={value}
                   readOnly
                 />
-                <Typography fontSize={16}>{key}</Typography>
+                <Typography
+                  fontSize={16}
+                  fontFamily="Inter"
+                >
+                  {key}
+                </Typography>
               </Stack>
             ))}
           </Box>
-          <Typography fontSize={18}>{review.description}</Typography>
+          <Typography
+            fontSize={18}
+            fontFamily="Inter"
+          >
+            {review.description}
+          </Typography>
 
           {review.recommended && (
             <Stack
@@ -168,7 +201,12 @@ export const AllReviews = () => {
               py={2}
             >
               <ThumbUpOutlinedIcon />
-              <Typography fontSize={16}>{review.author} recommends this course</Typography>
+              <Typography
+                fontSize={16}
+                fontFamily="Inter"
+              >
+                {review.author} recommends this course
+              </Typography>
             </Stack>
           )}
         </Box>
@@ -178,12 +216,19 @@ export const AllReviews = () => {
 }
 
 export const ReviewForm = () => {
-  const { overall_score } = useReviewContext()
   const [recommend, setRecommend] = React.useState<string>('Yes')
   const [name, setName] = React.useState<string>()
-  const [rating, setRating] = React.useState<ReviewScore>(overall_score)
+  const [semester, setSemester] = React.useState<string>('')
   const [reviewText, setReviewText] = React.useState<string>()
+  const [rating, setRating] = React.useState<ReviewScore>({
+    'Content Usefulness': 0,
+    'Lecture Clarity': 0,
+    'Assignment Difficulty': 0,
+    'Team Dependency': 0,
+    'Overall Workload': 0,
+  })
 
+  const allsemesters = semesterOptions(2018, 2024)
   const handleRecommendChange = (
     event: React.MouseEvent<HTMLElement>,
     newValue: string | null,
@@ -204,6 +249,9 @@ export const ReviewForm = () => {
         }))
       }
     }
+  const handleSemesterChange = (event: SelectChangeEvent) => {
+    setSemester(event.target.value)
+  }
   const handleReviewTextChamge = (
     event: React.ChangeEvent<HTMLInputElement>,
   ) => {
@@ -212,7 +260,7 @@ export const ReviewForm = () => {
   const handleSubmit = () => {
     // let dataToSubmit = {
     //   name: { name },
-    //   semester: {},
+    //   semester: { semester },
     //   recommend: { recommend },
     //   rating: { rating },
     //   description: { reviewText }
@@ -221,7 +269,7 @@ export const ReviewForm = () => {
 
   return (
     <Stack
-      spacing={2}
+      spacing={3}
       py={4}
     >
       <Typography sx={{ borderBottom: 2, borderColor: '#A3A3A3' }}>
@@ -230,24 +278,70 @@ export const ReviewForm = () => {
 
       <div>
         <Typography>Name (Optional)</Typography>
-        <TextField
+        <CustomTextField
           onChange={handleNameChange}
           value={name}
+          sx={{
+            minWidth: 450,
+          }}
         />
       </div>
 
-      <Select label="When did you take this module?" />
+      <FormControl
+        sx={{
+          width: 340,
+          '& .MuiOutlinedInput-root': {
+            '& fieldset': {
+              borderColor: '#A3A3A3',
+            },
+            '&:hover fieldset': {
+              borderColor: '#A3A3A3',
+            },
+            '&.Mui-focused fieldset': {
+              borderColor: '#A3A3A3',
+            },
+            color: '#A3A3A3',
+          },
+        }}
+      >
+        <InputLabel
+          sx={{ color: '#A3A3A3', '&.Mui-focused': { color: '#A3A3A3' } }}
+        >
+          When did you take this course?
+        </InputLabel>
+        <Select
+          label="When did you take this course?"
+          value={semester}
+          onChange={handleSemesterChange}
+          sx={{ color: '#A3A3A3' }}
+          IconComponent={(props) => (
+            <ExpandMoreIcon
+              {...props}
+              style={{ color: 'A3A3A3' }}
+            />
+          )}
+        >
+          {allsemesters.map((option) => (
+            <MenuItem
+              key={option.value}
+              value={option.value}
+            >
+              {option.label}
+            </MenuItem>
+          ))}
+        </Select>
+      </FormControl>
 
       <div>
         <Typography>Do you recommend this course?</Typography>
-        <ToggleButtonGroup
+        <CustomToggleButtonGroup
           exclusive
           onChange={handleRecommendChange}
           value={recommend}
         >
           <ToggleButton value="Yes">Yes</ToggleButton>
           <ToggleButton value="No">No</ToggleButton>
-        </ToggleButtonGroup>
+        </CustomToggleButtonGroup>
       </div>
 
       <Box
@@ -266,12 +360,28 @@ export const ReviewForm = () => {
         ))}
       </Box>
 
-      <TextField
+      <CustomTextField
         onChange={handleReviewTextChamge}
         value={reviewText}
-        label="Leave your review here"
+        placeholder="Leave your review here"
       />
-      <Button onClick={handleSubmit}>Submit</Button>
+      <Button
+        onClick={handleSubmit}
+        sx={{ width: 100, color: '#A3A3A3', border: 1 }}
+      >
+        Submit
+      </Button>
     </Stack>
   )
+}
+
+const semesterOptions = (startYear: number, endYear: number) => {
+  const semesters = []
+  for (let year = startYear; year <= endYear; year++) {
+    semesters.push(
+      { value: `${year} Semester 1`, label: `${year} Semester 1` },
+      { value: `${year} Semester 2`, label: `${year} Semester 2` },
+    )
+  }
+  return semesters
 }
