@@ -161,12 +161,6 @@ const CollectionsPage = () => {
                       courses: collection.courses.map((course) => ({
                         ...course,
                         key: course.key,
-                        source: course.source as
-                          | 'shelvd'
-                          | 'ol'
-                          | 'nyt'
-                          | 'google'
-                          | 'hc',
                       })),
                     }}
                     username={user_uri}
@@ -189,12 +183,6 @@ const CollectionsPage = () => {
                       courses: collection.courses.map((course) => ({
                         ...course,
                         key: course.key,
-                        source: course.source as
-                          | 'shelvd'
-                          | 'ol'
-                          | 'nyt'
-                          | 'google'
-                          | 'hc',
                       })),
                     }}
                     username={user_uri}

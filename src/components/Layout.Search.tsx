@@ -1,4 +1,3 @@
-import Author from '@/components/Author'
 import Course from '@/components/Course'
 import Series from '@/components/Series'
 import { RenderGuard } from '@/components/providers/render.provider'
@@ -31,6 +30,7 @@ import {
 } from '@/components/ui/Pagination'
 import { Tabs, TabsList, TabsTrigger } from '@/components/ui/Tabs'
 import { HardcoverEndpoints } from '@/data/clients/hardcover.api'
+import { mockSearchResponse } from '@/data/clients/mockdata'
 import { AppCommandKey } from '@/data/static/app'
 import { AppActions, AppSelectors } from '@/data/stores/app.slice'
 import { useRootDispatch, useRootSelector } from '@/data/stores/root'
@@ -49,11 +49,7 @@ import { logger } from '@/utils/debug'
 import { cn } from '@/utils/dom'
 import { getLimitedArray, isSimilarStrings } from '@/utils/helpers'
 import { zodResolver } from '@hookform/resolvers/zod'
-import {
-  BookmarkIcon,
-  MagnifyingGlassIcon,
-  UpdateIcon,
-} from '@radix-ui/react-icons'
+import { MagnifyingGlassIcon, UpdateIcon } from '@radix-ui/react-icons'
 import {
   ComponentProps,
   Dispatch,
@@ -71,7 +67,7 @@ import { UseFormReturn, useForm } from 'react-hook-form'
 import { useSearchParams } from 'react-router-dom'
 import { z } from 'zod'
 
-const DisplaySearchCategories = SearchCategory.extract(['courses', 'authors'])
+const DisplaySearchCategories = SearchCategory.extract(['courses'])
 
 const SearchFormSchema = Hardcover.QuerySearchParams.extend({
   category: SearchCategory.default(DefaultSearchCategory),
@@ -145,9 +141,12 @@ const useDefaultSearchContext = (): SearchContext => {
   })
 
   //#endregion  //*======== STATES ===========
-
+  console.log(searchQuery)
   const { search } = HardcoverEndpoints
-  const { data, isLoading, isFetching } = search.useQuery(searchQuery)
+  const isMock = true // Set this flag based on your environment or conditions
+  const { data, isLoading, isFetching } = isMock
+    ? { data: mockSearchResponse, isLoading: false, isFetching: false }
+    : search.useQuery(searchQuery)
 
   const dataCount: number = data?.results?.[0]?.found ?? 0
 
@@ -295,7 +294,7 @@ export const SearchForm = ({
             <FormControl>
               <Input
                 {...field}
-                placeholder="Search for a course, author or character ..."
+                placeholder="Search for a course"
                 onKeyDown={(e) => {
                   const key = e.key.toLowerCase()
                   const isEnter = key === 'Enter'.toLowerCase()
@@ -367,7 +366,7 @@ export const SearchCommand = ({ children }: SearchCommand) => {
             const isEnter = key === 'Enter'.toLowerCase()
             if (isEnter) return onSubmitSearch()
           }}
-          placeholder={'Search for a course, author or character ...'}
+          placeholder={'Search for a course'}
         />
 
         <SearchCommand.Tabs />
@@ -579,9 +578,6 @@ export const SearchResults = ({ className, ...rest }: SearchResults) => {
                           ),
                         )}
                         &nbsp;
-                        <small className="text-muted-foreground">
-                          ({hcCourse?.pubYear ?? '???'})
-                        </small>
                       </p>
 
                       <p className="last-child:text-pretty last-child:truncate inline-flex w-full max-w-prose flex-row place-items-baseline	 truncate text-pretty">
@@ -609,7 +605,7 @@ export const SearchResults = ({ className, ...rest }: SearchResults) => {
                           'max-sm:hidden',
                         )}
                       >
-                        {getLimitedArray(hcCourse?.genres ?? [], 5).map(
+                        {getLimitedArray(hcCourse?.tags ?? [], 5).map(
                           (tag, idx) => (
                             <Badge
                               key={`course-tag-${idx}`}
@@ -619,7 +615,8 @@ export const SearchResults = ({ className, ...rest }: SearchResults) => {
                                 'w-fit',
                               )}
                             >
-                              {tag}
+                              {' '}
+                              {tag as string}
                             </Badge>
                           ),
                         )}
@@ -633,122 +630,7 @@ export const SearchResults = ({ className, ...rest }: SearchResults) => {
                 </Course>
               </Search.ResultItem>
             )
-          } else if (category === 'authors') {
-            const author = HardcoverUtils.parseDocument({
-              category,
-              hit,
-            }) as Author
-            if (!author) return null
-            return (
-              <SearchCommand.ResultItem
-                key={`${idx}-${author.key}`}
-                onClick={() => {
-                  navigate(
-                    {
-                      pathname: '/author/:slug',
-                    },
-                    {
-                      params: {
-                        slug: author?.slug ?? author.key,
-                      },
-                      unstable_viewTransition: true,
-                    },
-                  )
-                }}
-              >
-                <Author author={author!}>
-                  <Author.Image className="size-16" />
-                  <p>
-                    {(author?.name?.split(' ') ?? []).map(
-                      (titleText: string, idx: number) => (
-                        <span
-                          key={`${author.key}-name-${idx}`}
-                          className={cn(
-                            query
-                              .toLowerCase()
-                              .includes(titleText.toLowerCase()) &&
-                              'text-yellow-500',
-                          )}
-                        >
-                          {titleText}&nbsp;
-                        </span>
-                      ),
-                    )}
-                  </p>
-                </Author>
-              </SearchCommand.ResultItem>
-            )
-          } else if (category === 'series') {
-            const series = HardcoverUtils.parseDocument({
-              category,
-              hit,
-            }) as Series
-            const isEmptySeries = !(series?.coursesCount ?? 0)
-            if (!series || isEmptySeries) return null
-            return (
-              <SearchCommand.ResultItem
-                key={`${idx}-${series.key}`}
-                // onClick={() => {
-                //   navigate(
-                //     {
-                //       pathname: '/series/:slug?',
-                //     },
-                //     {
-                //       state: {
-                //         source: series.source,
-                //       },
-                //       params: {
-                //         slug: series?.slug ?? series.key,
-                //       },
-                //       unstable_viewTransition: true,
-                //     },
-                //   )
-                // }}
-                className={cn(
-                  'flex flex-col place-content-start place-items-start gap-4',
-                  'w-full border-b py-2',
-                )}
-              >
-                <Series series={series!}>
-                  <header className="flex flex-row flex-wrap place-content-center place-items-center gap-2">
-                    <p className="h4 capitalize">
-                      {((series?.name ?? '')?.split(' ') ?? []).map(
-                        (titleText: string, idx: number) => (
-                          <span
-                            key={`${series.key}-name-${idx}`}
-                            className={cn(
-                              query
-                                .toLowerCase()
-                                .includes(titleText.toLowerCase()) &&
-                                'text-yellow-500',
-                            )}
-                          >
-                            {titleText}&nbsp;
-                          </span>
-                        ),
-                      )}
-                    </p>
-                    <Badge variant={'outline'}>
-                      {series?.coursesCount ?? 0} courses
-                    </Badge>
-                  </header>
-
-                  <aside
-                    className={cn(
-                      'w-fit place-content-start place-items-start gap-2',
-                      'flex flex-row flex-wrap',
-                      'sm:max-w-xl',
-                    )}
-                  >
-                    <Series.Courses displayLimit={12}>
-                      <Course.Thumbnail className="w-fit !rounded-none" />
-                    </Series.Courses>
-                  </aside>
-                </Series>
-              </SearchCommand.ResultItem>
-            )
           }
-
           const artifact = HardcoverUtils.parseDocument({ category, hit }) as
             | Character
             | List
@@ -968,141 +850,6 @@ export const SearchCommandResults = () => {
                   </p>
                 </CommandItem>
               </Course>
-            </SearchCommand.ResultItem>
-          )
-        } else if (category === 'authors') {
-          const author = HardcoverUtils.parseDocument({
-            category,
-            hit,
-          }) as Author
-          if (!author) return null
-          return (
-            <SearchCommand.ResultItem
-              key={`${idx}-${author.key}`}
-              asChild
-            >
-              <Author author={author!}>
-                <CommandItem
-                  value={author.name}
-                  className={cn(
-                    'flex w-full flex-row place-items-center gap-2',
-                  )}
-                  onSelect={(query) => {
-                    if (isEmptyQuery) {
-                      form.setValue('q', query)
-                      onSubmitSearch()
-                    } else {
-                      navigate(
-                        {
-                          pathname: '/author/:slug',
-                        },
-                        {
-                          params: {
-                            slug: author?.slug ?? author.key,
-                          },
-                          unstable_viewTransition: true,
-                        },
-                      )
-
-                      toggleVisibility()
-                    }
-                  }}
-                >
-                  {isEmptyQuery ? (
-                    <MagnifyingGlassIcon className="size-4" />
-                  ) : (
-                    <Author.Image className="size-16" />
-                  )}
-
-                  <p className="!m-0">
-                    {author?.name?.split(' ').map((titleText, idx) => (
-                      <span
-                        key={`${author.key}-title-${idx}`}
-                        className={cn(
-                          query
-                            .toLowerCase()
-                            .includes(titleText.toLowerCase()) &&
-                            'text-yellow-500',
-                        )}
-                      >
-                        {titleText}&nbsp;
-                      </span>
-                    ))}
-                  </p>
-                </CommandItem>
-              </Author>
-            </SearchCommand.ResultItem>
-          )
-        } else if (category === 'series') {
-          const series = HardcoverUtils.parseDocument({
-            category,
-            hit,
-          }) as Series
-          const isEmptySeries = !(series?.coursesCount ?? 0)
-          if (!series || isEmptySeries) return null
-          return (
-            <SearchCommand.ResultItem
-              key={`${idx}-${series.key}`}
-              asChild
-            >
-              <Series series={series!}>
-                <CommandItem
-                  value={series.name}
-                  className={cn(
-                    'flex w-full flex-row place-content-start place-items-start gap-2',
-                  )}
-                  onSelect={(query) => {
-                    if (isEmptyQuery) {
-                      form.setValue('q', query)
-                      onSubmitSearch()
-                    } else {
-                      // navigate(
-                      //   {
-                      //     pathname: '/series/:slug?/*',
-                      //   },
-                      //   {
-                      //     state: {
-                      //       source: series.source,
-                      //     },
-                      //     params: {
-                      //       slug: series?.slug ?? series.key,
-                      //       '*': '',
-                      //     },
-                      //     unstable_viewTransition: true,
-                      //   },
-                      // )
-
-                      toggleVisibility()
-                    }
-                  }}
-                >
-                  {isEmptyQuery ? (
-                    <MagnifyingGlassIcon className="size-4" />
-                  ) : (
-                    <BookmarkIcon className="size-16" />
-                  )}
-
-                  <p className="!m-0">
-                    {series?.name?.split(' ').map((titleText, idx) => (
-                      <span
-                        key={`${series.key}-title-${idx}`}
-                        className={cn(
-                          query
-                            .toLowerCase()
-                            .includes(titleText.toLowerCase()) &&
-                            'text-yellow-500',
-                        )}
-                      >
-                        {titleText}&nbsp;
-                      </span>
-                    ))}
-                  </p>
-
-                  <Badge variant={'outline'}>
-                    {series?.coursesCount ?? 0} courses
-                  </Badge>
-                </CommandItem>
-              </Series>
             </SearchCommand.ResultItem>
           )
         }
