@@ -31,7 +31,7 @@ const TrendingPeriodPage = () => {
   } = trending.useQuery(undefined)
 
   const results = (data?.results?.[period as Hardcover.TrendPeriod] ??
-    []) as Hardcover.Course[]
+    []) as Course[]
   const isLoading = isLoadingTrending || isFetchingTrending
   const isNotFound =
     !isValidParams || (!isLoading && !isSuccess && !results.length)

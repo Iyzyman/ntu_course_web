@@ -6,12 +6,6 @@ export type BaseInfo = {
   slug: string
 }
 
-export type Author = BaseInfo & {
-  name: string
-  image: string
-  coursesCount: number
-}
-
 export type Character = BaseInfo & {
   name: string
   coursesCount: number
@@ -24,13 +18,6 @@ export type List = BaseInfo & {
   coursesCount: number
   courses: Course[]
   titles?: string[]
-}
-
-export type Series = BaseInfo & {
-  name: string
-  coursesCount: number
-  author: string
-  titles: string[]
 }
 
 export type SearchCourse = Omit<Course, 'author' | 'pubYear' | 'image'> & {
@@ -57,14 +44,6 @@ export type SearchCourse = Omit<Course, 'author' | 'pubYear' | 'image'> & {
   content_warnings: string[]
 }
 
-export type SearchAuthor = Omit<Author, 'coursesCount' | 'image'> & {
-  image: {
-    url: string
-    color: string
-  }
-  courses_count: number
-}
-
 export type SearchCharacter = Omit<Character, 'coursesCount' | 'author'> & {
   courses_count: number
   author_names: string[]
@@ -73,15 +52,6 @@ export type SearchCharacter = Omit<Character, 'coursesCount' | 'author'> & {
 export type SearchList = Omit<List, 'courses' | 'coursesCount'> & {
   courses: string[]
   courses_count: number
-}
-
-export type SearchSeries = Omit<
-  Series,
-  'coursesCount' | 'author' | 'titles'
-> & {
-  courses_count: number
-  author_name: string
-  courses: string[]
 }
 
 export const ListCategories = ['featured', 'popular'] as const
@@ -109,10 +79,8 @@ export type QueryResponse<T> = {
 
 type SearchDocumentMap = {
   courses: SearchCourse
-  authors: SearchAuthor
   characters: SearchCharacter
   lists: SearchList
-  series: SearchSeries
   users: unknown
 }
 export type SearchDocument<T extends SearchCategories> = SearchDocumentMap[T]
@@ -174,13 +142,6 @@ export const SearchCategoryCollectionParams: Record<
     sort_by: 'users_count:desc, _text_match:desc',
     collection: 'Course_production',
   },
-  [SearchCategory.enum.authors]: {
-    query_by: 'slug,name,name_personal,alternate_names,series_names,courses',
-    query_by_weights: '5,3,3,3,2,1',
-    // sort_by: '_text_match:desc,courses_count:desc',
-    sort_by: 'courses_count:desc, _text_match:desc',
-    collection: 'Author_production',
-  },
   [SearchCategory.enum.characters]: {
     query_by: 'name,courses,author_names',
     query_by_weights: '4,2,2',
@@ -194,13 +155,6 @@ export const SearchCategoryCollectionParams: Record<
     // sort_by: '_text_match:desc,followers_count:desc',
     sort_by: 'followers_count:desc, _text_match:desc',
     collection: 'List_production',
-  },
-  [SearchCategory.enum.series]: {
-    query_by: 'slug,name,courses,author_name',
-    query_by_weights: '3,2,1,1',
-    // sort_by: '_text_match:desc, readers_count:desc',
-    sort_by: 'readers_count:desc, _text_match:desc',
-    collection: 'Series_production',
   },
   //TODO: implement
   [SearchCategory.enum.users]: {
