@@ -8,6 +8,7 @@ export type Path =
   | `/:username`
   | `/:username/*`
   | `/:username/list/:slug`
+  | `/:username/collections/:slug`
   | `/course`
   | `/course/:slug`
   | `/course/:slug/:category`
@@ -23,6 +24,7 @@ export type Params = {
   '/:username': { username: string }
   '/:username/*': { username: string; '*': string }
   '/:username/list/:slug': { username: string; slug: string }
+  '/:username/collections/:slug': { username: string; slug: string }
   '/course/:slug': { slug: string }
   '/course/:slug/:category': { slug: string; category: string }
   '/discover/:category': { category: string }

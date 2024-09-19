@@ -186,7 +186,7 @@ export const ReviewForm = () => {
   const [reviewText, setReviewText] = React.useState<string>()
 
   const handleRecommendChange = (
-    event: React.MouseEvent<HTMLElement>,
+    _event: React.MouseEvent<HTMLElement>,
     newValue: string | null,
   ) => {
     if (newValue !== null) {
@@ -197,7 +197,7 @@ export const ReviewForm = () => {
     setName(event.target.value)
   }
   const handleRatingChange =
-    (name: string) => (event: React.SyntheticEvent, value: number | null) => {
+    (name: string) => (_event: React.SyntheticEvent, value: number | null) => {
       if (value !== null) {
         setRating((prevRating) => ({
           ...prevRating,
