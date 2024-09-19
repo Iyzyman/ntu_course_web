@@ -29,7 +29,7 @@ export const CourseThumbnailSection = ({
       {displayCourses.map((course, idx) => {
         return (
           <Course
-            key={`${course.source}-${idx}-${course.key}`}
+            key={`${idx}-${course.key}`}
             course={course!}
           >
             <Course.Thumbnail

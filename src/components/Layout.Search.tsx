@@ -1,5 +1,4 @@
 import Course from '@/components/Course'
-import Series from '@/components/Series'
 import { RenderGuard } from '@/components/providers/render.provider'
 import { Badge } from '@/components/ui/Badge'
 import { Button } from '@/components/ui/Button'
@@ -857,7 +856,6 @@ export const SearchCommandResults = () => {
         const artifact = HardcoverUtils.parseDocument({ category, hit }) as
           | Character
           | List
-          | Series
 
         if (!artifact) return null
         return (
