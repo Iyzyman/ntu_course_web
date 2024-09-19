@@ -18,6 +18,15 @@ export const CustomTextField = ({ children, sx, ...rest }: TextFieldProps) => {
         },
         ...sx,
       }}
+      slotProps={
+        {
+          inputLabel: {
+            sx: {
+              color: '#A3A3A3', '&.Mui-focused': { color: '#A3A3A3' }
+            }
+          }
+        }
+      }
       {...rest}
     >
       {children}

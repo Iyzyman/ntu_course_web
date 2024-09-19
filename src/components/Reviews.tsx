@@ -277,10 +277,10 @@ export const ReviewForm = () => {
       </Typography>
 
       <div>
-        <Typography>Name (Optional)</Typography>
         <CustomTextField
           onChange={handleNameChange}
           value={name}
+          label='Name (Optional)'
           sx={{
             minWidth: 450,
           }}
