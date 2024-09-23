@@ -32,6 +32,7 @@ import {
 import { Input } from '@/components/ui/Input'
 import { Textarea } from '@/components/ui/Textarea'
 import { HardcoverEndpoints } from '@/data/clients/hardcover.api'
+import { mockCourses } from '@/data/clients/mockdata'
 import {
   DeleteListParams,
   ShelvdEndpoints,
@@ -129,7 +130,8 @@ export const List = ({
     },
   )
 
-  const courses: Course[] = useMemo(() => {
+  const isMock = true
+  let courses: Course[] = useMemo(() => {
     const { data, isSuccess } = hcSearchCourseKeys
 
     const results = data?.results ?? []
@@ -149,23 +151,11 @@ export const List = ({
     })
     return courses
   }, [hcSearchCourseKeys])
+  
+  if (isMock) {courses = mockCourses}
 
   const onNavigate = () => {
     if (!value?.data) return
-    // navigate(
-    //   {
-    //     pathname: '/list/:slug?',
-    //   },
-    //   {
-    //     state: {
-    //       source: value.list.source,
-    //     },
-    //     params: {
-    //       slug: value.list?.slug ?? value.list.key,
-    //     },
-    //     unstable_viewTransition: true,
-    //   },
-    // )
   }
 
   const list: List = ListInfo.parse({

@@ -212,7 +212,7 @@ const DrawerMenu = ({ trigger, content, direction, ...props }: DrawerMenu) => {
                 setIsDrawerOpen(false)
                 navigate(
                   {
-                    pathname: `/:username`,
+                    pathname: `/:username/collections`,
                   },
                   {
                     params: {
@@ -222,7 +222,7 @@ const DrawerMenu = ({ trigger, content, direction, ...props }: DrawerMenu) => {
                 )
               }}
             >
-              Profile
+              Watchlist
             </Button>
           </SignedIn>
         </DrawerFooter>

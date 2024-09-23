@@ -1,6 +1,7 @@
 import Status from '@/components/Layout.Status'
 import User from '@/components/Layout.User'
 import { RenderGuard } from '@/components/providers/render.provider'
+import { mockUser } from '@/data/clients/mockdata'
 import { ShelvdEndpoints } from '@/data/clients/shelvd.api'
 import { useRootDispatch, useRootSelector } from '@/data/stores/root'
 import { SearchActions, SearchSelectors } from '@/data/stores/search.slice'
@@ -22,7 +23,7 @@ const UserLayout = () => {
   //#endregion  //*======== STORE ===========
 
   //#endregion  //*======== PARAMS ===========
-  const { username = '' } = useParams('/:username')
+  const { username = '' } = useParams('/:username/collections')
 
   const searchCategory = SearchCategory.enum.users
   const source: CourseSource = CourseSource.enum.shelvd
@@ -41,7 +42,9 @@ const UserLayout = () => {
       skip: !isValidUsername,
     },
   )
-  const user = queryUser.data
+
+  const isMock = true
+  const user = isMock ? mockUser : queryUser.data
   const isLoading = queryUser.isLoading || queryUser.isFetching
   const isNotFound = !isLoading && !queryUser.isSuccess && !user
 
@@ -81,7 +84,6 @@ const UserLayout = () => {
     <main
       className={cn(
         'page-container',
-
         'flex flex-col gap-8',
         'place-items-center',
         '*:w-full',
