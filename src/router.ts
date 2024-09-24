@@ -5,11 +5,8 @@ import { components, hooks, utils } from '@generouted/react-router/client'
 
 export type Path =
   | `/`
-  | `/:username`
-  | `/:username/*`
   | `/:username/collections`
-  | `/:username/collections/:slug`
-  | `/:username/list/:slug`
+  | `/:username/collections/*`
   | `/course`
   | `/course/:slug`
   | `/course/:slug/:category`
@@ -22,11 +19,8 @@ export type Path =
   | `/trending/:period`
 
 export type Params = {
-  '/:username': { username: string }
-  '/:username/*': { username: string; '*': string }
   '/:username/collections': { username: string }
-  '/:username/collections/:slug': { username: string; slug: string }
-  '/:username/list/:slug': { username: string; slug: string }
+  '/:username/collections/*': { username: string; '*': string }
   '/course/:slug': { slug: string }
   '/course/:slug/:category': { slug: string; category: string }
   '/discover/:category': { category: string }

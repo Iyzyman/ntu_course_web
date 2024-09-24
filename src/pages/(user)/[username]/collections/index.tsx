@@ -1,205 +1,171 @@
-import { Progress } from '@/components/ui/Progress'
-import { useGetCollectionsQuery } from '@/data/clients/collections.api'
-import * as React from 'react'
-
-import { RocketIcon } from '@radix-ui/react-icons'
-
-import { Collection, CollectionCreateButton } from '@/components/Collection'
+import Course from '@/components/Course'
+import User from '@/components/Layout.User'
+import List from '@/components/List'
+import { RenderGuard } from '@/components/providers/render.provider'
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from '@/components/ui/Accordion'
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/Alert'
-import { useParams } from 'react-router-dom'
-// import { logger } from '@/utils/debug'
+import { Badge } from '@/components/ui/Badge'
+import { Skeleton } from '@/components/ui/Skeleton'
+import { mockList } from '@/data/clients/mockdata'
+import { ShelvdEndpoints } from '@/data/clients/shelvd.api'
+import { useRootSelector } from '@/data/stores/root'
+import { SearchSelectors } from '@/data/stores/search.slice'
+import { ListData } from '@/types/shelvd'
+import { logger } from '@/utils/debug'
 import { cn } from '@/utils/dom'
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/Tabs'
-import { SingleCollection } from '@/types/collections'
-import { useEffect, useState } from 'react'
-import { useUser } from '@clerk/clerk-react'
+import { InfoCircledIcon } from '@radix-ui/react-icons'
 
-export function ProgressDemo() {
-  const [progress, setProgress] = React.useState<number>(13)
+const UserPage = () => {
+  //#endregion  //*======== STORE ===========
+  const current = useRootSelector(SearchSelectors.state).current
+  const user = current.origin as User
 
-  React.useEffect(() => {
-    const timer = setTimeout(() => setProgress(66), 500)
-    return () => clearTimeout(timer)
-  }, [])
+  //#endregion  //*======== STORE ===========
 
-  return (
-    <Progress
-      value={progress}
-      className="w-[60%]"
-    />
+  //#endregion  //*======== PARAMS ===========
+  const username = user?.username ?? ''
+
+  const isValidUser = !current.isNotFound && !!username.length
+
+  //#endregion  //*======== PARAMS ===========
+
+  //#endregion  //*======== QUERIES ===========
+  const { getListsByType } = ShelvdEndpoints
+
+  //#endregion  //*======== USER/CORELISTS ===========
+  const queryCorelists = getListsByType.useQuery(
+    {
+      type: 'core',
+      username,
+    },
+    {
+      skip: !isValidUser,
+    },
   )
-}
+  const isMock = true
+  const corelistsResults = isMock ? mockList : (queryCorelists.data ?? []) as ListData[]
+  const isCoreAllEmpty = corelistsResults.every((list) => !list.coursesCount)
+  // const corelistsIsLoading =
+  //   queryCorelists.isLoading || queryCorelists.isFetching
+  // const corelistsIsNotFound =
+  //   !corelistsIsLoading && !queryCorelists.isSuccess && !corelistsResults.length
+  //#endregion  //*======== USER/CORELISTS ===========
 
-export function ErrorAlert({ error }: { error: string }) {
-  return (
-    <Alert>
-      <RocketIcon className="size-4" />
-      <AlertTitle>Error!</AlertTitle>
-      <AlertDescription>{error}</AlertDescription>
-    </Alert>
+  //#endregion  //*======== QUERIES ===========
+
+  logger(
+    { breakpoint: '[index.tsx:66]/UserPage' },
+    {
+      corelistsResults,
+    },
   )
-}
-
-const CollectionsPage = () => {
-  // get the username from url
-  const { username } = useParams()
-  const { isSignedIn, user, isLoaded } = useUser()
-
-  const user_uri = username!.slice(1)
-
-  // logger(
-  //   { breakpoint: `[user/username/collections/index.tsx:46]` },
-  //   `Username: ${user_uri} and ${user?.username}`,
-  // )
-
-  const { data, isLoading, isError, isSuccess } = useGetCollectionsQuery({
-    username: user_uri,
-  })
-
-  // logger({ breakpoint: `[user/username/collections/index.tsx:54]` }, { data })
-
-  // State for checking if signedInUser is same as user_uri
-  const [isSignedInUser, setIsSignedInUser] = useState<boolean>(false)
-
-  useEffect(() => {
-    if (user && user_uri && user.username !== null) {
-      setIsSignedInUser(user.username === user_uri)
-    }
-  }, [user, user_uri])
-
-  // State for core and user collections
-  const [coreCollection, setCoreCollection] = useState<SingleCollection[]>([])
-  const [userCollection, setUserCollection] = useState<SingleCollection[]>([])
-  const CORE = 'core'
-  const USER = 'user'
-
-  // Update collections whenever data changes
-  useEffect(() => {
-    if (data) {
-      const coreListsData =
-        (data.results.lists.core as SingleCollection[]) ?? []
-      const userListsData =
-        (data.results.lists.user as SingleCollection[]) ?? []
-      const orderedCoreListsData = [
-        coreListsData.find((item) => item.key === 'to-read')!,
-        coreListsData.find((item) => item.key === 'reading')!,
-        coreListsData.find((item) => item.key === 'completed')!,
-      ]
-      setCoreCollection(orderedCoreListsData)
-      setUserCollection(userListsData)
-    }
-  }, [data]) // Depend on data to trigger updates
-
+  if (!isValidUser) return null
   return (
-    <main
-      className={cn(
-        'page-container',
-        'flex flex-col gap-8',
-        'place-items-center',
-        '*:w-full',
-      )}
-    >
+    <>
+      {/* HEADER */}
       <section
         style={{
           backgroundImage: `linear-gradient(to bottom, hsl(var(--muted)) 0%, transparent 70%)`,
           backgroundPosition: 'top center',
           backgroundRepeat: 'no-repeat',
         }}
-        className={cn('relative w-full', 'rounded-lg', 'm-5', 'pt-8')}
-      >
-        <div className="mx-auto grid w-11/12 grid-cols-1 place-content-center place-items-center gap-8 sm:grid-cols-2">
-          {/* Assuming you want a 2-column layout on larger screens */}
-          <div className="sm:col-span-2">
-            {' '}
-            {/* Span 2 columns on small and larger screens */}
-            <h1 className="scroll-m-20 text-center text-4xl font-extrabold tracking-tight lg:text-5xl">
-              <span className="text-3xl lg:text-4xl">Welcome to </span>
-              {username}'s Collections
-            </h1>
-          </div>
-          <div className="sm:col-span-2">
-            <p className="text-center leading-tight text-muted-foreground">
-              Discover the courses you have been reading recently and your
-              favorite collections so far!
-            </p>
-          </div>
-          {isLoaded && isSignedIn && user.username == user_uri && (
-            <div className="m-2 sm:col-span-2">
-              <CollectionCreateButton username={user_uri} />
-            </div>
-          )}
-        </div>
-        {isLoading && (
-          <div className="m-5 flex justify-center">
-            <ProgressDemo />
-          </div>
-        )}
+        className={cn(
+          'relative w-full',
+          'rounded-lg',
 
-        {isError && <ErrorAlert error={'Something went wrong!'} />}
+          'pt-8',
+        )}
+      >
+        <div
+          className={cn(
+            'mx-auto w-11/12',
+            'flex flex-col flex-wrap place-content-center place-items-center gap-8 sm:flex-row sm:place-content-start sm:place-items-start',
+          )}
+        >
+          <aside className="flex w-full flex-col gap-2 *:!mt-0">
+            {current.isLoading ? (
+              <Skeleton className="h-8 w-1/3" />
+            ) : (
+              <h1>{`${user?.firstName ?? ''} ${user?.lastName ?? ''}`}</h1>
+            )}
+            {current.isLoading ? (
+              <Skeleton className="h-4 w-[100px]" />
+            ) : (
+              <p className="leading-tight text-muted-foreground">{`@${user?.username ?? ''}`}</p>
+            )}
+          </aside>
+        </div>
       </section>
 
-      {isSuccess && (
-        <section
-          className={cn('relative w-full', 'rounded-lg', 'my-5', 'pt-8')}
-        >
-          <Tabs
-            defaultValue={CORE}
-            className="w-full"
-            aria-label="Collection Tabs"
-          >
-            <TabsList>
-              <TabsTrigger value={CORE}>Core</TabsTrigger>
-              <TabsTrigger value={USER}>Personal</TabsTrigger>
-            </TabsList>
-            <TabsContent value={CORE}>
-              {isSuccess &&
-                coreCollection.map((collection) => (
-                  <Collection
-                    key={collection.key}
-                    collection={{
-                      ...collection,
-                      courses: collection.courses.map((course) => ({
-                        ...course,
-                        key: course.key,
-                      })),
-                    }}
-                    username={user_uri}
-                    isSignedInUsername={isSignedInUser}
-                  >
-                    <Collection.ViewCard
-                      className="mt-5 grid justify-items-start"
-                      listType={CORE}
-                    />
-                  </Collection>
-                ))}
-            </TabsContent>
-            <TabsContent value={USER}>
-              {isSuccess &&
-                userCollection.map((collection) => (
-                  <Collection
-                    key={collection.key}
-                    collection={{
-                      ...collection,
-                      courses: collection.courses.map((course) => ({
-                        ...course,
-                        key: course.key,
-                      })),
-                    }}
-                    username={user_uri}
-                    isSignedInUsername={isSignedInUser}
-                  >
-                    <Collection.ViewCard
-                      className="mt-5 grid justify-items-start"
-                      listType={USER}
-                    />
-                  </Collection>
-                ))}
-            </TabsContent>
-          </Tabs>
-        </section>
-      )}
-    </main>
+      <Accordion
+        type="multiple"
+        defaultValue={['core']}
+        className="w-full"
+      >
+        <AccordionItem value="core">
+          <AccordionTrigger className="w-full !place-content-between gap-4">
+            <aside className="inline-flex flex-row !place-content-start place-items-center gap-2">
+              <h2 className="h3 capitalize">Watchlist</h2>
+            </aside>
+          </AccordionTrigger>
+
+          <AccordionContent className={cn('flex flex-col gap-4')}>
+            {isCoreAllEmpty && (
+              <Alert>
+                <InfoCircledIcon className="size-4" />
+                <AlertTitle>TIP</AlertTitle>
+                <AlertDescription>
+                  Begin creating a watchlist by starring your courses!
+                </AlertDescription>
+              </Alert>
+            )}
+
+            {corelistsResults.map((list) => {
+              return (
+                <RenderGuard
+                  key={`${user.id}-list-core-${list.key}`}
+                  renderIf={ListData.safeParse(list).success}
+                >
+                  <List data={ListData.parse(list)}>
+                    <div className="flex flex-col gap-y-2">
+                      <h3
+                        className={cn(
+                          'cursor-pointer underline-offset-4 hover:!underline',
+                          'small line-clamp-1 truncate text-pretty font-semibold uppercase leading-none tracking-tight text-muted-foreground',
+                        )}
+                      >
+                        {list.name}&nbsp;
+                        <Badge variant={'outline'}>
+                          {list?.coursesCount ?? 0} courses
+                        </Badge>
+                      </h3>
+
+                      <div
+                        className={cn(
+                          'w-full place-content-start place-items-start gap-2',
+                          'flex flex-row flex-wrap',
+                          // 'sm:max-w-xl',
+                        )}
+                      >
+                        <List.Courses>
+                          <Course.Thumbnail className="w-fit !rounded-none" />
+                        </List.Courses>
+                      </div>
+                    </div>
+                  </List>
+                </RenderGuard>
+              )
+            })}
+          </AccordionContent>
+        </AccordionItem>
+      </Accordion>
+    </>
   )
 }
 
-export default CollectionsPage
+export default UserPage
