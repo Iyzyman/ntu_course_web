@@ -145,13 +145,12 @@ export const Course = ({ children, ...value }: CourseProvider) => {
 type CourseImage = Avatar
 export const CourseImage = ({ className, children, ...rest }: CourseImage) => {
   const { course } = useCourseContext()
-  //TODO: change to course code
   return (
     <Avatar
       className={cn(
         'flex place-content-center place-items-center overflow-clip p-0.5',
         'aspect-square', // Ensures aspect ratio of 1:1
-        'h-[113px] w-[113px]', // Set the size to 113px by 113px
+        'h-[109px] w-[109px]', // Set the size to 113px by 113px
         'bg-[#373B45]', // Set background color
         className,
       )}
@@ -170,7 +169,7 @@ export const CourseImage = ({ className, children, ...rest }: CourseImage) => {
             }}
           >
             {/* {course.title} */}
-            SCXXXX
+            {course.code}
           </div>
           <div
             style={{
@@ -223,7 +222,7 @@ export const CourseThumbnail = ({
         </Card>
       </HoverCardTrigger>
       <HoverCardContent
-        side="top"
+        side="bottom"
         sideOffset={5}
         className={cn(
           'flex flex-col gap-2',
@@ -802,6 +801,7 @@ export const CourseMatrix = ({
         const courses = hcList.courses.map((hcCourse) =>
           HardcoverUtils.parseCourse(hcCourse),
         )
+
         const data = ListData.parse(list)
         return (
           <List

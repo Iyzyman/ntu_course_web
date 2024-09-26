@@ -27,7 +27,7 @@ export class HardcoverUtils {
       key: hcCourse.slug || '',
       slug: hcCourse.slug,
       title: hcCourse.title,
-      image: HardcoverUtils.getCdnUrl(hcCourse.image || ''),
+      image: hcCourse.image || '',
       description: hcCourse.description,
       likes: hcCourse.likes || 0,
       watchlists: hcCourse.watchlists || 0,

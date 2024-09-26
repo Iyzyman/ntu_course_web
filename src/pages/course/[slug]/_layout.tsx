@@ -10,6 +10,7 @@ import { cn } from '@/utils/dom'
 import { useEffect, useMemo } from 'react'
 import { Outlet, useLocation } from 'react-router-dom'
 import { mockCourse } from '../../../data/clients/mockdata.ts' // Import updated mock data
+import { useCourseDetailData } from '@/components/hooks/useCourseFinderHooks.tsx'
 
 const CourseDetailsLayout = () => {
   const dispatch = useRootDispatch()
@@ -28,9 +29,17 @@ const CourseDetailsLayout = () => {
   const isValidSlug = !!slug.length
   const isValidParams = isValidSlug && isValidSource
 
-  // Use updated mock data
-  const isLoading = false // Since we're using mock data, there's no loading
-  const isNotFound = !isValidParams // Adjust based on your mock data structure
+  const {
+    data,
+    isSuccess,
+    isLoading: isLoadingDetails,
+    isFetching,
+  } = useCourseDetailData(slug)
+
+  console.log('fetch', data)
+  const isLoading = isLoadingDetails || isFetching
+  const isNotFound =
+    !isValidParams || (!isLoading && !isSuccess && (data?.found ?? 0) < 1)
 
   // Use mock data
   const origin = mockCourse

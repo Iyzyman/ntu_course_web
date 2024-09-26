@@ -11,12 +11,12 @@ import {
   PaginationPrevious,
 } from '@/components/ui/Pagination'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/Tabs'
-import { HardcoverEndpoints } from '@/data/clients/hardcover.api'
 import { Navigate, useNavigate, useParams } from '@/router'
 import { Hardcover } from '@/types'
 import { cn } from '@/utils/dom'
 import { getRangedArray, getSegmentedArray } from '@/utils/helpers'
 import { useEffect, useState } from 'react'
+import { useDiscoveryData } from '@/components/hooks/useCourseFinderHooks'
 
 const ListCategoryPage = () => {
   const navigate = useNavigate()
@@ -44,23 +44,13 @@ const ListCategoryPage = () => {
   //#endregion  //*======== STATES ===========
 
   //#endregion  //*======== QUERIES ===========
-  const { lists } = HardcoverEndpoints
-  const {
-    data,
-    isSuccess,
-    isLoading: isLoadingLists,
-    isFetching: isFetchingLists,
-  } = lists.useQuery(
-    {
-      category: category as Hardcover.ListCategory,
-    },
-    {
-      skip: !isValidCategory,
-    },
-  )
+  const { data, isSuccess, isLoading, error } = useDiscoveryData()
 
-  const results = (data?.results ?? []) as Hardcover.List[]
-  const isLoading = isLoadingLists || isFetchingLists
+  if (error) {
+    console.log(error)
+  }
+
+  const results = (data ?? []) as Hardcover.List[]
   const isNotFound =
     !isValidParams || (!isLoading && !isSuccess && !results.length)
 
@@ -148,11 +138,11 @@ const ListCategoryPage = () => {
             )}
           >
             <aside className="flex flex-col gap-1 *:!mt-0">
-              <h1>Discover Lists ✨</h1>
+              <h1>Discover Courses ✨</h1>
 
               <p className="leading-tight text-muted-foreground">
-                Browse our catalogue of user curated lists to find your next
-                read.
+                Browse all courses offered by each faculty to find your next
+                course.
               </p>
             </aside>
           </div>
