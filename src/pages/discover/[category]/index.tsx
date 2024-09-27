@@ -1,5 +1,7 @@
 import Course from '@/components/Course'
+import { Filter } from '@/components/Filter'
 import Status from '@/components/Layout.Status'
+import List from '@/components/List'
 import { RenderGuard } from '@/components/providers/render.provider'
 import {
   Pagination,
@@ -12,8 +14,10 @@ import {
 } from '@/components/ui/Pagination'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/Tabs'
 import { HardcoverEndpoints } from '@/data/clients/hardcover.api'
+import { mockList } from '@/data/clients/mockdata'
 import { Navigate, useNavigate, useParams } from '@/router'
 import { Hardcover } from '@/types'
+import { ListData } from '@/types/shelvd'
 import { cn } from '@/utils/dom'
 import { getRangedArray, getSegmentedArray } from '@/utils/helpers'
 import { useEffect, useState } from 'react'
@@ -59,6 +63,7 @@ const ListCategoryPage = () => {
     },
   )
 
+  const allCourses: List = mockList[0]
   const results = (data?.results ?? []) as Hardcover.List[]
   const isLoading = isLoadingLists || isFetchingLists
   const isNotFound =
@@ -107,6 +112,16 @@ const ListCategoryPage = () => {
   const onPageNext = () => onPageChange(pages.next)
   //#endregion  //*======== PAGINATION ===========
 
+
+  //#endregion  //*======== Filter ===========
+  const [filteredList, setFilteredList] = useState<List>(allCourses)
+  const handleFilterChange = (newList: List) => {
+    setFilteredList(newList)
+    console.log(filteredList)
+  }
+  //#endregion  //*======== Filter ===========
+
+  
   if (!isValidParams)
     return (
       <Navigate
@@ -151,8 +166,7 @@ const ListCategoryPage = () => {
               <h1>Discover Lists ✨</h1>
 
               <p className="leading-tight text-muted-foreground">
-                Browse our catalogue of user curated lists to find your next
-                read.
+                Browse the catalogue of NTU courses to find out which one to take.
               </p>
             </aside>
           </div>
@@ -202,7 +216,8 @@ const ListCategoryPage = () => {
             ))}
           </TabsList>
 
-          {/* CONTENT */}
+          {Hardcover.ListCategory.options.map((category) => (
+            category !== "filter" ? 
           <TabsContent value={category}>
             <Course.CourseMatrix
               displayCategoryLists={segment}
@@ -260,6 +275,27 @@ const ListCategoryPage = () => {
               </PaginationContent>
             </Pagination>
           </TabsContent>
+          : 
+          <TabsContent value={category}>
+            <Filter courseList={allCourses} onFilterChange={handleFilterChange}/>
+
+            <List data={ListData.parse(filteredList)} overwriteCourses={filteredList.courses}>
+              <div className="flex flex-col gap-y-2">
+                <div
+                  className={cn(
+                    'w-full place-content-start place-items-start gap-2',
+                    'flex flex-row flex-wrap',
+                    // 'sm:max-w-xl',
+                  )}
+                >
+                  <List.Courses>
+                    <Course.Thumbnail className="w-fit !rounded-none" />
+                  </List.Courses>
+                </div>
+              </div>
+            </List>
+          </TabsContent>
+          ))}
         </Tabs>
       </RenderGuard>
     </main>
