@@ -7,9 +7,10 @@ import { useParams } from '@/router'
 import { CourseSource, SearchCategory } from '@/types/shelvd'
 import { logger } from '@/utils/debug'
 import { cn } from '@/utils/dom'
-import { useEffect, useMemo } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { Outlet, useLocation } from 'react-router-dom'
-import { mockCourse } from '../../../data/clients/mockdata.ts' // Import updated mock data
+import { useCourseDetailData } from '@/components/hooks/useCourseFinderHooks.tsx'
+import { HardcoverUtils } from '@/utils/clients/hardcover.ts'
 
 const CourseDetailsLayout = () => {
   const dispatch = useRootDispatch()
@@ -28,13 +29,28 @@ const CourseDetailsLayout = () => {
   const isValidSlug = !!slug.length
   const isValidParams = isValidSlug && isValidSource
 
-  // Use updated mock data
-  const isLoading = false // Since we're using mock data, there's no loading
-  const isNotFound = !isValidParams // Adjust based on your mock data structure
+  const {
+    data,
+    isSuccess,
+    isLoading: isLoadingDetails,
+    isFetching,
+  } = useCourseDetailData(slug)
+
+  const isLoading = isLoadingDetails || isFetching
+  const isNotFound =
+    !isValidParams || (!isLoading && !isSuccess && (data?.found ?? 0) < 1)
 
   // Use mock data
-  const origin = mockCourse
-  const common = mockCourse
+  const [origin, setOrigin] = useState<Course | null>(null)
+  const [common, setCommon] = useState<Course | null>(null)
+
+  useEffect(() => {
+    if (data) {
+      const parsedCourse = HardcoverUtils.parseCourse(data)
+      setOrigin(parsedCourse)
+      setCommon(parsedCourse) // Update common as needed
+    }
+  }, [data])
 
   const ctx = useMemo(
     () => ({
@@ -95,16 +111,6 @@ const CourseDetailsLayout = () => {
               )}
             >
               <aside className="flex flex-col gap-1 *:!mt-0">
-                {/* {source === CourseSource.enum.hc &&
-                  (origin?.featured_series?.position ?? 0) >= 1 && (
-                    <Badge
-                      variant="secondary"
-                      className="!mb-2 w-fit"
-                    >
-                      {`#${origin?.featured_series?.position ?? 1} of ${origin?.featured_series?.series_courses_count} in ${origin?.featured_series?.series_name}`}
-                    </Badge>
-                  )} */}
-
                 <h1
                   style={{
                     fontFamily: 'Bebas Neue',
@@ -123,18 +129,18 @@ const CourseDetailsLayout = () => {
                       lineHeight: '41px',
                     }}
                   >
-                    {origin.title}
+                    {origin?.title}
                   </div>
                   <small className="uppercase text-muted-foreground">
-                    {origin.school}
+                    {origin?.school}
                   </small>
                 </p>
 
                 <aside>
                   <div style={{ width: '30%', marginTop: '10px' }}>
                     <Course.ClickStats
-                      watchlists={origin.watchlists}
-                      likes={origin.likes}
+                      watchlists={origin?.watchlists || 0}
+                      likes={origin?.likes || 0}
                     ></Course.ClickStats>
                   </div>
                 </aside>

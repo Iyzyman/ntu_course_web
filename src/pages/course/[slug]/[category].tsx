@@ -26,6 +26,7 @@ const CourseDetailCategoryPage = () => {
 
   //#endregion  //*======== STORE ===========
   const current = useRootSelector(SearchSelectors.state).current
+  console.log('current', current)
   const origin = current.origin as SourceOrigin<'hc', 'courses'>
   //#endregion  //*======== STORE ===========
 
@@ -113,6 +114,7 @@ const CourseInfo = () => {
   const current = useRootSelector(SearchSelectors.state).current
   const origin = current.origin as SourceOrigin<'hc', 'courses'>
   const common = current.common as SearchArtifact<'courses'>
+  console.log('common', common)
   //#endregion  //*======== STORE ===========
 
   //#endregion  //*======== PARAMS ===========

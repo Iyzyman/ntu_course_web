@@ -21,7 +21,6 @@ export const Course = BaseInfo.extend({
   title: z.string().min(1).default(''),
   code: z.string().min(1).default('').optional(),
   school: z.string().min(1).default('').optional(),
-  image: z.string().default('').optional(),
   description: z.string().default('').optional(),
   likes: z.number().default(0),
   watchlists: z.number().default(0),

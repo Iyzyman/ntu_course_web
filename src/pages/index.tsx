@@ -1,4 +1,5 @@
 import { Course } from '@/components/Course'
+import { useDiscoveryData } from '@/components/hooks/useCourseFinderHooks'
 import { RenderGuard } from '@/components/providers/render.provider'
 import { Separator } from '@/components/ui/Separator'
 import { Skeleton } from '@/components/ui/Skeleton'
@@ -31,7 +32,7 @@ const IndexPage = () => {
             <span>Save those interesting ones.</span>
             <span>
               Tell us why the course is good{' '}
-              <span className="text-muted-foreground">(or don't)</span>.
+              <span className="text-muted-foreground">(or bad)</span>.
             </span>
           </h1>
           <Separator />
@@ -52,12 +53,8 @@ export const FeaturedListsPreviewSection = () => {
   const category = Hardcover.ListCategory.enum.featured
 
   //#endregion  //*======== QUERIES ===========
-  const { lists } = HardcoverEndpoints
-  const { data } = lists.useQuery({
-    category,
-  })
-  const categoryLists: Hardcover.List[] = (data?.results ??
-    []) as Hardcover.List[]
+  const { data } = useDiscoveryData()
+  const categoryLists: Hardcover.List[] = (data ?? []) as Hardcover.List[]
   const displayLimit = 4
   const displayCategoryLists: Hardcover.List[] = getLimitedArray(
     categoryLists,
@@ -74,14 +71,14 @@ export const FeaturedListsPreviewSection = () => {
           }}
           unstable_viewTransition
         >
-          <p className="h3 flex-1 cursor-pointer truncate capitalize leading-none tracking-tight">
+          <p className="h3 flex-1 cursor-pointer truncate uppercase leading-none tracking-tight">
             Discover Courses
           </p>
-
           <p className="small font-light normal-case text-muted-foreground">
-            Click here to browse through our courses by faculties.
+            Browse through our courses by faculties.
           </p>
         </Link>
+        <Separator className="mt-2" />
       </header>
       <Course.CourseMatrix
         displayCategoryLists={displayCategoryLists}
@@ -154,7 +151,7 @@ export const TrendingPreview = () => {
               pathname: '/trending',
             }}
           >
-            <p className="h3 flex-1 cursor-pointer truncate capitalize leading-none tracking-tight">
+            <p className="h3 flex-1 cursor-pointer truncate uppercase leading-none tracking-tight">
               Trending Courses
             </p>
           </Link>

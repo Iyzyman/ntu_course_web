@@ -48,7 +48,9 @@ const UserPage = () => {
     },
   )
   const isMock = true
-  const corelistsResults = isMock ? mockList : (queryCorelists.data ?? []) as ListData[]
+  const corelistsResults = isMock
+    ? mockList
+    : ((queryCorelists.data ?? []) as ListData[])
   const isCoreAllEmpty = corelistsResults.every((list) => !list.coursesCount)
   // const corelistsIsLoading =
   //   queryCorelists.isLoading || queryCorelists.isFetching

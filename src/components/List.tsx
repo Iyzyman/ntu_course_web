@@ -130,7 +130,7 @@ export const List = ({
     },
   )
 
-  const isMock = true
+  const isMock = false
   let courses: Course[] = useMemo(() => {
     const { data, isSuccess } = hcSearchCourseKeys
 
@@ -151,8 +151,10 @@ export const List = ({
     })
     return courses
   }, [hcSearchCourseKeys])
-  
-  if (isMock) {courses = mockCourses}
+
+  if (isMock) {
+    courses = mockCourses
+  }
 
   const onNavigate = () => {
     if (!value?.data) return
@@ -854,7 +856,7 @@ const ListCourses = ({
             }}
             className={cn(
               'flex flex-row place-content-start place-items-start gap-4',
-              'w-full border-b py-2',
+              'w-full items-center border-b py-2',
             )}
           >
             {isNumbered && (
@@ -866,8 +868,18 @@ const ListCourses = ({
               <p className="h4 line-clamp-3 truncate text-pretty capitalize">
                 {course.title}
               </p>
-              <p className="!m-0 capitalize text-muted-foreground">
-                <small className="font-semibold uppercase">by</small>&nbsp;
+              <p className="!m-0 min-h-14 capitalize text-muted-foreground">
+                <small className="font-semibold">
+                  {course.description && course.description.length > 200
+                    ? course.description?.slice(0, 200) + '...'
+                    : course.description}
+                </small>
+                &nbsp;
+              </p>
+              <p className="text-muted-foreground">
+                {course.prerequisites.length != 0
+                  ? `Prerequisites: ${course.prerequisites}`
+                  : `No prerequisites`}
               </p>
             </aside>
           </div>
