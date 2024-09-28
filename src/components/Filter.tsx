@@ -15,7 +15,7 @@ export const Filter = ({courseList, onFilterChange}: FilterProps) => {
     const courseArray = courseList.courses
     const schoolList = courseArray.map(course=>course.school)
     const schoolFilters = [...new Set(schoolList)]
-    const handleFacultyFilter = (event: SelectChangeEvent) => {
+    const handleFacultyFilter = (event: SelectChangeEvent<string[]>) => {
         const {
             target: {value}
         } = event
@@ -24,7 +24,7 @@ export const Filter = ({courseList, onFilterChange}: FilterProps) => {
 
     const tagList = courseArray.flatMap(course=>course.tags)
     const tagFilters = [...new Set(tagList)]
-    const handleTagFilter = (event: SelectChangeEvent) => {
+    const handleTagFilter = (event: SelectChangeEvent<string[]>) => {
         const {
             target: {value}
         } = event
