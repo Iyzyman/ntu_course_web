@@ -1,18 +1,20 @@
 import { Course } from '@/components/Course'
-import { useDiscoveryData } from '@/components/hooks/useCourseFinderHooks'
+import {
+  useDiscoveryData,
+  useTrendingData,
+} from '@/components/hooks/useCourseFinderHooks'
 import { RenderGuard } from '@/components/providers/render.provider'
 import { Separator } from '@/components/ui/Separator'
 import { Skeleton } from '@/components/ui/Skeleton'
 import { Tabs, TabsList, TabsTrigger } from '@/components/ui/Tabs'
-import { HardcoverEndpoints } from '@/data/clients/hardcover.api'
-import { Link, useNavigate } from '@/router'
+import { Link } from '@/router'
 import { Hardcover } from '@/types'
-import { TrendPeriodTitle } from '@/types/hardcover'
+import { TrendPeriod, TrendPeriodTitle } from '@/types/hardcover'
 import { Course as zCourse } from '@/types/shelvd'
 import { HardcoverUtils } from '@/utils/clients/hardcover'
 import { cn } from '@/utils/dom'
 import { getLimitedArray, getShuffledArray } from '@/utils/helpers'
-import { ComponentProps, HTMLAttributes } from 'react'
+import { ComponentProps, HTMLAttributes, useState } from 'react'
 import Marquee from 'react-fast-marquee'
 
 export const Loader = () => 'Route loader'
@@ -135,12 +137,10 @@ export const TrendingPreviewSection = ({
 }
 
 export const TrendingPreview = () => {
-  const navigate = useNavigate()
-
-  const { trending } = HardcoverEndpoints
-  const { data, isSuccess } = trending.useQuery(undefined)
-
-  const period = Hardcover.DefaultTrendPeriod
+  const defaultPeriod = Hardcover.DefaultTrendPeriod
+  const [selectedPeriod, setSelectedPeriod] =
+    useState<TrendPeriod>(defaultPeriod)
+  const { data, isSuccess } = useTrendingData()
 
   return (
     <section className="flex flex-col gap-2">
@@ -157,28 +157,18 @@ export const TrendingPreview = () => {
           </Link>
 
           <p className="small font-light normal-case tracking-tight text-muted-foreground">
-            Don’t know where to start? Heres our recommendation of the most
+            Don’t know where to start? Here’s our recommendation of the most
             liked courses in the{' '}
-            {Hardcover.TrendPeriodTitle[period].toLowerCase()}.
+            {Hardcover.TrendPeriodTitle[selectedPeriod].toLowerCase()}.
           </p>
         </aside>
 
         <Tabs
-          defaultValue={period}
+          defaultValue={selectedPeriod}
           onValueChange={(pd) => {
-            const isDefaultPeriod = pd === period
-            if (isDefaultPeriod) return
-
-            navigate(
-              {
-                pathname: '/trending/:period',
-              },
-              {
-                params: {
-                  period: pd,
-                },
-              },
-            )
+            if (pd !== selectedPeriod) {
+              setSelectedPeriod(pd as TrendPeriod) // Update the selected period
+            }
           }}
           className="hidden w-fit lg:block"
         >
@@ -198,32 +188,36 @@ export const TrendingPreview = () => {
           </TabsList>
         </Tabs>
       </header>
+
       <Separator />
 
-      <section>
-        {Hardcover.TrendPeriod.options.map((period, idx) => {
-          const courses: Course[] = isSuccess
-            ? data?.results?.[period] ?? []
-            : []
-          const displayCourses = getShuffledArray(
-            courses.map((course) => HardcoverUtils.parseCourse(course)),
-          )
+      {/* Keep the section height consistent */}
+      <section style={{ minHeight: '410px' }}>
+        {
+          Hardcover.TrendPeriod.options.map((period, idx) => {
+            const courses: Course[] = isSuccess
+              ? data?.results?.[selectedPeriod] ?? [] // Fetch based on selected period
+              : []
 
-          const direction = idx % 2 === 0 ? 'left' : 'right'
+            const displayCourses = getShuffledArray(
+              courses.map((course) => HardcoverUtils.parseCourse(course)),
+            )
 
-          return (
-            <TrendingPreviewSection
-              key={`trend-${period}`}
-              courses={displayCourses}
-              marquee={{
-                direction,
-              }}
-            />
-          )
-        })}
+            const direction = idx % 2 === 0 ? 'left' : 'right'
+
+            return (
+              <TrendingPreviewSection
+                key={`trend-${selectedPeriod}-${period}`}
+                courses={displayCourses}
+                marquee={{
+                  direction,
+                }}
+              />
+            )
+          })
+        }
       </section>
     </section>
   )
 }
-
 export default IndexPage

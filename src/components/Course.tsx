@@ -110,7 +110,7 @@ export const Course = ({ children, ...value }: CourseProvider) => {
       },
       {
         params: {
-          slug: value.course?.slug ?? value.course.key,
+          slug: value.course?.slug ?? '',
         },
         // unstable_viewTransition: true,
       },

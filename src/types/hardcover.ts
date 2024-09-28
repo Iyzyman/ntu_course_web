@@ -59,14 +59,24 @@ export const ListCategory = z.enum(ListCategories)
 export type ListCategory = z.infer<typeof ListCategory>
 export const DefaultListCategory: ListCategory = ListCategory.enum.featured
 
-export const TrendPeriods = [`recent`, `year`, `all`] as const
+export const TrendPeriods = [`threeMonths`, `sixMonths`, `year`] as const
 export const TrendPeriod = z.enum(TrendPeriods)
 export type TrendPeriod = z.infer<typeof TrendPeriod>
-export const DefaultTrendPeriod: TrendPeriod = TrendPeriod.enum.recent
+
+// Set the default trend period to "threeMonths"
+export const DefaultTrendPeriod: TrendPeriod = TrendPeriod.enum.threeMonths
+
+// Update the titles for the trend periods
 export const TrendPeriodTitle: Record<TrendPeriod, string> = {
-  [TrendPeriod.enum.recent]: 'Last 3 Months',
+  [TrendPeriod.enum.threeMonths]: 'Last 3 Months',
+  [TrendPeriod.enum.sixMonths]: 'Last 6 Months',
   [TrendPeriod.enum.year]: 'Last Year',
-  [TrendPeriod.enum.all]: 'All Time',
+}
+
+export const TrendParam: Record<TrendPeriod, string> = {
+  [TrendPeriod.enum.threeMonths]: '3',
+  [TrendPeriod.enum.sixMonths]: '6',
+  [TrendPeriod.enum.year]: '12',
 }
 
 export type TrendPeriodCourses = Record<TrendPeriod, Course[]>

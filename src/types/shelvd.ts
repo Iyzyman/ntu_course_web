@@ -12,14 +12,14 @@ export type CourseSource = z.infer<typeof CourseSource>
 export const DefaultCourseSource = CourseSource.enum.hc
 
 export const BaseInfo = z.object({
-  key: z.string().min(1),
+  key: z.string().default(''),
   slug: z.string().default('').optional(),
 })
 export type BaseInfo = z.infer<typeof BaseInfo>
 
 export const Course = BaseInfo.extend({
   title: z.string().min(1).default(''),
-  code: z.string().min(1).default('').optional(),
+  code: z.string().min(1).default(''),
   school: z.string().min(1).default('').optional(),
   description: z.string().default('').optional(),
   likes: z.number().default(0),

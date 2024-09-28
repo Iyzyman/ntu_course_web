@@ -1,8 +1,8 @@
 import Course from '@/components/Course'
+import { useTrendingData } from '@/components/hooks/useCourseFinderHooks'
 import Status from '@/components/Layout.Status'
 import { RenderGuard } from '@/components/providers/render.provider'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/Tabs'
-import { HardcoverEndpoints } from '@/data/clients/hardcover.api'
 import { AppName } from '@/data/static/app'
 import { Navigate, useNavigate, useParams } from '@/router'
 import { Hardcover } from '@/types'
@@ -22,13 +22,12 @@ const TrendingPeriodPage = () => {
   //#endregion  //*======== PARAMS ===========
 
   //#endregion  //*======== QUERIES ===========
-  const { trending } = HardcoverEndpoints
   const {
     data,
     isSuccess,
     isLoading: isLoadingTrending,
     isFetching: isFetchingTrending,
-  } = trending.useQuery(undefined)
+  } = useTrendingData()
 
   const results = (data?.results?.[period as Hardcover.TrendPeriod] ??
     []) as Course[]
@@ -163,7 +162,7 @@ const TrendingPeriodPage = () => {
                           },
                           {
                             params: {
-                              slug: course.slug ?? course.key,
+                              slug: course.slug ?? '',
                             },
                             unstable_viewTransition: true,
                           },
@@ -182,7 +181,9 @@ const TrendingPeriodPage = () => {
                           {course.title}
                         </p>
                         <p className="!m-0 capitalize text-muted-foreground">
-                          <small className="font-semibold uppercase">by</small>
+                          <small className="font-semibold uppercase">
+                            Faculty: {course.school}
+                          </small>
                           &nbsp;
                         </p>
                       </aside>
