@@ -658,7 +658,7 @@ export const CoursePrerequisites: React.FC<CoursePrerequisitesProps> = ({
     >
       <header>
         <h4>
-          <span>Prerequisites </span>
+          <span>Prerequisites</span>
         </h4>
       </header>
 

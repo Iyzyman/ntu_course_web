@@ -32,7 +32,7 @@ export type CurrentSourceData = {
   /** @description raw response data from sources */
   origin?: SourceOrigin<CourseSource, SearchCategories>
   /** @description parsed response data */
-  common?: SearchArtifact<SearchCategories>
+  common?: SearchArtifact<SearchCategories> | null
 
   isNotFound: boolean
   isLoading: boolean

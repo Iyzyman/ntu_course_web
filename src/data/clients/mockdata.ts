@@ -12,7 +12,6 @@ export const mockPrerequisite: Course[] = [
     prerequisites: [],
     school: 'School of Computing',
     slug: 'introduction-to-programming',
-    image: '/path/to/intro-to-programming-image.jpg',
     description:
       'This course provides an introduction to programming and computer science. Topics include algorithms, data structures, software development, and more.',
   },
@@ -25,7 +24,6 @@ export const mockPrerequisite: Course[] = [
     prerequisites: [],
     school: 'School of Computing',
     slug: 'data-structures-and-algorithms',
-    image: '/path/to/data-structures-image.jpg',
     description:
       'This course covers the fundamental data structures and algorithms used in computer science, including arrays, linked lists, trees, and sorting algorithms.',
   },
@@ -90,7 +88,6 @@ export const mockCourses: Course[] = [
     prerequisites: [mockPrerequisite[0]],
     school: 'School of Computing',
     slug: 'advanced-programming',
-    image: '/path/to/advanced-programming-image.jpg',
     description:
       'This course builds on the fundamentals of programming and covers advanced topics such as object-oriented programming, design patterns, and software engineering principles.',
     tags: ['Programming', 'OOP', 'Design Patterns'],
@@ -105,7 +102,6 @@ export const mockCourses: Course[] = [
     prerequisites: [mockPrerequisite[1]],
     school: 'School of Computing',
     slug: 'machine-learning',
-    image: '/path/to/machine-learning-image.jpg',
     description:
       'An introduction to machine learning, covering supervised and unsupervised learning techniques, neural networks, and more.',
     tags: ['AI', 'Machine Learning', 'Neural Networks'],
@@ -120,7 +116,6 @@ export const mockCourses: Course[] = [
     prerequisites: [mockPrerequisite[0]],
     school: 'School of Computing',
     slug: 'databases',
-    image: '/path/to/databases-image.jpg',
     description:
       'This course covers database design, relational databases, SQL, and database management systems.',
     tags: ['SQL', 'Database Design', 'DBMS'],
@@ -135,7 +130,6 @@ export const mockCourses: Course[] = [
     prerequisites: [mockPrerequisite[1]],
     school: 'School of Computing',
     slug: 'operating-systems',
-    image: '/path/to/operating-systems-image.jpg',
     description:
       'This course covers the design and implementation of operating systems, including process management, memory management, file systems, and more.',
     tags: ['OS', 'Memory Management', 'File Systems'],
@@ -150,7 +144,6 @@ export const mockCourses: Course[] = [
     prerequisites: [mockPrerequisite[1]],
     school: 'School of Computing',
     slug: 'computer-networks',
-    image: '/path/to/computer-networks-image.jpg',
     description:
       'This course covers the principles and practices of computer networking, including network protocols, architecture, and security.',
     tags: ['Networking', 'Protocols', 'Security'],
@@ -165,7 +158,6 @@ export const mockCourses: Course[] = [
     prerequisites: [mockPrerequisite[0], mockPrerequisite[1]],
     school: 'School of Computing',
     slug: 'software-engineering',
-    image: '/path/to/software-engineering-image.jpg',
     description:
       'This course covers the software development lifecycle, including requirements analysis, design, implementation, testing, and maintenance.',
     tags: ['SDLC', 'Agile', 'Testing'],
@@ -180,7 +172,6 @@ export const mockCourses: Course[] = [
     prerequisites: [mockPrerequisite[1]],
     school: 'School of Computing',
     slug: 'artificial-intelligence',
-    image: '/path/to/artificial-intelligence-image.jpg',
     description:
       'This course provides an introduction to artificial intelligence, covering topics such as search algorithms, knowledge representation, and machine learning.',
     tags: ['AI', 'Search Algorithms', 'Knowledge Representation'],
@@ -195,7 +186,6 @@ export const mockCourses: Course[] = [
     prerequisites: [mockPrerequisite[0]],
     school: 'School of Computing',
     slug: 'cybersecurity',
-    image: '/path/to/cybersecurity-image.jpg',
     description:
       'This course covers the fundamentals of cybersecurity, including cryptography, network security, and ethical hacking.',
     tags: ['Security', 'Cryptography', 'Ethical Hacking'],
@@ -209,19 +199,21 @@ export const mockUser: User = {
   username: 'david',
   firstName: 'David',
   lastName: 'David Yeo',
-  profileImageUrl: ''
+  profileImageUrl: '',
 }
 
-export const mockList: ListData[] = [{
-  key: 'mocklist',
-  name: 'Collections',
-  courseKeys: mockCourses.map((course) => {
-    return course.key
-  }),
-  // slug: 'listslug',
-  description: 'A collection of courses created by David Yeo',
-  coursesCount: mockCourses.length,
-  creator: {
-    key: 'David Yeo'
-  }
-}]
+export const mockList: ListData[] = [
+  {
+    key: 'mocklist',
+    name: 'Collections',
+    courseKeys: mockCourses.map((course) => {
+      return course.key
+    }),
+    // slug: 'listslug',
+    description: 'A collection of courses created by David Yeo',
+    coursesCount: mockCourses.length,
+    creator: {
+      key: 'David Yeo',
+    },
+  },
+]
