@@ -111,6 +111,7 @@ export const TrendingPreviewSection = ({
       gradient
       gradientColor="#020817"
       className={cn('place-items-start', className)}
+
       {...marquee}
     >
       {displayCourses.map((course, idx) => (
@@ -123,6 +124,7 @@ export const TrendingPreviewSection = ({
         >
           <Course course={zCourse.parse(course)!}>
             <Course.Thumbnail
+              isSkeleton={true}
               className={cn(
                 'mr-1 mt-1 w-fit !rounded-none',
                 idx > 8 && 'hidden sm:block',

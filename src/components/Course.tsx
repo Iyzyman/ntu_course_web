@@ -90,7 +90,7 @@ const useCourseContext = () => {
     ctxValue = {
       course: {} as Course,
       isSkeleton: true,
-      onNavigate: () => {},
+      onNavigate: () => { },
     }
   }
   return ctxValue
@@ -193,13 +193,16 @@ export const CourseImage = ({ className, children, ...rest }: CourseImage) => {
 
 Course.Image = CourseImage
 
-type CourseThumbnail = Card
+type CourseThumbnail = Card & {
+  isSkeleton?: boolean
+}
 export const CourseThumbnail = ({
   className,
   children,
+  isSkeleton = false,
   ...rest
 }: CourseThumbnail) => {
-  const { course, isSkeleton, onNavigate } = useCourseContext()
+  const { course, onNavigate } = useCourseContext()
 
   return (
     <HoverCard>
@@ -221,33 +224,27 @@ export const CourseThumbnail = ({
           <Course.Image />
         </Card>
       </HoverCardTrigger>
-      <HoverCardContent
-        side="bottom"
-        sideOffset={5}
-        className={cn(
-          'flex flex-col gap-2',
-          'w-[113]',
-          'h-[113]',
-          'p-4', // Increase padding for more space inside
-          'py-4', // Optional: Increase padding-top and padding-bottom
-          'rounded-md',
-        )}
-      >
-        <HoverCardArrow className="fill-secondary" />
-        {isSkeleton ? (
-          <Skeleton className="h-4 w-[100px]" />
-        ) : (
+      {!isSkeleton && (
+        <HoverCardContent
+          side="bottom"
+          sideOffset={5}
+          className={cn(
+            'flex flex-col gap-2',
+            'w-[113]',
+            'h-[113]',
+            'p-4',
+            'py-4',
+            'rounded-md',
+          )}
+        >
+          <HoverCardArrow className="fill-secondary" />
           <small className="text-sm leading-none">
             <small className="capitalize">{course.title.toLowerCase()}</small>
           </small>
-        )}
+        </HoverCardContent>
+      )}
 
-        {isSkeleton ? (
-          <Skeleton className="h-4 w-[100px]" />
-        ) : (
-          <small className="capitalize text-muted-foreground"></small>
-        )}
-      </HoverCardContent>
+
     </HoverCard>
   )
 }
@@ -602,7 +599,7 @@ export const CourseDescription = ({
           'p whitespace-break-spaces text-pretty',
           'relative flex-1',
           !showFullDesc &&
-            'masked-overflow masked-overflow-top line-clamp-4 !overflow-y-hidden',
+          'masked-overflow masked-overflow-top line-clamp-4 !overflow-y-hidden',
           isEmptyDescription && 'italic text-muted-foreground',
         )}
         style={{
