@@ -27,7 +27,6 @@ export class HardcoverUtils {
       key: hcCourse.slug || '',
       slug: hcCourse.slug,
       title: hcCourse.title,
-      image: HardcoverUtils.getCdnUrl(hcCourse.image || ''),
       description: hcCourse.description,
       likes: hcCourse.likes || 0,
       watchlists: hcCourse.watchlists || 0,
@@ -80,8 +79,6 @@ export class HardcoverUtils {
   }: {
     document: Hardcover.SearchCourse
   }): Course => {
-    const image = HardcoverUtils.getCdnUrl(document?.image?.url ?? '')
-
     const hcCourse: Course = {
       key: document.slug || '',
       title: document.title || '',
@@ -91,7 +88,6 @@ export class HardcoverUtils {
       slug: document.slug,
       code: document.code,
       school: document.school,
-      image,
       description: document.description,
       tags: document.tags,
       color: document.color,

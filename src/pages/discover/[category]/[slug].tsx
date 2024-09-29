@@ -1,9 +1,8 @@
 import Course from '@/components/Course'
+import { useDiscoveryData } from '@/components/hooks/useCourseFinderHooks'
 import Status from '@/components/Layout.Status'
-import WIPAlert from '@/components/Layout.WIP'
 import List from '@/components/List'
 import { RenderGuard } from '@/components/providers/render.provider'
-import { HardcoverEndpoints } from '@/data/clients/hardcover.api'
 import { Navigate, useParams } from '@/router'
 import { Hardcover } from '@/types'
 import { ListData } from '@/types/shelvd'
@@ -20,25 +19,16 @@ const ListPage = () => {
   //#endregion  //*======== PARAMS ===========
 
   //#endregion  //*======== QUERIES ===========
-  const { lists } = HardcoverEndpoints
-  const {
-    data,
-    isSuccess,
-    isLoading: isLoadingLists,
-    isFetching: isFetchingLists,
-  } = lists.useQuery(
-    {
-      category: category as Hardcover.ListCategory,
-    },
-    {
-      skip: !isValidCategory,
-    },
-  )
 
-  const results = ((data?.results ?? []) as Hardcover.List[]).filter(
+  const { data, isSuccess, isLoading, error } = useDiscoveryData()
+  if (error) {
+    console.log(error)
+  }
+
+  const results = ((data ?? []) as Hardcover.List[]).filter(
     (list) => (list?.slug ?? '') === slug,
   )
-  const isLoading = isLoadingLists || isFetchingLists
+
   const isNotFound =
     !isValidParams || (!isLoading && !isSuccess && !results.length)
 
@@ -116,7 +106,7 @@ const ListPage = () => {
               </section>
 
               <section className="w-full overflow-auto">
-                <List.Courses isNumbered>
+                <List.Courses>
                   {/* <Course.Thumbnail className="w-fit !rounded-none" /> */}
                 </List.Courses>
               </section>
@@ -125,7 +115,7 @@ const ListPage = () => {
         })}
       </RenderGuard>
 
-      <WIPAlert />
+      {/* <WIPAlert /> */}
     </main>
   )
 }

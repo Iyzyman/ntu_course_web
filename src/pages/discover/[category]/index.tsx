@@ -13,7 +13,6 @@ import {
   PaginationPrevious,
 } from '@/components/ui/Pagination'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/Tabs'
-import { HardcoverEndpoints } from '@/data/clients/hardcover.api'
 import { mockList } from '@/data/clients/mockdata'
 import { Navigate, useNavigate, useParams } from '@/router'
 import { Hardcover } from '@/types'
@@ -21,6 +20,7 @@ import { ListData } from '@/types/shelvd'
 import { cn } from '@/utils/dom'
 import { getRangedArray, getSegmentedArray } from '@/utils/helpers'
 import { useEffect, useState } from 'react'
+import { useDiscoveryData } from '@/components/hooks/useCourseFinderHooks'
 
 const ListCategoryPage = () => {
   const navigate = useNavigate()
@@ -48,24 +48,14 @@ const ListCategoryPage = () => {
   //#endregion  //*======== STATES ===========
 
   //#endregion  //*======== QUERIES ===========
-  const { lists } = HardcoverEndpoints
-  const {
-    data,
-    isSuccess,
-    isLoading: isLoadingLists,
-    isFetching: isFetchingLists,
-  } = lists.useQuery(
-    {
-      category: category as Hardcover.ListCategory,
-    },
-    {
-      skip: !isValidCategory,
-    },
-  )
+  const { data, isSuccess, isLoading, error } = useDiscoveryData()
+
+  if (error) {
+    console.log(error)
+  }
 
   const allCourses: List = mockList[0]
   const results = (data?.results ?? []) as Hardcover.List[]
-  const isLoading = isLoadingLists || isFetchingLists
   const isNotFound =
     !isValidParams || (!isLoading && !isSuccess && !results.length)
 
@@ -163,7 +153,7 @@ const ListCategoryPage = () => {
             )}
           >
             <aside className="flex flex-col gap-1 *:!mt-0">
-              <h1>Discover Lists ✨</h1>
+              <h1>Discover Courses ✨</h1>
 
               <p className="leading-tight text-muted-foreground">
                 Browse the catalogue of NTU courses to find out which one to take.

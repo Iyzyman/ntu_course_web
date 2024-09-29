@@ -9,24 +9,29 @@ import { HelmetProvider } from 'react-helmet-async'
 
 import { Routes } from '@generouted/react-router/lazy'
 import StoreProvider from '@/components/providers/store.provider'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+
+const queryClient = new QueryClient()
 
 export const App = () => {
   return (
     <HelmetProvider>
-      <ReduxProvider>
-        {/* <PersistGate
+      <QueryClientProvider client={queryClient}>
+        <ReduxProvider>
+          {/* <PersistGate
           loading={null}
           persistor={AppStorePersistor}
         > */}
-        <ThemeProvider>
-          <ClerkProvider>
-            <StoreProvider>
-              <Routes />
-            </StoreProvider>
-          </ClerkProvider>
-        </ThemeProvider>
-        {/* </PersistGate> */}
-      </ReduxProvider>
+          <ThemeProvider>
+            <ClerkProvider>
+              <StoreProvider>
+                <Routes />
+              </StoreProvider>
+            </ClerkProvider>
+          </ThemeProvider>
+          {/* </PersistGate> */}
+        </ReduxProvider>
+      </QueryClientProvider>
     </HelmetProvider>
   )
 }
