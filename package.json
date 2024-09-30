@@ -44,6 +44,7 @@
     "@types/redux-persist": "^4.3.1",
     "cmdk": "^0.2.1",
     "ldrs": "^1.0.1",
+    "lodash": "^4.17.21",
     "million": "^3.0.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -60,6 +61,7 @@
   "devDependencies": {
     "@commitlint/cli": "^17.7.2",
     "@commitlint/config-conventional": "^17.7.0",
+    "@types/lodash": "^4.17.9",
     "@types/node": "^20.11.9",
     "@types/react": "^18.2.43",
     "@types/react-dom": "^18.2.17",

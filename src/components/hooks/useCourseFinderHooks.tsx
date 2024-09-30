@@ -6,6 +6,8 @@ const routes = {
   discover: '/discover',
   courseDetail: '/details?course_code=',
   trending: '/trending',
+  search: '/search?query=',
+  page:'&page='
 }
 
 export const useDiscoveryData = () => {
@@ -31,5 +33,15 @@ export const useTrendingData = () => {
     queryKey: ['trendingData'],
     queryFn: () =>
       fetch(`${baseURL}${routes.trending}`).then((res) => res.json()),
+  })
+}
+
+export const useSearchData = (q: string,page:number) => {
+  return useQuery({
+    queryKey: ['searchData', q],
+    queryFn: () =>
+      fetch(`${baseURL}${routes.search}${q}${routes.page}${page}`).then((res) =>
+        res.json(),
+      ),
   })
 }
