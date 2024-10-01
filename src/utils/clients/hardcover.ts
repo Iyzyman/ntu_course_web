@@ -24,10 +24,10 @@ export class HardcoverUtils {
 
   static parseCourse = (hcCourse: Course): Course => {
     const course: Course = {
-      key: hcCourse.slug || '',
-      slug: hcCourse.slug,
+      key: hcCourse.code,
+      slug: hcCourse.code,
       title: hcCourse.title,
-      description: hcCourse.description,
+      description: hcCourse.description || '',
       likes: hcCourse.likes || 0,
       watchlists: hcCourse.watchlists || 0,
       prerequisites: hcCourse.prerequisites || [],
@@ -37,8 +37,6 @@ export class HardcoverUtils {
       color: hcCourse.color,
     }
 
-    // If using zod or another validation library, you can use it here
-    // return Course.safeParse(course).data;
     return course
   }
 
@@ -80,12 +78,12 @@ export class HardcoverUtils {
     document: Hardcover.SearchCourse
   }): Course => {
     const hcCourse: Course = {
-      key: document.slug || '',
+      key: document.code || '',
       title: document.title || '',
       likes: document.likes || 0,
       watchlists: document.watchlists || 0,
       prerequisites: document.prerequisites || [],
-      slug: document.slug,
+      slug: document.code,
       code: document.code,
       school: document.school,
       description: document.description,
