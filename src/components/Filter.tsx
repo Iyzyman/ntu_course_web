@@ -42,7 +42,6 @@ export const Filter = ({courseList, onFilterChange}: FilterProps) => {
         onFilterChange({
             ...courseList,
             courses: filteredbytags,
-            coursesCount: filteredbytags.length
         })
     }, [faculty, tags, courseArray, courseList, onFilterChange])
 

@@ -13,14 +13,13 @@ import {
   PaginationPrevious,
 } from '@/components/ui/Pagination'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/Tabs'
-import { mockList } from '@/data/clients/mockdata'
 import { Navigate, useNavigate, useParams } from '@/router'
 import { Hardcover } from '@/types'
 import { ListData } from '@/types/shelvd'
 import { cn } from '@/utils/dom'
 import { getRangedArray, getSegmentedArray } from '@/utils/helpers'
 import { useEffect, useState } from 'react'
-import { useDiscoveryData } from '@/components/hooks/useCourseFinderHooks'
+import { useAllCoursesData, useDiscoveryData } from '@/components/hooks/useCourseFinderHooks'
 
 const ListCategoryPage = () => {
   const navigate = useNavigate()
@@ -54,7 +53,6 @@ const ListCategoryPage = () => {
     console.log(error)
   }
 
-  const allCourses: List = mockList[0]
   const results = (data?.results ?? []) as Hardcover.List[]
   const isNotFound =
     !isValidParams || (!isLoading && !isSuccess && !results.length)
@@ -104,10 +102,20 @@ const ListCategoryPage = () => {
 
 
   //#endregion  //*======== Filter ===========
+  const {
+    data: allCoursesData,
+  } = useAllCoursesData()
+
+  const allCourses: List = 
+  {
+    key: 'allCourses',
+    name: 'allCourses',
+    courses: allCoursesData,
+  }
+
   const [filteredList, setFilteredList] = useState<List>(allCourses)
   const handleFilterChange = (newList: List) => {
     setFilteredList(newList)
-    console.log(filteredList)
   }
   //#endregion  //*======== Filter ===========
 
@@ -279,7 +287,6 @@ const ListCategoryPage = () => {
                   )}
                 >
                   <List.Courses>
-                    <Course.Thumbnail className="w-fit !rounded-none" />
                   </List.Courses>
                 </div>
               </div>

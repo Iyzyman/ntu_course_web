@@ -6,6 +6,7 @@ const routes = {
   discover: '/discover',
   courseDetail: '/details?course_code=',
   trending: '/trending',
+  allCourses: '/course/all'
 }
 
 export const useDiscoveryData = () => {
@@ -31,5 +32,13 @@ export const useTrendingData = () => {
     queryKey: ['trendingData'],
     queryFn: () =>
       fetch(`${baseURL}${routes.trending}`).then((res) => res.json()),
+  })
+}
+
+export const useAllCoursesData = () => {
+  return useQuery({
+    queryKey: ['allCoursesData'],
+    queryFn: () =>
+      fetch(`${baseURL}${routes.allCourses}`).then((res) => res.json())
   })
 }
