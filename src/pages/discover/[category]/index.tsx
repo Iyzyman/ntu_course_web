@@ -102,7 +102,6 @@ const ListCategoryPage = () => {
   const onPageNext = () => onPageChange(pages.next)
   //#endregion  //*======== PAGINATION ===========
 
-
   //#endregion  //*======== Filter ===========
   const [filteredList, setFilteredList] = useState<List>(allCourses)
   const handleFilterChange = (newList: List) => {
@@ -111,7 +110,6 @@ const ListCategoryPage = () => {
   }
   //#endregion  //*======== Filter ===========
 
-  
   if (!isValidParams)
     return (
       <Navigate
@@ -156,7 +154,8 @@ const ListCategoryPage = () => {
               <h1>Discover Courses ✨</h1>
 
               <p className="leading-tight text-muted-foreground">
-                Browse the catalogue of NTU courses to find out which one to take.
+                Browse the catalogue of NTU courses to find out which one to
+                take.
               </p>
             </aside>
           </div>
@@ -206,86 +205,93 @@ const ListCategoryPage = () => {
             ))}
           </TabsList>
 
-          {Hardcover.ListCategory.options.map((category) => (
-            category !== "filter" ? 
-          <TabsContent value={category}>
-            <Course.CourseMatrix
-              displayCategoryLists={segment}
-              category={category}
-            ></Course.CourseMatrix>
+          {Hardcover.ListCategory.options.map((category) =>
+            category !== 'filter' ? (
+              <TabsContent value={category}>
+                <Course.CourseMatrix
+                  displayCategoryLists={segment}
+                  category={category}
+                ></Course.CourseMatrix>
 
-            <Pagination className={cn(isPaginationDisabled && 'hidden')}>
-              <PaginationContent className="m-0">
-                <PaginationItem
-                  className={cn(
-                    isPrevDisabled && 'cursor-not-allowed opacity-50',
-                  )}
-                  onClick={() => {
-                    if (isPrevDisabled) return
-                    onPagePrevious()
-                  }}
+                <Pagination className={cn(isPaginationDisabled && 'hidden')}>
+                  <PaginationContent className="m-0">
+                    <PaginationItem
+                      className={cn(
+                        isPrevDisabled && 'cursor-not-allowed opacity-50',
+                      )}
+                      onClick={() => {
+                        if (isPrevDisabled) return
+                        onPagePrevious()
+                      }}
+                    >
+                      <PaginationPrevious className="max-sm:!px-2 max-sm:[&>span]:hidden" />
+                    </PaginationItem>
+
+                    {ranges.map((pgIdx) => (
+                      <PaginationItem
+                        key={`lists-${category}-page-${pgIdx}`}
+                        onClick={() => {
+                          onPageChange(pgIdx)
+                        }}
+                      >
+                        <PaginationLink isActive={pgIdx === pageIdx}>
+                          {pgIdx + 1}
+                        </PaginationLink>
+                      </PaginationItem>
+                    ))}
+
+                    <PaginationItem
+                      className={cn(isEllipsisDisabled && 'hidden')}
+                      onClick={() => {
+                        if (isEllipsisDisabled) return
+                        onPageNext()
+                      }}
+                    >
+                      <PaginationEllipsis />
+                    </PaginationItem>
+
+                    <PaginationItem
+                      className={cn(
+                        isNextDisabled && 'cursor-not-allowed opacity-50',
+                      )}
+                      onClick={() => {
+                        if (isNextDisabled) return
+                        onPageNext()
+                      }}
+                    >
+                      <PaginationNext className="max-sm:!px-2 max-sm:[&>span]:hidden" />
+                    </PaginationItem>
+                  </PaginationContent>
+                </Pagination>
+              </TabsContent>
+            ) : (
+              <TabsContent value={category}>
+                <Filter
+                  courseList={allCourses}
+                  onFilterChange={handleFilterChange}
+                />
+
+                <List
+                  data={ListData.parse(filteredList)}
+                  overwriteCourses={filteredList.courses}
                 >
-                  <PaginationPrevious className="max-sm:!px-2 max-sm:[&>span]:hidden" />
-                </PaginationItem>
-
-                {ranges.map((pgIdx) => (
-                  <PaginationItem
-                    key={`lists-${category}-page-${pgIdx}`}
-                    onClick={() => {
-                      onPageChange(pgIdx)
-                    }}
-                  >
-                    <PaginationLink isActive={pgIdx === pageIdx}>
-                      {pgIdx + 1}
-                    </PaginationLink>
-                  </PaginationItem>
-                ))}
-
-                <PaginationItem
-                  className={cn(isEllipsisDisabled && 'hidden')}
-                  onClick={() => {
-                    if (isEllipsisDisabled) return
-                    onPageNext()
-                  }}
-                >
-                  <PaginationEllipsis />
-                </PaginationItem>
-
-                <PaginationItem
-                  className={cn(
-                    isNextDisabled && 'cursor-not-allowed opacity-50',
-                  )}
-                  onClick={() => {
-                    if (isNextDisabled) return
-                    onPageNext()
-                  }}
-                >
-                  <PaginationNext className="max-sm:!px-2 max-sm:[&>span]:hidden" />
-                </PaginationItem>
-              </PaginationContent>
-            </Pagination>
-          </TabsContent>
-          : 
-          <TabsContent value={category}>
-            <Filter courseList={allCourses} onFilterChange={handleFilterChange}/>
-
-            <List data={ListData.parse(filteredList)} overwriteCourses={filteredList.courses}>
-              <div className="flex flex-col gap-y-2">
-                <div
-                  className={cn(
-                    'w-full place-content-start place-items-start gap-2',
-                    'flex flex-row flex-wrap',
-                    // 'sm:max-w-xl',
-                  )}
-                >
-                  <List.Courses>
-                    <Course.Thumbnail className="w-fit !rounded-none" />
-                  </List.Courses>
-                </div>
-              </div>
-            </List>
-          </TabsContent>
-          ))}
+                  <div className="flex flex-col gap-y-2">
+                    <div
+                      className={cn(
+                        'w-full place-content-start place-items-start gap-2',
+                        'flex flex-row flex-wrap',
+                        // 'sm:max-w-xl',
+                      )}
+                    >
+                      <List.Courses>
+                        <Course.Thumbnail className="w-fit !rounded-none" />
+                      </List.Courses>
+                    </div>
+                  </div>
+                </List>
+              </TabsContent>
+            ),
+          )}
         </Tabs>
       </RenderGuard>
     </main>

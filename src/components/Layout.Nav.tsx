@@ -27,7 +27,6 @@ import { useLocation } from 'react-router-dom'
 
 export const AuthButton = () => {
   const { pathname } = useLocation()
-
   return (
     <>
       <SignedOut>

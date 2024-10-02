@@ -286,7 +286,10 @@ export const ReviewForm = () => {
         />
       </div>
 
-      <CustomFormControl sx={{width: 340,}} labelName='When did you take this course?'>
+      <CustomFormControl
+        sx={{ width: 340 }}
+        labelName="When did you take this course?"
+      >
         <Select
           label="When did you take this course?"
           value={semester}
