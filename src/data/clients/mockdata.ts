@@ -199,21 +199,25 @@ export const mockUser: User = {
   username: 'david',
   firstName: 'David',
   lastName: 'Yeo',
-  profileImageUrl: ''
+  profileImageUrl: '',
 }
 
-export const mockList: List[] = [{
-  key: '123',
-  name: 'Collections',
-  description: 'Collections',
-  coursesCount: mockCourses.length,
-  courses: mockCourses
-}]
+export const mockList: List[] = [
+  {
+    key: '123',
+    name: 'Collections',
+    description: 'Collections',
+    coursesCount: mockCourses.length,
+    courses: mockCourses,
+  },
+]
 
-export const mockListData: ListData[] = [{
-  key: '123',
-  name: 'Collections',
-  description: 'Collections',
-  coursesCount: mockCourses.length,
-  courseKeys: mockCourses.map((course)=>course.key)
-}]
+export const mockListData: ListData[] = [
+  {
+    key: '123',
+    name: 'Collections',
+    description: 'Collections',
+    coursesCount: mockCourses.length,
+    courseKeys: mockCourses.map((course) => course.key),
+  },
+]

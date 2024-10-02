@@ -4,32 +4,40 @@ interface CustomFormControlProps extends FormControlProps {
   labelName: string
 }
 
-export const CustomFormControl = ({ sx, children, labelName, ...rest }: CustomFormControlProps) => {
+export const CustomFormControl = ({
+  sx,
+  children,
+  labelName,
+  ...rest
+}: CustomFormControlProps) => {
   return (
     <FormControl
-        sx={{
+      sx={{
         width: 150,
         '& .MuiOutlinedInput-root': {
-            '& fieldset': {
+          '& fieldset': {
             borderColor: '#A3A3A3',
-            },
-            '&:hover fieldset': {
+          },
+          '&:hover fieldset': {
             borderColor: '#A3A3A3',
-            },
-            '&.Mui-focused fieldset': {
+          },
+          '&.Mui-focused fieldset': {
             borderColor: '#A3A3A3',
-            },
-            color: '#A3A3A3',
+          },
+          color: '#A3A3A3',
         },
-        ...sx
-        }}
-        {...rest}
+        ...sx,
+      }}
+      {...rest}
     >
-        {labelName && <InputLabel
-            sx={{ color: '#A3A3A3', '&.Mui-focused': { color: '#A3A3A3' } }}>
-        {labelName}
-        </InputLabel>}
-        {children}
+      {labelName && (
+        <InputLabel
+          sx={{ color: '#A3A3A3', '&.Mui-focused': { color: '#A3A3A3' } }}
+        >
+          {labelName}
+        </InputLabel>
+      )}
+      {children}
     </FormControl>
   )
 }

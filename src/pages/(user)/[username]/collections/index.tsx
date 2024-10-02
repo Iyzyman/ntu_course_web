@@ -133,7 +133,10 @@ const UserPage = () => {
                   key={`${user.id}-list-core-${list.key}`}
                   renderIf={ListData.safeParse(list).success}
                 >
-                  <List data={ListData.parse(list)} overwriteCourses={mockList[0].courses}>
+                  <List
+                    data={ListData.parse(list)}
+                    overwriteCourses={mockList[0].courses}
+                  >
                     <div className="flex flex-col gap-y-2">
                       <h3
                         className={cn(
