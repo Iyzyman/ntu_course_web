@@ -139,6 +139,7 @@ const CourseDetailsLayout = () => {
                 <aside>
                   <div style={{ width: '30%', marginTop: '10px' }}>
                     <Course.ClickStats
+                      course_code={origin?.code || ''}
                       watchlists={origin?.watchlists || 0}
                       likes={origin?.likes || 0}
                     ></Course.ClickStats>
