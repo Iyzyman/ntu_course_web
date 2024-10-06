@@ -1,9 +1,9 @@
+import { useWatchListData } from '@/components/hooks/useCourseFinderHooks'
 import List from '@/components/List'
 import { RenderGuard } from '@/components/providers/render.provider'
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/Alert'
 import { Badge } from '@/components/ui/Badge'
 import { Skeleton } from '@/components/ui/Skeleton'
-import { mockList } from '@/data/clients/mockdata'
 import { ListData } from '@/types/shelvd'
 import { cn } from '@/utils/dom'
 import { useUser } from '@clerk/clerk-react'
@@ -23,20 +23,27 @@ const UserPage = () => {
 
   //#endregion  //*======== USER/CORELISTS ===========
 
-  // if (!user || !isSignedIn) return null
+  const userid = user?.id || ''
 
-  // const {
-  //   data,
-  //   isSuccess,
-  //   isLoading,
-  //   isFetching,
-  // } = useWatchlistData(user.username?? user.id)
+  const {
+    data,
+    isSuccess,
+    isLoading,
+    isFetching,
+  } = useWatchListData(userid)
 
-  // const isDataLoading = isLoading || isFetching
-  // const isNotFound =
-  //   (!isDataLoading && !isSuccess && (data?.found ?? 0) < 1)
+  const isDataLoading = isLoading || isFetching
+  const isFound = (!isDataLoading && isSuccess)
+  const courses = isFound? data?? [] : []
+  console.log(courses)
 
-  const watchlist = mockList[0]
+  const watchlist: List = {
+    key: 'Collections',
+    name: 'Collections',
+    courses: courses,
+    coursesCount: courses.length
+  }
+
   const isWatchListEmpty = watchlist.coursesCount === 0
 
   //#endregion  //*======== USER/CORELISTS ===========

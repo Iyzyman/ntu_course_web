@@ -871,7 +871,7 @@ const ListCourses = ({
                 &nbsp;
               </p>
               <p className="text-muted-foreground">
-                {course.prerequisites.length != 0
+                {course.prerequisites?.length != 0
                   ? `Prerequisites: ${course.prerequisites}`
                   : `No prerequisites`}
               </p>

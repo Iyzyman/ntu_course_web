@@ -635,7 +635,7 @@ Course.Description = CourseDescription
 
 type CoursePrerequisitesProps = HTMLAttributes<HTMLDivElement> & {
   className?: string
-  prerequisites?: Course[]
+  prerequisites?: Course[] | null
   children?: React.ReactNode
 }
 
