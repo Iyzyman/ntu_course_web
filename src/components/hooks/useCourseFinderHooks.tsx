@@ -1,4 +1,4 @@
-import { useQuery } from '@tanstack/react-query'
+import { useMutation, useQuery } from '@tanstack/react-query'
 
 const baseURL = 'http://localhost:3001/api'
 
@@ -6,6 +6,10 @@ const routes = {
   discover: '/discover',
   courseDetail: '/details?course_code=',
   trending: '/trending',
+  search: '/search?query=',
+  page: '&page=',
+  like: '/like',
+  watchlist: '/watchlist'
 }
 
 export const useDiscoveryData = () => {
@@ -31,5 +35,90 @@ export const useTrendingData = () => {
     queryKey: ['trendingData'],
     queryFn: () =>
       fetch(`${baseURL}${routes.trending}`).then((res) => res.json()),
+  })
+}
+
+export const useSearchData = (q: string, page: number) => {
+  return useQuery({
+    queryKey: ['searchData', q, page], // Include page in queryKey
+    queryFn: () =>
+      fetch(`${baseURL}${routes.search}${q}${routes.page}${page}`).then((res) =>
+        res.json(),
+      ),
+  })
+}
+
+export const useLikeCourse = () => {
+  return useMutation({
+    mutationFn: async ({ user_id, course_code, method }: { user_id: string, course_code: string, method: 'POST' | 'DELETE'}) => {
+      const response = await fetch(`${baseURL}${routes.like}`, {
+        method: method,
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ user_id, course_code }),
+      })
+
+      if (!response.ok) {
+        throw new Error('Failed to like/unlike the course')
+      }
+
+      return response.json()
+    },
+  })
+}
+export const useGetLikeCourse = (user_id: string, course_code: string) => {
+  return useQuery({
+    queryKey: ['getLikeStatus', user_id, course_code],  // Cache based on user and course
+    queryFn: async () => {
+      const response = await fetch(
+        `${baseURL}${routes.like}?user_id=${user_id}&course_code=${course_code}`
+      )
+
+      if (!response.ok) {
+        throw new Error('Failed to fetch like status')
+      }
+
+      return response.json()
+    },
+    enabled: !!user_id && !!course_code,  // Only run if both user_id and course_code are present
+  })
+}
+
+export const useWatchListCourse = () => {
+  return useMutation({
+    mutationFn: async ({ user_id, course_code, method }: { user_id: string, course_code: string, method: 'POST' | 'DELETE'}) => {
+      const response = await fetch(`${baseURL}${routes.watchlist}`, {
+        method: method,
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ user_id, course_code }),
+      })
+
+      if (!response.ok) {
+        throw new Error('Failed to watch/unwatch the course')
+      }
+
+      return response.json()
+    },
+  })
+}
+
+export const useGetWatchList = (user_id: string, course_code: string) => {
+  return useQuery({
+    queryKey: ['getWatchListStatus', user_id, course_code],  // Cache based on user and course
+    queryFn: async () => {
+      const response = await fetch(
+        `${baseURL}${routes.watchlist}/exists?user_id=${user_id}&course_code=${course_code}`
+      )
+
+      if (!response.ok) {
+        throw new Error('Failed to fetch like status')
+      }
+
+      return response.json()
+    },
+    enabled: !!user_id && !!course_code,  // Only run if both user_id and course_code are present
   })
 }

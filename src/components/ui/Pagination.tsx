@@ -32,11 +32,12 @@ PaginationContent.displayName = 'PaginationContent'
 
 const PaginationItem = React.forwardRef<
   HTMLLIElement,
-  React.ComponentProps<'li'>
->(({ className, ...props }, ref) => (
+  React.ComponentProps<'li'> & { disabled?: boolean }
+>(({ className, disabled = false, ...props }, ref) => (
   <li
     ref={ref}
-    className={cn('', className)}
+    className={cn(disabled ? 'cursor-not-allowed opacity-50' : '', className)} // Apply styles when disabled
+    aria-disabled={disabled}
     {...props}
   />
 ))

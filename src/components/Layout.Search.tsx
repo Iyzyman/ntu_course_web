@@ -28,8 +28,6 @@ import {
   PaginationPrevious,
 } from '@/components/ui/Pagination'
 import { Tabs, TabsList, TabsTrigger } from '@/components/ui/Tabs'
-import { HardcoverEndpoints } from '@/data/clients/hardcover.api'
-import { mockSearchResponse } from '@/data/clients/mockdata'
 import { AppCommandKey } from '@/data/static/app'
 import { AppActions, AppSelectors } from '@/data/stores/app.slice'
 import { useRootDispatch, useRootSelector } from '@/data/stores/root'
@@ -65,6 +63,7 @@ import {
 import { UseFormReturn, useForm } from 'react-hook-form'
 import { useSearchParams } from 'react-router-dom'
 import { z } from 'zod'
+import { useSearchData } from './hooks/useCourseFinderHooks'
 
 const DisplaySearchCategories = SearchCategory.extract(['courses'])
 
@@ -140,12 +139,10 @@ const useDefaultSearchContext = (): SearchContext => {
   })
 
   //#endregion  //*======== STATES ===========
-  console.log(searchQuery)
-  const { search } = HardcoverEndpoints
-  const isMock = true // Set this flag based on your environment or conditions
-  const { data, isLoading, isFetching } = isMock
-    ? { data: mockSearchResponse, isLoading: false, isFetching: false }
-    : search.useQuery(searchQuery)
+  const { data, isLoading, isFetching } = useSearchData(
+    searchQuery.q,
+    searchQuery?.page || 1,
+  )
 
   const dataCount: number = data?.results?.[0]?.found ?? 0
 
@@ -160,7 +157,12 @@ const useDefaultSearchContext = (): SearchContext => {
 
   const onSubmitForm = (values: typeof DefaultSearchQuery) => {
     const isPrevCategory = searchQuery.category === values.category
-    values.page = isPrevCategory ? values?.page ?? 1 : 1
+    const isPrevQuery = searchQuery.q === values.q
+    // If the query changes, reset the page to 1
+    if (!isPrevQuery) {
+      values.page = 1
+      form.setValue('page', 1)
+    }
 
     logger(
       { breakpoint: '[Layout.Search.tsx:89]' },
@@ -176,6 +178,7 @@ const useDefaultSearchContext = (): SearchContext => {
       },
       history,
     )
+
     setPrevSearchQuery(searchQuery)
     setSearchQuery(values)
 
@@ -362,8 +365,12 @@ export const SearchCommand = ({ children }: SearchCommand) => {
           }}
           onKeyDown={(e) => {
             const key = e.key.toLowerCase()
-            const isEnter = key === 'Enter'.toLowerCase()
-            if (isEnter) return onSubmitSearch()
+            const isEnter = key === 'enter' // Match case-insensitive for the 'Enter' key
+            if (isEnter) {
+              // Prevent default action if results are highlighted
+              e.preventDefault()
+              onSubmitSearch() // Ensure it triggers the search based on the new query
+            }
           }}
           placeholder={'Search for a course'}
         />
@@ -513,7 +520,6 @@ export const SearchResults = ({ className, ...rest }: SearchResults) => {
             const document = hit.document as Hardcover.SearchCourse
             const hcCourse = HardcoverUtils.parseCourseDocument({ document })
             const course = HardcoverUtils.parseCourse(hcCourse) as Course
-            if (!course) return null
             return (
               <Search.ResultItem
                 key={`${idx}-${course.key}`}
@@ -538,7 +544,7 @@ export const SearchResults = ({ className, ...rest }: SearchResults) => {
                   // 'flex-col sm:flex-row'
                 )}
               >
-                <Course course={course!}>
+                <Course course={course}>
                   <Course.Image />
 
                   <article
@@ -578,15 +584,8 @@ export const SearchResults = ({ className, ...rest }: SearchResults) => {
                         )}
                         &nbsp;
                       </p>
-
-                      <p className="last-child:text-pretty last-child:truncate inline-flex w-full max-w-prose flex-row place-items-baseline	 truncate text-pretty">
-                        <small className="!whitespace-nowrap uppercase text-muted-foreground">
-                          by
-                        </small>
-                        &nbsp;
-                      </p>
-
-                      {course?.description && (
+                      {course?.description !== undefined &&
+                      course?.description.trim() !== '' ? (
                         <p
                           className={cn(
                             'small font-light normal-case text-muted-foreground',
@@ -595,6 +594,10 @@ export const SearchResults = ({ className, ...rest }: SearchResults) => {
                           )}
                         >
                           {course.description}
+                        </p>
+                      ) : (
+                        <p className="italic text-muted-foreground">
+                          No description available
                         </p>
                       )}
 
@@ -664,71 +667,66 @@ type SearchResultsPagination = {
 export const SearchResultsPagination = ({
   isNavigatable = false,
 }: SearchResultsPagination) => {
-  const {
-    form,
-    data,
-
-    onSubmitSearch,
-    setIsNavigatable,
-
-    isSimilarQuery,
-    isLoadingSearch,
-  } = useSearchContext()
+  const { form, data, onSubmitSearch, setIsNavigatable, isLoadingSearch } =
+    useSearchContext()
 
   const results = data?.results?.[0]
 
   const resultsThreshold = results?.request_params?.per_page ?? 1
   const resultsFound = results?.found ?? 0
 
-  const currentPage = results?.page ?? 1
+  const currentPage = form.watch('page') ?? 1 // Use form.watch to track the current page number
   const maxPage = Math.ceil(resultsFound / resultsThreshold)
 
   const isFirstPage = currentPage === 1
+  const isLastPage = currentPage === maxPage
+
   const pageRange = {
-    min: isFirstPage ? currentPage : currentPage - 1,
-    mid: isFirstPage ? currentPage + 1 : currentPage,
-    max: isFirstPage
-      ? currentPage + 2
-      : currentPage + 1 <= maxPage
-        ? currentPage + 1
-        : maxPage,
+    ...(isFirstPage ? { min: 1 } : { min: currentPage - 1 }),
+    mid: currentPage !== 1 && currentPage !== maxPage ? currentPage : null,
+    ...(isLastPage ? { max: maxPage } : { max: currentPage + 1 }),
   }
 
   const onPageChange = (page: number) => {
-    const isValidPage: boolean = page > 0 && page <= maxPage
-    if (!isValidPage) return
-
-    const isNextCurrentPage: boolean = page === currentPage
-    if (isNextCurrentPage) return
-
-    form.setValue('page', isSimilarQuery ? page ?? 1 : 1)
+    if (page < 1 || page > maxPage) return
+    form.setValue('page', page) // Set the new page in the form
     setIsNavigatable(isNavigatable)
-    onSubmitSearch()
+    onSubmitSearch() // Trigger the search with the new page value
   }
 
-  const onPagePrevious = () => onPageChange(pageRange.min)
-  const onPageNext = () => onPageChange(pageRange.max)
+  const onPagePrevious = () => onPageChange(currentPage - 1)
+  const onPageNext = () => onPageChange(currentPage + 1)
 
   if (isLoadingSearch || maxPage < 2) return null
+
   return (
     <Pagination>
       <PaginationContent className="m-0">
-        <PaginationItem onClick={onPagePrevious}>
+        <PaginationItem
+          onClick={onPagePrevious}
+          disabled={isFirstPage}
+        >
           <PaginationPrevious className="max-sm:!px-2 max-sm:[&>span]:hidden" />
         </PaginationItem>
-        {Object.entries(pageRange).map(([key, page]) => (
-          <PaginationItem key={`search-page-${key}`}>
-            <PaginationLink
-              isActive={page === currentPage}
-              onClick={() => {
-                onPageChange(page)
-              }}
-            >
-              {page}
-            </PaginationLink>
-          </PaginationItem>
-        ))}
-        <PaginationItem onClick={onPageNext}>
+
+        {Object.entries(pageRange).map(
+          ([key, page]) =>
+            page && ( // Check if page is not null
+              <PaginationItem key={`search-page-${key}`}>
+                <PaginationLink
+                  isActive={page === currentPage}
+                  onClick={() => onPageChange(page)}
+                >
+                  {page}
+                </PaginationLink>
+              </PaginationItem>
+            ),
+        )}
+
+        <PaginationItem
+          onClick={onPageNext}
+          disabled={isLastPage}
+        >
           <PaginationNext className="max-sm:!px-2 max-sm:[&>span]:hidden" />
         </PaginationItem>
       </PaginationContent>

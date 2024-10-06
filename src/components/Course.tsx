@@ -48,7 +48,7 @@ import { ShelvdUtils } from '@/utils/clients/shelvd'
 import { logger } from '@/utils/debug'
 import { cn } from '@/utils/dom'
 import { getUniqueArray } from '@/utils/helpers'
-import { useClerk, useUser } from '@clerk/clerk-react'
+import { useClerk, useUser  } from '@clerk/clerk-react'
 import {
   BookmarkFilledIcon,
   BookmarkIcon,
@@ -71,6 +71,7 @@ import StarBorderOutlinedIcon from '@mui/icons-material/StarBorderOutlined'
 import StarIcon from '@mui/icons-material/Star'
 import AddCircleOutlineOutlinedIcon from '@mui/icons-material/AddCircleOutlineOutlined'
 import { ring2 } from 'ldrs'
+import { useGetLikeCourse, useGetWatchList, useLikeCourse, useWatchListCourse } from './hooks/useCourseFinderHooks'
 ring2.register()
 export type Course = CourseInfo
 //#endregion  //*======== CONTEXT ===========
@@ -90,7 +91,7 @@ const useCourseContext = () => {
     ctxValue = {
       course: {} as Course,
       isSkeleton: true,
-      onNavigate: () => { },
+      onNavigate: () => {},
     }
   }
   return ctxValue
@@ -101,7 +102,6 @@ const useCourseContext = () => {
 type CourseProvider = PropsWithChildren & Omit<CourseContext, 'onNavigate'>
 export const Course = ({ children, ...value }: CourseProvider) => {
   const navigate = useNavigate()
-
   const onNavigate = () => {
     if (!value.course) return
     navigate(
@@ -243,8 +243,6 @@ export const CourseThumbnail = ({
           </small>
         </HoverCardContent>
       )}
-
-
     </HoverCard>
   )
 }
@@ -397,7 +395,7 @@ export const CourseDropdownMenu = ({ button, children }: CourseDropdown) => {
           <MarkIcon className="size-4" />
           <span>
             {!coreKeys.length
-              ? 'Want to Read'
+              ? 'Add to watchlist'
               : ShelvdUtils.coreListNames?.[coreKeys?.[0]]}
           </span>
           <MenuChevron className="ml-auto size-4" />
@@ -599,7 +597,7 @@ export const CourseDescription = ({
           'p whitespace-break-spaces text-pretty',
           'relative flex-1',
           !showFullDesc &&
-          'masked-overflow masked-overflow-top line-clamp-4 !overflow-y-hidden',
+            'masked-overflow masked-overflow-top line-clamp-4 !overflow-y-hidden',
           isEmptyDescription && 'italic text-muted-foreground',
         )}
         style={{
@@ -713,7 +711,6 @@ export const BiggerCourseCard = ({
     e.stopPropagation()
     e.preventDefault()
     setIsDeleting(true)
-    console.log('Delete Course')
     const deleteCoursePayload = {
       username,
       collection_key,
@@ -898,20 +895,121 @@ Course.Stats = Stats
 export const ClickStats = ({
   likes,
   watchlists,
+  course_code
 }: {
   likes: number
   watchlists: number
+  course_code: string
 }) => {
   const [isLiked, setIsLiked] = useState(false)
+  const [likeCount, setLikeCount] = useState(likes)
   const [isFavorited, setIsFavorited] = useState(false)
-  //TODO call likes and watchlist api when click
+  const [watchlistCount, setWatchlistCount] = useState(watchlists)
+  
+  const { openSignIn } = useClerk()
+  const { user, isSignedIn } = useUser()
+  const user_id = user?.id || ''
+
+
+  const { mutate: likeMutate } = useLikeCourse()
+  const { mutate: watchlistMutate } = useWatchListCourse()
+
+
+  const { data: likeStatus } = useGetLikeCourse(user_id, course_code)
+  const { data: watchlistStatus } = useGetWatchList(user_id, course_code)
+
+
+  useEffect(() => {
+   
+      if (likeStatus?.liked) {
+        setIsLiked(true)
+      } else {
+        setIsLiked(false)
+      }
+    
+  }, [likeStatus])
+
+ 
+  useEffect(() => {
+    
+      if (watchlistStatus?.exist) {
+        setIsFavorited(true)
+      } else {
+        setIsFavorited(false)
+      }
+    
+  }, [watchlistStatus])
+
 
   const handleLikeClick = () => {
-    setIsLiked((prev) => !prev)
+    if (!isSignedIn) {
+      openSignIn()
+      return
+    }
+
+    if (isLiked) {
+      likeMutate(
+        { user_id, course_code, method: 'DELETE' },
+        {
+          onSuccess: () => {
+            setIsLiked(false)
+            setLikeCount((prev) => prev - 1)
+          },
+          onError: (error) => {
+            console.error('Error unliking course:', error)
+          }
+        }
+      )
+    } else {
+      likeMutate(
+        { user_id, course_code, method: 'POST' },
+        {
+          onSuccess: () => {
+            setIsLiked(true)
+            setLikeCount((prev) => prev + 1)
+          },
+          onError: (error) => {
+            console.error('Error liking course:', error)
+          }
+        }
+      )
+    }
   }
 
+
   const handleFavoriteClick = () => {
-    setIsFavorited((prev) => !prev)
+    if (!isSignedIn) {
+      openSignIn()
+      return
+    }
+
+    if (isFavorited) {
+      watchlistMutate(
+        { user_id, course_code, method: 'DELETE' },
+        {
+          onSuccess: () => {
+            setIsFavorited(false)
+            setWatchlistCount((prev) => prev - 1)
+          },
+          onError: (error) => {
+            console.error('Error removing from watchlist:', error)
+          }
+        }
+      )
+    } else {
+      watchlistMutate(
+        { user_id, course_code, method: 'POST' },
+        {
+          onSuccess: () => {
+            setIsFavorited(true)
+            setWatchlistCount((prev) => prev + 1)
+          },
+          onError: (error) => {
+            console.error('Error adding to watchlist:', error)
+          }
+        }
+      )
+    }
   }
 
   return (
@@ -925,7 +1023,7 @@ export const ClickStats = ({
         ) : (
           <ThumbUpOutlinedIcon fontSize="small" />
         )}
-        <span style={{ marginTop: '2px' }}>{likes}</span>
+        <span style={{ marginTop: '2px' }}>{likeCount}</span>
       </div>
       <div
         className="flex cursor-pointer items-center gap-0.5"
@@ -936,13 +1034,17 @@ export const ClickStats = ({
         ) : (
           <StarBorderOutlinedIcon fontSize="small" />
         )}
-        <span style={{ marginTop: '2px' }}>{watchlists}</span>
+        <span style={{ marginTop: '2px' }}>{watchlistCount}</span>
       </div>
     </div>
   )
 }
 
 Course.ClickStats = ClickStats
+
+
+
+
 // type CourseEditions = HTMLAttributes<HTMLDivElement>
 // const CourseEditions = ({
 //   children,
