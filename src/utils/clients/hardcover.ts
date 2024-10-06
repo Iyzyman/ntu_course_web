@@ -33,7 +33,7 @@ export class HardcoverUtils {
       prerequisites: hcCourse.prerequisites || [],
       code: hcCourse.code,
       school: hcCourse.school,
-      tags: hcCourse.tags,
+      tags: hcCourse.tags || [],
       color: hcCourse.color,
     }
 
