@@ -122,3 +122,14 @@ export const useGetWatchList = (user_id: string, course_code: string) => {
     enabled: !!user_id && !!course_code,  // Only run if both user_id and course_code are present
   })
 }
+
+export const useWatchListData = (user_id: string) => {
+  return useQuery({
+    queryKey: ['getWatchList', user_id],
+    queryFn: () =>
+      fetch(`${baseURL}${routes.watchlist}?user_id=${user_id}`).then((res) => {
+        if (!res.ok) throw new Error('No watchlist found')
+        return res.json()
+      }),
+  })
+}
