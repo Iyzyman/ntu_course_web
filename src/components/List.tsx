@@ -32,7 +32,6 @@ import {
 import { Input } from '@/components/ui/Input'
 import { Textarea } from '@/components/ui/Textarea'
 import { HardcoverEndpoints } from '@/data/clients/hardcover.api'
-import { mockCourses } from '@/data/clients/mockdata'
 import {
   DeleteListParams,
   ShelvdEndpoints,
@@ -130,8 +129,7 @@ export const List = ({
     },
   )
 
-  const isMock = false
-  let courses: Course[] = useMemo(() => {
+  const courses: Course[] = useMemo(() => {
     const { data, isSuccess } = hcSearchCourseKeys
 
     const results = data?.results ?? []
@@ -151,10 +149,6 @@ export const List = ({
     })
     return courses
   }, [hcSearchCourseKeys])
-
-  if (isMock) {
-    courses = mockCourses
-  }
 
   const onNavigate = () => {
     if (!value?.data) return

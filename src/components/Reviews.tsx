@@ -6,8 +6,6 @@ import {
   Select,
   Button,
   MenuItem,
-  InputLabel,
-  FormControl,
   SelectChangeEvent,
   ToggleButton,
 } from '@mui/material'
@@ -18,6 +16,7 @@ import { createContext, useContext } from 'react'
 import ThumbUpOutlinedIcon from '@mui/icons-material/ThumbUpOutlined'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
 import * as React from 'react'
+import { CustomFormControl } from './ui/CustomFormControl'
 
 interface ReviewScore {
   'Content Usefulness': number
@@ -287,28 +286,10 @@ export const ReviewForm = () => {
         />
       </div>
 
-      <FormControl
-        sx={{
-          width: 340,
-          '& .MuiOutlinedInput-root': {
-            '& fieldset': {
-              borderColor: '#A3A3A3',
-            },
-            '&:hover fieldset': {
-              borderColor: '#A3A3A3',
-            },
-            '&.Mui-focused fieldset': {
-              borderColor: '#A3A3A3',
-            },
-            color: '#A3A3A3',
-          },
-        }}
+      <CustomFormControl
+        sx={{ width: 340 }}
+        labelName="When did you take this course?"
       >
-        <InputLabel
-          sx={{ color: '#A3A3A3', '&.Mui-focused': { color: '#A3A3A3' } }}
-        >
-          When did you take this course?
-        </InputLabel>
         <Select
           label="When did you take this course?"
           value={semester}
@@ -330,7 +311,7 @@ export const ReviewForm = () => {
             </MenuItem>
           ))}
         </Select>
-      </FormControl>
+      </CustomFormControl>
 
       <div>
         <Typography>Do you recommend this course?</Typography>

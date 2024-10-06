@@ -16,6 +16,8 @@ export const env = createEnv({
 
     //#endregion  //*======== EXPERIMENTAL FLAGS ===========
     VITE_CLERK_PUBLISHABLE_KEY: z.string().min(1),
+    VITE_SUPABASE_URL: z.string().min(1),
+    VITE_SUPABASE_KEY: z.string().min(1),
 
     VITE_TYPESENSE_HOST: z.string().min(1),
     VITE_TYPESENSE_KEY: z.string().min(1),

@@ -1,6 +1,6 @@
 // mockData.ts
 import { SearchQueryResponse } from '@/types/hardcover'
-import { Course, ListData, User } from '@/types/shelvd'
+import { Course, List, ListData, User } from '@/types/shelvd'
 
 export const mockPrerequisite: Course[] = [
   {
@@ -198,22 +198,26 @@ export const mockUser: User = {
   createdAt: new Date(),
   username: 'david',
   firstName: 'David',
-  lastName: 'David Yeo',
+  lastName: 'Yeo',
   profileImageUrl: '',
 }
 
-export const mockList: ListData[] = [
+export const mockList: List[] = [
   {
-    key: 'mocklist',
+    key: '123',
     name: 'Collections',
-    courseKeys: mockCourses.map((course) => {
-      return course.key
-    }),
-    // slug: 'listslug',
-    description: 'A collection of courses created by David Yeo',
+    description: 'Collections',
     coursesCount: mockCourses.length,
-    creator: {
-      key: 'David Yeo',
-    },
+    courses: mockCourses,
+  },
+]
+
+export const mockListData: ListData[] = [
+  {
+    key: '123',
+    name: 'Collections',
+    description: 'Collections',
+    coursesCount: mockCourses.length,
+    courseKeys: mockCourses.map((course) => course.key),
   },
 ]

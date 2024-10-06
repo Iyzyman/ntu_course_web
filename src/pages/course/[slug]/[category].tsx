@@ -15,6 +15,7 @@ import {
 } from '@/types/shelvd'
 import { cn } from '@/utils/dom'
 import { Separator } from '@radix-ui/react-dropdown-menu'
+import { useSession } from '@clerk/clerk-react'
 
 const DisplayCourseDetailCategories = CourseDetailCategory.extract([
   'information',
@@ -23,10 +24,11 @@ const DisplayCourseDetailCategories = CourseDetailCategory.extract([
 
 const CourseDetailCategoryPage = () => {
   const navigate = useNavigate()
+  const { session } = useSession()
 
   //#endregion  //*======== STORE ===========
   const current = useRootSelector(SearchSelectors.state).current
-  console.log('current', current)
+  console.log('current', session?.getToken({ template: 'supabase' }))
   const origin = current.origin as SourceOrigin<'hc', 'courses'>
   //#endregion  //*======== STORE ===========
 
