@@ -1,72 +1,48 @@
-import Course from '@/components/Course'
-import User from '@/components/Layout.User'
 import List from '@/components/List'
 import { RenderGuard } from '@/components/providers/render.provider'
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from '@/components/ui/Accordion'
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/Alert'
 import { Badge } from '@/components/ui/Badge'
 import { Skeleton } from '@/components/ui/Skeleton'
 import { mockList } from '@/data/clients/mockdata'
-import { ShelvdEndpoints } from '@/data/clients/shelvd.api'
-import { useRootSelector } from '@/data/stores/root'
-import { SearchSelectors } from '@/data/stores/search.slice'
 import { ListData } from '@/types/shelvd'
-import { logger } from '@/utils/debug'
 import { cn } from '@/utils/dom'
+import { useUser } from '@clerk/clerk-react'
 import { InfoCircledIcon } from '@radix-ui/react-icons'
 
 const UserPage = () => {
   //#endregion  //*======== STORE ===========
-  const current = useRootSelector(SearchSelectors.state).current
-  const user = current.origin as User
+  const { user, isLoaded } = useUser()
 
   //#endregion  //*======== STORE ===========
 
   //#endregion  //*======== PARAMS ===========
-  const username = user?.username ?? ''
-
-  const isValidUser = !current.isNotFound && !!username.length
 
   //#endregion  //*======== PARAMS ===========
 
   //#endregion  //*======== QUERIES ===========
-  const { getListsByType } = ShelvdEndpoints
 
   //#endregion  //*======== USER/CORELISTS ===========
-  const queryCorelists = getListsByType.useQuery(
-    {
-      type: 'core',
-      username,
-    },
-    {
-      skip: !isValidUser,
-    },
-  )
-  const isMock = true
-  const corelistsResults = isMock
-    ? mockList
-    : ((queryCorelists.data ?? []) as ListData[])
-  const isCoreAllEmpty = corelistsResults.every((list) => !list.coursesCount)
-  // const corelistsIsLoading =
-  //   queryCorelists.isLoading || queryCorelists.isFetching
-  // const corelistsIsNotFound =
-  //   !corelistsIsLoading && !queryCorelists.isSuccess && !corelistsResults.length
+
+  // if (!user || !isSignedIn) return null
+
+  // const {
+  //   data,
+  //   isSuccess,
+  //   isLoading,
+  //   isFetching,
+  // } = useWatchlistData(user.username?? user.id)
+
+  // const isDataLoading = isLoading || isFetching
+  // const isNotFound =
+  //   (!isDataLoading && !isSuccess && (data?.found ?? 0) < 1)
+
+  const watchlist = mockList[0]
+  const isWatchListEmpty = watchlist.coursesCount === 0
+
   //#endregion  //*======== USER/CORELISTS ===========
 
   //#endregion  //*======== QUERIES ===========
 
-  logger(
-    { breakpoint: '[index.tsx:66]/UserPage' },
-    {
-      corelistsResults,
-    },
-  )
-  if (!isValidUser) return null
   return (
     <>
       {/* HEADER */}
@@ -90,12 +66,12 @@ const UserPage = () => {
           )}
         >
           <aside className="flex w-full flex-col gap-2 *:!mt-0">
-            {current.isLoading ? (
+            {!isLoaded ? (
               <Skeleton className="h-8 w-1/3" />
             ) : (
-              <h1>{`${user?.firstName ?? ''} ${user?.lastName ?? ''}`}</h1>
+              <h1>{`${user?.firstName ?? 'Watchlist'} ${user?.lastName ?? ''}`}</h1>
             )}
-            {current.isLoading ? (
+            {!isLoaded ? (
               <Skeleton className="h-4 w-[100px]" />
             ) : (
               <p className="leading-tight text-muted-foreground">{`@${user?.username ?? ''}`}</p>
@@ -104,71 +80,53 @@ const UserPage = () => {
         </div>
       </section>
 
-      <Accordion
-        type="multiple"
-        defaultValue={['core']}
-        className="w-full"
-      >
-        <AccordionItem value="core">
-          <AccordionTrigger className="w-full !place-content-between gap-4">
-            <aside className="inline-flex flex-row !place-content-start place-items-center gap-2">
-              <h2 className="h3 capitalize">Watchlist</h2>
-            </aside>
-          </AccordionTrigger>
+      {isWatchListEmpty && (
+        <Alert>
+          <InfoCircledIcon className="size-4" />
+          <AlertTitle>TIP</AlertTitle>
+          <AlertDescription>
+            Begin creating a watchlist by starring your courses!
+          </AlertDescription>
+        </Alert>
+      )}
 
-          <AccordionContent className={cn('flex flex-col gap-4')}>
-            {isCoreAllEmpty && (
-              <Alert>
-                <InfoCircledIcon className="size-4" />
-                <AlertTitle>TIP</AlertTitle>
-                <AlertDescription>
-                  Begin creating a watchlist by starring your courses!
-                </AlertDescription>
-              </Alert>
-            )}
+      {!isWatchListEmpty &&(<section className='w-full flex'>
+        <RenderGuard
+          key={`${user?.id}-list-core-${watchlist.key}`}
+          renderIf={ListData.safeParse(watchlist).success}
+        >
+          <List
+            data={ListData.parse(watchlist)}
+            overwriteCourses={watchlist.courses}
+          >
+            <div className="flex flex-col gap-y-2">
+              <h3
+                className={cn(
+                  'cursor-pointer underline-offset-4 hover:!underline',
+                  'small line-clamp-1 truncate text-pretty font-semibold uppercase leading-none tracking-tight text-muted-foreground',
+                )}
+              >
+                {'Collections'}&nbsp;
+                <Badge variant={'outline'}>
+                  {watchlist?.coursesCount ?? 0} courses
+                </Badge>
+              </h3>
 
-            {corelistsResults.map((list) => {
-              return (
-                <RenderGuard
-                  key={`${user.id}-list-core-${list.key}`}
-                  renderIf={ListData.safeParse(list).success}
-                >
-                  <List
-                    data={ListData.parse(list)}
-                    overwriteCourses={mockList[0].courses}
-                  >
-                    <div className="flex flex-col gap-y-2">
-                      <h3
-                        className={cn(
-                          'cursor-pointer underline-offset-4 hover:!underline',
-                          'small line-clamp-1 truncate text-pretty font-semibold uppercase leading-none tracking-tight text-muted-foreground',
-                        )}
-                      >
-                        {list.name}&nbsp;
-                        <Badge variant={'outline'}>
-                          {list?.coursesCount ?? 0} courses
-                        </Badge>
-                      </h3>
-
-                      <div
-                        className={cn(
-                          'w-full place-content-start place-items-start gap-2',
-                          'flex flex-row flex-wrap',
-                          // 'sm:max-w-xl',
-                        )}
-                      >
-                        <List.Courses>
-                          <Course.Thumbnail className="w-fit !rounded-none" />
-                        </List.Courses>
-                      </div>
-                    </div>
-                  </List>
-                </RenderGuard>
-              )
-            })}
-          </AccordionContent>
-        </AccordionItem>
-      </Accordion>
+              <div
+                className={cn(
+                  'w-full place-content-start place-items-start gap-2',
+                  'flex flex-row flex-wrap',
+                  // 'sm:max-w-xl',
+                )}
+              >
+                <List.Courses>
+                </List.Courses>
+              </div>
+            </div>
+          </List>
+        </RenderGuard>
+      </section>
+      )}
     </>
   )
 }

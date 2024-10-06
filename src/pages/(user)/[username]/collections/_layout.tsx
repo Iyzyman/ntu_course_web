@@ -1,75 +1,19 @@
 import Status from '@/components/Layout.Status'
-import User from '@/components/Layout.User'
 import { RenderGuard } from '@/components/providers/render.provider'
-import { mockUser } from '@/data/clients/mockdata'
-import { ShelvdEndpoints } from '@/data/clients/shelvd.api'
-import { useRootDispatch, useRootSelector } from '@/data/stores/root'
-import { SearchActions, SearchSelectors } from '@/data/stores/search.slice'
 import { Navigate, useParams } from '@/router'
-import { CourseSource, SearchCategory } from '@/types/shelvd'
-import { logger } from '@/utils/debug'
 import { cn } from '@/utils/dom'
-import { useEffect } from 'react'
+import { useUser } from '@clerk/clerk-react'
 import { Outlet } from 'react-router-dom'
 
 const UserLayout = () => {
-  //#endregion  //*======== STORE ===========
-  const dispatch = useRootDispatch()
-  const [current, setCurrent] = [
-    useRootSelector(SearchSelectors.state).current,
-    SearchActions.setCurrent,
-  ]
-
-  //#endregion  //*======== STORE ===========
-
   //#endregion  //*======== PARAMS ===========
   const { username = '' } = useParams('/:username/collections')
 
-  const searchCategory = SearchCategory.enum.users
-  const source: CourseSource = CourseSource.enum.shelvd
-
-  const isValidUsername = username.startsWith('@') && username.length > 1
   //#endregion  //*======== PARAMS ===========
 
   //#endregion  //*======== QUERIES ===========
-  const { getUserByUsername } = ShelvdEndpoints
-
-  const queryUser = getUserByUsername.useQuery(
-    {
-      username,
-    },
-    {
-      skip: !isValidUsername,
-    },
-  )
-
-  const isMock = true
-  const user = isMock ? mockUser : queryUser.data
-  const isLoading = queryUser.isLoading || queryUser.isFetching
-  const isNotFound = !isLoading && !queryUser.isSuccess && !user
-
-  const ctx: typeof current = {
-    slug: username,
-    source,
-    category: searchCategory,
-
-    origin: user,
-    common: user,
-
-    isNotFound: isNotFound,
-    isLoading: isLoading,
-  }
-
-  useEffect(() => {
-    if (isLoading) return
-    logger(
-      { breakpoint: '[_layout.tsx:71]/UserLayout/ctx' },
-      { isLoading, ctx },
-    )
-
-    dispatch(setCurrent(ctx))
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [dispatch, isLoading])
+  const { isLoaded, isSignedIn, user } = useUser()
+  const isValidUsername = username === `@${user?.username}`
 
   //#endregion  //*======== QUERIES ===========
 
@@ -90,17 +34,15 @@ const UserLayout = () => {
       )}
     >
       <RenderGuard
-        renderIf={!isNotFound}
+        renderIf={isSignedIn}
         fallback={
           <Status
-            isLoading={isLoading}
-            isNotFound={isNotFound}
+            isLoading={!isLoaded}
+            isNotFound={isLoaded && !isSignedIn}
           />
         }
       >
-        <User user={(ctx.common as User)!}>
-          <Outlet />
-        </User>
+        <Outlet />
       </RenderGuard>
     </main>
   )
