@@ -111,7 +111,6 @@ export const TrendingPreviewSection = ({
       gradient
       gradientColor="#020817"
       className={cn('place-items-start', className)}
-
       {...marquee}
     >
       {displayCourses.map((course, idx) => (
@@ -195,29 +194,27 @@ export const TrendingPreview = () => {
 
       {/* Keep the section height consistent */}
       <section style={{ minHeight: '410px' }}>
-        {
-          Hardcover.TrendPeriod.options.map((period, idx) => {
-            const courses: Course[] = isSuccess
-              ? data?.results?.[selectedPeriod] ?? [] // Fetch based on selected period
-              : []
+        {Hardcover.TrendPeriod.options.map((period, idx) => {
+          const courses: Course[] = isSuccess
+            ? data?.results?.[selectedPeriod] ?? [] // Fetch based on selected period
+            : []
 
-            const displayCourses = getShuffledArray(
-              courses.map((course) => HardcoverUtils.parseCourse(course)),
-            )
+          const displayCourses = getShuffledArray(
+            courses.map((course) => HardcoverUtils.parseCourse(course)),
+          )
 
-            const direction = idx % 2 === 0 ? 'left' : 'right'
+          const direction = idx % 2 === 0 ? 'left' : 'right'
 
-            return (
-              <TrendingPreviewSection
-                key={`trend-${selectedPeriod}-${period}`}
-                courses={displayCourses}
-                marquee={{
-                  direction,
-                }}
-              />
-            )
-          })
-        }
+          return (
+            <TrendingPreviewSection
+              key={`trend-${selectedPeriod}-${period}`}
+              courses={displayCourses}
+              marquee={{
+                direction,
+              }}
+            />
+          )
+        })}
       </section>
     </section>
   )

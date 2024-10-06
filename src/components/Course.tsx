@@ -90,7 +90,7 @@ const useCourseContext = () => {
     ctxValue = {
       course: {} as Course,
       isSkeleton: true,
-      onNavigate: () => { },
+      onNavigate: () => {},
     }
   }
   return ctxValue
@@ -101,7 +101,6 @@ const useCourseContext = () => {
 type CourseProvider = PropsWithChildren & Omit<CourseContext, 'onNavigate'>
 export const Course = ({ children, ...value }: CourseProvider) => {
   const navigate = useNavigate()
-
   const onNavigate = () => {
     if (!value.course) return
     navigate(
@@ -243,8 +242,6 @@ export const CourseThumbnail = ({
           </small>
         </HoverCardContent>
       )}
-
-
     </HoverCard>
   )
 }
@@ -397,7 +394,7 @@ export const CourseDropdownMenu = ({ button, children }: CourseDropdown) => {
           <MarkIcon className="size-4" />
           <span>
             {!coreKeys.length
-              ? 'Want to Read'
+              ? 'Add to watchlist'
               : ShelvdUtils.coreListNames?.[coreKeys?.[0]]}
           </span>
           <MenuChevron className="ml-auto size-4" />
@@ -599,7 +596,7 @@ export const CourseDescription = ({
           'p whitespace-break-spaces text-pretty',
           'relative flex-1',
           !showFullDesc &&
-          'masked-overflow masked-overflow-top line-clamp-4 !overflow-y-hidden',
+            'masked-overflow masked-overflow-top line-clamp-4 !overflow-y-hidden',
           isEmptyDescription && 'italic text-muted-foreground',
         )}
         style={{
@@ -713,7 +710,6 @@ export const BiggerCourseCard = ({
     e.stopPropagation()
     e.preventDefault()
     setIsDeleting(true)
-    console.log('Delete Course')
     const deleteCoursePayload = {
       username,
       collection_key,

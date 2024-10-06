@@ -7,7 +7,7 @@ const routes = {
   courseDetail: '/details?course_code=',
   trending: '/trending',
   search: '/search?query=',
-  page:'&page='
+  page: '&page=',
 }
 
 export const useDiscoveryData = () => {
@@ -36,9 +36,9 @@ export const useTrendingData = () => {
   })
 }
 
-export const useSearchData = (q: string,page:number) => {
+export const useSearchData = (q: string, page: number) => {
   return useQuery({
-    queryKey: ['searchData', q],
+    queryKey: ['searchData', q, page], // Include page in queryKey
     queryFn: () =>
       fetch(`${baseURL}${routes.search}${q}${routes.page}${page}`).then((res) =>
         res.json(),
