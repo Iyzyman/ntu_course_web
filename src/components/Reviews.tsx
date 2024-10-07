@@ -12,69 +12,17 @@ import {
 import { CustomRating } from './ui/CustomRating'
 import { CustomTextField } from './ui/CustomTextField'
 import { CustomToggleButtonGroup } from './ui/CustomToggleButton'
-import { createContext, useContext } from 'react'
 import ThumbUpOutlinedIcon from '@mui/icons-material/ThumbUpOutlined'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
 import * as React from 'react'
 import { CustomFormControl } from './ui/CustomFormControl'
+import { ReviewProps, ReviewScore, SubmitReviewProps } from '@/types/hardcover'
+import { useParams } from '@/router'
+import { usePutReview } from './hooks/useCourseFinderHooks'
+import { useUser } from '@clerk/clerk-react'
+import { CustomDialog } from './ui/CustomDialog'
 
-interface ReviewScore {
-  'Content Usefulness': number
-  'Lecture Clarity': number
-  'Assignment Difficulty': number
-  'Team Dependency': number
-  'Overall Workload': number
-}
-
-export type ReviewContext = {
-  overall_score: ReviewScore
-  reviews: {
-    description: string
-    author: string
-    score: ReviewScore
-    recommended: boolean
-    date: string
-  }[]
-}
-
-const useReviewContext = () => {
-  let ctxValue = useContext(ReviewContext)
-  if (ctxValue === undefined) {
-    const score: ReviewScore = {
-      'Content Usefulness': 3.0,
-      'Lecture Clarity': 3.1,
-      'Assignment Difficulty': 3.2,
-      'Team Dependency': 3.3,
-      'Overall Workload': 3.4,
-    }
-    ctxValue = {
-      overall_score: score,
-      reviews: [
-        {
-          description:
-            'Consistency is very important for this course as there is no finals rather it is 4 test spread throughout the semester',
-          author: 'David Teo',
-          score: score,
-          recommended: true,
-          date: '2023 Semester 2',
-        },
-        {
-          description:
-            'Consistency is very important for this course as there is no finals rather it is 4 test spread throughout the semester',
-          author: 'David Teo',
-          score: score,
-          recommended: false,
-          date: '2023 Semester 2',
-        },
-      ],
-    }
-  }
-  return ctxValue
-}
-
-const ReviewContext = createContext<ReviewContext | undefined>(undefined)
-export const AggregateReviewScore = () => {
-  const { overall_score } = useReviewContext()
+export const AggregateReviewScore = ({rating}: ReviewProps) => {
   return (
     <Box
       display="flex"
@@ -83,7 +31,7 @@ export const AggregateReviewScore = () => {
       py={4}
       px={10}
     >
-      {Object.entries(overall_score).map(([key, value]) => (
+      {Object.entries(rating).map(([key, value]) => (
         <Stack
           display="flex"
           justifyContent="center"
@@ -137,8 +85,8 @@ export const AggregateReviewScore = () => {
   )
 }
 
-export const AllReviews = () => {
-  const { reviews } = useReviewContext()
+export const AllReviews = ({reviews}: ReviewProps) => {
+  console.log(reviews)
   return (
     <Stack spacing={2}>
       <Typography sx={{ borderBottom: 2, borderColor: '#A3A3A3' }}>
@@ -155,14 +103,14 @@ export const AllReviews = () => {
             fontFamily="Inter"
             fontWeight={500}
           >
-            {review.author}
+            {review.displayName ?? 'Anonymous'}
           </Typography>
           <Typography
             fontSize={16}
             fontFamily="Inter"
             fontWeight={300}
           >
-            Took the module on {review.date}
+            Took the module on {review.course_date}
           </Typography>
           <Box
             display="flex"
@@ -171,7 +119,7 @@ export const AllReviews = () => {
             px={4}
             py={2}
           >
-            {Object.entries(review.score).map(([key, value]) => (
+            {Object.entries(review.rating).map(([key, value]) => (
               <Stack alignItems="center">
                 <CustomRating
                   value={value}
@@ -190,7 +138,7 @@ export const AllReviews = () => {
             fontSize={18}
             fontFamily="Inter"
           >
-            {review.description}
+            {review.review_text}
           </Typography>
 
           {review.recommended && (
@@ -204,7 +152,7 @@ export const AllReviews = () => {
                 fontSize={16}
                 fontFamily="Inter"
               >
-                {review.author} recommends this course
+                {review.displayName ?? 'Anonymous'} recommends this course
               </Typography>
             </Stack>
           )}
@@ -215,9 +163,13 @@ export const AllReviews = () => {
 }
 
 export const ReviewForm = () => {
-  const [recommend, setRecommend] = React.useState<string>('Yes')
+  const { user, isSignedIn } = useUser()
+  const { slug } = useParams('/course/:slug')
+  const { mutate } = usePutReview()
+
+  const [recommend, setRecommend] = React.useState<boolean>(true)
   const [name, setName] = React.useState<string>()
-  const [semester, setSemester] = React.useState<string>('')
+  const [semester, setSemester] = React.useState<string>()
   const [reviewText, setReviewText] = React.useState<string>()
   const [rating, setRating] = React.useState<ReviewScore>({
     'Content Usefulness': 0,
@@ -227,10 +179,13 @@ export const ReviewForm = () => {
     'Overall Workload': 0,
   })
 
+  const [dialogText, setDialogText] = React.useState<string>('')
+  const [openDialog, setOpenDialog] = React.useState<boolean>(false)
+
   const allsemesters = semesterOptions(2018, 2024)
   const handleRecommendChange = (
     _event: React.MouseEvent<HTMLElement>,
-    newValue: string | null,
+    newValue: boolean | null,
   ) => {
     if (newValue !== null) {
       setRecommend(newValue)
@@ -257,13 +212,38 @@ export const ReviewForm = () => {
     setReviewText(event.target.value)
   }
   const handleSubmit = () => {
-    // let dataToSubmit = {
-    //   name: { name },
-    //   semester: { semester },
-    //   recommend: { recommend },
-    //   rating: { rating },
-    //   description: { reviewText }
-    // }
+    if (!user || !isSignedIn) {
+      setDialogText('Please sign in to submit a review')
+      setOpenDialog(true)
+      return
+    }
+    else if (!semester) {
+      setDialogText('Please enter the date you took this course')
+      setOpenDialog(true)
+      return
+    }
+
+    const dataToSubmit: SubmitReviewProps = {
+      course_id: slug,
+      rating: rating,
+      user_id: user.id,
+      displayName: name,
+      review_text: reviewText,
+      course_date: semester,
+      recommended: recommend,
+    }
+
+    mutate(dataToSubmit, {
+      onSuccess: () => {
+        setDialogText('Submission successful!')
+        setOpenDialog(true)
+      },
+      onError: (error) => {
+        setDialogText('Submission failed, please try again')
+        setOpenDialog(true)
+        console.error(error)
+      },
+    })
   }
 
   return (
@@ -320,8 +300,8 @@ export const ReviewForm = () => {
           onChange={handleRecommendChange}
           value={recommend}
         >
-          <ToggleButton value="Yes">Yes</ToggleButton>
-          <ToggleButton value="No">No</ToggleButton>
+          <ToggleButton value={true}>Yes</ToggleButton>
+          <ToggleButton value={false}>No</ToggleButton>
         </CustomToggleButtonGroup>
       </div>
 
@@ -352,6 +332,7 @@ export const ReviewForm = () => {
       >
         Submit
       </Button>
+      <CustomDialog text={dialogText} open={openDialog} onClose={()=>setOpenDialog(false)} buttonFunction={()=>setOpenDialog(false)}/>
     </Stack>
   )
 }

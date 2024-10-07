@@ -1,3 +1,4 @@
+import { SubmitReviewProps } from '@/types/hardcover'
 import { useMutation, useQuery } from '@tanstack/react-query'
 
 const baseURL = 'http://localhost:3001/api'
@@ -9,7 +10,8 @@ const routes = {
   search: '/search?query=',
   page: '&page=',
   like: '/like',
-  watchlist: '/watchlist'
+  watchlist: '/watchlist',
+  review: '/review'
 }
 
 export const useDiscoveryData = () => {
@@ -120,5 +122,32 @@ export const useGetWatchList = (user_id: string, course_code: string) => {
       return response.json()
     },
     enabled: !!user_id && !!course_code,  // Only run if both user_id and course_code are present
+  })
+}
+
+export const usePutReview = () => {
+  return useMutation({
+    mutationFn: (reviewData: SubmitReviewProps) =>
+      fetch(`${baseURL}${routes.review}/putReview`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(reviewData),
+      }).then((res) => {
+        if (!res.ok) throw new Error('Failed to submit review')
+        return res.json()
+      })
+  })
+}
+
+export const useGetReviews = (course_id: string) => {
+  return useQuery({
+    queryKey: ['useReviewData', course_id],
+    queryFn: () =>
+      fetch(`${baseURL}${routes.review}/${course_id}`).then((res) => {
+        if (!res.ok) throw new Error('No reviews found')
+        return res.json()
+      }),
   })
 }
