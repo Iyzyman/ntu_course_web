@@ -125,6 +125,17 @@ export const useGetWatchList = (user_id: string, course_code: string) => {
   })
 }
 
+export const useWatchListData = (user_id: string) => {
+  return useQuery({
+    queryKey: ['getWatchList', user_id],
+    queryFn: () =>
+      fetch(`${baseURL}${routes.watchlist}?user_id=${user_id}`).then((res) => {
+        if (!res.ok) throw new Error('No watchlist found')
+          return res.json()
+      }),
+  })
+}
+
 export const usePutReview = () => {
   return useMutation({
     mutationFn: (reviewData: SubmitReviewProps) =>
@@ -147,13 +158,6 @@ export const useGetReviews = (course_id: string) => {
     queryFn: () =>
       fetch(`${baseURL}${routes.review}/${course_id}`).then((res) => {
         if (!res.ok) throw new Error('No reviews found')
-
-export const useWatchListData = (user_id: string) => {
-  return useQuery({
-    queryKey: ['getWatchList', user_id],
-    queryFn: () =>
-      fetch(`${baseURL}${routes.watchlist}?user_id=${user_id}`).then((res) => {
-        if (!res.ok) throw new Error('No watchlist found')
         return res.json()
       }),
   })
