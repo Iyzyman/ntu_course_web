@@ -1,6 +1,6 @@
 import Course from '@/components/Course'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/Tabs'
-import { Alert, AlertDescription, AlertTitle } from '@/components/ui/Alert'
+import { Alert, AlertDescription } from '@/components/ui/Alert'
 import { InfoCircledIcon } from '@radix-ui/react-icons'
 import {
   AggregateReviewScore,
@@ -19,7 +19,6 @@ import { cn } from '@/utils/dom'
 import { Separator } from '@radix-ui/react-dropdown-menu'
 import { useSession } from '@clerk/clerk-react'
 import { useGetReviews } from '@/components/hooks/useCourseFinderHooks'
-import { ReviewProps } from '@/types/hardcover'
 
 const DisplayCourseDetailCategories = CourseDetailCategory.extract([
   'information',
@@ -161,29 +160,27 @@ const CourseInfo = () => {
 
 const ReviewInfo = () => {
   const { slug } = useParams('/course/:slug')
-  const {data, isLoading, isFetching, isSuccess} = useGetReviews(slug)
+  const {data, isLoading, isFetching, isSuccess, refetch} = useGetReviews(slug)
 
   const isDataLoading = isLoading || isFetching
   const isFound = (!isDataLoading && isSuccess)
-  const course_review: ReviewProps = data
 
   return (
     <section>
       {(isFound && data) ? (
         <section>
-          <AggregateReviewScore {...course_review}/>
-          <AllReviews {...course_review}/>
+          <AggregateReviewScore {...data}/>
+          <AllReviews {...data}/>
         </section>
       ) : (
         <Alert>
           <InfoCircledIcon className="size-4" />
-          <AlertTitle>Error</AlertTitle>
           <AlertDescription>
             No reviews found
           </AlertDescription>
         </Alert>
       )}
-      <ReviewForm />
+      <ReviewForm refetch={refetch}/>
     </section>
 
   )

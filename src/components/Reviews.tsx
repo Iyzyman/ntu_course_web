@@ -21,6 +21,11 @@ import { useParams } from '@/router'
 import { usePutReview } from './hooks/useCourseFinderHooks'
 import { useUser } from '@clerk/clerk-react'
 import { CustomDialog } from './ui/CustomDialog'
+import { DefaultError, QueryObserverResult, RefetchOptions } from '@tanstack/react-query'
+
+interface ReviewFormProps {
+  refetch: (options?: RefetchOptions) => Promise<QueryObserverResult<unknown, DefaultError>>;
+}
 
 export const AggregateReviewScore = ({rating}: ReviewProps) => {
   return (
@@ -162,7 +167,7 @@ export const AllReviews = ({reviews}: ReviewProps) => {
   )
 }
 
-export const ReviewForm = () => {
+export const ReviewForm = ({refetch}: ReviewFormProps) => {
   const { user, isSignedIn } = useUser()
   const { slug } = useParams('/course/:slug')
   const { mutate } = usePutReview()
@@ -235,6 +240,7 @@ export const ReviewForm = () => {
 
     mutate(dataToSubmit, {
       onSuccess: () => {
+        refetch()
         setDialogText('Submission successful!')
         setOpenDialog(true)
       },
