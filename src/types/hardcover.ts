@@ -176,6 +176,30 @@ export const SearchCategoryCollectionParams: Record<
   } as SearchCollectionParams,
 }
 
+export type SubmitReviewProps = {
+  course_id: string
+  rating: ReviewScore
+  user_id: string
+  displayName?: string
+  review_text?: string
+  course_date: string
+  recommended: boolean
+}
+
+export type ReviewProps = {
+  course_id: string
+  rating: ReviewScore
+  reviews: SubmitReviewProps[]
+}
+
+export type ReviewScore = {
+  'Content Usefulness': number
+  'Lecture Clarity': number
+  'Assignment Difficulty': number
+  'Team Dependency': number
+  'Overall Workload': number
+}
+
 //#endregion  //*======== GRAPHQL ===========
 export type SearchEdition = {
   id: string
