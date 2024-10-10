@@ -203,7 +203,6 @@ export const CourseThumbnail = ({
   ...rest
 }: CourseThumbnail) => {
   const { course, onNavigate } = useCourseContext()
-
   return (
     <HoverCard>
       <HoverCardTrigger asChild>
@@ -666,12 +665,13 @@ export const CoursePrerequisites: React.FC<CoursePrerequisitesProps> = ({
         {(prerequisites ?? []).map((prerequisite, idx) => {
           // Validate prerequisite using CourseInfo.safeParse
           const validation = CourseInfo.safeParse(prerequisite)
+          const course =HardcoverUtils.parseCourse(prerequisite)
           if (!validation.success) return null
 
           return (
             <Course
-              key={`${idx}-${prerequisite.key}`}
-              course={prerequisite}
+              key={`${idx}-${course.key}`}
+              course={course}
             >
               <Course.Thumbnail
                 className={cn(

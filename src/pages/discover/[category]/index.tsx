@@ -55,7 +55,7 @@ const ListCategoryPage = () => {
   }
 
   const allCourses: List = mockList[0]
-  const results = (data?.results ?? []) as Hardcover.List[]
+  const results = (data?? []) as Hardcover.List[]
   const isNotFound =
     !isValidParams || (!isLoading && !isSuccess && !results.length)
 
@@ -65,7 +65,6 @@ const ListCategoryPage = () => {
   const segmentLimit = 10
   const segments: Hardcover.List[][] = getSegmentedArray(results, segmentLimit)
   const segment: Hardcover.List[] = segments?.[pageIdx] ?? []
-
   const maxPageIdx = segments.length - 1
   const isPaginationDisabled = maxPageIdx < 1 || !segment.length
   const isFirstPage = pageIdx === 0
@@ -187,22 +186,23 @@ const ListCategoryPage = () => {
               '!h-auto !rounded-none border-b !bg-transparent pb-0',
               '*:rounded-b-none *:border-b *:!bg-transparent *:transition-all',
               'flex w-full flex-row !place-content-start place-items-center gap-x-8',
-
               'overflow-x-auto',
             )}
           >
-            {Hardcover.ListCategory.options.map((category) => (
-              <TabsTrigger
-                key={`lists-tab-${category}`}
-                value={category}
-                className={cn(
-                  'capitalize',
-                  '!rounded-none data-[state=active]:border-primary',
-                )}
-              >
-                <span className="h4 capitalize">{category}</span>
-              </TabsTrigger>
-            ))}
+            {Hardcover.ListCategory.options.map((category, index) => {
+              return (
+                <TabsTrigger
+                  key={`lists-tab-${category}-${index}`} // Ensure uniqueness with index fallback
+                  value={category}
+                  className={cn(
+                    'capitalize',
+                    '!rounded-none data-[state=active]:border-primary',
+                  )}
+                >
+                  <span className="h4 capitalize">{category}</span>
+                </TabsTrigger>
+              )
+            })}
           </TabsList>
 
           {Hardcover.ListCategory.options.map((category) =>
