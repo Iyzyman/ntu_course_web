@@ -91,7 +91,6 @@ export const AggregateReviewScore = ({rating}: ReviewProps) => {
 }
 
 export const AllReviews = ({reviews}: ReviewProps) => {
-  console.log(reviews)
   return (
     <Stack spacing={2}>
       <Typography sx={{ borderBottom: 2, borderColor: '#A3A3A3' }}>
@@ -244,10 +243,9 @@ export const ReviewForm = ({refetch}: ReviewFormProps) => {
         setDialogText('Submission successful!')
         setOpenDialog(true)
       },
-      onError: (error) => {
+      onError: () => {
         setDialogText('Submission failed, please try again')
         setOpenDialog(true)
-        console.error(error)
       },
     })
   }
