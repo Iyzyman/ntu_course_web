@@ -11,7 +11,8 @@ const routes = {
   page: '&page=',
   like: '/like',
   watchlist: '/watchlist',
-  review: '/review'
+  review: '/review',
+  allCourses: '/course/all'
 }
 
 export const useDiscoveryData = () => {
@@ -160,5 +161,13 @@ export const useGetReviews = (course_id: string) => {
         if (!res.ok) throw new Error('No reviews found')
         return res.json()
       }),
+  })
+}
+
+export const useAllCoursesData = () => {
+  return useQuery({
+    queryKey: ['allCoursesData'],
+    queryFn: () =>
+      fetch(`${baseURL}${routes.allCourses}`).then((res) => res.json()),
   })
 }

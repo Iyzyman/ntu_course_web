@@ -13,14 +13,13 @@ import {
   PaginationPrevious,
 } from '@/components/ui/Pagination'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/Tabs'
-import { mockList } from '@/data/clients/mockdata'
 import { Navigate, useNavigate, useParams } from '@/router'
 import { Hardcover } from '@/types'
 import { ListData } from '@/types/shelvd'
 import { cn } from '@/utils/dom'
 import { getRangedArray, getSegmentedArray } from '@/utils/helpers'
-import { useEffect, useState } from 'react'
-import { useDiscoveryData } from '@/components/hooks/useCourseFinderHooks'
+import { useCallback, useEffect, useMemo, useState } from 'react'
+import { useAllCoursesData, useDiscoveryData } from '@/components/hooks/useCourseFinderHooks'
 
 const ListCategoryPage = () => {
   const navigate = useNavigate()
@@ -54,7 +53,6 @@ const ListCategoryPage = () => {
     console.log(error)
   }
 
-  const allCourses: List = mockList[0]
   const results = (data?? []) as Hardcover.List[]
   const isNotFound =
     !isValidParams || (!isLoading && !isSuccess && !results.length)
@@ -102,11 +100,43 @@ const ListCategoryPage = () => {
   //#endregion  //*======== PAGINATION ===========
 
   //#endregion  //*======== Filter ===========
+  const { data: allCoursesData, isSuccess: allCoursesSuccess } = useAllCoursesData()
+  const allCourses: List = useMemo(() => ({
+    key: 'allCourses',
+    name: 'allCourses',
+    courses: allCoursesSuccess ? allCoursesData : []
+  }), [allCoursesSuccess, allCoursesData])
+  const filterPageMaxResults = 10
+
   const [filteredList, setFilteredList] = useState<List>(allCourses)
-  const handleFilterChange = (newList: List) => {
+  const [filterPage, setFilterPage] = useState<number>(0)
+  const [filterMaxPage, setFilterMaxPage] = useState<number>(1)
+  const handleFilterChange = useCallback((newList: List) => {
     setFilteredList(newList)
-    console.log(filteredList)
+  }, [])
+
+  useEffect(() => {
+    const max_pages = Math.ceil(filteredList.courses.length / filterPageMaxResults)
+    setFilterPage(0)
+    setFilterMaxPage(max_pages)
+  }, [filteredList])
+
+  const array_index = () => {
+    return (filterPage + 1) * 10
   }
+  const onFilterPageChange = (page: number) => {
+    if (page < 0 || page > filterMaxPage) return
+    setFilterPage(page)
+  }
+  const onFilterPagePrevious = () => onFilterPageChange(filterPage - 1)
+  const onFilterPageNext = () => onFilterPageChange(filterPage + 1)
+  const isFilterFirstPage = filterPage === 0
+  const isFilterLastPage = filterPage === filterMaxPage
+
+  const pageRange = getRangedArray({
+    min: isFilterFirstPage? filterPage: filterPage - 1,
+    max: isFilterLastPage? filterPage: filterPage + 1
+  })
   //#endregion  //*======== Filter ===========
 
   if (!isValidParams)
@@ -272,8 +302,8 @@ const ListCategoryPage = () => {
                 />
 
                 <List
-                  data={ListData.parse(filteredList)}
-                  overwriteCourses={filteredList.courses}
+                  data={ListData.parse(allCourses)}
+                  overwriteCourses={filteredList.courses.slice(array_index(), array_index() + 9)}
                 >
                   <div className="flex flex-col gap-y-2">
                     <div
@@ -284,11 +314,41 @@ const ListCategoryPage = () => {
                       )}
                     >
                       <List.Courses>
-                        <Course.Thumbnail className="w-fit !rounded-none" />
                       </List.Courses>
                     </div>
                   </div>
                 </List>
+
+                <Pagination>
+                  <PaginationContent>
+                    <PaginationItem
+                      onClick={onFilterPagePrevious}
+                      disabled={isFilterFirstPage}>
+                      <PaginationPrevious className="max-sm:!px-2 max-sm:[&>span]:hidden" />
+                    </PaginationItem>
+
+                    {pageRange.map((pgIdx) => (
+                      <PaginationItem
+                        key={`lists-${category}-page-${pgIdx}`}
+                        onClick={() => {
+                          onPageChange(pgIdx)
+                        }}
+                      >
+                        <PaginationLink isActive={pgIdx === filterPage}>
+                          {pgIdx + 1}
+                        </PaginationLink>
+                      </PaginationItem>
+                    ))}
+
+                    <PaginationItem
+                      onClick={onFilterPageNext}
+                      disabled={isFilterLastPage}
+                    >
+                      <PaginationNext className="max-sm:!px-2 max-sm:[&>span]:hidden" />
+                    </PaginationItem>
+
+                  </PaginationContent>
+                </Pagination>
               </TabsContent>
             ),
           )}
