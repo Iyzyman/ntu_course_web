@@ -20,6 +20,7 @@ import { cn } from '@/utils/dom'
 import { getRangedArray, getSegmentedArray } from '@/utils/helpers'
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import { useAllCoursesData, useDiscoveryData } from '@/components/hooks/useCourseFinderHooks'
+import { HardcoverUtils } from '@/utils/clients/hardcover'
 
 const ListCategoryPage = () => {
   const navigate = useNavigate()
@@ -100,12 +101,23 @@ const ListCategoryPage = () => {
   //#endregion  //*======== PAGINATION ===========
 
   //#endregion  //*======== Filter ===========
-  const { data: allCoursesData, isSuccess: allCoursesSuccess } = useAllCoursesData()
-  const allCourses: List = useMemo(() => ({
+  const { 
+    data: allCoursesData, 
+    isLoading: allCoursesLoading, 
+    isFetching: allCoursesFetching, 
+    isSuccess: allCoursesSuccess 
+  } = useAllCoursesData()
+
+  const isDataLoading = allCoursesLoading || allCoursesFetching
+  const isFound = (!isDataLoading && allCoursesSuccess)
+  
+  const allCourses: List = useMemo(() => {
+    const allCoursesArray = isFound ? allCoursesData.map((course: Course)=>HardcoverUtils.parseCourse(course)) : []
+    return {
     key: 'allCourses',
     name: 'allCourses',
-    courses: allCoursesSuccess ? allCoursesData : []
-  }), [allCoursesSuccess, allCoursesData])
+    courses: allCoursesArray
+  }}, [isFound, allCoursesData])
   const filterPageMaxResults = 10
 
   const [filteredList, setFilteredList] = useState<List>(allCourses)
@@ -116,6 +128,7 @@ const ListCategoryPage = () => {
   }, [])
 
   useEffect(() => {
+    console.log(filteredList)
     const max_pages = Math.floor(filteredList.courses.length / filterPageMaxResults)
     setFilterPage(0)
     setFilterMaxPage(max_pages)
