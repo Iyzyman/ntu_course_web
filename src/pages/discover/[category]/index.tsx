@@ -110,19 +110,19 @@ const ListCategoryPage = () => {
 
   const [filteredList, setFilteredList] = useState<List>(allCourses)
   const [filterPage, setFilterPage] = useState<number>(0)
-  const [filterMaxPage, setFilterMaxPage] = useState<number>(1)
+  const [filterMaxPage, setFilterMaxPage] = useState<number>(0)
   const handleFilterChange = useCallback((newList: List) => {
     setFilteredList(newList)
   }, [])
 
   useEffect(() => {
-    const max_pages = Math.ceil(filteredList.courses.length / filterPageMaxResults)
+    const max_pages = Math.floor(filteredList.courses.length / filterPageMaxResults)
     setFilterPage(0)
     setFilterMaxPage(max_pages)
   }, [filteredList])
 
   const array_index = () => {
-    return (filterPage + 1) * 10
+    return filterPage * 10
   }
   const onFilterPageChange = (page: number) => {
     if (page < 0 || page > filterMaxPage) return

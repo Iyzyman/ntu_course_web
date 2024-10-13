@@ -1,7 +1,10 @@
 import { List } from "@/types/shelvd"
-import { Checkbox, ListItemText, MenuItem, Select, SelectChangeEvent } from "@mui/material"
+import { Autocomplete, Checkbox, Chip, ListItemText, MenuItem, Select, SelectChangeEvent } from "@mui/material"
+import CloseIcon from '@mui/icons-material/Close';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { PropsWithChildren, useEffect, useState } from "react"
 import { CustomFormControl } from "./ui/CustomFormControl"
+import { CustomTextField } from "./ui/CustomTextField"
 
 interface FilterProps extends PropsWithChildren {
     courseList: List
@@ -23,12 +26,10 @@ export const Filter = ({courseList, onFilterChange}: FilterProps) => {
     }
 
     const tagList = courseArray.flatMap(course=>course.tags)
-    const tagFilters = [...new Set(tagList)]
-    const handleTagFilter = (event: SelectChangeEvent<string[]>) => {
-        const {
-            target: {value}
-        } = event
-        setTags(typeof value === 'string' ? value.split(',') : value) 
+    const tagFilters = [...new Set(tagList)].filter(value => value !== null)
+    const handleTagFilter = (_event: React.SyntheticEvent, value: (string | undefined)[]) => {
+       const tagArray = value.filter(item=>item !== undefined)
+       setTags(tagArray)
     }
 
     useEffect(() => {
@@ -50,11 +51,19 @@ export const Filter = ({courseList, onFilterChange}: FilterProps) => {
             <h4>Filter by:</h4>
             <CustomFormControl labelName="Faculty">
                 <Select
+                    id="filterByFaculty"
                     label="Faculty"
                     multiple
                     value={faculty}
                     renderValue={(selected)=>selected.join(', ')}
                     onChange={handleFacultyFilter}
+                    MenuProps={{    
+                        PaperProps: {
+                            style: {
+                            maxHeight: 400,
+                            },
+                        }
+                    }}
                 >
                     {schoolFilters.map((schoolName)=>(
                         schoolName &&
@@ -66,23 +75,30 @@ export const Filter = ({courseList, onFilterChange}: FilterProps) => {
                 </Select>
             </CustomFormControl>
 
-            <CustomFormControl labelName="Tags">
-                <Select
-                    label="Tags"
-                    multiple
-                    value={tags}
-                    renderValue={(selected)=>selected.join(', ')}
-                    onChange={handleTagFilter}
-                >
-                    {tagFilters.map((tagName)=>(
-                        tagName &&
-                        <MenuItem key={tagName} value={tagName}>
-                            <Checkbox checked={tags.includes(tagName)}/>
-                            <ListItemText primary={tagName}/>
-                        </MenuItem>
-                    ))}
-                </Select>
-            </CustomFormControl>
+            <Autocomplete
+                id='filterByTags'
+                multiple
+                limitTags={1}
+                options={tagFilters}
+                onChange={handleTagFilter}
+                renderInput={(params) => 
+                    <CustomTextField {...params} sx={{width: 400}} label='Tags'/>
+                }
+                clearIcon={<CloseIcon sx={{ color: '#A3A3A3' }} />}
+                popupIcon={<ExpandMoreIcon sx={{ color: '#A3A3A3' }} />} 
+                renderTags={(value, getTagProps) => 
+                    value.map((option, index)=> (
+                        <Chip 
+                            {...getTagProps({index})}
+                            label={option}
+                            sx={{
+                                backgroundColor: '#A3A3A3',
+                                color: 'white',
+                                fontFamily: 'Inter'
+                            }}/>
+                    ))
+                }
+            />
         </aside>
     )
 }
