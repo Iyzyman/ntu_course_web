@@ -27,7 +27,7 @@ export const Filter = ({courseList, onFilterChange}: FilterProps) => {
 
     const tagList = courseArray.flatMap(course=>course.tags)
     const tagFilters = [...new Set(tagList)].filter(value => value !== null)
-    const handleTagFilter = (event: React.SyntheticEvent, value: (string | undefined)[]) => {
+    const handleTagFilter = (_event: React.SyntheticEvent, value: (string | undefined)[]) => {
        const tagArray = value.filter(item=>item !== undefined)
        setTags(tagArray)
     }
