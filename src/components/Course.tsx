@@ -680,34 +680,28 @@ export const ClickStats = ({
       openSignIn()
       return
     }
-
-    if (isLiked) {
-      likeMutate(
-        { user_id, course_code, method: 'DELETE' },
-        {
-          onSuccess: () => {
-            setIsLiked(false)
-            setLikeCount((prev) => prev - 1)
-          },
-          onError: (error) => {
-            console.error('Error unliking course:', error)
-          },
+  
+    // Optimistically update the UI
+    const prevLiked = isLiked
+    const prevLikeCount = likeCount
+  
+    setIsLiked(!isLiked)
+    setLikeCount((prev) => (isLiked ? prev - 1 : prev + 1))
+  
+    likeMutate(
+      { user_id, course_code, method: isLiked ? 'DELETE' : 'POST' },
+      {
+        onSuccess: () => {
+          // Success case can be left empty as we've already updated the UI
         },
-      )
-    } else {
-      likeMutate(
-        { user_id, course_code, method: 'POST' },
-        {
-          onSuccess: () => {
-            setIsLiked(true)
-            setLikeCount((prev) => prev + 1)
-          },
-          onError: (error) => {
-            console.error('Error liking course:', error)
-          },
+        onError: (error) => {
+          // If the request fails, rollback the state
+          console.error('Error updating like status:', error)
+          setIsLiked(prevLiked)
+          setLikeCount(prevLikeCount)
         },
-      )
-    }
+      },
+    )
   }
 
   const handleFavoriteClick = () => {
@@ -715,34 +709,28 @@ export const ClickStats = ({
       openSignIn()
       return
     }
-
-    if (isFavorited) {
-      watchlistMutate(
-        { user_id, course_code, method: 'DELETE' },
-        {
-          onSuccess: () => {
-            setIsFavorited(false)
-            setWatchlistCount((prev) => prev - 1)
-          },
-          onError: (error) => {
-            console.error('Error removing from watchlist:', error)
-          },
+  
+    // Optimistically update the UI
+    const prevFavorited = isFavorited
+    const prevWatchlistCount = watchlistCount
+  
+    setIsFavorited(!isFavorited)
+    setWatchlistCount((prev) => (isFavorited ? prev - 1 : prev + 1))
+  
+    watchlistMutate(
+      { user_id, course_code, method: isFavorited ? 'DELETE' : 'POST' },
+      {
+        onSuccess: () => {
+          // Success case can be left empty as we've already updated the UI
         },
-      )
-    } else {
-      watchlistMutate(
-        { user_id, course_code, method: 'POST' },
-        {
-          onSuccess: () => {
-            setIsFavorited(true)
-            setWatchlistCount((prev) => prev + 1)
-          },
-          onError: (error) => {
-            console.error('Error adding to watchlist:', error)
-          },
+        onError: (error) => {
+          // If the request fails, rollback the state
+          console.error('Error updating favorite status:', error)
+          setIsFavorited(prevFavorited)
+          setWatchlistCount(prevWatchlistCount)
         },
-      )
-    }
+      },
+    )
   }
 
   return (
