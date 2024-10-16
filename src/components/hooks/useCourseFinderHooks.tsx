@@ -1,7 +1,9 @@
+import { env } from '@/env';
 import { SubmitReviewProps } from '@/types/hardcover'
 import { useMutation, useQuery } from '@tanstack/react-query'
 
-const baseURL = 'http://localhost:3001/api'
+const baseURL = `${env.VITE_APP_API_BASE_URL}/api`;
+
 
 const routes = {
   discover: '/discover',
