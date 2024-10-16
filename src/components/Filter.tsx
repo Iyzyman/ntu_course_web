@@ -39,7 +39,7 @@ export const Filter = ({ courseList, onFilterChange }: FilterProps) => {
     _event: React.SyntheticEvent,
     value: (string | undefined)[],
   ) => {
-    const tagArray = value.filter((item) => item !== undefined)
+    const tagArray = value.filter((item): item is string => item !== undefined)
     setTags(tagArray)
   }
 
