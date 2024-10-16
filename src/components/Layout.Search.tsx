@@ -584,7 +584,7 @@ export const SearchResults = ({ className, ...rest }: SearchResults) => {
                         )}
                         &nbsp;
                       </p>
-                      {course?.description !== undefined &&
+                      {course?.description !== undefined && course?.description !== null &&
                       course?.description.trim() !== '' ? (
                         <p
                           className={cn(

@@ -25,7 +25,7 @@ export const Course = BaseInfo.extend({
   likes: z.number().default(0),
   watchlists: z.number().default(0),
   tags: z.array(z.string()).default([]).optional(),
-  prerequisites: z.array(z.any()).default([]).nullable(),
+  prerequisites: z.array(z.any()).default([]),
   color: z.string().min(1).default('').optional(),
 })
 
