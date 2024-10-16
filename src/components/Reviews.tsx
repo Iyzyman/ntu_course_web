@@ -21,13 +21,19 @@ import { useParams } from '@/router'
 import { usePutReview } from './hooks/useCourseFinderHooks'
 import { useUser } from '@clerk/clerk-react'
 import { CustomDialog } from './ui/CustomDialog'
-import { DefaultError, QueryObserverResult, RefetchOptions } from '@tanstack/react-query'
+import {
+  DefaultError,
+  QueryObserverResult,
+  RefetchOptions,
+} from '@tanstack/react-query'
 
 interface ReviewFormProps {
-  refetch: (options?: RefetchOptions) => Promise<QueryObserverResult<unknown, DefaultError>>;
+  refetch: (
+    options?: RefetchOptions,
+  ) => Promise<QueryObserverResult<unknown, DefaultError>>
 }
 
-export const AggregateReviewScore = ({rating}: ReviewProps) => {
+export const AggregateReviewScore = ({ rating }: ReviewProps) => {
   return (
     <Box
       display="flex"
@@ -90,7 +96,7 @@ export const AggregateReviewScore = ({rating}: ReviewProps) => {
   )
 }
 
-export const AllReviews = ({reviews}: ReviewProps) => {
+export const AllReviews = ({ reviews }: ReviewProps) => {
   return (
     <Stack spacing={2}>
       <Typography sx={{ borderBottom: 2, borderColor: '#A3A3A3' }}>
@@ -166,7 +172,7 @@ export const AllReviews = ({reviews}: ReviewProps) => {
   )
 }
 
-export const ReviewForm = ({refetch}: ReviewFormProps) => {
+export const ReviewForm = ({ refetch }: ReviewFormProps) => {
   const { user, isSignedIn } = useUser()
   const { slug } = useParams('/course/:slug')
   const { mutate } = usePutReview()
@@ -220,8 +226,7 @@ export const ReviewForm = ({refetch}: ReviewFormProps) => {
       setDialogText('Please sign in to submit a review')
       setOpenDialog(true)
       return
-    }
-    else if (!semester) {
+    } else if (!semester) {
       setDialogText('Please enter the date you took this course')
       setOpenDialog(true)
       return
@@ -336,7 +341,12 @@ export const ReviewForm = ({refetch}: ReviewFormProps) => {
       >
         Submit
       </Button>
-      <CustomDialog text={dialogText} open={openDialog} onClose={()=>setOpenDialog(false)} buttonFunction={()=>setOpenDialog(false)}/>
+      <CustomDialog
+        text={dialogText}
+        open={openDialog}
+        onClose={() => setOpenDialog(false)}
+        buttonFunction={() => setOpenDialog(false)}
+      />
     </Stack>
   )
 }

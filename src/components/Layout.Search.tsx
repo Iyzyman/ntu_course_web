@@ -584,7 +584,8 @@ export const SearchResults = ({ className, ...rest }: SearchResults) => {
                         )}
                         &nbsp;
                       </p>
-                      {course?.description !== undefined && course?.description !== null &&
+                      {course?.description !== undefined &&
+                      course?.description !== null &&
                       course?.description.trim() !== '' ? (
                         <p
                           className={cn(
@@ -624,10 +625,6 @@ export const SearchResults = ({ className, ...rest }: SearchResults) => {
                         )}
                       </div>
                     </div>
-
-                    <aside className="flex flex-row place-content-end max-md:place-content-start md:flex-col">
-                      <Course.DropdownMenu />
-                    </aside>
                   </article>
                 </Course>
               </Search.ResultItem>

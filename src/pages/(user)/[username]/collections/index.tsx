@@ -25,23 +25,18 @@ const UserPage = () => {
 
   const userid = user?.id || ''
 
-  const {
-    data,
-    isSuccess,
-    isLoading,
-    isFetching,
-  } = useWatchListData(userid)
+  const { data, isSuccess, isLoading, isFetching } = useWatchListData(userid)
 
   const isDataLoading = isLoading || isFetching
-  const isFound = (!isDataLoading && isSuccess)
-  const courses = isFound? data?? [] : []
+  const isFound = !isDataLoading && isSuccess
+  const courses = isFound ? data ?? [] : []
   console.log(courses)
 
   const watchlist: List = {
     key: 'Collections',
     name: 'Collections',
     courses: courses,
-    coursesCount: courses.length
+    coursesCount: courses.length,
   }
 
   const isWatchListEmpty = watchlist.coursesCount === 0
@@ -97,42 +92,42 @@ const UserPage = () => {
         </Alert>
       )}
 
-      {!isWatchListEmpty &&(<section className='w-full flex'>
-        <RenderGuard
-          key={`${user?.id}-list-core-${watchlist.key}`}
-          renderIf={ListData.safeParse(watchlist).success}
-        >
-          <List
-            data={ListData.parse(watchlist)}
-            overwriteCourses={watchlist.courses}
+      {!isWatchListEmpty && (
+        <section className="flex w-full">
+          <RenderGuard
+            key={`${user?.id}-list-core-${watchlist.key}`}
+            renderIf={ListData.safeParse(watchlist).success}
           >
-            <div className="flex flex-col gap-y-2">
-              <h3
-                className={cn(
-                  'cursor-pointer underline-offset-4 hover:!underline',
-                  'small line-clamp-1 truncate text-pretty font-semibold uppercase leading-none tracking-tight text-muted-foreground',
-                )}
-              >
-                {'Collections'}&nbsp;
-                <Badge variant={'outline'}>
-                  {watchlist?.coursesCount ?? 0} courses
-                </Badge>
-              </h3>
+            <List
+              data={ListData.parse(watchlist)}
+              overwriteCourses={watchlist.courses}
+            >
+              <div className="flex flex-col gap-y-2">
+                <h3
+                  className={cn(
+                    'cursor-pointer underline-offset-4 hover:!underline',
+                    'small line-clamp-1 truncate text-pretty font-semibold uppercase leading-none tracking-tight text-muted-foreground',
+                  )}
+                >
+                  {'Collections'}&nbsp;
+                  <Badge variant={'outline'}>
+                    {watchlist?.coursesCount ?? 0} courses
+                  </Badge>
+                </h3>
 
-              <div
-                className={cn(
-                  'w-full place-content-start place-items-start gap-2',
-                  'flex flex-row flex-wrap',
-                  // 'sm:max-w-xl',
-                )}
-              >
-                <List.Courses>
-                </List.Courses>
+                <div
+                  className={cn(
+                    'w-full place-content-start place-items-start gap-2',
+                    'flex flex-row flex-wrap',
+                    // 'sm:max-w-xl',
+                  )}
+                >
+                  <List.Courses></List.Courses>
+                </div>
               </div>
-            </div>
-          </List>
-        </RenderGuard>
-      </section>
+            </List>
+          </RenderGuard>
+        </section>
       )}
     </>
   )

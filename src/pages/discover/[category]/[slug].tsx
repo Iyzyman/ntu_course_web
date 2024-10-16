@@ -1,4 +1,4 @@
-import Course from '@/components/Course'
+import Course, { StandardCourseList } from '@/components/Course'
 import { useDiscoveryData } from '@/components/hooks/useCourseFinderHooks'
 import Status from '@/components/Layout.Status'
 import List from '@/components/List'
@@ -106,9 +106,7 @@ const ListPage = () => {
               </section>
 
               <section className="w-full overflow-auto">
-                <List.Courses>
-                  {/* <Course.Thumbnail className="w-fit !rounded-none" /> */}
-                </List.Courses>
+                <StandardCourseList results={courses}></StandardCourseList>
               </section>
             </List>
           )

@@ -12,7 +12,7 @@ const routes = {
   like: '/like',
   watchlist: '/watchlist',
   review: '/review',
-  allCourses: '/course/all'
+  allCourses: '/course/all',
 }
 
 export const useDiscoveryData = () => {
@@ -53,7 +53,15 @@ export const useSearchData = (q: string, page: number) => {
 
 export const useLikeCourse = () => {
   return useMutation({
-    mutationFn: async ({ user_id, course_code, method }: { user_id: string, course_code: string, method: 'POST' | 'DELETE'}) => {
+    mutationFn: async ({
+      user_id,
+      course_code,
+      method,
+    }: {
+      user_id: string
+      course_code: string
+      method: 'POST' | 'DELETE'
+    }) => {
       const response = await fetch(`${baseURL}${routes.like}`, {
         method: method,
         headers: {
@@ -72,10 +80,10 @@ export const useLikeCourse = () => {
 }
 export const useGetLikeCourse = (user_id: string, course_code: string) => {
   return useQuery({
-    queryKey: ['getLikeStatus', user_id, course_code],  // Cache based on user and course
+    queryKey: ['getLikeStatus', user_id, course_code], // Cache based on user and course
     queryFn: async () => {
       const response = await fetch(
-        `${baseURL}${routes.like}?user_id=${user_id}&course_code=${course_code}`
+        `${baseURL}${routes.like}?user_id=${user_id}&course_code=${course_code}`,
       )
 
       if (!response.ok) {
@@ -84,13 +92,21 @@ export const useGetLikeCourse = (user_id: string, course_code: string) => {
 
       return response.json()
     },
-    enabled: !!user_id && !!course_code,  // Only run if both user_id and course_code are present
+    enabled: !!user_id && !!course_code, // Only run if both user_id and course_code are present
   })
 }
 
 export const useWatchListCourse = () => {
   return useMutation({
-    mutationFn: async ({ user_id, course_code, method }: { user_id: string, course_code: string, method: 'POST' | 'DELETE'}) => {
+    mutationFn: async ({
+      user_id,
+      course_code,
+      method,
+    }: {
+      user_id: string
+      course_code: string
+      method: 'POST' | 'DELETE'
+    }) => {
       const response = await fetch(`${baseURL}${routes.watchlist}`, {
         method: method,
         headers: {
@@ -110,10 +126,10 @@ export const useWatchListCourse = () => {
 
 export const useGetWatchList = (user_id: string, course_code: string) => {
   return useQuery({
-    queryKey: ['getWatchListStatus', user_id, course_code],  // Cache based on user and course
+    queryKey: ['getWatchListStatus', user_id, course_code], // Cache based on user and course
     queryFn: async () => {
       const response = await fetch(
-        `${baseURL}${routes.watchlist}/exists?user_id=${user_id}&course_code=${course_code}`
+        `${baseURL}${routes.watchlist}/exists?user_id=${user_id}&course_code=${course_code}`,
       )
 
       if (!response.ok) {
@@ -122,7 +138,7 @@ export const useGetWatchList = (user_id: string, course_code: string) => {
 
       return response.json()
     },
-    enabled: !!user_id && !!course_code,  // Only run if both user_id and course_code are present
+    enabled: !!user_id && !!course_code, // Only run if both user_id and course_code are present
   })
 }
 
@@ -132,7 +148,7 @@ export const useWatchListData = (user_id: string) => {
     queryFn: () =>
       fetch(`${baseURL}${routes.watchlist}?user_id=${user_id}`).then((res) => {
         if (!res.ok) throw new Error('No watchlist found')
-          return res.json()
+        return res.json()
       }),
   })
 }
@@ -149,7 +165,7 @@ export const usePutReview = () => {
       }).then((res) => {
         if (!res.ok) throw new Error('Failed to submit review')
         return res.json()
-      })
+      }),
   })
 }
 
