@@ -137,7 +137,7 @@ const CourseDetailsLayout = () => {
                 </p>
 
                 <aside>
-                  <div style={{ width: '30%', marginTop: '10px' }}>
+                  <div style={{ width: '10rem', marginTop: '10px' }}>
                     <Course.ClickStats
                       course_code={origin?.code || ''}
                       watchlists={origin?.watchlists || 0}

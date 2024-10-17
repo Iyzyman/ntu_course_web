@@ -1,31 +1,10 @@
 import { RenderGuard } from '@/components/providers/render.provider'
 import { Avatar } from '@/components/ui/Avatar'
 import { Badge, BadgeProps } from '@/components/ui/Badge'
-import { Button, ButtonProps } from '@/components/ui/Button'
+import { Button } from '@/components/ui/Button'
 import { Card, CardDescription, CardHeader } from '@/components/ui/Card'
-import { Checkbox } from '@/components/ui/Checkbox'
 import { List } from '@/components/List'
 import { Hardcover } from '@/types'
-import {
-  Command,
-  CommandEmpty,
-  CommandGroup,
-  CommandInput,
-  CommandItem,
-  CommandList,
-} from '@/components/ui/Command'
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuLabel,
-  DropdownMenuRadioGroup,
-  DropdownMenuRadioItem,
-  DropdownMenuSeparator,
-  DropdownMenuSub,
-  DropdownMenuSubContent,
-  DropdownMenuSubTrigger,
-  DropdownMenuTrigger,
-} from '@/components/ui/Dropdown-Menu'
 import {
   HoverCard,
   HoverCardArrow,
@@ -34,24 +13,14 @@ import {
 } from '@/components/ui/Hover.Card'
 import { Skeleton } from '@/components/ui/Skeleton'
 import { useDeleteCourseFromCollectionMutation } from '@/data/clients/collections.api'
-
-import {
-  UpdateListMembershipParams,
-  useUpdateListMembershipMutation,
-} from '@/data/clients/shelvd.api'
-import { useRootSelector } from '@/data/stores/root'
-import { UserSelectors } from '@/data/stores/user.slice'
 import { Link, useNavigate } from '@/router'
 import { Course as CourseInfo, ListData } from '@/types/shelvd'
 import { HardcoverUtils } from '@/utils/clients/hardcover'
-import { ShelvdUtils } from '@/utils/clients/shelvd'
 import { logger } from '@/utils/debug'
 import { cn } from '@/utils/dom'
-import { getUniqueArray } from '@/utils/helpers'
-import { useClerk, useUser  } from '@clerk/clerk-react'
+import { getLimitedArray } from '@/utils/helpers'
+import { useClerk, useUser } from '@clerk/clerk-react'
 import {
-  BookmarkFilledIcon,
-  BookmarkIcon,
   ChevronDownIcon,
   ChevronUpIcon,
   TrashIcon,
@@ -71,7 +40,12 @@ import StarBorderOutlinedIcon from '@mui/icons-material/StarBorderOutlined'
 import StarIcon from '@mui/icons-material/Star'
 import AddCircleOutlineOutlinedIcon from '@mui/icons-material/AddCircleOutlineOutlined'
 import { ring2 } from 'ldrs'
-import { useGetLikeCourse, useGetWatchList, useLikeCourse, useWatchListCourse } from './hooks/useCourseFinderHooks'
+import {
+  useGetLikeCourse,
+  useGetWatchList,
+  useLikeCourse,
+  useWatchListCourse,
+} from './hooks/useCourseFinderHooks'
 ring2.register()
 export type Course = CourseInfo
 //#endregion  //*======== CONTEXT ===========
@@ -91,7 +65,7 @@ const useCourseContext = () => {
     ctxValue = {
       course: {} as Course,
       isSkeleton: true,
-      onNavigate: () => {},
+      onNavigate: () => { },
     }
   }
   return ctxValue
@@ -247,237 +221,6 @@ export const CourseThumbnail = ({
 }
 Course.Thumbnail = CourseThumbnail
 
-type CourseDropdown = PropsWithChildren & {
-  button?: ButtonProps
-}
-export const CourseDropdownMenu = ({ button, children }: CourseDropdown) => {
-  const { course } = useCourseContext()
-
-  //#endregion  //*======== STORE ===========
-  const { openSignIn } = useClerk()
-  const { user, isSignedIn } = useUser()
-  const lists = useRootSelector(UserSelectors.state).lists
-
-  const coreLists = lists?.core ?? []
-  const memberCoreKeys = coreLists
-    .filter((list) => list.courseKeys.includes(course.key))
-    .map(({ key }) => key)
-  const createdLists = lists?.created ?? []
-  const memberCreatedKeys = createdLists
-    .filter((list) => list.courseKeys.includes(course.key))
-    .map(({ key }) => key)
-  //#endregion  //*======== STORE ===========
-
-  //#endregion  //*======== STATES ===========
-  const [isOpen, setIsOpen] = useState<boolean>(false)
-
-  const [coreKeys, setCoreKeys] = useState<string[]>(memberCoreKeys)
-  const [createdKeys, setCreatedKeys] = useState<string[]>(memberCreatedKeys)
-
-  const reset = () => {
-    setIsOpen(false)
-    setCoreKeys(getUniqueArray(memberCoreKeys))
-    setCreatedKeys(getUniqueArray(memberCreatedKeys))
-  }
-
-  // reset states on mount
-  useEffect(() => {
-    reset()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [course.key])
-  //#endregion  //*======== STATES ===========
-
-  const onSelectCoreKey = (key: string) => {
-    const isRemove = !key.length
-
-    const keys = new Set(isRemove ? [] : [key])
-    const updatedCoreKeys = Array.from(keys)
-    setCoreKeys(updatedCoreKeys)
-
-    logger(
-      { breakpoint: '[Course.tsx:309]/CourseDropdown/onSelectCoreKey' },
-      {
-        created: {
-          prev: memberCoreKeys,
-          curr: updatedCoreKeys,
-        },
-      },
-    )
-  }
-
-  const onSelectCreatedKey = (key: string) => {
-    const keys = new Set(createdKeys)
-    const isAdded = keys.has(key)
-
-    if (!isAdded) {
-      keys.add(key)
-    } else {
-      keys.delete(key)
-    }
-
-    const updatedCreatedKeys = Array.from(keys)
-    setCreatedKeys(updatedCreatedKeys)
-
-    logger(
-      { breakpoint: '[Course.tsx:309]/CourseDropdown/onSelectCreatedKey' },
-      {
-        created: {
-          prev: memberCreatedKeys,
-          curr: updatedCreatedKeys,
-        },
-      },
-    )
-  }
-
-  logger(
-    { breakpoint: '[Course.tsx:309]/CourseDropdown' },
-    // { memberCoreKeys, memberCreatedKeys },
-    // { coreKeys, createdKeys },
-    {
-      coreLists,
-    },
-    {
-      core: {
-        prev: memberCoreKeys,
-        curr: coreKeys,
-      },
-      created: {
-        prev: memberCreatedKeys,
-        curr: createdKeys,
-      },
-    },
-  )
-
-  //#endregion  //*======== MUTATIONS ===========
-  const [upateListMembership] = useUpdateListMembershipMutation()
-  const onSubmit = () => {
-    if (!isSignedIn) return
-    const params = UpdateListMembershipParams.parse({
-      userId: user?.id,
-      courseKey: course.key,
-      core: {
-        prev: memberCoreKeys,
-        curr: coreKeys,
-      },
-      created: {
-        prev: memberCreatedKeys,
-        curr: createdKeys,
-      },
-    })
-    upateListMembership(params)
-
-    logger({ breakpoint: '[Course.tsx:309]/CourseDropdown/onSubmit' }, params)
-  }
-  //#endregion  //*======== MUTATIONS ===========
-
-  const MarkIcon = !coreKeys.length ? BookmarkIcon : BookmarkFilledIcon
-  const MenuChevron = isOpen ? ChevronUpIcon : ChevronDownIcon
-  // if (!isSignedIn) return null
-  return (
-    <DropdownMenu
-      open={isSignedIn ? isOpen : false}
-      onOpenChange={(open) => {
-        if (!isSignedIn) {
-          openSignIn()
-          return
-        }
-        setIsOpen(open)
-        if (open) return
-        onSubmit()
-      }}
-    >
-      <DropdownMenuTrigger asChild>
-        <Button
-          className="flex w-1/5 min-w-fit flex-row !place-content-start place-items-center gap-1 px-1.5 py-0.5"
-          {...button}
-        >
-          <MarkIcon className="size-4" />
-          <span>
-            {!coreKeys.length
-              ? 'Add to watchlist'
-              : ShelvdUtils.coreListNames?.[coreKeys?.[0]]}
-          </span>
-          <MenuChevron className="ml-auto size-4" />
-        </Button>
-      </DropdownMenuTrigger>
-      <DropdownMenuContent>
-        <DropdownMenuLabel className="small py-0 text-xs capitalize text-muted-foreground">
-          {course.title}
-        </DropdownMenuLabel>
-
-        {!!coreLists.length && (
-          <>
-            <DropdownMenuSeparator />
-            <DropdownMenuRadioGroup
-              value={coreKeys?.[0]}
-              onValueChange={onSelectCoreKey}
-            >
-              {coreLists.map((list) => (
-                <DropdownMenuRadioItem
-                  key={`course-${course.key}-collection-core-${list.key}`}
-                  value={list.key}
-                >
-                  {list.name}
-                </DropdownMenuRadioItem>
-              ))}
-
-              {!!coreKeys.length && (
-                <DropdownMenuRadioItem
-                  value={''}
-                  disabled={!coreKeys.length}
-                  className={cn('text-destructive', 'disabled:hidden')}
-                >
-                  Remove
-                </DropdownMenuRadioItem>
-              )}
-            </DropdownMenuRadioGroup>
-          </>
-        )}
-
-        {!!createdLists.length && (
-          <>
-            <DropdownMenuSeparator />
-            <DropdownMenuSub>
-              <DropdownMenuSubTrigger>Add to list</DropdownMenuSubTrigger>
-              <DropdownMenuSubContent className="p-0">
-                <Command>
-                  <CommandInput
-                    placeholder="Search lists..."
-                    autoFocus={true}
-                    className="h-9"
-                  />
-                  <CommandList>
-                    <CommandEmpty>No lists found.</CommandEmpty>
-                    <CommandGroup>
-                      {createdLists.map((list) => (
-                        <CommandItem
-                          key={`course-${course.key}-collection-user-${list.key}`}
-                          value={list.key}
-                          onSelect={onSelectCreatedKey}
-                          className="flex flex-row place-items-center gap-2"
-                        >
-                          <Checkbox
-                            id={list.key}
-                            checked={createdKeys.includes(list.key)}
-                          />
-                          {list.name}
-                        </CommandItem>
-                      ))}
-                    </CommandGroup>
-                  </CommandList>
-                </Command>
-              </DropdownMenuSubContent>
-            </DropdownMenuSub>
-          </>
-        )}
-        {children}
-      </DropdownMenuContent>
-    </DropdownMenu>
-  )
-}
-
-Course.DropdownMenu = CourseDropdownMenu
-
 type CourseTags = HTMLAttributes<HTMLDivElement> & {
   title: ReactNode
   tags: string[]
@@ -596,7 +339,7 @@ export const CourseDescription = ({
           'p whitespace-break-spaces text-pretty',
           'relative flex-1',
           !showFullDesc &&
-            'masked-overflow masked-overflow-top line-clamp-4 !overflow-y-hidden',
+          'masked-overflow masked-overflow-top line-clamp-4 !overflow-y-hidden',
           isEmptyDescription && 'italic text-muted-foreground',
         )}
         style={{
@@ -665,7 +408,7 @@ export const CoursePrerequisites: React.FC<CoursePrerequisitesProps> = ({
         {(prerequisites ?? []).map((prerequisite, idx) => {
           // Validate prerequisite using CourseInfo.safeParse
           const validation = CourseInfo.safeParse(prerequisite)
-          const course =HardcoverUtils.parseCourse(prerequisite)
+          const course = HardcoverUtils.parseCourse(prerequisite)
           if (!validation.success) return null
 
           return (
@@ -895,7 +638,7 @@ Course.Stats = Stats
 export const ClickStats = ({
   likes,
   watchlists,
-  course_code
+  course_code,
 }: {
   likes: number
   watchlists: number
@@ -905,111 +648,89 @@ export const ClickStats = ({
   const [likeCount, setLikeCount] = useState(likes)
   const [isFavorited, setIsFavorited] = useState(false)
   const [watchlistCount, setWatchlistCount] = useState(watchlists)
-  
+
   const { openSignIn } = useClerk()
   const { user, isSignedIn } = useUser()
   const user_id = user?.id || ''
 
-
   const { mutate: likeMutate } = useLikeCourse()
   const { mutate: watchlistMutate } = useWatchListCourse()
-
 
   const { data: likeStatus } = useGetLikeCourse(user_id, course_code)
   const { data: watchlistStatus } = useGetWatchList(user_id, course_code)
 
-
   useEffect(() => {
-   
-      if (likeStatus?.liked) {
-        setIsLiked(true)
-      } else {
-        setIsLiked(false)
-      }
-    
+    if (likeStatus?.liked) {
+      setIsLiked(true)
+    } else {
+      setIsLiked(false)
+    }
   }, [likeStatus])
 
- 
   useEffect(() => {
-    
-      if (watchlistStatus?.exist) {
-        setIsFavorited(true)
-      } else {
-        setIsFavorited(false)
-      }
-    
+    if (watchlistStatus?.exist) {
+      setIsFavorited(true)
+    } else {
+      setIsFavorited(false)
+    }
   }, [watchlistStatus])
-
 
   const handleLikeClick = () => {
     if (!isSignedIn) {
       openSignIn()
       return
     }
-
-    if (isLiked) {
-      likeMutate(
-        { user_id, course_code, method: 'DELETE' },
-        {
-          onSuccess: () => {
-            setIsLiked(false)
-            setLikeCount((prev) => prev - 1)
-          },
-          onError: (error) => {
-            console.error('Error unliking course:', error)
-          }
-        }
-      )
-    } else {
-      likeMutate(
-        { user_id, course_code, method: 'POST' },
-        {
-          onSuccess: () => {
-            setIsLiked(true)
-            setLikeCount((prev) => prev + 1)
-          },
-          onError: (error) => {
-            console.error('Error liking course:', error)
-          }
-        }
-      )
-    }
+  
+    // Optimistically update the UI
+    const prevLiked = isLiked
+    const prevLikeCount = likeCount
+  
+    setIsLiked(!isLiked)
+    setLikeCount((prev) => (isLiked ? prev - 1 : prev + 1))
+  
+    likeMutate(
+      { user_id, course_code, method: isLiked ? 'DELETE' : 'POST' },
+      {
+        onSuccess: () => {
+          // Success case can be left empty as we've already updated the UI
+        },
+        onError: (error) => {
+          // If the request fails, rollback the state
+          console.error('Error updating like status:', error)
+          setIsLiked(prevLiked)
+          setLikeCount(prevLikeCount)
+        },
+      },
+    )
   }
-
 
   const handleFavoriteClick = () => {
     if (!isSignedIn) {
       openSignIn()
       return
     }
-
-    if (isFavorited) {
-      watchlistMutate(
-        { user_id, course_code, method: 'DELETE' },
-        {
-          onSuccess: () => {
-            setIsFavorited(false)
-            setWatchlistCount((prev) => prev - 1)
-          },
-          onError: (error) => {
-            console.error('Error removing from watchlist:', error)
-          }
-        }
-      )
-    } else {
-      watchlistMutate(
-        { user_id, course_code, method: 'POST' },
-        {
-          onSuccess: () => {
-            setIsFavorited(true)
-            setWatchlistCount((prev) => prev + 1)
-          },
-          onError: (error) => {
-            console.error('Error adding to watchlist:', error)
-          }
-        }
-      )
-    }
+  
+    // Optimistically update the UI
+    const prevFavorited = isFavorited
+    const prevWatchlistCount = watchlistCount
+  
+    setIsFavorited(!isFavorited)
+    setWatchlistCount((prev) => (isFavorited ? prev - 1 : prev + 1))
+  
+    watchlistMutate(
+      { user_id, course_code, method: isFavorited ? 'DELETE' : 'POST' },
+      {
+        onSuccess: () => {
+          // Success case can be left empty as we've already updated the UI
+        },
+        onError: (error) => {
+          // If the request fails, rollback the state
+          console.error('Error updating favorite status:', error)
+          setIsFavorited(prevFavorited)
+          setWatchlistCount(prevWatchlistCount)
+        },
+      },
+    )
   }
 
   return (
@@ -1042,94 +763,104 @@ export const ClickStats = ({
 
 Course.ClickStats = ClickStats
 
+type StandardCourseListProps = {
+  results: Course[] // Define the type of `results` based on your data structure
+  number?: boolean
+}
 
+export const StandardCourseList = ({
+  results,
+  number = false,
+}: StandardCourseListProps) => {
+  return (
+    <section>
+      {results.map((hcCourse, idx) => {
+        const course: Course = HardcoverUtils.parseCourse(hcCourse)
+        return (
+          <Course
+            course={course}
+            key={course.key}
+          >
+            <article
+              className={cn(
+                'w-full flex-1',
+                'flex flex-row gap-4 gap-y-2', // Set flex-row to position image and content side by side
+                'lg:flex-row',
+              )}
+              style={{ paddingTop: '10px', paddingBottom: '10px' }}
+            >
+              {/* Course Index */}
+              {number && (
+                <small className="whitespace-nowrap"># {idx + 1}</small>
+              )}
 
+              {/* Course Image */}
+              <Course.Image />
 
-// type CourseEditions = HTMLAttributes<HTMLDivElement>
-// const CourseEditions = ({
-//   children,
-//   className,
-//   ...rest
-// }: CourseEditions) => {
-//   const { course } = useCourseContext()
+              {/* Course Content (Title, Description, Tags) */}
+              <div
+                className={cn('w-full flex-1', 'flex flex-col flex-wrap gap-1')}
+              >
+                {/* Course Title */}
+                <p
+                  className={cn(
+                    'inline-flex w-full max-w-prose flex-row flex-wrap place-items-center *:truncate *:text-pretty',
+                  )}
+                >
+                  {(course?.title?.split(' ') ?? []).map(
+                    (titleText: string, titleIdx: number) => (
+                      <span key={`${course.key}-title-${titleIdx}`}>
+                        {titleText}&nbsp;
+                      </span>
+                    ),
+                  )}
+                  &nbsp;
+                </p>
 
-//   //#endregion  //*======== SOURCE/HC ===========
-//   const { getEditionsById } = HardcoverEndpoints
-//   const hcEditionsQuery = getEditionsById.useQuery({
-//     id: +(course.key) ?? 0,
-//   }, {
-//     skip: (course.source !== 'hc'),
-//   })
+                {/* Course Description */}
+                {course?.description && course?.description.trim() !== '' ? (
+                  <p
+                    className={cn(
+                      'small font-light normal-case text-muted-foreground',
+                      'line-clamp-2 max-w-prose truncate text-pretty',
+                      'max-sm:hidden',
+                    )}
+                  >
+                    {course.description}
+                  </p>
+                ) : (
+                  <p className="italic text-muted-foreground">
+                    No description available
+                  </p>
+                )}
 
-//   const hcEditions = useMemo(() => {
-//     const { data } = hcEditionsQuery
-
-//     const editions = data?.data?.editions ?? []
-//     return editions
-//   }, [hcEditionsQuery])
-
-//   //#endregion  //*======== SOURCE/HC ===========
-
-//   const editions = useMemo(() => {
-//     let editions = []
-//     switch (course.source) {
-//       case 'hc': {
-//         editions = hcEditions
-//       }
-//     }
-
-//     if (editions.length) {
-//       logger({ breakpoint: '[Course.tsx:616]/CourseEditions' }, { editions })
-//     }
-
-//     return editions
-//   }, [course.source, hcEditions])
-//   if (!editions.length) return null
-
-//   return (
-//     <section className={cn("flex flex-col gap-2", className)} {...rest}>
-
-//       <pre>
-//         {JSON.stringify({
-//           course,
-//           editions,
-//         }, null, 2)}
-//       </pre>
-//       {/* <div
-//         className={cn(
-//           'w-full place-content-start place-items-start gap-2',
-//           'flex flex-row flex-wrap',
-//         )}
-//       >
-//         {(hcSearchSeriesTitles.data?.results ?? []).map((result, idx) => {
-//           const hit = (result?.hits ?? [])?.[0]
-//           if (!hit) return null
-
-//           const seriesCourse = HardcoverUtils.parseDocument({ category: 'courses', hit }) as Course
-//           if (!seriesCourse) return
-
-//           const isCurrentCourse = seriesCourse.key == course.key
-//           return (
-//             <Course
-//               key={`${seriesCourse.source}-${idx}-${seriesCourse.key}`}
-//               course={seriesCourse!}
-//             >
-//               <Course.Thumbnail
-//                 className={cn(
-//                   'w-fit !rounded-none',
-//                   idx > 8 && 'hidden sm:block',
-//                   isCurrentCourse && 'border-primary'
-//                 )}
-//               />
-//             </Course>
-//           )
-//         })}
-//       </div> */}
-
-//       {children}
-//     </section>
-//   )
-// }
-// Course.Editions = CourseEditions
+                {/* Course Tags */}
+                <div
+                  className={cn(
+                    'flex flex-row flex-wrap gap-1',
+                    'max-sm:hidden',
+                  )}
+                >
+                  {getLimitedArray(hcCourse?.tags ?? [], 5).map(
+                    (tag, tagIdx) => (
+                      <Badge
+                        key={`course-tag-${tagIdx}`}
+                        variant="secondary"
+                        className={cn('truncate text-xs capitalize', 'w-fit')}
+                      >
+                        {tag as string}
+                      </Badge>
+                    ),
+                  )}
+                </div>
+              </div>
+            </article>
+          </Course>
+        )
+      })}
+    </section>
+  )
+}
+Course.StandardCourseList = StandardCourseList
 
 export default Course

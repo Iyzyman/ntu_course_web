@@ -54,10 +54,10 @@ export type SearchList = Omit<List, 'courses' | 'coursesCount'> & {
   courses_count: number
 }
 
-export const ListCategories = ['featured', 'filter'] as const
+export const ListCategories = ['discover', 'filter'] as const
 export const ListCategory = z.enum(ListCategories)
 export type ListCategory = z.infer<typeof ListCategory>
-export const DefaultListCategory: ListCategory = ListCategory.enum.featured
+export const DefaultListCategory: ListCategory = ListCategory.enum.discover
 
 export const TrendPeriods = [`threeMonths`, `sixMonths`, `year`] as const
 export const TrendPeriod = z.enum(TrendPeriods)

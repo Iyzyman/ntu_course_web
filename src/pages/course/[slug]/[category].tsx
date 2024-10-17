@@ -160,29 +160,27 @@ const CourseInfo = () => {
 
 const ReviewInfo = () => {
   const { slug } = useParams('/course/:slug')
-  const {data, isLoading, isFetching, isSuccess, refetch} = useGetReviews(slug)
+  const { data, isLoading, isFetching, isSuccess, refetch } =
+    useGetReviews(slug)
 
   const isDataLoading = isLoading || isFetching
-  const isFound = (!isDataLoading && isSuccess)
+  const isFound = !isDataLoading && isSuccess
 
   return (
     <section>
-      {(isFound && data) ? (
+      {isFound && data ? (
         <section>
-          <AggregateReviewScore {...data}/>
-          <AllReviews {...data}/>
+          <AggregateReviewScore {...data} />
+          <AllReviews {...data} />
         </section>
       ) : (
         <Alert>
           <InfoCircledIcon className="size-4" />
-          <AlertDescription>
-            No reviews found
-          </AlertDescription>
+          <AlertDescription>No reviews found</AlertDescription>
         </Alert>
       )}
-      <ReviewForm refetch={refetch}/>
+      <ReviewForm refetch={refetch} />
     </section>
-
   )
 }
 

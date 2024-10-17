@@ -23,7 +23,7 @@ export const CustomTextField = ({ children, sx, ...rest }: TextFieldProps) => {
           sx: {
             color: '#A3A3A3',
             '&.Mui-focused': { color: '#A3A3A3' },
-            fontFamily: 'Inter'
+            fontFamily: 'Inter',
           },
         },
       }}

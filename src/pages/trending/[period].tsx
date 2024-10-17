@@ -1,4 +1,4 @@
-import Course from '@/components/Course'
+import Course, { StandardCourseList } from '@/components/Course'
 import { useTrendingData } from '@/components/hooks/useCourseFinderHooks'
 import Status from '@/components/Layout.Status'
 import { RenderGuard } from '@/components/providers/render.provider'
@@ -7,8 +7,8 @@ import { AppName } from '@/data/static/app'
 import { Navigate, useNavigate, useParams } from '@/router'
 import { Hardcover } from '@/types'
 import { TrendPeriodTitle } from '@/types/hardcover'
-import { HardcoverUtils } from '@/utils/clients/hardcover'
 import { cn } from '@/utils/dom'
+
 
 const TrendingPeriodPage = () => {
   const navigate = useNavigate()
@@ -147,50 +147,10 @@ const TrendingPeriodPage = () => {
                 'w-full overflow-auto',
               )}
             >
-              {results.map((hcCourse, idx) => {
-                const course: Course = HardcoverUtils.parseCourse(hcCourse)
-                return (
-                  <Course
-                    key={`${idx}-${course.key}`}
-                    course={course!}
-                  >
-                    <div
-                      onClick={() => {
-                        navigate(
-                          {
-                            pathname: '/course/:slug',
-                          },
-                          {
-                            params: {
-                              slug: course.slug ?? '',
-                            },
-                            unstable_viewTransition: true,
-                          },
-                        )
-                      }}
-                      className={cn(
-                        'flex flex-row place-content-start place-items-start gap-4',
-                        'w-full border-b py-2',
-                      )}
-                    >
-                      <small className="whitespace-nowrap	"># {idx + 1}</small>
-                      <Course.Thumbnail className="w-fit !rounded-none" />
-
-                      <aside>
-                        <p className="h4 line-clamp-3 truncate text-pretty capitalize">
-                          {course.title}
-                        </p>
-                        <p className="!m-0 capitalize text-muted-foreground">
-                          <small className="font-semibold uppercase">
-                            Faculty: {course.school}
-                          </small>
-                          &nbsp;
-                        </p>
-                      </aside>
-                    </div>
-                  </Course>
-                )
-              })}
+              <StandardCourseList
+                results={results}
+                number={true}
+              ></StandardCourseList>
             </section>
           </TabsContent>
         </Tabs>

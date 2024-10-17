@@ -19,7 +19,10 @@ import { ListData } from '@/types/shelvd'
 import { cn } from '@/utils/dom'
 import { getRangedArray, getSegmentedArray } from '@/utils/helpers'
 import { useCallback, useEffect, useMemo, useState } from 'react'
-import { useAllCoursesData, useDiscoveryData } from '@/components/hooks/useCourseFinderHooks'
+import {
+  useAllCoursesData,
+  useDiscoveryData,
+} from '@/components/hooks/useCourseFinderHooks'
 import { HardcoverUtils } from '@/utils/clients/hardcover'
 
 const ListCategoryPage = () => {
@@ -54,7 +57,7 @@ const ListCategoryPage = () => {
     console.log(error)
   }
 
-  const results = (data?? []) as Hardcover.List[]
+  const results = (data ?? []) as Hardcover.List[]
   const isNotFound =
     !isValidParams || (!isLoading && !isSuccess && !results.length)
 
@@ -101,23 +104,28 @@ const ListCategoryPage = () => {
   //#endregion  //*======== PAGINATION ===========
 
   //#endregion  //*======== Filter ===========
-  const { 
-    data: allCoursesData, 
-    isLoading: allCoursesLoading, 
-    isFetching: allCoursesFetching, 
-    isSuccess: allCoursesSuccess 
+  const {
+    data: allCoursesData,
+    isLoading: allCoursesLoading,
+    isFetching: allCoursesFetching,
+    isSuccess: allCoursesSuccess,
   } = useAllCoursesData()
 
   const isDataLoading = allCoursesLoading || allCoursesFetching
-  const isFound = (!isDataLoading && allCoursesSuccess)
-  
+  const isFound = !isDataLoading && allCoursesSuccess
+
   const allCourses: List = useMemo(() => {
-    const allCoursesArray = isFound ? allCoursesData.map((course: Course)=>HardcoverUtils.parseCourse(course)) : []
+    const allCoursesArray = isFound
+      ? allCoursesData.map((course: Course) =>
+          HardcoverUtils.parseCourse(course),
+        )
+      : []
     return {
-    key: 'allCourses',
-    name: 'allCourses',
-    courses: allCoursesArray
-  }}, [isFound, allCoursesData])
+      key: 'allCourses',
+      name: 'allCourses',
+      courses: allCoursesArray,
+    }
+  }, [isFound, allCoursesData])
   const filterPageMaxResults = 10
 
   const [filteredList, setFilteredList] = useState<List>(allCourses)
@@ -129,7 +137,9 @@ const ListCategoryPage = () => {
 
   useEffect(() => {
     console.log(filteredList)
-    const max_pages = Math.floor(filteredList.courses.length / filterPageMaxResults)
+    const max_pages = Math.floor(
+      filteredList.courses.length / filterPageMaxResults,
+    )
     setFilterPage(0)
     setFilterMaxPage(max_pages)
   }, [filteredList])
@@ -147,8 +157,8 @@ const ListCategoryPage = () => {
   const isFilterLastPage = filterPage === filterMaxPage
 
   const pageRange = getRangedArray({
-    min: isFilterFirstPage? filterPage: filterPage - 1,
-    max: isFilterLastPage? filterPage: filterPage + 1
+    min: isFilterFirstPage ? filterPage : filterPage - 1,
+    max: isFilterLastPage ? filterPage : filterPage + 1,
   })
   //#endregion  //*======== Filter ===========
 
@@ -316,7 +326,10 @@ const ListCategoryPage = () => {
 
                 <List
                   data={ListData.parse(allCourses)}
-                  overwriteCourses={filteredList.courses.slice(array_index(), array_index() + 9)}
+                  overwriteCourses={filteredList.courses.slice(
+                    array_index(),
+                    array_index() + 9,
+                  )}
                 >
                   <div className="flex flex-col gap-y-2">
                     <div
@@ -326,8 +339,7 @@ const ListCategoryPage = () => {
                         // 'sm:max-w-xl',
                       )}
                     >
-                      <List.Courses>
-                      </List.Courses>
+                      <List.Courses></List.Courses>
                     </div>
                   </div>
                 </List>
@@ -336,7 +348,8 @@ const ListCategoryPage = () => {
                   <PaginationContent>
                     <PaginationItem
                       onClick={onFilterPagePrevious}
-                      disabled={isFilterFirstPage}>
+                      disabled={isFilterFirstPage}
+                    >
                       <PaginationPrevious className="max-sm:!px-2 max-sm:[&>span]:hidden" />
                     </PaginationItem>
 
@@ -359,7 +372,6 @@ const ListCategoryPage = () => {
                     >
                       <PaginationNext className="max-sm:!px-2 max-sm:[&>span]:hidden" />
                     </PaginationItem>
-
                   </PaginationContent>
                 </Pagination>
               </TabsContent>

@@ -52,7 +52,7 @@ const IndexPage = () => {
 }
 
 export const FeaturedListsPreviewSection = () => {
-  const category = Hardcover.ListCategory.enum.featured
+  const category = Hardcover.ListCategory.enum.discover
 
   //#endregion  //*======== QUERIES ===========
   const { data } = useDiscoveryData()
