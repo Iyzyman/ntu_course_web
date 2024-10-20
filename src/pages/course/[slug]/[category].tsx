@@ -14,7 +14,7 @@ import {
   CourseDetailCategory,
   DefaultCourseDetailCategory,
   SearchArtifact,
-} from '@/types/shelvd'
+} from '@/types/cf'
 import { cn } from '@/utils/dom'
 import { Separator } from '@radix-ui/react-dropdown-menu'
 import { useSession } from '@clerk/clerk-react'

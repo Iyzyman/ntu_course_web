@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import Search from '@/components/Layout.Search'
 import { Navigate, useParams } from '@/router'
-import { DefaultSearchCategory, SearchCategory } from '@/types/shelvd'
+import { DefaultSearchCategory, SearchCategory } from '@/types/cf'
 import { cn } from '@/utils/dom'
 import { useSearchParams } from 'react-router-dom'
 

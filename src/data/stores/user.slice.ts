@@ -1,5 +1,5 @@
 import { StoreSlicePrefix } from '@/data/static/store'
-import { DefaultListTypeInfo, ListTypeInfo } from '@/types/shelvd'
+import { DefaultListTypeInfo, ListTypeInfo } from '@/types/cf'
 import { logger } from '@/utils/debug'
 import { createAsyncSlice } from '@/utils/store'
 import { PayloadAction } from '@reduxjs/toolkit'

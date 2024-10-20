@@ -1,7 +1,7 @@
-import { CourseSource } from '@/types/shelvd'
+import { CourseSource } from '@/types/cf'
 
-export class ShelvdUtils {
-  static source: CourseSource = 'shelvd'
+export class CfUtils {
+  static source: CourseSource = 'cf'
   static coreListNames: Record<string, string> = {
     'to-read': 'To Read',
     reading: 'Reading',

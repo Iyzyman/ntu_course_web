@@ -1,4 +1,4 @@
-import { Course, SearchCategories, SearchCategory } from '@/types/shelvd'
+import { Course, SearchCategories, SearchCategory } from '@/types/cf'
 import { z } from 'zod'
 
 export type BaseInfo = {

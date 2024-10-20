@@ -1,6 +1,6 @@
 import { StoreClientPrefix } from '@/data/static/store'
 import { env } from '@/env'
-import { List, ListData, ListType, User } from '@/types/shelvd'
+import { List, ListData, ListType, User } from '@/types/cf'
 import { logger } from '@/utils/debug'
 import { getStringifiedRecord, getUniqueArray } from '@/utils/helpers'
 import { url } from '@/utils/http'
@@ -76,7 +76,7 @@ export type UpdateListDetailsParams = z.infer<typeof UpdateListDetailsParams>
 
 // const Endpoint = getEndpoint({ isAbsolute: true })
 const Endpoint = `${env.VITE_SHELVD_HOST}`
-const TagType = `${StoreClientPrefix}shelvd`
+const TagType = `${StoreClientPrefix}cf`
 
 const Services = {
   List: '/list',
@@ -101,7 +101,7 @@ const Routes = {
   },
 }
 
-export const ShelvdClient = createApi({
+export const CfClient = createApi({
   baseQuery: fetchBaseQuery({ baseUrl: Endpoint }),
   reducerPath: TagType,
   tagTypes: [TagType],
@@ -164,7 +164,7 @@ export const ShelvdClient = createApi({
         })
 
         logger(
-          { breakpoint: '[shelvd.api.ts:57]/updateListMembership' },
+          { breakpoint: '[cf.api.ts:57]/updateListMembership' },
           {
             param,
           },
@@ -186,7 +186,7 @@ export const ShelvdClient = createApi({
         })
 
         logger(
-          { breakpoint: '[shelvd.api.ts:57]/updateListMembership' },
+          { breakpoint: '[cf.api.ts:57]/updateListMembership' },
           {
             param,
           },
@@ -206,7 +206,7 @@ export const ShelvdClient = createApi({
         // check & remove @ prefix iff exists
         const username = param.username.replace('@', '')
         logger(
-          { breakpoint: '[shelvd.api.ts:67]/getListKeys' },
+          { breakpoint: '[cf.api.ts:67]/getListKeys' },
           { param, username },
         )
 
@@ -230,10 +230,7 @@ export const ShelvdClient = createApi({
       query: (param: GetListParam) => {
         // check & remove @ prefix iff exists
         const username = param.username.replace('@', '')
-        logger(
-          { breakpoint: '[shelvd.api.ts:67]/getList' },
-          { param, username },
-        )
+        logger({ breakpoint: '[cf.api.ts:67]/getList' }, { param, username })
 
         const request = url({
           endpoint: `${Endpoint}${Services.List}`,
@@ -284,7 +281,7 @@ export const ShelvdClient = createApi({
         })
 
         logger(
-          { breakpoint: '[shelvd.api.ts:57]/createList' },
+          { breakpoint: '[cf.api.ts:57]/createList' },
           {
             list,
           },
@@ -306,7 +303,7 @@ export const ShelvdClient = createApi({
         })
 
         logger(
-          { breakpoint: '[shelvd.api.ts:57]/createList' },
+          { breakpoint: '[cf.api.ts:57]/createList' },
           {
             params,
           },
@@ -323,10 +320,10 @@ export const ShelvdClient = createApi({
   }),
 })
 
-export const ShelvdEndpoints = ShelvdClient.endpoints
+export const CfEndpoints = CfClient.endpoints
 export const {
   useCreateListMutation,
   useUpdateListMembershipMutation,
   useUpdateListDetailsMutation,
   useDeleteListMutation,
-} = ShelvdClient
+} = CfClient

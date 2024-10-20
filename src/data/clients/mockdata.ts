@@ -1,6 +1,6 @@
 // mockData.ts
-import { SearchQueryResponse } from '@/types/hardcover'
-import { Course, List, ListData, User } from '@/types/shelvd'
+import { SearchQueryResponse } from '@/types/courseitem'
+import { Course, List, ListData, User } from '@/types/cf'
 
 export const mockPrerequisite: Course[] = [
   {

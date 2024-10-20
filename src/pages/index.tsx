@@ -8,10 +8,10 @@ import { Separator } from '@/components/ui/Separator'
 import { Skeleton } from '@/components/ui/Skeleton'
 import { Tabs, TabsList, TabsTrigger } from '@/components/ui/Tabs'
 import { Link } from '@/router'
-import { Hardcover } from '@/types'
-import { TrendPeriod, TrendPeriodTitle } from '@/types/hardcover'
-import { Course as zCourse } from '@/types/shelvd'
-import { HardcoverUtils } from '@/utils/clients/hardcover'
+import { CourseItem } from '@/types'
+import { TrendPeriod, TrendPeriodTitle } from '@/types/courseitem'
+import { Course as zCourse } from '@/types/cf'
+import { CourseItemUtils } from '@/utils/clients/courseitem'
 import { cn } from '@/utils/dom'
 import { getLimitedArray, getShuffledArray } from '@/utils/helpers'
 import { ComponentProps, HTMLAttributes, useState } from 'react'
@@ -52,13 +52,13 @@ const IndexPage = () => {
 }
 
 export const FeaturedListsPreviewSection = () => {
-  const category = Hardcover.ListCategory.enum.discover
+  const category = CourseItem.ListCategory.enum.discover
 
   //#endregion  //*======== QUERIES ===========
   const { data } = useDiscoveryData()
-  const categoryLists: Hardcover.List[] = (data ?? []) as Hardcover.List[]
+  const categoryLists: CourseItem.List[] = (data ?? []) as CourseItem.List[]
   const displayLimit = 4
-  const displayCategoryLists: Hardcover.List[] = getLimitedArray(
+  const displayCategoryLists: CourseItem.List[] = getLimitedArray(
     categoryLists,
     displayLimit,
   )
@@ -138,7 +138,7 @@ export const TrendingPreviewSection = ({
 }
 
 export const TrendingPreview = () => {
-  const defaultPeriod = Hardcover.DefaultTrendPeriod
+  const defaultPeriod = CourseItem.DefaultTrendPeriod
   const [selectedPeriod, setSelectedPeriod] =
     useState<TrendPeriod>(defaultPeriod)
   const { data, isSuccess } = useTrendingData()
@@ -160,7 +160,7 @@ export const TrendingPreview = () => {
           <p className="small font-light normal-case tracking-tight text-muted-foreground">
             Don’t know where to start? Here’s our recommendation of the most
             liked courses in the{' '}
-            {Hardcover.TrendPeriodTitle[selectedPeriod].toLowerCase()}.
+            {CourseItem.TrendPeriodTitle[selectedPeriod].toLowerCase()}.
           </p>
         </aside>
 
@@ -194,13 +194,13 @@ export const TrendingPreview = () => {
 
       {/* Keep the section height consistent */}
       <section style={{ minHeight: '410px' }}>
-        {Hardcover.TrendPeriod.options.map((period, idx) => {
+        {CourseItem.TrendPeriod.options.map((period, idx) => {
           const courses: Course[] = isSuccess
             ? data?.results?.[selectedPeriod] ?? [] // Fetch based on selected period
             : []
 
           const displayCourses = getShuffledArray(
-            courses.map((course) => HardcoverUtils.parseCourse(course)),
+            courses.map((course) => CourseItemUtils.parseCourse(course)),
           )
 
           const direction = idx % 2 === 0 ? 'left' : 'right'

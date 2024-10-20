@@ -2,9 +2,9 @@ import { RenderGuard } from '@/components/providers/render.provider'
 import { Avatar } from '@/components/ui/Avatar'
 import { Badge, BadgeProps } from '@/components/ui/Badge'
 import { Button } from '@/components/ui/Button'
-import { Card, CardDescription, CardHeader } from '@/components/ui/Card'
+import { Card } from '@/components/ui/Card'
 import { List } from '@/components/List'
-import { Hardcover } from '@/types'
+import { CourseItem } from '@/types'
 import {
   HoverCard,
   HoverCardArrow,
@@ -12,19 +12,14 @@ import {
   HoverCardTrigger,
 } from '@/components/ui/Hover.Card'
 import { Skeleton } from '@/components/ui/Skeleton'
-import { useDeleteCourseFromCollectionMutation } from '@/data/clients/collections.api'
 import { Link, useNavigate } from '@/router'
-import { Course as CourseInfo, ListData } from '@/types/shelvd'
-import { HardcoverUtils } from '@/utils/clients/hardcover'
+import { Course as CourseInfo, ListData } from '@/types/cf'
+import { CourseItemUtils } from '@/utils/clients/courseitem'
 import { logger } from '@/utils/debug'
 import { cn } from '@/utils/dom'
 import { getLimitedArray } from '@/utils/helpers'
 import { useClerk, useUser } from '@clerk/clerk-react'
-import {
-  ChevronDownIcon,
-  ChevronUpIcon,
-  TrashIcon,
-} from '@radix-ui/react-icons'
+import { ChevronDownIcon, ChevronUpIcon } from '@radix-ui/react-icons'
 import {
   HTMLAttributes,
   PropsWithChildren,
@@ -65,7 +60,7 @@ const useCourseContext = () => {
     ctxValue = {
       course: {} as Course,
       isSkeleton: true,
-      onNavigate: () => { },
+      onNavigate: () => {},
     }
   }
   return ctxValue
@@ -339,7 +334,7 @@ export const CourseDescription = ({
           'p whitespace-break-spaces text-pretty',
           'relative flex-1',
           !showFullDesc &&
-          'masked-overflow masked-overflow-top line-clamp-4 !overflow-y-hidden',
+            'masked-overflow masked-overflow-top line-clamp-4 !overflow-y-hidden',
           isEmptyDescription && 'italic text-muted-foreground',
         )}
         style={{
@@ -408,7 +403,7 @@ export const CoursePrerequisites: React.FC<CoursePrerequisitesProps> = ({
         {(prerequisites ?? []).map((prerequisite, idx) => {
           // Validate prerequisite using CourseInfo.safeParse
           const validation = CourseInfo.safeParse(prerequisite)
-          const course = HardcoverUtils.parseCourse(prerequisite)
+          const course = CourseItemUtils.parseCourse(prerequisite)
           if (!validation.success) return null
 
           return (
@@ -433,87 +428,8 @@ export const CoursePrerequisites: React.FC<CoursePrerequisitesProps> = ({
 }
 Course.Prerequisites = CoursePrerequisites
 
-type BiggerCourseCard = HTMLAttributes<HTMLDivElement> & {
-  username: string
-  collection_key: string
-  isSignedInUser: boolean
-}
-export const BiggerCourseCard = ({
-  className,
-  children,
-  username,
-  collection_key,
-  isSignedInUser,
-  ...rest
-}: BiggerCourseCard) => {
-  const { onNavigate, course } = useCourseContext()
-  const [deleteCourseFromCollection] = useDeleteCourseFromCollectionMutation()
-  const [isDeleting, setIsDeleting] = useState<boolean>(false)
-
-  const handleDelete = (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.stopPropagation()
-    e.preventDefault()
-    setIsDeleting(true)
-    const deleteCoursePayload = {
-      username,
-      collection_key,
-      course_key: course.key,
-    }
-    deleteCourseFromCollection(deleteCoursePayload)
-  }
-
-  return (
-    <Card
-      className={cn(
-        'relative',
-        'flex flex-col gap-2',
-        'rounded-lg',
-        'border-2 border-primary',
-        'overflow-hidden',
-        'h-50 w-30',
-        className,
-      )}
-      onClick={onNavigate}
-      {...rest}
-    >
-      <CardHeader>
-        <h4 className="text-lg font-bold">{course.title}</h4>
-        {isSignedInUser &&
-          (!isDeleting ? (
-            <Button
-              className="absolute right-5 top-5 border-secondary"
-              variant={'outline'}
-              size={'icon'}
-              onClick={(e: React.MouseEvent<HTMLButtonElement>) =>
-                handleDelete(e)
-              }
-            >
-              <TrashIcon />
-            </Button>
-          ) : (
-            <l-ring-2
-              size="40"
-              stroke="5"
-              stroke-length="0.25"
-              bg-opacity="0.1"
-              speed="0.8"
-              color="white"
-            ></l-ring-2>
-          ))}
-        <CardDescription>
-          <p className="line-clamp-3">{course.description}</p>
-        </CardDescription>
-      </CardHeader>
-      <Course.Image className="h-full w-full" />
-
-      {children}
-    </Card>
-  )
-}
-Course.BiggerCourseCard = BiggerCourseCard
-
 type CourseMatrix = HTMLAttributes<HTMLDivElement> & {
-  displayCategoryLists: Hardcover.List[]
+  displayCategoryLists: CourseItem.List[]
   category: string
 }
 export const CourseMatrix = ({
@@ -534,9 +450,9 @@ export const CourseMatrix = ({
       style={{ columnGap: '190px' }}
     >
       {displayCategoryLists.map((hcList, idx) => {
-        const list = HardcoverUtils.parseList(hcList)
+        const list = CourseItemUtils.parseList(hcList)
         const courses = hcList.courses.map((hcCourse) =>
-          HardcoverUtils.parseCourse(hcCourse),
+          CourseItemUtils.parseCourse(hcCourse),
         )
 
         const data = ListData.parse(list)
@@ -680,14 +596,14 @@ export const ClickStats = ({
       openSignIn()
       return
     }
-  
+
     // Optimistically update the UI
     const prevLiked = isLiked
     const prevLikeCount = likeCount
-  
+
     setIsLiked(!isLiked)
     setLikeCount((prev) => (isLiked ? prev - 1 : prev + 1))
-  
+
     likeMutate(
       { user_id, course_code, method: isLiked ? 'DELETE' : 'POST' },
       {
@@ -709,14 +625,14 @@ export const ClickStats = ({
       openSignIn()
       return
     }
-  
+
     // Optimistically update the UI
     const prevFavorited = isFavorited
     const prevWatchlistCount = watchlistCount
-  
+
     setIsFavorited(!isFavorited)
     setWatchlistCount((prev) => (isFavorited ? prev - 1 : prev + 1))
-  
+
     watchlistMutate(
       { user_id, course_code, method: isFavorited ? 'DELETE' : 'POST' },
       {
@@ -775,7 +691,7 @@ export const StandardCourseList = ({
   return (
     <section>
       {results.map((hcCourse, idx) => {
-        const course: Course = HardcoverUtils.parseCourse(hcCourse)
+        const course: Course = CourseItemUtils.parseCourse(hcCourse)
         return (
           <Course
             course={course}

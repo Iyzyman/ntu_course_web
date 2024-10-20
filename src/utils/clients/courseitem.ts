@@ -1,12 +1,12 @@
-import { Hardcover } from '@/types'
+import { CourseItem } from '@/types'
 import {
   Course,
   CourseSource,
   Character,
   List,
   SearchCategories,
-} from '@/types/shelvd'
-export class HardcoverUtils {
+} from '@/types/cf'
+export class CourseItemUtils {
   static source: CourseSource = 'hc'
 
   static getCdnUrl = (url: string) => {
@@ -40,7 +40,7 @@ export class HardcoverUtils {
     return course
   }
 
-  static parseCharacter = (hcCharacter: Hardcover.Character): Character => {
+  static parseCharacter = (hcCharacter: CourseItem.Character): Character => {
     const character: Character = {
       key: hcCharacter.slug,
       slug: hcCharacter.slug,
@@ -50,7 +50,7 @@ export class HardcoverUtils {
     }
     return character
   }
-  static parseList = (hcList: Hardcover.List): List => {
+  static parseList = (hcList: CourseItem.List): List => {
     const list: List = {
       key: hcList.slug,
       slug: hcList.slug,
@@ -75,7 +75,7 @@ export class HardcoverUtils {
   static parseCourseDocument = ({
     document,
   }: {
-    document: Hardcover.SearchCourse
+    document: CourseItem.SearchCourse
   }): Course => {
     const hcCourse: Course = {
       key: document.code || '',
@@ -96,12 +96,12 @@ export class HardcoverUtils {
   static parseListDocument = ({
     document,
   }: {
-    document: Hardcover.SearchList
-  }): Hardcover.List => {
+    document: CourseItem.SearchList
+  }): CourseItem.List => {
     const titles: string[] = document?.courses ?? []
     const coursesCount: number = +(document?.courses_count ?? 0)
 
-    const hcList: Hardcover.List = {
+    const hcList: CourseItem.List = {
       ...document,
       titles,
       coursesCount,
@@ -124,17 +124,17 @@ export class HardcoverUtils {
 
     switch (category) {
       case 'courses': {
-        const hcCourse = HardcoverUtils.parseCourseDocument({
-          document: document as unknown as Hardcover.SearchCourse,
+        const hcCourse = CourseItemUtils.parseCourseDocument({
+          document: document as unknown as CourseItem.SearchCourse,
         })
-        const course: Course = HardcoverUtils.parseCourse(hcCourse)
+        const course: Course = CourseItemUtils.parseCourse(hcCourse)
         return course
       }
       case 'lists': {
-        const hcList = HardcoverUtils.parseListDocument({
-          document: document as unknown as Hardcover.SearchList,
+        const hcList = CourseItemUtils.parseListDocument({
+          document: document as unknown as CourseItem.SearchList,
         })
-        const list = HardcoverUtils.parseList(hcList)
+        const list = CourseItemUtils.parseList(hcList)
         return list
       }
     }

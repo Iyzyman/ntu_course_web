@@ -4,13 +4,13 @@ import { RenderGuard } from '@/components/providers/render.provider'
 import { useRootDispatch, useRootSelector } from '@/data/stores/root'
 import { SearchActions, SearchSelectors } from '@/data/stores/search.slice'
 import { useParams } from '@/router'
-import { CourseSource, SearchCategory } from '@/types/shelvd'
+import { CourseSource, SearchCategory } from '@/types/cf'
 import { logger } from '@/utils/debug'
 import { cn } from '@/utils/dom'
 import { useEffect, useMemo, useState } from 'react'
 import { Outlet, useLocation } from 'react-router-dom'
 import { useCourseDetailData } from '@/components/hooks/useCourseFinderHooks.tsx'
-import { HardcoverUtils } from '@/utils/clients/hardcover.ts'
+import { CourseItemUtils } from '@/utils/clients/courseitem'
 
 const CourseDetailsLayout = () => {
   const dispatch = useRootDispatch()
@@ -46,7 +46,7 @@ const CourseDetailsLayout = () => {
 
   useEffect(() => {
     if (data) {
-      const parsedCourse = HardcoverUtils.parseCourse(data)
+      const parsedCourse = CourseItemUtils.parseCourse(data)
       setOrigin(parsedCourse)
       setCommon(parsedCourse) // Update common as needed
     }

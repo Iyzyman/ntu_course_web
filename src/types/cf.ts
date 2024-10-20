@@ -6,7 +6,7 @@ export type User = Pick<
   'id' | 'createdAt' | 'username' | 'profileImageUrl' | 'firstName' | 'lastName'
 >
 
-export const CourseSources = [`ol`, `nyt`, `google`, `hc`, `shelvd`] as const
+export const CourseSources = [`ol`, `nyt`, `google`, `hc`, `cf`] as const
 export const CourseSource = z.enum(CourseSources)
 export type CourseSource = z.infer<typeof CourseSource>
 export const DefaultCourseSource = CourseSource.enum.hc
