@@ -13,12 +13,12 @@ export class CourseItemUtils {
     if (!url) return url
     return url
       .replace(
-        'https://hardcover-staging.imgix.net',
-        'https://storage.googleapis.com/hardcover-staging',
+        'https://courseitem-staging.imgix.net',
+        'https://storage.googleapis.com/courseitem-staging',
       )
       .replace(
-        'https://hardcover.imgix.net',
-        'https://storage.googleapis.com/hardcover',
+        'https://courseitem.imgix.net',
+        'https://storage.googleapis.com/courseitem',
       )
   }
 
@@ -61,7 +61,7 @@ export class CourseItemUtils {
     }
 
     // logger(
-    //   { breakpoint: '[hardcover.ts:52]/parseList' },
+    //   { breakpoint: '[courseitem.ts:52]/parseList' },
     //   {
     //     success: List.safeParse(list).success,
     //     safe: List.safeParse(list),

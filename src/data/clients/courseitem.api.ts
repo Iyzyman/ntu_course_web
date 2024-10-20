@@ -160,7 +160,7 @@ export const CourseItemClient = createApi({
         }
 
         logger(
-          { breakpoint: '[hardcover.api.ts:130]/searchExact' },
+          { breakpoint: '[courseitem.api.ts:130]/searchExact' },
           {
             category,
             searchParams,
@@ -222,7 +222,7 @@ export const CourseItemClient = createApi({
         }
 
         logger(
-          { breakpoint: '[hardcover.api.ts:185]/searchExactBulk' },
+          { breakpoint: '[courseitem.api.ts:185]/searchExactBulk' },
           {
             searchParams,
           },

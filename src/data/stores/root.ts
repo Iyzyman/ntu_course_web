@@ -1,3 +1,4 @@
+import { CourseItemClient } from '@/data/clients/courseitem.api'
 import { AppSlice } from '@/data/stores/app.slice'
 import { env } from '@/env'
 import {
@@ -20,7 +21,13 @@ import { SearchSlice } from '@/data/stores/search.slice'
 import { CfClient } from '@/data/clients/cf.api'
 import { UserSlice } from '@/data/stores/user.slice'
 
-const RootState = combineSlices(AppSlice, SearchSlice, UserSlice, CfClient)
+const RootState = combineSlices(
+  AppSlice,
+  SearchSlice,
+  UserSlice,
+  CourseItemClient,
+  CfClient,
+)
 type RootState = ReturnType<typeof RootState>
 
 // /** @external https://redux-toolkit.js.org/usage/usage-guide#use-with-redux-persist */
@@ -52,7 +59,10 @@ export const RootStore = (() => {
             'CfClient',
           ], // Paths to be excluded from serialization checks
         },
-      }).concat([CfClient.middleware])
+      }).concat([
+        CourseItemClient.middleware,
+        CfClient.middleware,
+      ])
     },
   })
   setupListeners(store.dispatch)
