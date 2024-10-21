@@ -1,4 +1,4 @@
-import { HardcoverClient } from '@/data/clients/hardcover.api'
+import { CourseItemClient } from '@/data/clients/courseitem.api'
 import { AppSlice } from '@/data/stores/app.slice'
 import { env } from '@/env'
 import {
@@ -17,18 +17,16 @@ import {
   REGISTER,
   REHYDRATE,
 } from 'redux-persist'
-import { CollectionClient } from '../clients/collections.api'
 import { SearchSlice } from '@/data/stores/search.slice'
-import { ShelvdClient } from '@/data/clients/shelvd.api'
+import { CfClient } from '@/data/clients/cf.api'
 import { UserSlice } from '@/data/stores/user.slice'
 
 const RootState = combineSlices(
   AppSlice,
   SearchSlice,
   UserSlice,
-  CollectionClient,
-  HardcoverClient,
-  ShelvdClient,
+  CourseItemClient,
+  CfClient,
 )
 type RootState = ReturnType<typeof RootState>
 
@@ -57,15 +55,13 @@ export const RootStore = (() => {
             'GoogleClient',
             'NYTClient',
             'OLClient',
-            'CollectionClient',
-            'HardcoverClient',
-            'ShelvdClient',
+            'CourseItemClient',
+            'CfClient',
           ], // Paths to be excluded from serialization checks
         },
       }).concat([
-        HardcoverClient.middleware,
-        ShelvdClient.middleware,
-        CollectionClient.middleware,
+        CourseItemClient.middleware,
+        CfClient.middleware,
       ])
     },
   })

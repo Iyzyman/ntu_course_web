@@ -4,16 +4,16 @@ import Status from '@/components/Layout.Status'
 import List from '@/components/List'
 import { RenderGuard } from '@/components/providers/render.provider'
 import { Navigate, useParams } from '@/router'
-import { Hardcover } from '@/types'
-import { ListData } from '@/types/shelvd'
-import { HardcoverUtils } from '@/utils/clients/hardcover'
+import { CourseItem } from '@/types'
+import { ListData } from '@/types/cf'
+import { CourseItemUtils } from '@/utils/clients/courseitem'
 import { cn } from '@/utils/dom'
 
 const ListPage = () => {
   //#endregion  //*======== PARAMS ===========
   const { category = '', slug = '' } = useParams('/discover/:category/:slug')
 
-  const isValidCategory = Hardcover.ListCategory.safeParse(category).success
+  const isValidCategory = CourseItem.ListCategory.safeParse(category).success
   const isValidSlug = !!slug.length
   const isValidParams = isValidCategory && isValidSlug
   //#endregion  //*======== PARAMS ===========
@@ -25,7 +25,7 @@ const ListPage = () => {
     console.log(error)
   }
 
-  const results = ((data ?? []) as Hardcover.List[]).filter(
+  const results = ((data ?? []) as CourseItem.List[]).filter(
     (list) => (list?.slug ?? '') === slug,
   )
 
@@ -60,9 +60,9 @@ const ListPage = () => {
         }
       >
         {results.map((hcList) => {
-          const list: List = HardcoverUtils.parseList(hcList)
+          const list: List = CourseItemUtils.parseList(hcList)
           const courses: Course[] = hcList.courses.map((hcCourse) =>
-            HardcoverUtils.parseCourse(hcCourse),
+            CourseItemUtils.parseCourse(hcCourse),
           )
           const data = ListData.parse(list)
 

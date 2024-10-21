@@ -1,2 +1,2 @@
-export * as Hardcover from './hardcover'
-export * as Shelvd from './shelvd'
+export * as CourseItem from './courseitem'
+export * as Cf from './cf'

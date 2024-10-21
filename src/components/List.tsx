@@ -31,15 +31,15 @@ import {
 } from '@/components/ui/Form'
 import { Input } from '@/components/ui/Input'
 import { Textarea } from '@/components/ui/Textarea'
-import { HardcoverEndpoints } from '@/data/clients/hardcover.api'
+import { CourseItemEndpoints } from '@/data/clients/courseitem.api'
 import {
   DeleteListParams,
-  ShelvdEndpoints,
+  CfEndpoints,
   UpdateListDetailsParams,
   useCreateListMutation,
   useDeleteListMutation,
   useUpdateListDetailsMutation,
-} from '@/data/clients/shelvd.api'
+} from '@/data/clients/cf.api'
 import { useRootSelector } from '@/data/stores/root'
 import { SearchSelectors } from '@/data/stores/search.slice'
 import { useNavigate } from '@/router'
@@ -49,9 +49,9 @@ import {
   List as ListInfo,
   ListType,
   Course as zCourse,
-} from '@/types/shelvd'
-import { HardcoverUtils } from '@/utils/clients/hardcover'
-import { ShelvdUtils } from '@/utils/clients/shelvd'
+} from '@/types/cf'
+import { CourseItemUtils } from '@/utils/clients/courseitem'
+import { CfUtils } from '@/utils/clients/cf'
 import { logger } from '@/utils/debug'
 import { cn } from '@/utils/dom'
 import { getLimitedArray } from '@/utils/helpers'
@@ -118,7 +118,7 @@ export const List = ({
   const courseKeys: string[] = overwriteCourses
     ? []
     : value?.data?.courseKeys ?? []
-  const { searchExactBulk: hcSearchBulk } = HardcoverEndpoints
+  const { searchExactBulk: hcSearchBulk } = CourseItemEndpoints
   const hcSearchCourseKeys = hcSearchBulk.useQuery(
     courseKeys.map((key) => ({
       category: 'courses',
@@ -141,7 +141,7 @@ export const List = ({
     const courses: Course[] = results.map((result) => {
       // exact search expects top hit accuracy
       const hit = (result?.hits ?? [])?.[0]
-      const course = HardcoverUtils.parseDocument({
+      const course = CourseItemUtils.parseDocument({
         category: 'courses',
         hit,
       }) as Course
@@ -342,7 +342,7 @@ export const ListCreateForm = ({ className, onClose }: ListCreateForm) => {
   //#endregion  //*======== STATES ===========
 
   //#endregion  //*======== QUERIES ===========
-  const { getListKeyAvailability } = ShelvdEndpoints
+  const { getListKeyAvailability } = CfEndpoints
 
   const { data: isKeyAvailable = true, ...queryListKeyAvailability } =
     getListKeyAvailability.useQuery(
@@ -377,7 +377,7 @@ export const ListCreateForm = ({ className, onClose }: ListCreateForm) => {
     const creatorKey = userId
     const payload = ListData.parse({
       key: values.slug,
-      source: CourseSource.enum.shelvd,
+      source: CourseSource.enum.cf,
       ...values,
       creator: {
         key: creatorKey,
@@ -419,7 +419,7 @@ export const ListCreateForm = ({ className, onClose }: ListCreateForm) => {
                 <Input
                   {...field}
                   onBlur={() => {
-                    const slug = ShelvdUtils.createSlug(field.value)
+                    const slug = CfUtils.createSlug(field.value)
                     form.setValue('slug', slug)
 
                     setKeyToCheck(slug)
@@ -540,7 +540,7 @@ export const ListEditForm = ({
   //#endregion  //*======== STATES ===========
 
   //#endregion  //*======== QUERIES ===========
-  const { getListKeyAvailability } = ShelvdEndpoints
+  const { getListKeyAvailability } = CfEndpoints
 
   const { data: isKeyAvailable = true, ...queryListKeyAvailability } =
     getListKeyAvailability.useQuery(
@@ -648,7 +648,7 @@ export const ListEditForm = ({
                 <Input
                   {...field}
                   onBlur={() => {
-                    const slug = ShelvdUtils.createSlug(field.value)
+                    const slug = CfUtils.createSlug(field.value)
                     const isSame = (list?.slug ?? '') === slug
 
                     form.setValue('slug', slug)

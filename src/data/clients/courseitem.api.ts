@@ -14,8 +14,8 @@ import {
   SearchParams,
   SearchQueryResponse,
   TrendPeriodCourses,
-} from '@/types/hardcover'
-import { SearchCategories } from '@/types/shelvd'
+} from '@/types/courseitem'
+import { SearchCategories } from '@/types/cf'
 import { logger } from '@/utils/debug'
 import { getStringifiedRecord } from '@/utils/helpers'
 import { url } from '@/utils/http'
@@ -43,7 +43,7 @@ const Routes: Record<string, Record<string, string>> = {
   },
 }
 
-export const HardcoverClient = createApi({
+export const CourseItemClient = createApi({
   baseQuery: fetchBaseQuery({ baseUrl: Endpoint }),
   reducerPath: TagType,
   tagTypes: [TagType],
@@ -160,7 +160,7 @@ export const HardcoverClient = createApi({
         }
 
         logger(
-          { breakpoint: '[hardcover.api.ts:130]/searchExact' },
+          { breakpoint: '[courseitem.api.ts:130]/searchExact' },
           {
             category,
             searchParams,
@@ -222,7 +222,7 @@ export const HardcoverClient = createApi({
         }
 
         logger(
-          { breakpoint: '[hardcover.api.ts:185]/searchExactBulk' },
+          { breakpoint: '[courseitem.api.ts:185]/searchExactBulk' },
           {
             searchParams,
           },
@@ -283,4 +283,4 @@ export const HardcoverClient = createApi({
   }),
 })
 
-export const HardcoverEndpoints = HardcoverClient.endpoints
+export const CourseItemEndpoints = CourseItemClient.endpoints

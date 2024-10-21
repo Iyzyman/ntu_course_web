@@ -190,19 +190,6 @@ const DrawerMenu = ({ trigger, content, direction, ...props }: DrawerMenu) => {
           Discover
         </Button>
 
-        {/* <Button
-          variant="outline"
-          className={cn(!env.VITE_FEATURE_COLLECTIONS && 'hidden')}
-          onClick={() => {
-            setIsDrawerOpen(false)
-            navigate({
-              pathname: '/collections',
-            })
-          }}
-        >
-          Collections
-        </Button> */}
-
         <DrawerFooter className="p-0">
           <SignedIn>
             <Button

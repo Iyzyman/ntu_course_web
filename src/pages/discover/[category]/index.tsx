@@ -14,8 +14,8 @@ import {
 } from '@/components/ui/Pagination'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/Tabs'
 import { Navigate, useNavigate, useParams } from '@/router'
-import { Hardcover } from '@/types'
-import { ListData } from '@/types/shelvd'
+import { CourseItem } from '@/types'
+import { ListData } from '@/types/cf'
 import { cn } from '@/utils/dom'
 import { getRangedArray, getSegmentedArray } from '@/utils/helpers'
 import { useCallback, useEffect, useMemo, useState } from 'react'
@@ -23,17 +23,17 @@ import {
   useAllCoursesData,
   useDiscoveryData,
 } from '@/components/hooks/useCourseFinderHooks'
-import { HardcoverUtils } from '@/utils/clients/hardcover'
+import { CourseItemUtils } from '@/utils/clients/courseitem'
 
 const ListCategoryPage = () => {
   const navigate = useNavigate()
 
   //#endregion  //*======== PARAMS ===========
-  const { category = Hardcover.DefaultListCategory } = useParams(
+  const { category = CourseItem.DefaultListCategory } = useParams(
     '/discover/:category',
   )
 
-  const isValidCategory = Hardcover.ListCategory.safeParse(category).success
+  const isValidCategory = CourseItem.ListCategory.safeParse(category).success
   const isValidParams = isValidCategory
   //#endregion  //*======== PARAMS ===========
 
@@ -57,7 +57,7 @@ const ListCategoryPage = () => {
     console.log(error)
   }
 
-  const results = (data ?? []) as Hardcover.List[]
+  const results = (data ?? []) as CourseItem.List[]
   const isNotFound =
     !isValidParams || (!isLoading && !isSuccess && !results.length)
 
@@ -65,8 +65,8 @@ const ListCategoryPage = () => {
 
   //#endregion  //*======== PAGINATION ===========
   const segmentLimit = 10
-  const segments: Hardcover.List[][] = getSegmentedArray(results, segmentLimit)
-  const segment: Hardcover.List[] = segments?.[pageIdx] ?? []
+  const segments: CourseItem.List[][] = getSegmentedArray(results, segmentLimit)
+  const segment: CourseItem.List[] = segments?.[pageIdx] ?? []
   const maxPageIdx = segments.length - 1
   const isPaginationDisabled = maxPageIdx < 1 || !segment.length
   const isFirstPage = pageIdx === 0
@@ -117,7 +117,7 @@ const ListCategoryPage = () => {
   const allCourses: List = useMemo(() => {
     const allCoursesArray = isFound
       ? allCoursesData.map((course: Course) =>
-          HardcoverUtils.parseCourse(course),
+          CourseItemUtils.parseCourse(course),
         )
       : []
     return {
@@ -214,10 +214,10 @@ const ListCategoryPage = () => {
         </section>
 
         <Tabs
-          defaultValue={Hardcover.DefaultListCategory}
+          defaultValue={CourseItem.DefaultListCategory}
           value={category}
           onValueChange={(c) => {
-            const isValidPeriod = Hardcover.ListCategory.safeParse(c).success
+            const isValidPeriod = CourseItem.ListCategory.safeParse(c).success
             if (!isValidPeriod) return
 
             navigate(
@@ -242,7 +242,7 @@ const ListCategoryPage = () => {
               'overflow-x-auto',
             )}
           >
-            {Hardcover.ListCategory.options.map((category, index) => {
+            {CourseItem.ListCategory.options.map((category, index) => {
               return (
                 <TabsTrigger
                   key={`lists-tab-${category}-${index}`} // Ensure uniqueness with index fallback
@@ -258,7 +258,7 @@ const ListCategoryPage = () => {
             })}
           </TabsList>
 
-          {Hardcover.ListCategory.options.map((category) =>
+          {CourseItem.ListCategory.options.map((category) =>
             category !== 'filter' ? (
               <TabsContent value={category}>
                 <Course.CourseMatrix

@@ -1,4 +1,4 @@
-import { List } from '@/types/shelvd'
+import { List } from '@/types/cf'
 import {
   Autocomplete,
   Checkbox,
@@ -33,12 +33,15 @@ export const Filter = ({ courseList, onFilterChange }: FilterProps) => {
     setFaculty(typeof value === 'string' ? value.split(',') : value)
   }
 
-    const tagList = courseArray.flatMap(course=>course.tags)
-    const tagFilters = [...new Set(tagList)].filter(value => value !== null)
-    const handleTagFilter = (_event: React.SyntheticEvent, value: (string | undefined)[]) => {
-       const tagArray = value.filter(item => item !== undefined) as string[]
-       setTags(tagArray)
-    }
+  const tagList = courseArray.flatMap((course) => course.tags)
+  const tagFilters = [...new Set(tagList)].filter((value) => value !== null)
+  const handleTagFilter = (
+    _event: React.SyntheticEvent,
+    value: (string | undefined)[],
+  ) => {
+    const tagArray = value.filter((item) => item !== undefined) as string[]
+    setTags(tagArray)
+  }
 
   useEffect(() => {
     const filteredbyfaculty =

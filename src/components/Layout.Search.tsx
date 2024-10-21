@@ -33,15 +33,15 @@ import { AppActions, AppSelectors } from '@/data/stores/app.slice'
 import { useRootDispatch, useRootSelector } from '@/data/stores/root'
 import { SearchActions, SearchSelectors } from '@/data/stores/search.slice'
 import { useNavigate } from '@/router'
-import { Hardcover } from '@/types'
+import { CourseItem } from '@/types'
 import {
   Character,
   DefaultSearchCategory,
   List,
   SearchCategories,
   SearchCategory,
-} from '@/types/shelvd'
-import { HardcoverUtils } from '@/utils/clients/hardcover'
+} from '@/types/cf'
+import { CourseItemUtils } from '@/utils/clients/courseitem'
 import { logger } from '@/utils/debug'
 import { cn } from '@/utils/dom'
 import { getLimitedArray, isSimilarStrings } from '@/utils/helpers'
@@ -67,7 +67,7 @@ import { useSearchData } from './hooks/useCourseFinderHooks'
 
 const DisplaySearchCategories = SearchCategory.extract(['courses'])
 
-const SearchFormSchema = Hardcover.QuerySearchParams.extend({
+const SearchFormSchema = CourseItem.QuerySearchParams.extend({
   category: SearchCategory.default(DefaultSearchCategory),
 }).default({
   q: '',
@@ -89,8 +89,8 @@ export type SearchContext = {
 
   onSubmitSearch: () => void
   onResetSearch: () => void
-  data?: Hardcover.SearchQueryResponse<
-    Hardcover.SearchDocument<SearchCategories>
+  data?: CourseItem.SearchQueryResponse<
+    CourseItem.SearchDocument<SearchCategories>
   >
   dataCount: number
 
@@ -517,9 +517,9 @@ export const SearchResults = ({ className, ...rest }: SearchResults) => {
         {(results?.hits ?? []).map((hit, idx) => {
           if (!hit) return
           if (category === 'courses') {
-            const document = hit.document as Hardcover.SearchCourse
-            const hcCourse = HardcoverUtils.parseCourseDocument({ document })
-            const course = HardcoverUtils.parseCourse(hcCourse) as Course
+            const document = hit.document as CourseItem.SearchCourse
+            const hcCourse = CourseItemUtils.parseCourseDocument({ document })
+            const course = CourseItemUtils.parseCourse(hcCourse) as Course
             return (
               <Search.ResultItem
                 key={`${idx}-${course.key}`}
@@ -630,7 +630,7 @@ export const SearchResults = ({ className, ...rest }: SearchResults) => {
               </Search.ResultItem>
             )
           }
-          const artifact = HardcoverUtils.parseDocument({ category, hit }) as
+          const artifact = CourseItemUtils.parseDocument({ category, hit }) as
             | Character
             | List
           return (
@@ -783,7 +783,7 @@ export const SearchCommandResults = () => {
         if (!hit) return
 
         if (category === 'courses') {
-          const course = HardcoverUtils.parseDocument({
+          const course = CourseItemUtils.parseDocument({
             category,
             hit,
           }) as Course
@@ -848,7 +848,7 @@ export const SearchCommandResults = () => {
           )
         }
 
-        const artifact = HardcoverUtils.parseDocument({ category, hit }) as
+        const artifact = CourseItemUtils.parseDocument({ category, hit }) as
           | Character
           | List
 

@@ -1,5 +1,5 @@
 import { RenderGuard } from '@/components/providers/render.provider'
-import { User as UserInfo } from '@/types/shelvd'
+import { User as UserInfo } from '@/types/cf'
 import { PropsWithChildren, createContext } from 'react'
 
 export type User = UserInfo

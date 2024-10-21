@@ -1,6 +1,6 @@
 import { StoreSlicePrefix } from '@/data/static/store'
-import { Hardcover } from '@/types'
-import { ListCategory } from '@/types/hardcover'
+import { CourseItem } from '@/types'
+import { ListCategory } from '@/types/courseitem'
 import {
   CourseSource,
   DefaultCourseSource,
@@ -10,7 +10,7 @@ import {
   SearchCategories,
   SearchCategoryHistory,
   SearchDocument,
-} from '@/types/shelvd'
+} from '@/types/cf'
 import { logger } from '@/utils/debug'
 import { createAsyncSlice } from '@/utils/store'
 import { PayloadAction } from '@reduxjs/toolkit'
@@ -20,8 +20,8 @@ type SourceOriginMap<TT extends SearchCategories> = {
   ol: unknown
   nyt: unknown
   google: unknown
-  hc: Hardcover.SearchDocument<TT>
-  shelvd: SearchDocument<TT>
+  hc: CourseItem.SearchDocument<TT>
+  cf: SearchDocument<TT>
 }
 export type SourceOrigin<
   T extends CourseSource,
@@ -164,7 +164,7 @@ export const SearchSlice = createAsyncSlice({
         state,
         action: PayloadAction<{
           category: SearchCategories
-          query: Hardcover.QuerySearchParams['q']
+          query: CourseItem.QuerySearchParams['q']
         }>,
       ) => {
         logger(

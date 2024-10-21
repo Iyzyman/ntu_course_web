@@ -18,7 +18,7 @@
           "likes": 10,
           "watchlists": 20,
           "pubYear": 1970,
-          "image": "https://hardcover.imgix.net/edition/30396246/61162988._SY475_.jpg",
+          "image": "https://courseitem.imgix.net/edition/30396246/61162988._SY475_.jpg",
           "author": {
             "name": "Vannevar Bush",
             "slug": "vannevar-bush",
@@ -34,7 +34,7 @@
           "slug": "where-is-my-flying-car",
           "title": "Where Is My Flying Car?",
           "pubYear": 2021,
-          "image": "https://storage.googleapis.com/hardcover/external_data/59510350/a28dd690fc8282a281f96cd42b4d3d8c5a83186e.jpeg",
+          "image": "https://storage.googleapis.com/courseitem/external_data/59510350/a28dd690fc8282a281f96cd42b4d3d8c5a83186e.jpeg",
           "author": {
             "name": "J. Storrs Hall",
             "slug": "j-storrs-hall",
@@ -52,7 +52,7 @@
           "slug": "the-big-score",
           "title": "The Big Score",
           "pubYear": 1985,
-          "image": "https://hardcover.imgix.net/edition/30439351/58261325._SX318_.jpg",
+          "image": "https://courseitem.imgix.net/edition/30439351/58261325._SX318_.jpg",
           "author": {
             "name": "Michael S. Malone",
             "slug": "michael-s-malone",
@@ -70,7 +70,7 @@
           "slug": "scientific-freedom-the-elixir-of-civilization",
           "title": "Scientific Freedom: The Elixir of Civilization",
           "pubYear": 2008,
-          "image": "https://hardcover.imgix.net/edition/12452071/55520463._SX318_.jpg",
+          "image": "https://courseitem.imgix.net/edition/12452071/55520463._SX318_.jpg",
           "author": {
             "name": "Donald W. Braben",
             "slug": "donald-w-braben",
@@ -88,7 +88,7 @@
           "slug": "the-making-of-prince-of-persia",
           "title": "The Making of Prince of Persia",
           "pubYear": 2020,
-          "image": "https://hardcover.imgix.net/edition/30391276/content.jpeg",
+          "image": "https://courseitem.imgix.net/edition/30391276/content.jpeg",
           "author": {
             "name": "Jordan Mechner",
             "slug": "jordan-mechner",
@@ -106,7 +106,7 @@
           "slug": "get-together",
           "title": "Get Together",
           "pubYear": 2019,
-          "image": "https://hardcover.imgix.net/edition/30439414/content.jpeg",
+          "image": "https://courseitem.imgix.net/edition/30439414/content.jpeg",
           "author": {
             "name": "Bailey Richardson",
             "slug": "bailey-richardson",
@@ -122,7 +122,7 @@
           "slug": "the-revolt-of-the-public-and-the-crisis-of-authority-in-the-new-millennium",
           "title": "The Revolt of The Public and the Crisis of Authority in the New Millennium",
           "pubYear": 2014,
-          "image": "https://hardcover.imgix.net/edition/29745786/10082646-L.jpg",
+          "image": "https://courseitem.imgix.net/edition/29745786/10082646-L.jpg",
           "author": {
             "name": "Martin Gurri",
             "slug": "martin-gurri",
@@ -140,7 +140,7 @@
           "slug": "stubborn-attachments",
           "title": "Stubborn Attachments",
           "pubYear": 2018,
-          "image": "https://hardcover.imgix.net/edition/30437273/content.jpeg",
+          "image": "https://courseitem.imgix.net/edition/30437273/content.jpeg",
           "author": {
             "name": "Tyler Cowen",
             "slug": "tyler-cowen",
@@ -156,7 +156,7 @@
           "slug": "the-dream-machine",
           "title": "The Dream Machine",
           "pubYear": 2018,
-          "image": "https://hardcover.imgix.net/edition/30396327/content.jpeg",
+          "image": "https://courseitem.imgix.net/edition/30396327/content.jpeg",
           "author": {
             "name": "M. Mitchell Waldrop",
             "slug": "m-mitchell-waldrop",
@@ -172,7 +172,7 @@
           "slug": "high-growth-handcourse",
           "title": "High Growth Handcourse",
           "pubYear": 2018,
-          "image": "https://hardcover.imgix.net/edition/781664/9205954-L.jpg",
+          "image": "https://courseitem.imgix.net/edition/781664/9205954-L.jpg",
           "author": {
             "name": "Elad Gil",
             "slug": "elad-gil",
@@ -190,7 +190,7 @@
           "slug": "working-in-public",
           "title": "Working in Public",
           "pubYear": 2020,
-          "image": "https://hardcover.imgix.net/edition/30382374/54140556._SX318_.jpg",
+          "image": "https://courseitem.imgix.net/edition/30382374/54140556._SX318_.jpg",
           "author": {
             "name": "Nadia Eghbal",
             "slug": "nadia-eghbal",
@@ -208,7 +208,7 @@
           "slug": "art-of-doing-science-and-engineering",
           "title": "Art of Doing Science and Engineering",
           "pubYear": 2003,
-          "image": "https://hardcover.imgix.net/edition/30439392/53349431._SX318_.jpg",
+          "image": "https://courseitem.imgix.net/edition/30439392/53349431._SX318_.jpg",
           "author": {
             "name": "Richard R. Hamming",
             "slug": "richard-r-hamming",
@@ -226,7 +226,7 @@
           "slug": "an-elegant-puzzle",
           "title": "An Elegant Puzzle: Systems of Engineering Management",
           "pubYear": 2019,
-          "image": "https://hardcover.imgix.net/external_data/59930330/d66911803a64a92caf73f9954ec8f2ba40dc8470.jpeg",
+          "image": "https://courseitem.imgix.net/external_data/59930330/d66911803a64a92caf73f9954ec8f2ba40dc8470.jpeg",
           "author": {
             "name": "Will Larson",
             "slug": "will-larson",
@@ -244,7 +244,7 @@
           "slug": "poor-charlies-almanack",
           "title": "Poor Charlie's Almanack: The Wit and Wisdom of Charles T. Munger",
           "pubYear": 2005,
-          "image": "https://storage.googleapis.com/hardcover/external_data/60208082/e4d9416be1dc349e4ff025d27e2230ca1d5ac35f.jpeg",
+          "image": "https://storage.googleapis.com/courseitem/external_data/60208082/e4d9416be1dc349e4ff025d27e2230ca1d5ac35f.jpeg",
           "author": {
             "name": "Charles T. Munger",
             "slug": "charles-t-munger",
@@ -272,13 +272,13 @@
           "slug": "the-lord-of-the-rings",
           "title": "The Lord of the Rings",
           "pubYear": 1954,
-          "image": "https://storage.googleapis.com/hardcover/edition/24693117/2fc2d0dd8536b240af37b2abcb4f09ffc85d6cbc.jpeg",
+          "image": "https://storage.googleapis.com/courseitem/edition/24693117/2fc2d0dd8536b240af37b2abcb4f09ffc85d6cbc.jpeg",
           "author": {
             "name": "J.R.R. Tolkien",
             "slug": "j-r-r-tolkien",
             "cachedImage": {
               "id": 33205,
-              "url": "https://hardcover.imgix.net/authors/132049/6155606-L.jpg",
+              "url": "https://courseitem.imgix.net/authors/132049/6155606-L.jpg",
               "color": "#5a5a5a",
               "width": 187,
               "height": 266
@@ -296,13 +296,13 @@
           "slug": "the-hitchhikers-guide-to-the-galaxy",
           "title": "The Hitchhiker's Guide to the Galaxy",
           "pubYear": 30,
-          "image": "https://storage.googleapis.com/hardcover/editions/11405662/47838745136868-14.jpg",
+          "image": "https://storage.googleapis.com/courseitem/editions/11405662/47838745136868-14.jpg",
           "author": {
             "name": "Douglas Adams",
             "slug": "douglas-adams",
             "cachedImage": {
               "id": 32048,
-              "url": "https://hardcover.imgix.net/authors/86158/6387387-L.jpg",
+              "url": "https://courseitem.imgix.net/authors/86158/6387387-L.jpg",
               "color": "#a9936b",
               "width": 333,
               "height": 386
@@ -318,13 +318,13 @@
           "slug": "enders-game",
           "title": "Ender's Game",
           "pubYear": 1985,
-          "image": "https://storage.googleapis.com/hardcover/external_data/60253655/86a7a5a0865998cb0ca0ab3710c4030c583b7325.jpeg",
+          "image": "https://storage.googleapis.com/courseitem/external_data/60253655/86a7a5a0865998cb0ca0ab3710c4030c583b7325.jpeg",
           "author": {
             "name": "Orson Scott Card",
             "slug": "orson-scott-card",
             "cachedImage": {
               "id": 33250,
-              "url": "https://hardcover.imgix.net/authors/134035/5721201-L.jpg",
+              "url": "https://courseitem.imgix.net/authors/134035/5721201-L.jpg",
               "color": "#2d3b31",
               "width": 200,
               "height": 283
@@ -340,13 +340,13 @@
           "slug": "dune",
           "title": "Dune",
           "pubYear": 1965,
-          "image": "https://storage.googleapis.com/hardcover/editions/30426415/8362709973192601-9780441013593-us.jpg",
+          "image": "https://storage.googleapis.com/courseitem/editions/30426415/8362709973192601-9780441013593-us.jpg",
           "author": {
             "name": "Frank Herbert",
             "slug": "frank-herbert",
             "cachedImage": {
               "id": 34197,
-              "url": "https://hardcover.imgix.net/authors/171873/7277115-L.jpg",
+              "url": "https://courseitem.imgix.net/authors/171873/7277115-L.jpg",
               "color": "#d8dec1",
               "width": 137,
               "height": 200
@@ -362,13 +362,13 @@
           "slug": "a-game-of-thrones",
           "title": "A Game of Thrones",
           "pubYear": 1996,
-          "image": "https://storage.googleapis.com/hardcover/external_data/59941670/05e38b29360631c78ea2c11bfb5d3714d5eabb0f.jpeg",
+          "image": "https://storage.googleapis.com/courseitem/external_data/59941670/05e38b29360631c78ea2c11bfb5d3714d5eabb0f.jpeg",
           "author": {
             "name": "George R.R. Martin",
             "slug": "george-r-r-martin",
             "cachedImage": {
               "id": 31903,
-              "url": "https://hardcover.imgix.net/authors/78661/6155669-L.jpg",
+              "url": "https://courseitem.imgix.net/authors/78661/6155669-L.jpg",
               "color": "#ad6e52",
               "width": 200,
               "height": 257
@@ -384,13 +384,13 @@
           "slug": "1984",
           "title": "1984",
           "pubYear": 19,
-          "image": "https://storage.googleapis.com/hardcover/editions/4675245/7315391130042195-lf.jpeg",
+          "image": "https://storage.googleapis.com/courseitem/editions/4675245/7315391130042195-lf.jpeg",
           "author": {
             "name": "George Orwell",
             "slug": "george-orwell",
             "cachedImage": {
               "id": 33249,
-              "url": "https://hardcover.imgix.net/authors/133899/9160343-L.jpg",
+              "url": "https://courseitem.imgix.net/authors/133899/9160343-L.jpg",
               "color": "#739594",
               "width": 500,
               "height": 281
@@ -406,13 +406,13 @@
           "slug": "fahrenheit-451",
           "title": "Fahrenheit 451",
           "pubYear": 1951,
-          "image": "https://storage.googleapis.com/hardcover/editions/30399571/5016457304957440-images2Fslides2F1960_2.jpg",
+          "image": "https://storage.googleapis.com/courseitem/editions/30399571/5016457304957440-images2Fslides2F1960_2.jpg",
           "author": {
             "name": "Ray Bradbury",
             "slug": "ray-bradbury",
             "cachedImage": {
               "id": 32028,
-              "url": "https://hardcover.imgix.net/authors/84720/7879536-L.jpg",
+              "url": "https://courseitem.imgix.net/authors/84720/7879536-L.jpg",
               "color": "#bf794e",
               "width": 407,
               "height": 500
@@ -428,13 +428,13 @@
           "slug": "the-foundation-trilogy",
           "title": "The Foundation Trilogy",
           "pubYear": 1953,
-          "image": "https://hardcover.imgix.net/edition/4128449/6502517-L.jpg",
+          "image": "https://courseitem.imgix.net/edition/4128449/6502517-L.jpg",
           "author": {
             "name": "Isaac Asimov",
             "slug": "isaac-asimov",
             "cachedImage": {
               "id": 35414,
-              "url": "https://hardcover.imgix.net/authors/224110/7893107-L.jpg",
+              "url": "https://courseitem.imgix.net/authors/224110/7893107-L.jpg",
               "color": "#616161",
               "width": 354,
               "height": 500
@@ -450,13 +450,13 @@
           "slug": "brave-new-world",
           "title": "Brave New World",
           "pubYear": 1930,
-          "image": "https://storage.googleapis.com/hardcover/external_data/59884791/4fc98526fa65d7dac4797dcc021a8154fc86276f.jpeg",
+          "image": "https://storage.googleapis.com/courseitem/external_data/59884791/4fc98526fa65d7dac4797dcc021a8154fc86276f.jpeg",
           "author": {
             "name": "Aldous Huxley",
             "slug": "aldous-huxley",
             "cachedImage": {
               "id": 32582,
-              "url": "https://hardcover.imgix.net/authors/108633/6712758-L.jpg",
+              "url": "https://courseitem.imgix.net/authors/108633/6712758-L.jpg",
               "color": "#656251",
               "width": 200,
               "height": 250
@@ -472,13 +472,13 @@
           "slug": "american-gods",
           "title": "American Gods",
           "pubYear": 2001,
-          "image": "https://storage.googleapis.com/hardcover/external_data/59664020/9de1442efd38bea83bb88699cab509867fc4c4b1.jpeg",
+          "image": "https://storage.googleapis.com/courseitem/external_data/59664020/9de1442efd38bea83bb88699cab509867fc4c4b1.jpeg",
           "author": {
             "name": "Neil Gaiman",
             "slug": "neil-gaiman",
             "cachedImage": {
               "id": 32528,
-              "url": "https://hardcover.imgix.net/authors/106235/7277125-L.jpg",
+              "url": "https://courseitem.imgix.net/authors/106235/7277125-L.jpg",
               "color": "#373835",
               "width": 375,
               "height": 500
@@ -494,7 +494,7 @@
           "slug": "the-princess-bride",
           "title": "The Princess Bride",
           "pubYear": 1973,
-          "image": "https://hardcover.imgix.net/external_data/59849497/73caae66ab366a7870e77c8336e4f89b244501fd.jpeg",
+          "image": "https://courseitem.imgix.net/external_data/59849497/73caae66ab366a7870e77c8336e4f89b244501fd.jpeg",
           "author": {
             "name": "William Goldman",
             "slug": "william-goldman",
@@ -510,13 +510,13 @@
           "slug": "the-eye-of-the-world",
           "title": "The Eye of the World",
           "pubYear": 1990,
-          "image": "https://storage.googleapis.com/hardcover/edition/5138650/e57df3b52f9e55a10b37289e4d0a57f1a57592d6.jpeg",
+          "image": "https://storage.googleapis.com/courseitem/edition/5138650/e57df3b52f9e55a10b37289e4d0a57f1a57592d6.jpeg",
           "author": {
             "name": "Robert Jordan",
             "slug": "robert-jordan",
             "cachedImage": {
               "id": 33682,
-              "url": "https://hardcover.imgix.net/authors/151072/6680409-L.jpg",
+              "url": "https://courseitem.imgix.net/authors/151072/6680409-L.jpg",
               "color": "#ebd4be",
               "width": 330,
               "height": 500
@@ -532,13 +532,13 @@
           "slug": "animal-farm",
           "title": "Animal Farm",
           "pubYear": 1945,
-          "image": "https://storage.googleapis.com/hardcover/external_data/60153774/828b3c8929bab6aa5239889712eac37d48d128c2.jpeg",
+          "image": "https://storage.googleapis.com/courseitem/external_data/60153774/828b3c8929bab6aa5239889712eac37d48d128c2.jpeg",
           "author": {
             "name": "George Orwell",
             "slug": "george-orwell",
             "cachedImage": {
               "id": 33249,
-              "url": "https://hardcover.imgix.net/authors/133899/9160343-L.jpg",
+              "url": "https://courseitem.imgix.net/authors/133899/9160343-L.jpg",
               "color": "#739594",
               "width": 500,
               "height": 281
@@ -554,13 +554,13 @@
           "slug": "neuromancer",
           "title": "Neuromancer",
           "pubYear": 1984,
-          "image": "https://storage.googleapis.com/hardcover/editions/30401722/203725739738019-PxOL.jpg",
+          "image": "https://storage.googleapis.com/courseitem/editions/30401722/203725739738019-PxOL.jpg",
           "author": {
             "name": "William Gibson",
             "slug": "william-gibson-9a400ffc-a470-4a31-85f6-86d6fc33b850",
             "cachedImage": {
               "id": 34306,
-              "url": "https://hardcover.imgix.net/authors/176773/5698233-L.jpg",
+              "url": "https://courseitem.imgix.net/authors/176773/5698233-L.jpg",
               "color": "#7d7d7d",
               "width": 500,
               "height": 333
@@ -588,7 +588,7 @@
           "slug": "drawing-on-the-right-side-of-the-brain-workcourse",
           "title": "Drawing on the right side of the brain workcourse",
           "pubYear": 2012,
-          "image": "https://hardcover.imgix.net/edition/30090454/8784064-L.jpg",
+          "image": "https://courseitem.imgix.net/edition/30090454/8784064-L.jpg",
           "author": {
             "name": "Betty Edwards",
             "slug": "betty-edwards",
@@ -604,7 +604,7 @@
           "slug": "the-elements-of-style",
           "title": "The Elements of Style",
           "pubYear": 1918,
-          "image": "https://hardcover.imgix.net/edition/12051986/10329833-L.jpg",
+          "image": "https://courseitem.imgix.net/edition/12051986/10329833-L.jpg",
           "author": {
             "name": "William Strunk Jr.",
             "slug": "william-strunk-jr",
@@ -620,7 +620,7 @@
           "slug": "save-the-cat",
           "title": "Save the Cat",
           "pubYear": 2005,
-          "image": "https://hardcover.imgix.net/edition/17003204/960754-L.jpg",
+          "image": "https://courseitem.imgix.net/edition/17003204/960754-L.jpg",
           "author": {
             "name": "Blake Snyder",
             "slug": "blake-snyder",
@@ -636,13 +636,13 @@
           "slug": "understanding-comics-the-invisible-art",
           "title": "Understanding Comics: The Invisible Art",
           "pubYear": 1993,
-          "image": "https://hardcover.imgix.net/edition/29549403/42616-L.jpg",
+          "image": "https://courseitem.imgix.net/edition/29549403/42616-L.jpg",
           "author": {
             "name": "Scott McCloud",
             "slug": "scott-mccloud",
             "cachedImage": {
               "id": 32069,
-              "url": "https://hardcover.imgix.net/authors/86937/6390121-L.jpg",
+              "url": "https://courseitem.imgix.net/authors/86937/6390121-L.jpg",
               "color": "#594425",
               "width": 333,
               "height": 500
@@ -658,7 +658,7 @@
           "slug": "contagious",
           "title": "Contagious",
           "pubYear": 2013,
-          "image": "https://hardcover.imgix.net/edition/4326720/12130640-L.jpg",
+          "image": "https://courseitem.imgix.net/edition/4326720/12130640-L.jpg",
           "author": {
             "name": "Jonah Berger",
             "slug": "jonah-berger",
@@ -674,7 +674,7 @@
           "slug": "predictably-irrational",
           "title": "Predictably Irrational",
           "pubYear": 2009,
-          "image": "https://hardcover.imgix.net/edition/30403698/content.jpeg",
+          "image": "https://courseitem.imgix.net/edition/30403698/content.jpeg",
           "author": {
             "name": "Dan Ariely",
             "slug": "dan-ariely",
@@ -690,7 +690,7 @@
           "slug": "manage-your-day-to-day",
           "title": "Manage Your Day-To-Day",
           "pubYear": 2013,
-          "image": "https://hardcover.imgix.net/edition/24083105/content.jpeg",
+          "image": "https://courseitem.imgix.net/edition/24083105/content.jpeg",
           "author": {
             "name": "Jocelyn K. Glei",
             "slug": "jocelyn-k-glei",
@@ -706,7 +706,7 @@
           "slug": "steal-like-an-artist",
           "title": "Steal Like an Artist: 10 Things Nobody Told You About Being Creative",
           "pubYear": 2012,
-          "image": "https://hardcover.imgix.net/external_data/59509848/ecbbad626c3e33778bd9bec8ee4468c7955b070e.jpeg",
+          "image": "https://courseitem.imgix.net/external_data/59509848/ecbbad626c3e33778bd9bec8ee4468c7955b070e.jpeg",
           "author": {
             "name": "Austin Kleon",
             "slug": "austin-kleon",
@@ -722,13 +722,13 @@
           "slug": "thinking-fast-and-slow",
           "title": "Thinking, Fast and Slow",
           "pubYear": 2011,
-          "image": "https://storage.googleapis.com/hardcover/external_data/59510222/40d5c7575a57b4d9c8c4620fa618a9ab9853d9d3.jpeg",
+          "image": "https://storage.googleapis.com/courseitem/external_data/59510222/40d5c7575a57b4d9c8c4620fa618a9ab9853d9d3.jpeg",
           "author": {
             "name": "Daniel Kahneman",
             "slug": "daniel-kahneman-599066bd-e779-4921-bb1b-f06e644ced8e",
             "cachedImage": {
               "id": 35046,
-              "url": "https://hardcover.imgix.net/authors/207636/7292667-L.jpg",
+              "url": "https://courseitem.imgix.net/authors/207636/7292667-L.jpg",
               "color": "#c16854",
               "width": 231,
               "height": 231
@@ -744,13 +744,13 @@
           "slug": "the-checklist-manifesto-how-to-get-things-right",
           "title": "The Checklist Manifesto: How to Get Things Right",
           "pubYear": 2009,
-          "image": "https://hardcover.imgix.net/edition/23718436/304a1c11ecd008cb1f94c0296eccf255b6c7bcf8.jpeg",
+          "image": "https://courseitem.imgix.net/edition/23718436/304a1c11ecd008cb1f94c0296eccf255b6c7bcf8.jpeg",
           "author": {
             "name": "Atul Gawande",
             "slug": "atul-gawande",
             "cachedImage": {
               "id": 33231,
-              "url": "https://hardcover.imgix.net/authors/133303/8178183-L.jpg",
+              "url": "https://courseitem.imgix.net/authors/133303/8178183-L.jpg",
               "color": "#bdc1c3",
               "width": 332,
               "height": 500
@@ -766,7 +766,7 @@
           "slug": "sketching-user-experiences",
           "title": "Sketching User Experiences",
           "pubYear": 2007,
-          "image": "https://hardcover.imgix.net/edition/22701638/1098469-L.jpg",
+          "image": "https://courseitem.imgix.net/edition/22701638/1098469-L.jpg",
           "author": {
             "name": "Bill Buxton",
             "slug": "bill-buxton",
@@ -782,7 +782,7 @@
           "slug": "creative-confidence",
           "title": "Creative Confidence",
           "pubYear": 2013,
-          "image": "https://hardcover.imgix.net/edition/30404758/10534005-L.jpg",
+          "image": "https://courseitem.imgix.net/edition/30404758/10534005-L.jpg",
           "author": {
             "name": "Tom Kelley",
             "slug": "tom-kelley",
@@ -798,13 +798,13 @@
           "slug": "creativity-flow-and-the-psychology-of-discovery-and-invention",
           "title": "Creativity",
           "pubYear": 1996,
-          "image": "https://hardcover.imgix.net/edition/2007195/40363-L.jpg",
+          "image": "https://courseitem.imgix.net/edition/2007195/40363-L.jpg",
           "author": {
             "name": "Mihaly Csikszentmihalyi",
             "slug": "mihaly-csikszentmihalyi",
             "cachedImage": {
               "id": 35363,
-              "url": "https://hardcover.imgix.net/authors/222092/8109605-L.jpg",
+              "url": "https://courseitem.imgix.net/authors/222092/8109605-L.jpg",
               "color": "#ab472d",
               "width": 387,
               "height": 451
@@ -820,7 +820,7 @@
           "slug": "how-to-have-kick-ass-ideas",
           "title": "How to Have Kick-Ass Ideas",
           "pubYear": 2008,
-          "image": "https://hardcover.imgix.net/edition/28986698/content.jpeg",
+          "image": "https://courseitem.imgix.net/edition/28986698/content.jpeg",
           "author": {
             "name": "Chris Barez-Brown",
             "slug": "chris-barez-brown-b630fcf9-4ef0-4c47-a41a-57aeee01837c",
@@ -848,7 +848,7 @@
           "slug": "the-palm-wine-drinkard",
           "title": "The Palm-Wine Drinkard",
           "pubYear": 1952,
-          "image": "https://storage.googleapis.com/hardcover/external_data/30866944/19e201995229d015d0c96291f10de5c1f8835738.jpeg",
+          "image": "https://storage.googleapis.com/courseitem/external_data/30866944/19e201995229d015d0c96291f10de5c1f8835738.jpeg",
           "author": {
             "name": "Amos Tutuola",
             "slug": "amos-tutuola",
@@ -864,7 +864,7 @@
           "slug": "le-morte-darthur",
           "title": "Le Morte D'Arthur",
           "pubYear": 1485,
-          "image": "https://storage.googleapis.com/hardcover/external_data/59966146/c3dbe6edf9b6ae187b4de2482acbd559cde9459a.jpeg",
+          "image": "https://storage.googleapis.com/courseitem/external_data/59966146/c3dbe6edf9b6ae187b4de2482acbd559cde9459a.jpeg",
           "author": {
             "name": "Sir Thomas Malory",
             "slug": "sir-thomas-malory",
@@ -880,13 +880,13 @@
           "slug": "alices-adventures-in-wonderland-and-other-tales",
           "title": "Alice's Adventures in Wonderland and Other Tales",
           "pubYear": 2016,
-          "image": "https://hardcover.imgix.net/edition/5392941/8740467-L.jpg",
+          "image": "https://courseitem.imgix.net/edition/5392941/8740467-L.jpg",
           "author": {
             "name": "Lewis Carroll",
             "slug": "lewis-carroll",
             "cachedImage": {
               "id": 32984,
-              "url": "https://hardcover.imgix.net/authors/123920/6285807-L.jpg",
+              "url": "https://courseitem.imgix.net/authors/123920/6285807-L.jpg",
               "color": "#dbdbdb",
               "width": 268,
               "height": 326
@@ -902,7 +902,7 @@
           "slug": "the-lion-the-witch-and-the-wardrobe-a-graphic-novel",
           "title": "The Lion, the Witch and the Wardrobe: A Graphic Novel",
           "pubYear": 1995,
-          "image": "https://hardcover.imgix.net/edition/9936247/50969-L.jpg",
+          "image": "https://courseitem.imgix.net/edition/9936247/50969-L.jpg",
           "author": {
             "name": "Robin Lawrie",
             "slug": "robin-lawrie",
@@ -918,7 +918,7 @@
           "slug": "a-hero-born",
           "title": "A Hero Born",
           "pubYear": 1957,
-          "image": "https://hardcover.imgix.net/edition/4215267/10108569-L.jpg",
+          "image": "https://courseitem.imgix.net/edition/4215267/10108569-L.jpg",
           "author": {
             "name": "Jin Yong",
             "slug": "jin-yong",
@@ -934,7 +934,7 @@
           "slug": "roald-dahl-james-and-the-giant-peach",
           "title": "Roald Dahl James and the Giant Peach: The Course and Movie Scrapcourse",
           "pubYear": 1996,
-          "image": "https://hardcover.imgix.net/edition/707793/3843269-L.jpg",
+          "image": "https://courseitem.imgix.net/edition/707793/3843269-L.jpg",
           "author": {
             "name": "Lucy Dahl",
             "slug": "lucy-dahl",
@@ -950,13 +950,13 @@
           "slug": "the-wandering-unicorn",
           "title": "The Wandering Unicorn",
           "pubYear": 1985,
-          "image": "https://hardcover.imgix.net/edition/30450390/content.jpeg",
+          "image": "https://courseitem.imgix.net/edition/30450390/content.jpeg",
           "author": {
             "name": "Manuel Mujica L\u00e1inez",
             "slug": "manuel-mujica-lainez",
             "cachedImage": {
               "id": 35650,
-              "url": "https://hardcover.imgix.net/authors/235449/6680138-L.jpg",
+              "url": "https://courseitem.imgix.net/authors/235449/6680138-L.jpg",
               "color": "#faf6f2",
               "width": 199,
               "height": 196
@@ -972,13 +972,13 @@
           "slug": "dragonflight",
           "title": "Dragonflight",
           "pubYear": 2005,
-          "image": "https://hardcover.imgix.net/external_data/59847072/11f1033877a693996a7dc7393027f88f5c682b88.jpeg",
+          "image": "https://courseitem.imgix.net/external_data/59847072/11f1033877a693996a7dc7393027f88f5c682b88.jpeg",
           "author": {
             "name": "Anne McCaffrey",
             "slug": "anne-mccaffrey-27ffd584-fb50-41c6-a976-7657e57ea873",
             "cachedImage": {
               "id": 31868,
-              "url": "https://hardcover.imgix.net/authors/77371/7348076-L.jpg",
+              "url": "https://courseitem.imgix.net/authors/77371/7348076-L.jpg",
               "color": "#4a2716",
               "width": 305,
               "height": 392
@@ -994,13 +994,13 @@
           "slug": "a-wizard-of-earthsea",
           "title": "A Wizard of Earthsea",
           "pubYear": 1968,
-          "image": "https://storage.googleapis.com/hardcover/external_data/59529673/18c1c428ed1896939e0985c2a11d0501cff22ac2.jpeg",
+          "image": "https://storage.googleapis.com/courseitem/external_data/59529673/18c1c428ed1896939e0985c2a11d0501cff22ac2.jpeg",
           "author": {
             "name": "Ursula K. Le Guin",
             "slug": "ursula-k-le-guin",
             "cachedImage": {
               "id": 35187,
-              "url": "https://hardcover.imgix.net/authors/213830/6294300-L.jpg",
+              "url": "https://courseitem.imgix.net/authors/213830/6294300-L.jpg",
               "color": "#464646",
               "width": 280,
               "height": 340
@@ -1016,7 +1016,7 @@
           "slug": "the-crystal-cave",
           "title": "The Crystal Cave",
           "pubYear": 1970,
-          "image": "https://hardcover.imgix.net/edition/11986361/291172-L.jpg",
+          "image": "https://courseitem.imgix.net/edition/11986361/291172-L.jpg",
           "author": {
             "name": "Mary  Stewart",
             "slug": "mary-stewart-7ac53ba6-120c-4f84-ae80-aa7a861c375b",
@@ -1032,13 +1032,13 @@
           "slug": "tuck-everlasting-2002",
           "title": "Tuck Everlasting",
           "pubYear": 2002,
-          "image": "https://hardcover.imgix.net/edition/5046198/8778015-L.jpg",
+          "image": "https://courseitem.imgix.net/edition/5046198/8778015-L.jpg",
           "author": {
             "name": "Natalie Babbitt",
             "slug": "natalie-babbitt",
             "cachedImage": {
               "id": 35447,
-              "url": "https://hardcover.imgix.net/authors/226204/7281701-L.jpg",
+              "url": "https://courseitem.imgix.net/authors/226204/7281701-L.jpg",
               "color": "#a6a6a6",
               "width": 202,
               "height": 233
@@ -1054,7 +1054,7 @@
           "slug": "the-bloody-chamber",
           "title": "The Bloody Chamber",
           "pubYear": 1979,
-          "image": "https://hardcover.imgix.net/edition/9389401/77529-L.jpg",
+          "image": "https://courseitem.imgix.net/edition/9389401/77529-L.jpg",
           "author": {
             "name": "Angela Carter",
             "slug": "angela-carter-26e2b606-cf2f-4325-97ac-413b6887597a",
@@ -1070,13 +1070,13 @@
           "slug": "redwall",
           "title": "Redwall",
           "pubYear": 1986,
-          "image": "https://hardcover.imgix.net/edition/17618074/919096-L.jpg",
+          "image": "https://courseitem.imgix.net/edition/17618074/919096-L.jpg",
           "author": {
             "name": "Brian Jacques",
             "slug": "brian-jacques",
             "cachedImage": {
               "id": 32954,
-              "url": "https://hardcover.imgix.net/authors/122663/7252558-L.jpg",
+              "url": "https://courseitem.imgix.net/authors/122663/7252558-L.jpg",
               "color": "#731818",
               "width": 371,
               "height": 500
@@ -1092,13 +1092,13 @@
           "slug": "the-eye-of-the-world",
           "title": "The Eye of the World",
           "pubYear": 1990,
-          "image": "https://storage.googleapis.com/hardcover/edition/5138650/e57df3b52f9e55a10b37289e4d0a57f1a57592d6.jpeg",
+          "image": "https://storage.googleapis.com/courseitem/edition/5138650/e57df3b52f9e55a10b37289e4d0a57f1a57592d6.jpeg",
           "author": {
             "name": "Robert Jordan",
             "slug": "robert-jordan",
             "cachedImage": {
               "id": 33682,
-              "url": "https://hardcover.imgix.net/authors/151072/6680409-L.jpg",
+              "url": "https://courseitem.imgix.net/authors/151072/6680409-L.jpg",
               "color": "#ebd4be",
               "width": 330,
               "height": 500
@@ -1126,13 +1126,13 @@
           "slug": "the-lord-of-the-rings",
           "title": "The Lord of the Rings",
           "pubYear": 1954,
-          "image": "https://storage.googleapis.com/hardcover/edition/24693117/2fc2d0dd8536b240af37b2abcb4f09ffc85d6cbc.jpeg",
+          "image": "https://storage.googleapis.com/courseitem/edition/24693117/2fc2d0dd8536b240af37b2abcb4f09ffc85d6cbc.jpeg",
           "author": {
             "name": "J.R.R. Tolkien",
             "slug": "j-r-r-tolkien",
             "cachedImage": {
               "id": 33205,
-              "url": "https://hardcover.imgix.net/authors/132049/6155606-L.jpg",
+              "url": "https://courseitem.imgix.net/authors/132049/6155606-L.jpg",
               "color": "#5a5a5a",
               "width": 187,
               "height": 266
@@ -1148,13 +1148,13 @@
           "slug": "the-hitchhikers-guide-to-the-galaxy",
           "title": "The Hitchhiker's Guide to the Galaxy",
           "pubYear": 30,
-          "image": "https://storage.googleapis.com/hardcover/editions/11405662/47838745136868-14.jpg",
+          "image": "https://storage.googleapis.com/courseitem/editions/11405662/47838745136868-14.jpg",
           "author": {
             "name": "Douglas Adams",
             "slug": "douglas-adams",
             "cachedImage": {
               "id": 32048,
-              "url": "https://hardcover.imgix.net/authors/86158/6387387-L.jpg",
+              "url": "https://courseitem.imgix.net/authors/86158/6387387-L.jpg",
               "color": "#a9936b",
               "width": 333,
               "height": 386
@@ -1170,13 +1170,13 @@
           "slug": "enders-game",
           "title": "Ender's Game",
           "pubYear": 1985,
-          "image": "https://storage.googleapis.com/hardcover/external_data/60253655/86a7a5a0865998cb0ca0ab3710c4030c583b7325.jpeg",
+          "image": "https://storage.googleapis.com/courseitem/external_data/60253655/86a7a5a0865998cb0ca0ab3710c4030c583b7325.jpeg",
           "author": {
             "name": "Orson Scott Card",
             "slug": "orson-scott-card",
             "cachedImage": {
               "id": 33250,
-              "url": "https://hardcover.imgix.net/authors/134035/5721201-L.jpg",
+              "url": "https://courseitem.imgix.net/authors/134035/5721201-L.jpg",
               "color": "#2d3b31",
               "width": 200,
               "height": 283
@@ -1192,13 +1192,13 @@
           "slug": "dune",
           "title": "Dune",
           "pubYear": 1965,
-          "image": "https://storage.googleapis.com/hardcover/editions/30426415/8362709973192601-9780441013593-us.jpg",
+          "image": "https://storage.googleapis.com/courseitem/editions/30426415/8362709973192601-9780441013593-us.jpg",
           "author": {
             "name": "Frank Herbert",
             "slug": "frank-herbert",
             "cachedImage": {
               "id": 34197,
-              "url": "https://hardcover.imgix.net/authors/171873/7277115-L.jpg",
+              "url": "https://courseitem.imgix.net/authors/171873/7277115-L.jpg",
               "color": "#d8dec1",
               "width": 137,
               "height": 200
@@ -1214,13 +1214,13 @@
           "slug": "a-game-of-thrones",
           "title": "A Game of Thrones",
           "pubYear": 1996,
-          "image": "https://storage.googleapis.com/hardcover/external_data/59941670/05e38b29360631c78ea2c11bfb5d3714d5eabb0f.jpeg",
+          "image": "https://storage.googleapis.com/courseitem/external_data/59941670/05e38b29360631c78ea2c11bfb5d3714d5eabb0f.jpeg",
           "author": {
             "name": "George R.R. Martin",
             "slug": "george-r-r-martin",
             "cachedImage": {
               "id": 31903,
-              "url": "https://hardcover.imgix.net/authors/78661/6155669-L.jpg",
+              "url": "https://courseitem.imgix.net/authors/78661/6155669-L.jpg",
               "color": "#ad6e52",
               "width": 200,
               "height": 257
@@ -1236,13 +1236,13 @@
           "slug": "1984",
           "title": "1984",
           "pubYear": 19,
-          "image": "https://storage.googleapis.com/hardcover/editions/4675245/7315391130042195-lf.jpeg",
+          "image": "https://storage.googleapis.com/courseitem/editions/4675245/7315391130042195-lf.jpeg",
           "author": {
             "name": "George Orwell",
             "slug": "george-orwell",
             "cachedImage": {
               "id": 33249,
-              "url": "https://hardcover.imgix.net/authors/133899/9160343-L.jpg",
+              "url": "https://courseitem.imgix.net/authors/133899/9160343-L.jpg",
               "color": "#739594",
               "width": 500,
               "height": 281
@@ -1258,13 +1258,13 @@
           "slug": "fahrenheit-451",
           "title": "Fahrenheit 451",
           "pubYear": 1951,
-          "image": "https://storage.googleapis.com/hardcover/editions/30399571/5016457304957440-images2Fslides2F1960_2.jpg",
+          "image": "https://storage.googleapis.com/courseitem/editions/30399571/5016457304957440-images2Fslides2F1960_2.jpg",
           "author": {
             "name": "Ray Bradbury",
             "slug": "ray-bradbury",
             "cachedImage": {
               "id": 32028,
-              "url": "https://hardcover.imgix.net/authors/84720/7879536-L.jpg",
+              "url": "https://courseitem.imgix.net/authors/84720/7879536-L.jpg",
               "color": "#bf794e",
               "width": 407,
               "height": 500
@@ -1280,13 +1280,13 @@
           "slug": "the-foundation-trilogy",
           "title": "The Foundation Trilogy",
           "pubYear": 1953,
-          "image": "https://hardcover.imgix.net/edition/4128449/6502517-L.jpg",
+          "image": "https://courseitem.imgix.net/edition/4128449/6502517-L.jpg",
           "author": {
             "name": "Isaac Asimov",
             "slug": "isaac-asimov",
             "cachedImage": {
               "id": 35414,
-              "url": "https://hardcover.imgix.net/authors/224110/7893107-L.jpg",
+              "url": "https://courseitem.imgix.net/authors/224110/7893107-L.jpg",
               "color": "#616161",
               "width": 354,
               "height": 500
@@ -1302,13 +1302,13 @@
           "slug": "brave-new-world",
           "title": "Brave New World",
           "pubYear": 1930,
-          "image": "https://storage.googleapis.com/hardcover/external_data/59884791/4fc98526fa65d7dac4797dcc021a8154fc86276f.jpeg",
+          "image": "https://storage.googleapis.com/courseitem/external_data/59884791/4fc98526fa65d7dac4797dcc021a8154fc86276f.jpeg",
           "author": {
             "name": "Aldous Huxley",
             "slug": "aldous-huxley",
             "cachedImage": {
               "id": 32582,
-              "url": "https://hardcover.imgix.net/authors/108633/6712758-L.jpg",
+              "url": "https://courseitem.imgix.net/authors/108633/6712758-L.jpg",
               "color": "#656251",
               "width": 200,
               "height": 250
@@ -1324,13 +1324,13 @@
           "slug": "american-gods",
           "title": "American Gods",
           "pubYear": 2001,
-          "image": "https://storage.googleapis.com/hardcover/external_data/59664020/9de1442efd38bea83bb88699cab509867fc4c4b1.jpeg",
+          "image": "https://storage.googleapis.com/courseitem/external_data/59664020/9de1442efd38bea83bb88699cab509867fc4c4b1.jpeg",
           "author": {
             "name": "Neil Gaiman",
             "slug": "neil-gaiman",
             "cachedImage": {
               "id": 32528,
-              "url": "https://hardcover.imgix.net/authors/106235/7277125-L.jpg",
+              "url": "https://courseitem.imgix.net/authors/106235/7277125-L.jpg",
               "color": "#373835",
               "width": 375,
               "height": 500
@@ -1346,7 +1346,7 @@
           "slug": "the-princess-bride",
           "title": "The Princess Bride",
           "pubYear": 1973,
-          "image": "https://hardcover.imgix.net/external_data/59849497/73caae66ab366a7870e77c8336e4f89b244501fd.jpeg",
+          "image": "https://courseitem.imgix.net/external_data/59849497/73caae66ab366a7870e77c8336e4f89b244501fd.jpeg",
           "author": {
             "name": "William Goldman",
             "slug": "william-goldman",
@@ -1362,13 +1362,13 @@
           "slug": "the-eye-of-the-world",
           "title": "The Eye of the World",
           "pubYear": 1990,
-          "image": "https://storage.googleapis.com/hardcover/edition/5138650/e57df3b52f9e55a10b37289e4d0a57f1a57592d6.jpeg",
+          "image": "https://storage.googleapis.com/courseitem/edition/5138650/e57df3b52f9e55a10b37289e4d0a57f1a57592d6.jpeg",
           "author": {
             "name": "Robert Jordan",
             "slug": "robert-jordan",
             "cachedImage": {
               "id": 33682,
-              "url": "https://hardcover.imgix.net/authors/151072/6680409-L.jpg",
+              "url": "https://courseitem.imgix.net/authors/151072/6680409-L.jpg",
               "color": "#ebd4be",
               "width": 330,
               "height": 500
@@ -1384,13 +1384,13 @@
           "slug": "animal-farm",
           "title": "Animal Farm",
           "pubYear": 1945,
-          "image": "https://storage.googleapis.com/hardcover/external_data/60153774/828b3c8929bab6aa5239889712eac37d48d128c2.jpeg",
+          "image": "https://storage.googleapis.com/courseitem/external_data/60153774/828b3c8929bab6aa5239889712eac37d48d128c2.jpeg",
           "author": {
             "name": "George Orwell",
             "slug": "george-orwell",
             "cachedImage": {
               "id": 33249,
-              "url": "https://hardcover.imgix.net/authors/133899/9160343-L.jpg",
+              "url": "https://courseitem.imgix.net/authors/133899/9160343-L.jpg",
               "color": "#739594",
               "width": 500,
               "height": 281
@@ -1406,13 +1406,13 @@
           "slug": "neuromancer",
           "title": "Neuromancer",
           "pubYear": 1984,
-          "image": "https://storage.googleapis.com/hardcover/editions/30401722/203725739738019-PxOL.jpg",
+          "image": "https://storage.googleapis.com/courseitem/editions/30401722/203725739738019-PxOL.jpg",
           "author": {
             "name": "William Gibson",
             "slug": "william-gibson-9a400ffc-a470-4a31-85f6-86d6fc33b850",
             "cachedImage": {
               "id": 34306,
-              "url": "https://hardcover.imgix.net/authors/176773/5698233-L.jpg",
+              "url": "https://courseitem.imgix.net/authors/176773/5698233-L.jpg",
               "color": "#7d7d7d",
               "width": 500,
               "height": 333
@@ -1440,13 +1440,13 @@
           "slug": "palimpsest-1995",
           "title": "Palimpsest",
           "pubYear": 1995,
-          "image": "https://hardcover.imgix.net/edition/1351404/212820-L.jpg",
+          "image": "https://courseitem.imgix.net/edition/1351404/212820-L.jpg",
           "author": {
             "name": "Gore Vidal",
             "slug": "gore-vidal",
             "cachedImage": {
               "id": 32341,
-              "url": "https://hardcover.imgix.net/authors/98370/7277097-L.jpg",
+              "url": "https://courseitem.imgix.net/authors/98370/7277097-L.jpg",
               "color": "#511707",
               "width": 500,
               "height": 346
@@ -1462,7 +1462,7 @@
           "slug": "a-childhood",
           "title": "A Childhood",
           "pubYear": 1978,
-          "image": "https://hardcover.imgix.net/edition/12408839/4439657-L.jpg",
+          "image": "https://courseitem.imgix.net/edition/12408839/4439657-L.jpg",
           "author": {
             "name": "Harry Crews",
             "slug": "harry-crews",
@@ -1478,13 +1478,13 @@
           "slug": "patrimony",
           "title": "Patrimony",
           "pubYear": 1991,
-          "image": "https://hardcover.imgix.net/external_data/59392563/8eb8f59ee85a0b3dfb0b0a63fa978e722f063c62.jpeg",
+          "image": "https://courseitem.imgix.net/external_data/59392563/8eb8f59ee85a0b3dfb0b0a63fa978e722f063c62.jpeg",
           "author": {
             "name": "Philip Roth",
             "slug": "philip-roth",
             "cachedImage": {
               "id": 32911,
-              "url": "https://hardcover.imgix.net/authors/120799/6462349-L.jpg",
+              "url": "https://courseitem.imgix.net/authors/120799/6462349-L.jpg",
               "color": "#5c5c5c",
               "width": 352,
               "height": 500
@@ -1500,7 +1500,7 @@
           "slug": "all-gods-dangers-the-life-of-nate-shaw",
           "title": "All God's Dangers: The Life of Nate Shaw",
           "pubYear": 1974,
-          "image": "https://hardcover.imgix.net/edition/1061743/142742-L.jpg",
+          "image": "https://courseitem.imgix.net/edition/1061743/142742-L.jpg",
           "author": {
             "name": "Theodore Rosengarten",
             "slug": "theodore-rosengarten",
@@ -1516,7 +1516,7 @@
           "slug": "a-lifes-work",
           "title": "A Life's Work",
           "pubYear": 2001,
-          "image": "https://hardcover.imgix.net/edition/21349006/177696-L.jpg",
+          "image": "https://courseitem.imgix.net/edition/21349006/177696-L.jpg",
           "author": {
             "name": "Rachel Cusk",
             "slug": "rachel-cusk",
@@ -1532,7 +1532,7 @@
           "slug": "boyhood",
           "title": "Boyhood",
           "pubYear": 1997,
-          "image": "https://hardcover.imgix.net/edition/15019719/401839-L.jpg",
+          "image": "https://courseitem.imgix.net/edition/15019719/401839-L.jpg",
           "author": {
             "name": "J.M. Coetzee",
             "slug": "jm-coetzee",
@@ -1548,13 +1548,13 @@
           "slug": "always-unreliable",
           "title": "Always Unreliable",
           "pubYear": 1980,
-          "image": "https://hardcover.imgix.net/edition/28841491/198527-L.jpg",
+          "image": "https://courseitem.imgix.net/edition/28841491/198527-L.jpg",
           "author": {
             "name": "Clive James",
             "slug": "clive-james",
             "cachedImage": {
               "id": 35794,
-              "url": "https://hardcover.imgix.net/authors/238885/6458956-L.jpg",
+              "url": "https://courseitem.imgix.net/authors/238885/6458956-L.jpg",
               "color": "#ae6a68",
               "width": 110,
               "height": 172
@@ -1570,7 +1570,7 @@
           "slug": "hold-still",
           "title": "Hold Still",
           "pubYear": 2015,
-          "image": "https://hardcover.imgix.net/edition/4801536/12173979-L.jpg",
+          "image": "https://courseitem.imgix.net/edition/4801536/12173979-L.jpg",
           "author": {
             "name": "Sally Mann",
             "slug": "sally-mann",
@@ -1586,7 +1586,7 @@
           "slug": "clothes-clothes-clothes-music-music-music-boys-boys-boys",
           "title": "Clothes, Clothes, Clothes. Music, Music, Music. Boys, Boys, Boys",
           "pubYear": 2014,
-          "image": "https://hardcover.imgix.net/edition/19838430/10502674-L.jpg",
+          "image": "https://courseitem.imgix.net/edition/19838430/10502674-L.jpg",
           "author": {
             "name": "Viv Albertine",
             "slug": "viv-albertine",
@@ -1602,13 +1602,13 @@
           "slug": "experience",
           "title": "Experience",
           "pubYear": 2000,
-          "image": "https://hardcover.imgix.net/edition/14236215/229686-L.jpg",
+          "image": "https://courseitem.imgix.net/edition/14236215/229686-L.jpg",
           "author": {
             "name": "Martin Amis",
             "slug": "martin-amis-5c4d8a0a-ee1e-447f-bea9-008703847bec",
             "cachedImage": {
               "id": 33166,
-              "url": "https://hardcover.imgix.net/authors/130254/7373898-L.jpg",
+              "url": "https://courseitem.imgix.net/authors/130254/7373898-L.jpg",
               "color": "#a8a8a8",
               "width": 375,
               "height": 500
@@ -1624,7 +1624,7 @@
           "slug": "slow-days-fast-company",
           "title": "Slow Days, Fast Company",
           "pubYear": 1977,
-          "image": "https://hardcover.imgix.net/edition/26354962/6924513-L.jpg",
+          "image": "https://courseitem.imgix.net/edition/26354962/6924513-L.jpg",
           "author": {
             "name": "Eve Babitz",
             "slug": "eve-babitz",
@@ -1640,7 +1640,7 @@
           "slug": "growing-up",
           "title": "Growing Up",
           "pubYear": 1982,
-          "image": "https://hardcover.imgix.net/edition/3699424/296155-L.jpg",
+          "image": "https://courseitem.imgix.net/edition/3699424/296155-L.jpg",
           "author": {
             "name": "Russell Baker",
             "slug": "russell-baker",
@@ -1656,7 +1656,7 @@
           "slug": "kafka-was-the-rage-a-greenwich-village-memoir",
           "title": "Kafka Was the Rage: A Greenwich Village Memoir",
           "pubYear": 1993,
-          "image": "https://hardcover.imgix.net/edition/24475270/421931-L.jpg",
+          "image": "https://courseitem.imgix.net/edition/24475270/421931-L.jpg",
           "author": {
             "name": "Anatole Broyard",
             "slug": "anatole-broyard",
@@ -1672,7 +1672,7 @@
           "slug": "barbarian-days",
           "title": "Barbarian Days: A Surfing Life",
           "pubYear": 2015,
-          "image": "https://hardcover.imgix.net/external_data/59387818/8057ef85abb22e35b35338ee45c653a0dce9309d.jpeg",
+          "image": "https://courseitem.imgix.net/external_data/59387818/8057ef85abb22e35b35338ee45c653a0dce9309d.jpeg",
           "author": {
             "name": "William Finnegan",
             "slug": "william-finnegan",
@@ -1700,7 +1700,7 @@
           "slug": "black-leopard-red-wolf",
           "title": "Black Leopard, Red Wolf (The Dark Star Trilogy #1)",
           "pubYear": 2019,
-          "image": "https://hardcover.imgix.net/edition/30402602/0b06ed5003aeb86468059aafa5cfb311abd7e4dc.jpeg",
+          "image": "https://courseitem.imgix.net/edition/30402602/0b06ed5003aeb86468059aafa5cfb311abd7e4dc.jpeg",
           "author": {
             "name": "Marlon James",
             "slug": "marlon-james",
@@ -1716,13 +1716,13 @@
           "slug": "a-court-of-thorns-and-roses",
           "title": "A Court of Thorns and Roses",
           "pubYear": 2015,
-          "image": "https://storage.googleapis.com/hardcover/external_data/59516654/9a8632f0b7080823b28fdb5368022bd64c1e8c37.jpeg",
+          "image": "https://storage.googleapis.com/courseitem/external_data/59516654/9a8632f0b7080823b28fdb5368022bd64c1e8c37.jpeg",
           "author": {
             "name": "Sarah J. Maas",
             "slug": "sarah-j-maas",
             "cachedImage": {
               "id": 34566,
-              "url": "https://hardcover.imgix.net/authors/187135/8064866-L.jpg",
+              "url": "https://courseitem.imgix.net/authors/187135/8064866-L.jpg",
               "color": "#4f1c05",
               "width": 400,
               "height": 400
@@ -1738,7 +1738,7 @@
           "slug": "the-power",
           "title": "The Power",
           "pubYear": 2016,
-          "image": "https://hardcover.imgix.net/external_data/59375973/85c83bc9f9acf67cd2931c5a19a2551e556c2981.jpeg",
+          "image": "https://courseitem.imgix.net/external_data/59375973/85c83bc9f9acf67cd2931c5a19a2551e556c2981.jpeg",
           "author": {
             "name": "Naomi Alderman",
             "slug": "naomi-alderman",
@@ -1754,7 +1754,7 @@
           "slug": "riot-baby",
           "title": "Riot Baby",
           "pubYear": 2020,
-          "image": "https://hardcover.imgix.net/external_data/59520770/2d9dc8eef660122e23df4643d1c75955b44331a5.jpeg",
+          "image": "https://courseitem.imgix.net/external_data/59520770/2d9dc8eef660122e23df4643d1c75955b44331a5.jpeg",
           "author": {
             "name": "Tochi Onyebuchi",
             "slug": "tochi-onyebuchi-26452e0e-2813-4b91-b94c-2d91f73c9457",
@@ -1770,7 +1770,7 @@
           "slug": "kindred",
           "title": "Kindred",
           "pubYear": 1979,
-          "image": "https://storage.googleapis.com/hardcover/external_data/59671266/137f1b6f12e1e7beba6df5a934b5760247d27ef7.jpeg",
+          "image": "https://storage.googleapis.com/courseitem/external_data/59671266/137f1b6f12e1e7beba6df5a934b5760247d27ef7.jpeg",
           "author": {
             "name": "Octavia E. Butler",
             "slug": "octavia-e-butler-c68106cb-01c1-48b2-aab8-b2fe9300b032",
@@ -1786,7 +1786,7 @@
           "slug": "earthlings",
           "title": "Earthlings",
           "pubYear": 2018,
-          "image": "https://hardcover.imgix.net/external_data/59483340/0de52140e122dc4d41ed05f78fd962f6b85aee5b.jpeg",
+          "image": "https://courseitem.imgix.net/external_data/59483340/0de52140e122dc4d41ed05f78fd962f6b85aee5b.jpeg",
           "author": {
             "name": "Sayaka Murata",
             "slug": "sayaka-murata",
@@ -1802,13 +1802,13 @@
           "slug": "circe",
           "title": "Circe",
           "pubYear": 2018,
-          "image": "https://storage.googleapis.com/hardcover/editions/187333/9694237244087422-circe.jpg",
+          "image": "https://storage.googleapis.com/courseitem/editions/187333/9694237244087422-circe.jpg",
           "author": {
             "name": "Madeline Miller",
             "slug": "madeline-miller",
             "cachedImage": {
               "id": 33214,
-              "url": "https://hardcover.imgix.net/authors/132679/8283886-L.jpg",
+              "url": "https://courseitem.imgix.net/authors/132679/8283886-L.jpg",
               "color": "#605a58",
               "width": 230,
               "height": 230
@@ -1824,7 +1824,7 @@
           "slug": "gardens-of-the-moon",
           "title": "Gardens of the Moon",
           "pubYear": 2004,
-          "image": "https://hardcover.imgix.net/course_mappings/7332552/1af7e141aca8e2104850f41d82bc41c0b6c39214.jpeg",
+          "image": "https://courseitem.imgix.net/course_mappings/7332552/1af7e141aca8e2104850f41d82bc41c0b6c39214.jpeg",
           "author": {
             "name": "Steven Erikson",
             "slug": "steven-erikson",
@@ -1840,7 +1840,7 @@
           "slug": "the-golem-and-the-jinni-the-golem-and-the-jinni-1",
           "title": "The Golem and the Jinni",
           "pubYear": 2013,
-          "image": "https://hardcover.imgix.net/edition/11891438/70b517484630379938d22000fcec1f8a04df0fae.jpeg",
+          "image": "https://courseitem.imgix.net/edition/11891438/70b517484630379938d22000fcec1f8a04df0fae.jpeg",
           "author": {
             "name": "Helene Wecker",
             "slug": "helene-wecker",
@@ -1856,13 +1856,13 @@
           "slug": "the-gunslinger",
           "title": "The Gunslinger",
           "pubYear": 1982,
-          "image": "https://storage.googleapis.com/hardcover/external_data/59563066/e344743a5f1d95c8100c982319a63c7a8cc2338e.jpeg",
+          "image": "https://storage.googleapis.com/courseitem/external_data/59563066/e344743a5f1d95c8100c982319a63c7a8cc2338e.jpeg",
           "author": {
             "name": "Stephen King",
             "slug": "stephen-king",
             "cachedImage": {
               "id": 33776,
-              "url": "https://hardcover.imgix.net/authors/154441/7127409-L.jpg",
+              "url": "https://courseitem.imgix.net/authors/154441/7127409-L.jpg",
               "color": "#4f2518",
               "width": 393,
               "height": 500
@@ -1878,13 +1878,13 @@
           "slug": "midnight-riot",
           "title": "Midnight Riot",
           "pubYear": 2011,
-          "image": "https://hardcover.imgix.net/edition/30408240/content.jpeg",
+          "image": "https://courseitem.imgix.net/edition/30408240/content.jpeg",
           "author": {
             "name": "Ben Aaronovitch",
             "slug": "ben-aaronovitch",
             "cachedImage": {
               "id": 33145,
-              "url": "https://hardcover.imgix.net/authors/129379/7150006-L.jpg",
+              "url": "https://courseitem.imgix.net/authors/129379/7150006-L.jpg",
               "color": "#545454",
               "width": 300,
               "height": 387
@@ -1900,7 +1900,7 @@
           "slug": "titus-groan",
           "title": "Titus Groan",
           "pubYear": 1946,
-          "image": "https://hardcover.imgix.net/external_data/59480373/861dcc46ad03d301e45c35e44f4eb885610e7103.jpeg",
+          "image": "https://courseitem.imgix.net/external_data/59480373/861dcc46ad03d301e45c35e44f4eb885610e7103.jpeg",
           "author": {
             "name": "Mervyn Peake",
             "slug": "mervyn-peake",
@@ -1916,13 +1916,13 @@
           "slug": "the-golden-compass",
           "title": "The Golden Compass",
           "pubYear": 1995,
-          "image": "https://storage.googleapis.com/hardcover/editions/19151716/902688047208777-119322.jpg",
+          "image": "https://storage.googleapis.com/courseitem/editions/19151716/902688047208777-119322.jpg",
           "author": {
             "name": "Philip Pullman",
             "slug": "philip-pullman",
             "cachedImage": {
               "id": 34055,
-              "url": "https://hardcover.imgix.net/authors/166157/6390041-L.jpg",
+              "url": "https://courseitem.imgix.net/authors/166157/6390041-L.jpg",
               "color": "#c2966e",
               "width": 419,
               "height": 500
@@ -1938,13 +1938,13 @@
           "slug": "the-course-of-dust",
           "title": "The Course of Dust",
           "pubYear": 2018,
-          "image": "https://hardcover.imgix.net/edition/30381147/content.jpeg",
+          "image": "https://courseitem.imgix.net/edition/30381147/content.jpeg",
           "author": {
             "name": "Philip Pullman",
             "slug": "philip-pullman",
             "cachedImage": {
               "id": 34055,
-              "url": "https://hardcover.imgix.net/authors/166157/6390041-L.jpg",
+              "url": "https://courseitem.imgix.net/authors/166157/6390041-L.jpg",
               "color": "#c2966e",
               "width": 419,
               "height": 500
@@ -1972,7 +1972,7 @@
           "slug": "how-to-live-safely-in-a-science-fictional-universe",
           "title": "How to Live Safely in a Science Fictional Universe",
           "pubYear": 2011,
-          "image": "https://hardcover.imgix.net/external_data/59883193/d92948992cce5016d828b2057c44b6ac427fc5f7.jpeg",
+          "image": "https://courseitem.imgix.net/external_data/59883193/d92948992cce5016d828b2057c44b6ac427fc5f7.jpeg",
           "author": {
             "name": "Charles Yu",
             "slug": "charles-yu",
@@ -1988,7 +1988,7 @@
           "slug": "nothing-to-see-here",
           "title": "Nothing to See Here",
           "pubYear": 2019,
-          "image": "https://hardcover.imgix.net/edition/30401429/content.jpeg",
+          "image": "https://courseitem.imgix.net/edition/30401429/content.jpeg",
           "author": {
             "name": "Kevin Wilson",
             "slug": "kevin-wilson",
@@ -2004,13 +2004,13 @@
           "slug": "the-passion",
           "title": "The Passion",
           "pubYear": 1987,
-          "image": "https://hardcover.imgix.net/edition/3071522/78095-L.jpg",
+          "image": "https://courseitem.imgix.net/edition/3071522/78095-L.jpg",
           "author": {
             "name": "Jeanette Winterson",
             "slug": "jeanette-winterson-a4a88c2d-d7b2-4ffa-b6a9-f0044635a09b",
             "cachedImage": {
               "id": 35515,
-              "url": "https://hardcover.imgix.net/authors/229429/7369521-L.jpg",
+              "url": "https://courseitem.imgix.net/authors/229429/7369521-L.jpg",
               "color": "#8b8b8b",
               "width": 389,
               "height": 500
@@ -2026,7 +2026,7 @@
           "slug": "the-falling-in-love-montage",
           "title": "The Falling in Love Montage",
           "pubYear": 2020,
-          "image": "https://hardcover.imgix.net/edition/20420903/10170046-L.jpg",
+          "image": "https://courseitem.imgix.net/edition/20420903/10170046-L.jpg",
           "author": {
             "name": "Ciara Smyth",
             "slug": "ciara-smyth",
@@ -2042,13 +2042,13 @@
           "slug": "the-invisible-life-of-addie-larue",
           "title": "The Invisible Life of Addie LaRue",
           "pubYear": 2020,
-          "image": "https://storage.googleapis.com/hardcover/external_data/59856689/ae5dc6a423a77046cbd17f2e04612c2c84d7429d.jpeg",
+          "image": "https://storage.googleapis.com/courseitem/external_data/59856689/ae5dc6a423a77046cbd17f2e04612c2c84d7429d.jpeg",
           "author": {
             "name": "V. E. Schwab",
             "slug": "v-e-schwab",
             "cachedImage": {
               "id": 33882,
-              "url": "https://hardcover.imgix.net/authors/158901/7410938-L.jpg",
+              "url": "https://courseitem.imgix.net/authors/158901/7410938-L.jpg",
               "color": "#7b7b71",
               "width": 375,
               "height": 500
@@ -2064,7 +2064,7 @@
           "slug": "mexican-gothic",
           "title": "Mexican Gothic",
           "pubYear": 2020,
-          "image": "https://storage.googleapis.com/hardcover/external_data/59507600/8de85c3ff1eeae639f93933f13f7e89397d1eff1.jpeg",
+          "image": "https://storage.googleapis.com/courseitem/external_data/59507600/8de85c3ff1eeae639f93933f13f7e89397d1eff1.jpeg",
           "author": {
             "name": "Silvia Moreno-Garcia",
             "slug": "silvia-moreno-garcia",
@@ -2080,7 +2080,7 @@
           "slug": "catherine-house",
           "title": "Catherine House",
           "pubYear": 2020,
-          "image": "https://hardcover.imgix.net/edition/22786591/9830444-L.jpg",
+          "image": "https://courseitem.imgix.net/edition/22786591/9830444-L.jpg",
           "author": {
             "name": "Elisabeth    Thomas",
             "slug": "elisabeth-thomas-a09625a9-d9ac-442d-a114-632bcf3c9c67",
@@ -2096,7 +2096,7 @@
           "slug": "the-midnight-library",
           "title": "The Midnight Library",
           "pubYear": 2020,
-          "image": "https://storage.googleapis.com/hardcover/external_data/59508055/aba82afc461026e9d6e390d2216a3aca51c19a41.jpeg",
+          "image": "https://storage.googleapis.com/courseitem/external_data/59508055/aba82afc461026e9d6e390d2216a3aca51c19a41.jpeg",
           "author": {
             "name": "Matt Haig",
             "slug": "matt-haig",
@@ -2112,7 +2112,7 @@
           "slug": "the-rose-garden-2011",
           "title": "The Rose Garden",
           "pubYear": 2011,
-          "image": "https://hardcover.imgix.net/edition/30339180/8560105-L.jpg",
+          "image": "https://courseitem.imgix.net/edition/30339180/8560105-L.jpg",
           "author": {
             "name": "Susanna Kearsley",
             "slug": "susanna-kearsley-0584ed1e-1bad-4c41-9278-8bae5bc64446",
@@ -2128,7 +2128,7 @@
           "slug": "the-southern-course-clubs-guide-to-slaying-vampires",
           "title": "The Southern Course Club's Guide to Slaying Vampires",
           "pubYear": 2020,
-          "image": "https://hardcover.imgix.net/edition/30400308/44074800._SX98_.jpg",
+          "image": "https://courseitem.imgix.net/edition/30400308/44074800._SX98_.jpg",
           "author": {
             "name": "Grady Hendrix",
             "slug": "grady-hendrix",
@@ -2144,13 +2144,13 @@
           "slug": "klara-and-the-sun",
           "title": "Klara and the Sun",
           "pubYear": 2022,
-          "image": "https://hardcover.imgix.net/external_data/59592031/11d4c25aa782acfbff944edbec1e89a6dbdbaace.jpeg",
+          "image": "https://courseitem.imgix.net/external_data/59592031/11d4c25aa782acfbff944edbec1e89a6dbdbaace.jpeg",
           "author": {
             "name": "Kazuo Ishiguro",
             "slug": "kazuo-ishiguro",
             "cachedImage": {
               "id": 34991,
-              "url": "https://hardcover.imgix.net/authors/204396/6597550-L.jpg",
+              "url": "https://courseitem.imgix.net/authors/204396/6597550-L.jpg",
               "color": "#ad0911",
               "width": 360,
               "height": 480
@@ -2166,7 +2166,7 @@
           "slug": "the-chosen-and-the-beautiful",
           "title": "The Chosen and the Beautiful",
           "pubYear": 2021,
-          "image": "https://hardcover.imgix.net/edition/13924919/10627866-L.jpg",
+          "image": "https://courseitem.imgix.net/edition/13924919/10627866-L.jpg",
           "author": {
             "name": "Nghi Vo",
             "slug": "nghi-vo-3bae20f7-86b3-464a-a3c4-00e5c039f89e",
@@ -2182,7 +2182,7 @@
           "slug": "life-of-pi",
           "title": "Life of Pi",
           "pubYear": 2001,
-          "image": "https://hardcover.imgix.net/edition/3483482/9977875-L.jpg",
+          "image": "https://courseitem.imgix.net/edition/3483482/9977875-L.jpg",
           "author": {
             "name": "Yann Martel",
             "slug": "yann-martel",
@@ -2198,13 +2198,13 @@
           "slug": "1q84-livre-1",
           "title": "1Q84 - Livre 1 : Avril - Juin",
           "pubYear": 2009,
-          "image": "https://storage.googleapis.com/hardcover/external_data/60085816/20aa540af36072abf0e571b9742a88133bba61c9.jpeg",
+          "image": "https://storage.googleapis.com/courseitem/external_data/60085816/20aa540af36072abf0e571b9742a88133bba61c9.jpeg",
           "author": {
             "name": "Haruki Murakami",
             "slug": "haruki-murakami",
             "cachedImage": {
               "id": 35081,
-              "url": "https://hardcover.imgix.net/authors/209137/3368394-L.jpg",
+              "url": "https://courseitem.imgix.net/authors/209137/3368394-L.jpg",
               "color": "#2a3905",
               "width": 498,
               "height": 374
@@ -2248,7 +2248,7 @@
           "slug": "the-night-watchman",
           "title": "The Night Watchman",
           "pubYear": 2020,
-          "image": "https://hardcover.imgix.net/edition/30401453/content.jpeg",
+          "image": "https://courseitem.imgix.net/edition/30401453/content.jpeg",
           "author": {
             "name": "Louise Erdrich",
             "slug": "louise-erdrich-93f7d3b8-4b65-45bd-bbf6-beb6d5d2b06a",
@@ -2264,13 +2264,13 @@
           "slug": "less",
           "title": "Less",
           "pubYear": 2017,
-          "image": "https://hardcover.imgix.net/edition/30402397/31933085._SX98_.jpg",
+          "image": "https://courseitem.imgix.net/edition/30402397/31933085._SX98_.jpg",
           "author": {
             "name": "Andrew Sean Greer",
             "slug": "andrew-sean-greer",
             "cachedImage": {
               "id": 34642,
-              "url": "https://hardcover.imgix.net/authors/191658/7315858-L.jpg",
+              "url": "https://courseitem.imgix.net/authors/191658/7315858-L.jpg",
               "color": "#9a9579",
               "width": 500,
               "height": 334
@@ -2286,13 +2286,13 @@
           "slug": "the-sympathizer",
           "title": "The Sympathizer",
           "pubYear": 2015,
-          "image": "https://hardcover.imgix.net/edition/27274056/1217b90a555a6fc35f60d9d1dd007fe8a0220bac.jpeg",
+          "image": "https://courseitem.imgix.net/edition/27274056/1217b90a555a6fc35f60d9d1dd007fe8a0220bac.jpeg",
           "author": {
             "name": "Viet Thanh Nguyen",
             "slug": "viet-thanh-nguyen",
             "cachedImage": {
               "id": 35652,
-              "url": "https://hardcover.imgix.net/authors/235478/10483275-L.jpg",
+              "url": "https://courseitem.imgix.net/authors/235478/10483275-L.jpg",
               "color": "#0c464a",
               "width": 220,
               "height": 330
@@ -2308,7 +2308,7 @@
           "slug": "tinkers",
           "title": "Tinkers",
           "pubYear": 2008,
-          "image": "https://hardcover.imgix.net/edition/4341235/10508309-L.jpg",
+          "image": "https://courseitem.imgix.net/edition/4341235/10508309-L.jpg",
           "author": {
             "name": "Paul Harding",
             "slug": "paul-harding",
@@ -2324,13 +2324,13 @@
           "slug": "march",
           "title": "March",
           "pubYear": 2005,
-          "image": "https://hardcover.imgix.net/edition/1116429/541260-L.jpg",
+          "image": "https://courseitem.imgix.net/edition/1116429/541260-L.jpg",
           "author": {
             "name": "Geraldine Brooks",
             "slug": "geraldine-brooks-116c1f10-5aa0-493f-a58a-6a7723a8e5ee",
             "cachedImage": {
               "id": 35576,
-              "url": "https://hardcover.imgix.net/authors/232241/6461713-L.jpg",
+              "url": "https://courseitem.imgix.net/authors/232241/6461713-L.jpg",
               "color": "#6e716e",
               "width": 500,
               "height": 485
@@ -2346,13 +2346,13 @@
           "slug": "empire-falls",
           "title": "Empire Falls",
           "pubYear": 2001,
-          "image": "https://hardcover.imgix.net/edition/18097008/167332-L.jpg",
+          "image": "https://courseitem.imgix.net/edition/18097008/167332-L.jpg",
           "author": {
             "name": "Richard Russo",
             "slug": "richard-russo-b7ddddd7-3e0b-415f-9e25-c2e3beffbc3f",
             "cachedImage": {
               "id": 34015,
-              "url": "https://hardcover.imgix.net/authors/164250/6295010-L.jpg",
+              "url": "https://courseitem.imgix.net/authors/164250/6295010-L.jpg",
               "color": "#a38b5b",
               "width": 220,
               "height": 336
@@ -2368,7 +2368,7 @@
           "slug": "a-good-scent-from-a-strange-mountain",
           "title": "A Good Scent from a Strange Mountain",
           "pubYear": 1992,
-          "image": "https://hardcover.imgix.net/edition/931215/569101-L.jpg",
+          "image": "https://courseitem.imgix.net/edition/931215/569101-L.jpg",
           "author": {
             "name": "Robert Olen Butler",
             "slug": "robert-olen-butler",
@@ -2384,7 +2384,7 @@
           "slug": "the-mambo-kings-play-songs-of-love",
           "title": "The Mambo Kings Play Songs Of Love",
           "pubYear": 1989,
-          "image": "https://hardcover.imgix.net/edition/11459405/41707-L.jpg",
+          "image": "https://courseitem.imgix.net/edition/11459405/41707-L.jpg",
           "author": {
             "name": "Oscar Hijuelos",
             "slug": "oscar-hijuelos",
@@ -2400,7 +2400,7 @@
           "slug": "a-summons-to-memphis",
           "title": "A Summons to Memphis",
           "pubYear": 1986,
-          "image": "https://hardcover.imgix.net/edition/22938614/228284-L.jpg",
+          "image": "https://courseitem.imgix.net/edition/22938614/228284-L.jpg",
           "author": {
             "name": "Peter Taylor",
             "slug": "peter-taylor-f19ed839-c8e7-4867-a5ea-86706ac5f16c",
@@ -2416,7 +2416,7 @@
           "slug": "ironweed",
           "title": "Ironweed",
           "pubYear": 1983,
-          "image": "https://hardcover.imgix.net/edition/17976097/8329242-L.jpg",
+          "image": "https://courseitem.imgix.net/edition/17976097/8329242-L.jpg",
           "author": {
             "name": "William  Kennedy",
             "slug": "william-kennedy-93539e57-72d5-4a62-b1cd-d035a917f2dc",
@@ -2432,7 +2432,7 @@
           "slug": "collected-stories-1990",
           "title": "Collected Stories",
           "pubYear": 1990,
-          "image": "https://hardcover.imgix.net/edition/26074441/229490-L.jpg",
+          "image": "https://courseitem.imgix.net/edition/26074441/229490-L.jpg",
           "author": {
             "name": "John Cheever",
             "slug": "john-cheever",
@@ -2448,7 +2448,7 @@
           "slug": "elbow-room",
           "title": "Elbow Room",
           "pubYear": 1977,
-          "image": "https://hardcover.imgix.net/edition/17613492/290452-L.jpg",
+          "image": "https://courseitem.imgix.net/edition/17613492/290452-L.jpg",
           "author": {
             "name": "James Alan McPherson",
             "slug": "james-alan-mcpherson-32c6bf1b-455c-4758-8cf7-e9cec50d53f1",
@@ -2464,7 +2464,7 @@
           "slug": "humboldts-gift",
           "title": "Humboldt's Gift",
           "pubYear": 1975,
-          "image": "https://hardcover.imgix.net/edition/27256388/5411438-L.jpg",
+          "image": "https://courseitem.imgix.net/edition/27256388/5411438-L.jpg",
           "author": {
             "name": "Saul Bellow",
             "slug": "saul-bellow-635e7edd-9c5e-437d-ac1c-0a9cd970ffb4",
@@ -2492,7 +2492,7 @@
           "slug": "the-science-of-can-and-cant",
           "title": "The Science of Can and Can't",
           "pubYear": 2021,
-          "image": "https://hardcover.imgix.net/edition/30401459/54837100._SX98_.jpg",
+          "image": "https://courseitem.imgix.net/edition/30401459/54837100._SX98_.jpg",
           "author": {
             "name": "Chiara Marletto",
             "slug": "chiara-marletto",
@@ -2524,7 +2524,7 @@
           "slug": "always-on",
           "title": "Always On",
           "pubYear": 2021,
-          "image": "https://hardcover.imgix.net/edition/17704216/53470746._SX98_.jpg",
+          "image": "https://courseitem.imgix.net/edition/17704216/53470746._SX98_.jpg",
           "author": {
             "name": "Rory Cellan-Jones",
             "slug": "rory-cellan-jones",
@@ -2540,7 +2540,7 @@
           "slug": "handmade-f71fd2cd-afe4-4887-9172-c6459398ca8a",
           "title": "Handmade",
           "pubYear": 2021,
-          "image": "https://hardcover.imgix.net/edition/30401438/56948247._SX98_.jpg",
+          "image": "https://courseitem.imgix.net/edition/30401438/56948247._SX98_.jpg",
           "author": {
             "name": "Anna Ploszajski",
             "slug": "anna-ploszajski",
@@ -2588,13 +2588,13 @@
           "slug": "shape-the-hidden-geometry-of-absolutely-everything",
           "title": "Shape: The Hidden Geometry of Absolutely Everything",
           "pubYear": 2021,
-          "image": "https://hardcover.imgix.net/external_data/59381859/36d3e77f13b065936e24b6af8a8f60e008b97f2c.jpeg",
+          "image": "https://courseitem.imgix.net/external_data/59381859/36d3e77f13b065936e24b6af8a8f60e008b97f2c.jpeg",
           "author": {
             "name": "Jordan Ellenberg",
             "slug": "jordan-ellenberg",
             "cachedImage": {
               "id": 34315,
-              "url": "https://hardcover.imgix.net/authors/177350/10679737-L.jpg",
+              "url": "https://courseitem.imgix.net/authors/177350/10679737-L.jpg",
               "color": "#a38681",
               "width": 333,
               "height": 500
@@ -2610,7 +2610,7 @@
           "slug": "swearing-is-good-for-you",
           "title": "Swearing Is Good for You",
           "pubYear": 2017,
-          "image": "https://hardcover.imgix.net/edition/19115294/8808864-L.jpg",
+          "image": "https://courseitem.imgix.net/edition/19115294/8808864-L.jpg",
           "author": {
             "name": "Emma Byrne",
             "slug": "emma-byrne",
@@ -2642,7 +2642,7 @@
           "slug": "only-connect",
           "title": "Only Connect",
           "pubYear": 2019,
-          "image": "https://hardcover.imgix.net/edition/30401447/39808539._SX98_.jpg",
+          "image": "https://courseitem.imgix.net/edition/30401447/39808539._SX98_.jpg",
           "author": {
             "name": "Jack Waley-Cohen",
             "slug": "jack-waley-cohen",
@@ -2658,7 +2658,7 @@
           "slug": "animals-among-us",
           "title": "Animals among Us",
           "pubYear": 2018,
-          "image": "https://hardcover.imgix.net/edition/11897961/8862042-L.jpg",
+          "image": "https://courseitem.imgix.net/edition/11897961/8862042-L.jpg",
           "author": {
             "name": "John Bradshaw",
             "slug": "john-bradshaw",
@@ -2674,7 +2674,7 @@
           "slug": "beyond-infinity",
           "title": "Beyond Infinity",
           "pubYear": 2017,
-          "image": "https://hardcover.imgix.net/edition/30401446/content.jpeg",
+          "image": "https://courseitem.imgix.net/edition/30401446/content.jpeg",
           "author": {
             "name": "Eugenia Cheng",
             "slug": "eugenia-cheng",
@@ -2690,7 +2690,7 @@
           "slug": "graphic-science-seven-journeys-of-discovery",
           "title": "Graphic Science - Seven Journeys of Discovery",
           "pubYear": 2017,
-          "image": "https://hardcover.imgix.net/edition/17229488/36307081._SX98_.jpg",
+          "image": "https://courseitem.imgix.net/edition/17229488/36307081._SX98_.jpg",
           "author": {
             "name": "Darryl Cunningham",
             "slug": "darryl-cunningham",
@@ -2706,7 +2706,7 @@
           "slug": "inferior",
           "title": "Inferior: How Science Got Women Wrong\u2014and the New Research That's Rewriting the Story",
           "pubYear": 2017,
-          "image": "https://hardcover.imgix.net/external_data/59959102/e562e3bd3392ea806a915f5b0798255e158b1b7d.jpeg",
+          "image": "https://courseitem.imgix.net/external_data/59959102/e562e3bd3392ea806a915f5b0798255e158b1b7d.jpeg",
           "author": {
             "name": "Angela Saini",
             "slug": "angela-saini-374a9205-c8f8-4fe1-9db2-1416308a9928",
@@ -2734,7 +2734,7 @@
           "slug": "einsteins-unfinished-revolution",
           "title": "Einstein's Unfinished Revolution: The Search for What Lies Beyond the Quantum",
           "pubYear": 2019,
-          "image": "https://hardcover.imgix.net/edition/10020806/10834706-L.jpg",
+          "image": "https://courseitem.imgix.net/edition/10020806/10834706-L.jpg",
           "author": {
             "name": "Lee Smolin",
             "slug": "lee-smolin-714e83b4-d5d8-40a4-8a51-8d43f88cecc2",
@@ -2750,7 +2750,7 @@
           "slug": "a-world-beyond-physics",
           "title": "A World Beyond Physics",
           "pubYear": 2019,
-          "image": "https://hardcover.imgix.net/edition/3621479/9370555-L.jpg",
+          "image": "https://courseitem.imgix.net/edition/3621479/9370555-L.jpg",
           "author": {
             "name": "Stuart A. Kauffman",
             "slug": "stuart-a-kauffman",
@@ -2766,7 +2766,7 @@
           "slug": "mind-fixers",
           "title": "Mind Fixers",
           "pubYear": 2019,
-          "image": "https://hardcover.imgix.net/edition/1963425/8809105-L.jpg",
+          "image": "https://courseitem.imgix.net/edition/1963425/8809105-L.jpg",
           "author": {
             "name": "Anne Harrington",
             "slug": "anne-harrington-af4e729b-955d-430e-8597-3a2bc0822554",
@@ -2782,7 +2782,7 @@
           "slug": "how-to-tame-a-fox-and-build-a-dog",
           "title": "How to Tame a Fox (and Build a Dog)",
           "pubYear": 2016,
-          "image": "https://hardcover.imgix.net/edition/7402970/7aac4b965b1d1f47b80cbdf7e1edea2b298331bd.jpeg",
+          "image": "https://courseitem.imgix.net/edition/7402970/7aac4b965b1d1f47b80cbdf7e1edea2b298331bd.jpeg",
           "author": {
             "name": "Lee Alan Dugatkin",
             "slug": "lee-alan-dugatkin",
@@ -2798,7 +2798,7 @@
           "slug": "mamas-last-hug",
           "title": "Mama's Last Hug",
           "pubYear": 2018,
-          "image": "https://hardcover.imgix.net/edition/30406586/8808908-L.jpg",
+          "image": "https://courseitem.imgix.net/edition/30406586/8808908-L.jpg",
           "author": {
             "name": "Frans de Waal",
             "slug": "frans-de-waal-db115fee-95e6-4dc6-8651-5fe3812ce21a",
@@ -2814,7 +2814,7 @@
           "slug": "the-story-of-the-dinosaurs-in-25-discoveries-amazing-fossils-and-the-people-who-found-them",
           "title": "The Story of the Dinosaurs in 25 Discoveries: Amazing Fossils and the People Who Found Them",
           "pubYear": 2019,
-          "image": "https://hardcover.imgix.net/edition/8118402/42800974._SX98_.jpg",
+          "image": "https://courseitem.imgix.net/edition/8118402/42800974._SX98_.jpg",
           "author": {
             "name": "Donald R. Prothero",
             "slug": "donald-r-prothero",
@@ -2830,7 +2830,7 @@
           "slug": "transcendence",
           "title": "Transcendence",
           "pubYear": 2020,
-          "image": "https://hardcover.imgix.net/edition/22431100/9281304-L.jpg",
+          "image": "https://courseitem.imgix.net/edition/22431100/9281304-L.jpg",
           "author": {
             "name": "Gaia Vince",
             "slug": "gaia-vince",
@@ -2846,7 +2846,7 @@
           "slug": "our-universe",
           "title": "Our Universe",
           "pubYear": 2019,
-          "image": "https://hardcover.imgix.net/edition/2201437/8801496-L.jpg",
+          "image": "https://courseitem.imgix.net/edition/2201437/8801496-L.jpg",
           "author": {
             "name": "Jo Dunkley",
             "slug": "jo-dunkley",
@@ -2862,13 +2862,13 @@
           "slug": "a-crack-in-creation",
           "title": "A Crack in Creation",
           "pubYear": 2017,
-          "image": "https://hardcover.imgix.net/edition/30405711/8048632-L.jpg",
+          "image": "https://courseitem.imgix.net/edition/30405711/8048632-L.jpg",
           "author": {
             "name": "Jennifer A. Doudna",
             "slug": "jennifer-a-doudna",
             "cachedImage": {
               "id": 32221,
-              "url": "https://hardcover.imgix.net/authors/92478/8048637-L.jpg",
+              "url": "https://courseitem.imgix.net/authors/92478/8048637-L.jpg",
               "color": "#706d6c",
               "width": 384,
               "height": 500
@@ -2884,7 +2884,7 @@
           "slug": "the-age-of-surveillance-capitalism",
           "title": "The Age of Surveillance Capitalism",
           "pubYear": 2018,
-          "image": "https://hardcover.imgix.net/edition/30401050/e0a140350da2deb78f872dfda26825635df3d28b.jpeg",
+          "image": "https://courseitem.imgix.net/edition/30401050/e0a140350da2deb78f872dfda26825635df3d28b.jpeg",
           "author": {
             "name": "Shoshana Zuboff",
             "slug": "shoshana-zuboff",
@@ -2912,7 +2912,7 @@
           "slug": "at-night-all-blood-is-black",
           "title": "At Night All Blood is Black",
           "pubYear": 2018,
-          "image": "https://storage.googleapis.com/hardcover/external_data/59381576/13a13e6d36131370d9b48abe2803b214cad2581e.jpeg",
+          "image": "https://storage.googleapis.com/courseitem/external_data/59381576/13a13e6d36131370d9b48abe2803b214cad2581e.jpeg",
           "author": {
             "name": "David Diop",
             "slug": "david-diop",
@@ -2928,7 +2928,7 @@
           "slug": "black-bottom-saints",
           "title": "Black Bottom Saints",
           "pubYear": 2020,
-          "image": "https://hardcover.imgix.net/external_data/45046406/72fe00c696f6767333fd57493ae7a1ad916d97d7.jpeg",
+          "image": "https://courseitem.imgix.net/external_data/45046406/72fe00c696f6767333fd57493ae7a1ad916d97d7.jpeg",
           "author": {
             "name": "Alice Randall",
             "slug": "alice-randall",
@@ -2944,7 +2944,7 @@
           "slug": "the-course-of-v",
           "title": "The Course of V.",
           "pubYear": 2020,
-          "image": "https://hardcover.imgix.net/edition/19591497/9411690-L.jpg",
+          "image": "https://courseitem.imgix.net/edition/19591497/9411690-L.jpg",
           "author": {
             "name": "Anna Solomon",
             "slug": "anna-solomon",
@@ -2960,7 +2960,7 @@
           "slug": "the-care-and-feeding-of-waspish-widows",
           "title": "The Care and Feeding of Waspish Widows",
           "pubYear": 2020,
-          "image": "https://hardcover.imgix.net/edition/4337118/9909302-L.jpg",
+          "image": "https://courseitem.imgix.net/edition/4337118/9909302-L.jpg",
           "author": {
             "name": "Olivia Waite",
             "slug": "olivia-waite",
@@ -2976,7 +2976,7 @@
           "slug": "conjure-women",
           "title": "Conjure Women",
           "pubYear": 2020,
-          "image": "https://hardcover.imgix.net/edition/15211423/9324263-L.jpg",
+          "image": "https://courseitem.imgix.net/edition/15211423/9324263-L.jpg",
           "author": {
             "name": "Afia Atakora",
             "slug": "afia-atakora",
@@ -2992,7 +2992,7 @@
           "slug": "echo-mountain",
           "title": "Echo Mountain",
           "pubYear": 2020,
-          "image": "https://hardcover.imgix.net/edition/546600/9358523-L.jpg",
+          "image": "https://courseitem.imgix.net/edition/546600/9358523-L.jpg",
           "author": {
             "name": "Lauren Wolk",
             "slug": "lauren-wolk-1b6728f3-7460-497f-b430-237a50ec9dd7",
@@ -3008,7 +3008,7 @@
           "slug": "even-as-we-breathe",
           "title": "Even As We Breathe",
           "pubYear": 2020,
-          "image": "https://hardcover.imgix.net/edition/6224513/10213736-L.jpg",
+          "image": "https://courseitem.imgix.net/edition/6224513/10213736-L.jpg",
           "author": {
             "name": "Annette Saunooke Clapsaddle",
             "slug": "annette-saunooke-clapsaddle",
@@ -3024,7 +3024,7 @@
           "slug": "how-much-of-these-hills-is-gold",
           "title": "How Much of These Hills Is Gold",
           "pubYear": 2020,
-          "image": "https://hardcover.imgix.net/edition/22312402/9324153-L.jpg",
+          "image": "https://courseitem.imgix.net/edition/22312402/9324153-L.jpg",
           "author": {
             "name": "C Pam Zhang",
             "slug": "c-pam-zhang",
@@ -3040,7 +3040,7 @@
           "slug": "jack-440be64a-46c5-471e-a147-06f181d8c6b5",
           "title": "Jack",
           "pubYear": 2020,
-          "image": "https://hardcover.imgix.net/edition/30401427/56268892._SX98_.jpg",
+          "image": "https://courseitem.imgix.net/edition/30401427/56268892._SX98_.jpg",
           "author": {
             "name": "Marilynne Robinson",
             "slug": "marilynne-robinson-e53b381b-a945-4fe7-90c8-a2ae8e0a0cb6",
@@ -3072,13 +3072,13 @@
           "slug": "the-mirror-the-light",
           "title": "The Mirror & the Light",
           "pubYear": 2020,
-          "image": "https://hardcover.imgix.net/edition/25034632/11540576-L.jpg",
+          "image": "https://courseitem.imgix.net/edition/25034632/11540576-L.jpg",
           "author": {
             "name": "Hilary Mantel",
             "slug": "hilary-mantel",
             "cachedImage": {
               "id": 31684,
-              "url": "https://hardcover.imgix.net/authors/68391/8181512-L.jpg",
+              "url": "https://courseitem.imgix.net/authors/68391/8181512-L.jpg",
               "color": "#a88965",
               "width": 125,
               "height": 180
@@ -3094,7 +3094,7 @@
           "slug": "miss-iceland",
           "title": "Miss Iceland",
           "pubYear": 2018,
-          "image": "https://hardcover.imgix.net/edition/10248497/10302559-L.jpg",
+          "image": "https://courseitem.imgix.net/edition/10248497/10302559-L.jpg",
           "author": {
             "name": "Au\u00f0ur Ava \u00d3lafsd\u00f3ttir",
             "slug": "audur-ava-olafsdottir-620fd94e-82b6-4b7b-b220-d86fa77a63b9",
@@ -3110,7 +3110,7 @@
           "slug": "the-mountains-sing-2020",
           "title": "The Mountains Sing",
           "pubYear": 2020,
-          "image": "https://hardcover.imgix.net/external_data/59381476/0947f14a47210c5618e7e92b142efcdec07ec98a.jpeg",
+          "image": "https://courseitem.imgix.net/external_data/59381476/0947f14a47210c5618e7e92b142efcdec07ec98a.jpeg",
           "author": {
             "name": "Nguy\u1ec5n Phan Qu\u1ebf Mai",
             "slug": "nguy-n-phan-qu-mai",
@@ -3126,7 +3126,7 @@
           "slug": "the-night-watchman",
           "title": "The Night Watchman",
           "pubYear": 2020,
-          "image": "https://hardcover.imgix.net/edition/30401453/content.jpeg",
+          "image": "https://courseitem.imgix.net/edition/30401453/content.jpeg",
           "author": {
             "name": "Louise Erdrich",
             "slug": "louise-erdrich-93f7d3b8-4b65-45bd-bbf6-beb6d5d2b06a",
@@ -3154,13 +3154,13 @@
           "slug": "all-the-kings-men",
           "title": "All the King's Men",
           "pubYear": 1946,
-          "image": "https://hardcover.imgix.net/edition/75675/6382159-L.jpg",
+          "image": "https://courseitem.imgix.net/edition/75675/6382159-L.jpg",
           "author": {
             "name": "Robert Penn Warren",
             "slug": "robert-penn-warren",
             "cachedImage": {
               "id": 33497,
-              "url": "https://hardcover.imgix.net/authors/142870/7277118-L.jpg",
+              "url": "https://courseitem.imgix.net/authors/142870/7277118-L.jpg",
               "color": "#5a5a5a",
               "width": 344,
               "height": 500
@@ -3176,13 +3176,13 @@
           "slug": "a-bell-for-adano",
           "title": "A Bell for Adano",
           "pubYear": 1944,
-          "image": "https://storage.googleapis.com/hardcover/external_data/59457871/1346add4745956d14455efe1e7378c0298703ccd.jpeg",
+          "image": "https://storage.googleapis.com/courseitem/external_data/59457871/1346add4745956d14455efe1e7378c0298703ccd.jpeg",
           "author": {
             "name": "John Hersey",
             "slug": "john-hersey",
             "cachedImage": {
               "id": 34307,
-              "url": "https://hardcover.imgix.net/authors/176914/5539335-L.jpg",
+              "url": "https://courseitem.imgix.net/authors/176914/5539335-L.jpg",
               "color": "#5c5c5c",
               "width": 406,
               "height": 500
@@ -3214,13 +3214,13 @@
           "slug": "dragons-teeth",
           "title": "Dragon's Teeth",
           "pubYear": 1942,
-          "image": "https://hardcover.imgix.net/edition/30401448/544532._SX98_.jpg",
+          "image": "https://courseitem.imgix.net/edition/30401448/544532._SX98_.jpg",
           "author": {
             "name": "Upton Sinclair",
             "slug": "upton-sinclair-19eb5fda-32ee-4356-81b9-63b4e8f40001",
             "cachedImage": {
               "id": 35178,
-              "url": "https://hardcover.imgix.net/authors/213689/7275751-L.jpg",
+              "url": "https://courseitem.imgix.net/authors/213689/7275751-L.jpg",
               "color": "#ae9478",
               "width": 145,
               "height": 168
@@ -3236,7 +3236,7 @@
           "slug": "in-this-our-life",
           "title": "In This Our Life",
           "pubYear": 1941,
-          "image": "https://hardcover.imgix.net/edition/13953050/4761129-L.jpg",
+          "image": "https://courseitem.imgix.net/edition/13953050/4761129-L.jpg",
           "author": {
             "name": "Ellen Glasgow",
             "slug": "ellen-glasgow",
@@ -3252,13 +3252,13 @@
           "slug": "the-late-george-apley",
           "title": "The Late George Apley",
           "pubYear": 1937,
-          "image": "https://hardcover.imgix.net/edition/17831614/190055-L.jpg",
+          "image": "https://courseitem.imgix.net/edition/17831614/190055-L.jpg",
           "author": {
             "name": "John P. Marquand",
             "slug": "john-p-marquand",
             "cachedImage": {
               "id": 34153,
-              "url": "https://hardcover.imgix.net/authors/169979/7401133-L.jpg",
+              "url": "https://courseitem.imgix.net/authors/169979/7401133-L.jpg",
               "color": "#353732",
               "width": 220,
               "height": 275
@@ -3274,7 +3274,7 @@
           "slug": "honey-in-the-horn",
           "title": "Honey in the Horn",
           "pubYear": 1935,
-          "image": "https://hardcover.imgix.net/edition/24746029/691997-L.jpg",
+          "image": "https://courseitem.imgix.net/edition/24746029/691997-L.jpg",
           "author": {
             "name": "H.L. Davis",
             "slug": "hl-davis",
@@ -3290,7 +3290,7 @@
           "slug": "now-in-november",
           "title": "Now in November",
           "pubYear": 1934,
-          "image": "https://hardcover.imgix.net/edition/20145492/1881527-L.jpg",
+          "image": "https://courseitem.imgix.net/edition/20145492/1881527-L.jpg",
           "author": {
             "name": "Josephine Winslow Johnson",
             "slug": "josephine-winslow-johnson",
@@ -3306,7 +3306,7 @@
           "slug": "the-store",
           "title": "The Store",
           "pubYear": 1932,
-          "image": "https://hardcover.imgix.net/edition/15101446/8503013-L.jpg",
+          "image": "https://courseitem.imgix.net/edition/15101446/8503013-L.jpg",
           "author": {
             "name": "T.S. Stribling",
             "slug": "ts-stribling",
@@ -3322,7 +3322,7 @@
           "slug": "years-of-grace",
           "title": "Years of Grace",
           "pubYear": 1930,
-          "image": "https://hardcover.imgix.net/edition/13127365/29962a227c0b5d84df4ded2ec239d72453c9ec15.jpeg",
+          "image": "https://courseitem.imgix.net/edition/13127365/29962a227c0b5d84df4ded2ec239d72453c9ec15.jpeg",
           "author": {
             "name": "Margaret Ayer Barnes",
             "slug": "margaret-ayer-barnes-aef7b4fd-f30c-48c1-8d5c-428682ea550f",
@@ -3338,7 +3338,7 @@
           "slug": "laughing-boy",
           "title": "Laughing Boy",
           "pubYear": 1929,
-          "image": "https://hardcover.imgix.net/edition/25756166/394569-L.jpg",
+          "image": "https://courseitem.imgix.net/edition/25756166/394569-L.jpg",
           "author": {
             "name": "Oliver La Farge",
             "slug": "oliver-la-farge",
@@ -3354,7 +3354,7 @@
           "slug": "scarlet-sister-mary-1928",
           "title": "Scarlet Sister Mary",
           "pubYear": 1928,
-          "image": "https://hardcover.imgix.net/edition/26564577/8504830-L.jpg",
+          "image": "https://courseitem.imgix.net/edition/26564577/8504830-L.jpg",
           "author": {
             "name": "Julia Peterkin",
             "slug": "julia-peterkin",
@@ -3370,7 +3370,7 @@
           "slug": "early-autumn-a-story-of-a-lady",
           "title": "Early Autumn: A Story of a Lady",
           "pubYear": 1926,
-          "image": "https://hardcover.imgix.net/edition/21161364/936506-L.jpg",
+          "image": "https://courseitem.imgix.net/edition/21161364/936506-L.jpg",
           "author": {
             "name": "Louis Bromfield",
             "slug": "louis-bromfield",
@@ -3386,7 +3386,7 @@
           "slug": "the-able-mclaughlins",
           "title": "The Able McLaughlins",
           "pubYear": 2007,
-          "image": "https://storage.googleapis.com/hardcover/courses/432300/672349-L.jpg",
+          "image": "https://storage.googleapis.com/courseitem/courses/432300/672349-L.jpg",
           "author": {
             "name": "Margaret Wilson",
             "slug": "margaret-wilson",
@@ -3414,13 +3414,13 @@
           "slug": "along-the-ganges",
           "title": "Along the Ganges",
           "pubYear": 2003,
-          "image": "https://hardcover.imgix.net/edition/20873171/2112255-L.jpg",
+          "image": "https://courseitem.imgix.net/edition/20873171/2112255-L.jpg",
           "author": {
             "name": "Ilija Trojanow",
             "slug": "ilija-trojanow",
             "cachedImage": {
               "id": 35654,
-              "url": "https://hardcover.imgix.net/authors/235500/8032633-L.jpg",
+              "url": "https://courseitem.imgix.net/authors/235500/8032633-L.jpg",
               "color": "#c2c3c0",
               "width": 375,
               "height": 500
@@ -3436,7 +3436,7 @@
           "slug": "among-the-cities",
           "title": "Among the Cities",
           "pubYear": 1985,
-          "image": "https://hardcover.imgix.net/edition/14339830/2223882._SX98_.jpg",
+          "image": "https://courseitem.imgix.net/edition/14339830/2223882._SX98_.jpg",
           "author": {
             "name": "Jan Morris",
             "slug": "jan-morris-8b95ef1d-81f2-4e2e-9f6c-cb773724098c",
@@ -3452,7 +3452,7 @@
           "slug": "arabian-sands",
           "title": "Arabian Sands",
           "pubYear": 1959,
-          "image": "https://hardcover.imgix.net/edition/16202841/1118685-L.jpg",
+          "image": "https://courseitem.imgix.net/edition/16202841/1118685-L.jpg",
           "author": {
             "name": "Wilfred Thesiger",
             "slug": "wilfred-thesiger",
@@ -3468,13 +3468,13 @@
           "slug": "an-area-of-darkness",
           "title": "An area of darkness",
           "pubYear": 1965,
-          "image": "https://storage.googleapis.com/hardcover/courses/432297/93289-L.jpg",
+          "image": "https://storage.googleapis.com/courseitem/courses/432297/93289-L.jpg",
           "author": {
             "name": "V. S. Naipaul",
             "slug": "v-s-naipaul",
             "cachedImage": {
               "id": 31824,
-              "url": "https://hardcover.imgix.net/authors/75218/5727457-L.jpg",
+              "url": "https://courseitem.imgix.net/authors/75218/5727457-L.jpg",
               "color": "#b8b8b8",
               "width": 160,
               "height": 200
@@ -3490,7 +3490,7 @@
           "slug": "blue-highways",
           "title": "Blue Highways",
           "pubYear": 1982,
-          "image": "https://hardcover.imgix.net/edition/8146755/5403082-L.jpg",
+          "image": "https://courseitem.imgix.net/edition/8146755/5403082-L.jpg",
           "author": {
             "name": "William Least Heat-Moon",
             "slug": "william-least-heat-moon-0b71f866-ae28-41cf-b5dd-47edf460761e",
@@ -3506,7 +3506,7 @@
           "slug": "cross-country",
           "title": "Cross Country",
           "pubYear": 2006,
-          "image": "https://hardcover.imgix.net/edition/8901243/7075067-L.jpg",
+          "image": "https://courseitem.imgix.net/edition/8901243/7075067-L.jpg",
           "author": {
             "name": "Robert Sullivan",
             "slug": "robert-sullivan",
@@ -3522,13 +3522,13 @@
           "slug": "dark-star-safari",
           "title": "Dark Star Safari",
           "pubYear": 2002,
-          "image": "https://hardcover.imgix.net/edition/18897307/394572-L.jpg",
+          "image": "https://courseitem.imgix.net/edition/18897307/394572-L.jpg",
           "author": {
             "name": "Paul Theroux",
             "slug": "paul-theroux-dc78a63c-bea6-4ff6-aaca-5b9a3d80c5d1",
             "cachedImage": {
               "id": 32143,
-              "url": "https://hardcover.imgix.net/authors/89573/6460967-L.jpg",
+              "url": "https://courseitem.imgix.net/authors/89573/6460967-L.jpg",
               "color": "#cd6525",
               "width": 500,
               "height": 471
@@ -3550,7 +3550,7 @@
             "slug": "ryszard-kapuscinski",
             "cachedImage": {
               "id": 31952,
-              "url": "https://hardcover.imgix.net/authors/80129/6296205-L.jpg",
+              "url": "https://courseitem.imgix.net/authors/80129/6296205-L.jpg",
               "color": "#96957b",
               "width": 250,
               "height": 305
@@ -3566,7 +3566,7 @@
           "slug": "endurance",
           "title": "Endurance",
           "pubYear": 2014,
-          "image": "https://hardcover.imgix.net/edition/30402321/content.jpeg",
+          "image": "https://courseitem.imgix.net/edition/30402321/content.jpeg",
           "author": {
             "name": "Alfred Lansing",
             "slug": "alfred-lansing",
@@ -3582,7 +3582,7 @@
           "slug": "eothen",
           "title": "Eothen",
           "pubYear": 1844,
-          "image": "https://hardcover.imgix.net/edition/6971069/595530-L.jpg",
+          "image": "https://courseitem.imgix.net/edition/6971069/595530-L.jpg",
           "author": {
             "name": "Alexander William Kinglake",
             "slug": "alexander-william-kinglake",
@@ -3604,7 +3604,7 @@
             "slug": "fridtjof-nansen",
             "cachedImage": {
               "id": 35656,
-              "url": "https://hardcover.imgix.net/authors/235529/6696356-L.jpg",
+              "url": "https://courseitem.imgix.net/authors/235529/6696356-L.jpg",
               "color": "#5a5a5a",
               "width": 338,
               "height": 500
@@ -3620,7 +3620,7 @@
           "slug": "the-fearful-void",
           "title": "The Fearful Void",
           "pubYear": 1974,
-          "image": "https://hardcover.imgix.net/edition/20681813/7377580-L.jpg",
+          "image": "https://courseitem.imgix.net/edition/20681813/7377580-L.jpg",
           "author": {
             "name": "Geoffrey Moorhouse",
             "slug": "geoffrey-moorhouse",
@@ -3652,13 +3652,13 @@
           "slug": "great-plains",
           "title": "Great Plains",
           "pubYear": 1989,
-          "image": "https://hardcover.imgix.net/edition/7021007/178025-L.jpg",
+          "image": "https://courseitem.imgix.net/edition/7021007/178025-L.jpg",
           "author": {
             "name": "Ian Frazier",
             "slug": "ian-frazier",
             "cachedImage": {
               "id": 35524,
-              "url": "https://hardcover.imgix.net/authors/229609/7436456-L.jpg",
+              "url": "https://courseitem.imgix.net/authors/229609/7436456-L.jpg",
               "color": "#5a5a5a",
               "width": 320,
               "height": 320

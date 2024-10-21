@@ -1,5 +1,5 @@
 import { Navigate } from '@/router'
-import { SearchCategory } from '@/types/shelvd'
+import { SearchCategory } from '@/types/cf'
 
 const CoursePage = () => (
   <Navigate

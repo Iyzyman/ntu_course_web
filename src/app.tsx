@@ -8,7 +8,6 @@ import ReactDOM from 'react-dom/client'
 import { HelmetProvider } from 'react-helmet-async'
 
 import { Routes } from '@generouted/react-router/lazy'
-import StoreProvider from '@/components/providers/store.provider'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 
 const queryClient = new QueryClient()
@@ -24,9 +23,7 @@ export const App = () => {
         > */}
           <ThemeProvider>
             <ClerkProvider>
-              <StoreProvider>
-                <Routes />
-              </StoreProvider>
+              <Routes />
             </ClerkProvider>
           </ThemeProvider>
           {/* </PersistGate> */}

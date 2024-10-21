@@ -5,19 +5,18 @@ import { RenderGuard } from '@/components/providers/render.provider'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/Tabs'
 import { AppName } from '@/data/static/app'
 import { Navigate, useNavigate, useParams } from '@/router'
-import { Hardcover } from '@/types'
-import { TrendPeriodTitle } from '@/types/hardcover'
+import { CourseItem } from '@/types'
+import { TrendPeriodTitle } from '@/types/courseitem'
 import { cn } from '@/utils/dom'
-
 
 const TrendingPeriodPage = () => {
   const navigate = useNavigate()
 
   //#endregion  //*======== PARAMS ===========
-  const { period = Hardcover.DefaultTrendPeriod } =
+  const { period = CourseItem.DefaultTrendPeriod } =
     useParams('/trending/:period')
 
-  const isValidPeriod = Hardcover.TrendPeriod.safeParse(period).success
+  const isValidPeriod = CourseItem.TrendPeriod.safeParse(period).success
   const isValidParams = isValidPeriod
   //#endregion  //*======== PARAMS ===========
 
@@ -29,7 +28,7 @@ const TrendingPeriodPage = () => {
     isFetching: isFetchingTrending,
   } = useTrendingData()
 
-  const results = (data?.results?.[period as Hardcover.TrendPeriod] ??
+  const results = (data?.results?.[period as CourseItem.TrendPeriod] ??
     []) as Course[]
   const isLoading = isLoadingTrending || isFetchingTrending
   const isNotFound =
@@ -96,10 +95,10 @@ const TrendingPeriodPage = () => {
         </section>
 
         <Tabs
-          defaultValue={Hardcover.DefaultTrendPeriod}
+          defaultValue={CourseItem.DefaultTrendPeriod}
           value={period}
           onValueChange={(p) => {
-            const isValidPeriod = Hardcover.TrendPeriod.safeParse(p).success
+            const isValidPeriod = CourseItem.TrendPeriod.safeParse(p).success
             if (!isValidPeriod) return
 
             navigate(
