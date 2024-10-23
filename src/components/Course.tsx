@@ -382,6 +382,7 @@ export const CoursePrerequisites: React.FC<CoursePrerequisitesProps> = ({
   children,
   ...rest
 }) => {
+  
   if (!prerequisites || prerequisites.length === 0) return null
   return (
     <section
@@ -402,10 +403,7 @@ export const CoursePrerequisites: React.FC<CoursePrerequisitesProps> = ({
       >
         {(prerequisites ?? []).map((prerequisite, idx) => {
           // Validate prerequisite using CourseInfo.safeParse
-          const validation = CourseInfo.safeParse(prerequisite)
           const course = CourseItemUtils.parseCourse(prerequisite)
-          if (!validation.success) return null
-
           return (
             <Course
               key={`${idx}-${course.key}`}
