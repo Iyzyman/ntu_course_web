@@ -710,8 +710,8 @@ export const StandardCourseList = ({
                 <small className="whitespace-nowrap"># {idx + 1}</small>
               )}
 
-              {/* Course Image */}
-              <Course.Image />
+              {/* Course Thumbnail */}
+              <Course.Thumbnail />
 
               {/* Course Content (Title, Description, Tags) */}
               <div

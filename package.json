@@ -15,7 +15,9 @@
     "lint:check": "eslint --report-unused-disable-directives --max-warnings=0 src",
     "lint": "run-s -ln lint:*",
     "release": "standard-version --sign",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "cy:open": "cypress open",
+    "cy:run": "cypress run"
   },
   "dependencies": {
     "@clerk/clerk-react": "^4.30.4",

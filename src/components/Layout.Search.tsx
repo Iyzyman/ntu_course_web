@@ -545,7 +545,7 @@ export const SearchResults = ({ className, ...rest }: SearchResults) => {
                 )}
               >
                 <Course course={course}>
-                  <Course.Image />
+                  <Course.Image data-test-id="search-thumbnail" />
 
                   <article
                     className={cn(
@@ -561,6 +561,7 @@ export const SearchResults = ({ className, ...rest }: SearchResults) => {
 
                         '*:!mt-0',
                       )}
+                      data-testid="search-result"
                     >
                       <p
                         className={cn(
@@ -830,6 +831,7 @@ export const SearchCommandResults = () => {
                       ?.split(' ')
                       .map((titleText: string, idx: number) => (
                         <span
+                          data-testid="searchbar-result"
                           key={`${course.key}-title-${idx}`}
                           className={cn(
                             query
@@ -901,6 +903,7 @@ export const SearchCommandResults = () => {
             },
           )
         }}
+        data-testid="view-button"
       >
         View {dataCount} results
       </Button>
@@ -942,6 +945,7 @@ export const SearchCommandTrigger = () => {
 
         'text-sm text-muted-foreground',
       )}
+      data-testid="search-command-trigger"
     >
       <aside className="inline-flex flex-row place-items-center gap-1">
         <MagnifyingGlassIcon className="size-4" />

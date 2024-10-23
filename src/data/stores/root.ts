@@ -59,10 +59,7 @@ export const RootStore = (() => {
             'CfClient',
           ], // Paths to be excluded from serialization checks
         },
-      }).concat([
-        CourseItemClient.middleware,
-        CfClient.middleware,
-      ])
+      }).concat([CourseItemClient.middleware, CfClient.middleware])
     },
   })
   setupListeners(store.dispatch)

@@ -7,7 +7,8 @@ import generouted from '@generouted/react-router/plugin'
 // https://vitejs.dev/config/
 export default defineConfig({
   server: {
-    port: Number(process.env.VITE_PORT) || 3000, // Set the port from VITE_PORT or fallback to 3000
+    port: Number(process.env.VITE_PORT) || 3000,
+    open: true,
   },
   plugins: [million.vite({ auto: true }), react(), generouted()],
   resolve: {
