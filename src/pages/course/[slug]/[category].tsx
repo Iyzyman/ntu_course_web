@@ -136,7 +136,7 @@ const CourseInfo = () => {
 
         <div className={cn('flex gap-4')}>
           <Course.Prerequisites
-            prerequisites={origin?.prerequisites}
+            prerequisites={common?.prerequisites}
             className="flex-1"
           />
 

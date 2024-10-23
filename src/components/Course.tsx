@@ -135,6 +135,7 @@ export const CourseImage = ({ className, children, ...rest }: CourseImage) => {
               fontWeight: '400', // Corrected fontWeight syntax
               fontSize: '40px',
               cursor: 'default', // Sets the cursor to default, preventing text selection pointer
+              color: 'white'
             }}
           >
             {/* {course.title} */}
@@ -402,10 +403,7 @@ export const CoursePrerequisites: React.FC<CoursePrerequisitesProps> = ({
       >
         {(prerequisites ?? []).map((prerequisite, idx) => {
           // Validate prerequisite using CourseInfo.safeParse
-          const validation = CourseInfo.safeParse(prerequisite)
           const course = CourseItemUtils.parseCourse(prerequisite)
-          if (!validation.success) return null
-
           return (
             <Course
               key={`${idx}-${course.key}`}
