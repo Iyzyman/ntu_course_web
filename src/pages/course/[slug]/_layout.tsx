@@ -128,6 +128,7 @@ const CourseDetailsLayout = () => {
                       fontWeight: '900',
                       lineHeight: '41px',
                     }}
+                    data-testid="course-title"
                   >
                     {origin?.title}
                   </div>

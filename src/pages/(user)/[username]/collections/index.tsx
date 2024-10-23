@@ -1,8 +1,8 @@
+import { StandardCourseList } from '@/components/Course'
 import { useWatchListData } from '@/components/hooks/useCourseFinderHooks'
 import List from '@/components/List'
 import { RenderGuard } from '@/components/providers/render.provider'
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/Alert'
-import { Badge } from '@/components/ui/Badge'
 import { Skeleton } from '@/components/ui/Skeleton'
 import { ListData } from '@/types/cf'
 import { cn } from '@/utils/dom'
@@ -26,11 +26,9 @@ const UserPage = () => {
   const userid = user?.id || ''
 
   const { data, isSuccess, isLoading, isFetching } = useWatchListData(userid)
-
   const isDataLoading = isLoading || isFetching
   const isFound = !isDataLoading && isSuccess
   const courses = isFound ? data ?? [] : []
-  console.log(courses)
 
   const watchlist: List = {
     key: 'Collections',
@@ -98,34 +96,7 @@ const UserPage = () => {
             key={`${user?.id}-list-core-${watchlist.key}`}
             renderIf={ListData.safeParse(watchlist).success}
           >
-            <List
-              data={ListData.parse(watchlist)}
-              overwriteCourses={watchlist.courses}
-            >
-              <div className="flex flex-col gap-y-2">
-                <h3
-                  className={cn(
-                    'cursor-pointer underline-offset-4 hover:!underline',
-                    'small line-clamp-1 truncate text-pretty font-semibold uppercase leading-none tracking-tight text-muted-foreground',
-                  )}
-                >
-                  {'Collections'}&nbsp;
-                  <Badge variant={'outline'}>
-                    {watchlist?.coursesCount ?? 0} courses
-                  </Badge>
-                </h3>
-
-                <div
-                  className={cn(
-                    'w-full place-content-start place-items-start gap-2',
-                    'flex flex-row flex-wrap',
-                    // 'sm:max-w-xl',
-                  )}
-                >
-                  <List.Courses></List.Courses>
-                </div>
-              </div>
-            </List>
+            <StandardCourseList results={data}></StandardCourseList>
           </RenderGuard>
         </section>
       )}

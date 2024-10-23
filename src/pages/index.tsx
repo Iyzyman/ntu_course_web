@@ -66,7 +66,7 @@ export const FeaturedListsPreviewSection = () => {
 
   return (
     <section className="flex flex-col gap-8">
-      <header>
+      <header data-testid="discover-title">
         <Link
           to={{
             pathname: '/discover',
@@ -128,6 +128,8 @@ export const TrendingPreviewSection = ({
                 'mr-1 mt-1 w-fit !rounded-none',
                 idx > 8 && 'hidden sm:block',
               )}
+              data-testid="course-thumbnail"
+              data-coursecode={course.code}
             />
           </Course>
         </RenderGuard>
@@ -172,6 +174,7 @@ export const TrendingPreview = () => {
             }
           }}
           className="hidden w-fit lg:block"
+          data-testid="trending-tab"
         >
           <TabsList className="!h-fit">
             {Object.entries(TrendPeriodTitle).map(([period, title]) => (
