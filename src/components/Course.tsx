@@ -135,6 +135,7 @@ export const CourseImage = ({ className, children, ...rest }: CourseImage) => {
               fontWeight: '400', // Corrected fontWeight syntax
               fontSize: '40px',
               cursor: 'default', // Sets the cursor to default, preventing text selection pointer
+              color: 'white'
             }}
           >
             {/* {course.title} */}
@@ -382,7 +383,6 @@ export const CoursePrerequisites: React.FC<CoursePrerequisitesProps> = ({
   children,
   ...rest
 }) => {
-  
   if (!prerequisites || prerequisites.length === 0) return null
   return (
     <section
