@@ -61,7 +61,7 @@ export const AggregateReviewScore = ({ rating }: ReviewProps) => {
                 fontSize: 25,
               }}
             >
-              {value}/5
+              {value.toFixed(1)}/5
             </Typography>
             <CircularProgress
               sx={{ color: '#A3A3A3', position: 'absolute' }}
